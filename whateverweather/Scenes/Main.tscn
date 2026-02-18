@@ -12,10 +12,20 @@ grow_vertical = 2
 
 [node name="TemperatureText" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 99.0
+offset_top = 66.0
+offset_right = 263.0
+offset_bottom = 89.0
 text = "WHATEVER WEATHER"
+
+[node name="ErrorText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 103.0
+offset_right = 267.0
+offset_bottom = 126.0
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 script = ExtResource("2_idj7w")
 uiText = NodePath("../TemperatureText")
+errorText = NodePath("../ErrorText")
