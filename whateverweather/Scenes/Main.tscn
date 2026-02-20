@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://46bxwnfm5bec"]
+[gd_scene load_steps=5 format=3 uid="uid://46bxwnfm5bec"]
 
 [ext_resource type="Texture2D" uid="uid://dmbbxbdncd246" path="res://Art/earth-globe_000.png" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://be66rpgutl5mn" path="res://Scripts/WeatherRequest.gd" id="2_idj7w"]
+[ext_resource type="Theme" uid="uid://b06rmsyrr1jt6" path="res://Themes/weatherTheme.tres" id="3_kln2b"]
+[ext_resource type="Theme" uid="uid://dsb6u3nnai6kd" path="res://Themes/table.tres" id="4_rgh2o"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,17 +16,15 @@ grow_vertical = 2
 [node name="TemperatureText" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.051
-anchor_right = 0.5
-anchor_bottom = 0.057
-offset_left = -400.0
-offset_right = 400.0
-offset_bottom = 83.0
+anchor_left = 0.1
+anchor_top = 0.01
+anchor_right = 0.9
+anchor_bottom = 0.1
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "WHATEVER WEATHER"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ErrorText" type="Label" parent="."]
@@ -54,3 +54,47 @@ stretch_mode = 5
 script = ExtResource("2_idj7w")
 uiText = NodePath("../TemperatureText")
 errorText = NodePath("../ErrorText")
+tableParent = NodePath("../GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.85
+grow_horizontal = 2
+theme = ExtResource("3_kln2b")
+columns = 4
+
+[node name="Label-hour" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("4_rgh2o")
+text = "hour"
+horizontal_alignment = 1
+
+[node name="Label-temp" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("4_rgh2o")
+text = "temp. °C"
+horizontal_alignment = 1
+
+[node name="Label-rain" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("4_rgh2o")
+text = "precip. %"
+horizontal_alignment = 1
+
+[node name="Label-wind" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("4_rgh2o")
+text = "wind km/h"
+horizontal_alignment = 1
