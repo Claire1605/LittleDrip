@@ -83,7 +83,6 @@ func populateDaySummary(openMeteoJSON, day):
 	get_node_or_null(daySunText).text = "Day sun hours: " + str(sunrise.hour) + ":" + str(sunrise.minute) + " - " + str(sunset.hour) + ":" + str(sunset.minute)
 
 func getWMOCode(wmo):
-	print(wmo)
 	# https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
 	match wmo:
 		0.0: return "Clear sky"
