@@ -254,6 +254,13 @@ func getLunarPhase():
 	elif age >= 25.0:
 		get_node_or_null(moonPhaseText).text = "Waning Crescent"
 
+func _on_today_button_pressed() -> void:
+	startDay = 7
+	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	populateForecastTable(openMeteoJSON, startDay)
+	populateDaySummary(openMeteoJSON, startDay)
+	getLunarPhase()
+
 func _on_previous_day_button_pressed() -> void:
 	startDay -= 1
 	if startDay < 0:
