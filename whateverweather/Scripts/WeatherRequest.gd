@@ -1,83 +1,192 @@
 extends HTTPRequest
-@export_node_path("Label") var uiText
+@export_node_path("Label") var dateText
 @export_node_path("Label") var errorText
 @export_node_path("GridContainer") var tableParent
+@export_node_path("Label") var dayWMOText
+@export_node_path("Label") var dayTempText
+@export_node_path("Label") var dayAppTempText
+@export_node_path("Label") var dayWindText
+@export_node_path("Label") var daySunText
 @export_node_path("Label") var moonPhaseText
+var startDay: int = 7
+var openMeteoJSON
+var todayUnix: float
+var selectedDateUnix: float
+var tableLabelScene
+var gridChildren: Array[Node]
 
 func _ready():
 	request_completed.connect(_on_request_completed)
 
 	# Perform a GET request. The URL below returns JSON as of writing.
-	var error = request("https://api.open-meteo.com/v1/forecast?latitude=56.4691&longitude=-2.9749&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=GMT&past_days=7&forecast_days=14")
+	var error = request("https://api.open-meteo.com/v1/forecast?latitude=56.4691&longitude=-2.9749&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=GMT&past_days=7&forecast_days=14&wind_speed_unit=mph")
 	if error != OK:
-		get_node_or_null(uiText).text = "An error occurred in the HTTP request."
+		get_node_or_null(dateText).text = "An error occurred in the HTTP request."
 		#push_error("An error occurred in the HTTP request.")
+		
+	tableLabelScene = preload("res://Scenes/label_table_entry.tscn")
+	todayUnix = Time.get_unix_time_from_system()
+	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 
 func _on_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		get_node_or_null(uiText).text = "The HTTP request was unsuccesful"
+		get_node_or_null(dateText).text = "The HTTP request was unsuccesful"
 		#push_error("The HTTP request was unsuccesful")
-	
-	var openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
-	if (openMeteoJSON != null):
-		populateForecastTable(openMeteoJSON)
 
-func populateForecastTable(openMeteoJSON):
-	var date = getWeekdayString(Time.get_date_dict_from_system().weekday) + " " + str(Time.get_date_dict_from_system(false).day) + " " + getMonthString(Time.get_date_dict_from_system(false).month) + " " + str(Time.get_date_dict_from_system(false).year)
-	get_node_or_null(uiText).text = date
+	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
+	if (openMeteoJSON != null):
+		populateForecastTable(openMeteoJSON, startDay)
+		populateDaySummary(openMeteoJSON, startDay)
 	
-	var scene = preload("res://Scenes/label_table_entry.tscn")
+	getLunarPhase()
+
+func populateForecastTable(openMeteoJSON, day):
+	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
+	var date = getWeekdayString(selectedDate.weekday) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month) + " " + str(selectedDate.year)
+	get_node_or_null(dateText).text = date
 	
-	#print(openMeteoJSON["hourly"]["temperature_2m"].size())
+	if !gridChildren.is_empty():
+		for g in gridChildren:
+			if is_instance_valid(g):
+				g.queue_free()
+
+	var hour = -1
 	for h in openMeteoJSON["hourly"]["temperature_2m"].size():
-		if h >= 168 and h < 192:
-			for x in 5:
-				var tableLabel = scene.instantiate()
+		if h >= (day * 24) and h < ((day + 1) * 24):
+			hour += 1
+			for x in 6:
+				var tableLabel = tableLabelScene.instantiate()
 				get_node(tableParent).add_child(tableLabel)
+				gridChildren.append(tableLabel as Node)
+				
 				if x == 0:
-					tableLabel.text = str(h - 168)
+					tableLabel.text = str(hour)
 				if x == 1:
-					tableLabel.text = str(openMeteoJSON["hourly"]["temperature_2m"][h])
+					tableLabel.text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + " (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + ")"
 				if x == 2:
 					tableLabel.text = str(openMeteoJSON["hourly"]["precipitation_probability"][h])
 				if x == 3:
-					tableLabel.text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h])
+					tableLabel.text = str(openMeteoJSON["hourly"]["cloud_cover"][h])
 				if x == 4:
+					tableLabel.text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
+				if x == 5:
 					tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
-				
-	getLunarPhase()
+
+func populateDaySummary(openMeteoJSON, day):
+	get_node_or_null(dayWMOText).text = "Day summary: " + getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
+	get_node_or_null(dayTempText).text = "Day temperature range: " + str(openMeteoJSON["daily"]["temperature_2m_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["temperature_2m_max"][day]) + "°C"
+	get_node_or_null(dayAppTempText).text = "Day apparent temp. range: " + str(openMeteoJSON["daily"]["apparent_temperature_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["apparent_temperature_max"][day]) + "°C"
+	get_node_or_null(dayWindText).text = "Day wind: " + str(openMeteoJSON["daily"]["wind_speed_10m_max"][day]) + " mph, " + str(openMeteoJSON["daily"]["wind_gusts_10m_max"][day]) + " mph gusts, at "+ str(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]) + "°"
+
+	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
+	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
+	get_node_or_null(daySunText).text = "Day sun hours: " + str(sunrise.hour) + ":" + str(sunrise.minute) + " - " + str(sunset.hour) + ":" + str(sunset.minute)
 
 func getWMOCode(wmo):
-	if wmo == 0:
-		return "Clear sky"
-	elif wmo == 1:
-		return "Mainly clear"
-	elif wmo == 2:
-		return "Partly cloudy"
-	elif wmo == 3:
-		return "Overcast"
-	elif wmo == 45 or wmo == 48:
-		return "Fog" #Fog and depositing rime fog"
-	elif wmo == 51 or wmo == 53 or wmo == 55:
-		return "Light drizzle" #Drizzle: Light, moderate, and dense intensity"
-	elif wmo == 56 or wmo == 57:
-		return "Freezing drizzle" #Freezing Drizzle: Light and dense intensity"
-	elif wmo == 61 or wmo == 63 or wmo == 65:
-		return "Light rain" #Rain: Slight, moderate and heavy intensity"
-	elif wmo == 66 or wmo == 67:
-		return "Freezing rain" #Freezing Rain: Light and heavy intensity"
-	elif wmo == 71 or wmo == 73 or wmo == 75:
-		return "Snow" #Snow fall: Slight, moderate, and heavy intensity"
-	elif wmo == 77:
-		return "Snow grains"
-	elif wmo == 80 or wmo == 81 or wmo == 82:
-		return "Rain showers" #Rain showers: Slight, moderate, and violent"
-	elif wmo == 85 or wmo == 86:
-		return "Snow showers" #Snow showers slight and heavy"
-	elif wmo == 95:
-		return "Thunderstors" #Thunderstorm: Slight or moderate"
-	elif wmo == 96 or wmo == 99:
-		return "Thunderstorms and hail" #Thunderstorm with slight and heavy hail"
+	print(wmo)
+	# https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
+	match wmo:
+		0.0: return "Clear sky"
+		1.0: return "Mainly clear"
+		2.0: return "Partly cloudy"
+		3.0: return "Overcast"
+		4.0: return "Smokey"
+		5.0: return "Haze"
+		6.0: return "Light dust"
+		7.0: return "Heavy dust"
+		8.0: return "Dust whirl"
+		9.0: return "Duststorm"
+		10.0: return "Mist"
+		11.0: return "Shallow fog"
+		12.0: return "Shallow fog"
+		13.0: return "Lightning"
+		14.0: return "Precipitation nearby"
+		15.0: return "Precipitation nearby"
+		16.0: return "Precipitation nearby"
+		17.0: return "Thunderstorm"
+		18.0: return "Squalls"
+		19.0: return "Funnel cloud"
+		20.0: return "Drizzle"
+		21.0: return "Rain"
+		22.0: return "Snow"
+		23.0: return "Rain and snow"
+		24.0: return "Freezing drizzle"
+		25.0: return "Rain showers"
+		26.0: return "Snow showers"
+		27.0: return "Hail showers"
+		28.0: return "Recent fog"
+		29.0: return "Thunderstorm"
+		30.0: return "Slight duststorm"
+		31.0: return "Slight duststorm"
+		32.0: return "Slight duststorm"
+		33.0: return "Severe duststorm"
+		34.0: return "Severe duststorm"
+		35.0: return "Severe duststorm"
+		36.0: return "Slight blowing snow"
+		37.0: return "Heavy drifting snow"
+		38.0: return "Slight blowing snow"
+		39.0: return "Heavy drifting snow"
+		40.0: return "Fog or ice fog"
+		41.0: return "Fog or ice fog"
+		42.0: return "Fog or ice fog"
+		43.0: return "Fog or ice fog"
+		44.0: return "Fog or ice fog"
+		45.0: return "Fog or ice fog"
+		46.0: return "Fog or ice fog"
+		47.0: return "Fog or ice fog"
+		48.0: return "Fog and rime"
+		49.0: return "Fog and rime"
+		50.0: return "Slight drizzle"
+		51.0: return "Slight drizzle"
+		52.0: return "Moderate drizzle"
+		53.0: return "Moderate drizzle"
+		54.0: return "Heavy drizzle"
+		55.0: return "Heavy drizzle"
+		56.0: return "Slight freezing drizzle"
+		57.0: return "Heavy freezing drizzle"
+		58.0: return "Slight drizzle and rain"
+		59.0: return "Heavy drizzle and rain"
+		60.0: return "Slight rain"
+		61.0: return "Slight rain"
+		62.0: return "Moderate rain"
+		63.0: return "Moderate rain"
+		64.0: return "Heavy rain"
+		65.0: return "Heavy rain"
+		66.0: return "Slight freezing rain"
+		67.0: return "Heavy freezing rain"
+		68.0: return "Slight rain and snow"
+		69.0: return "Heavy rain and snow"
+		70.0: return "Slight snow"
+		71.0: return "Slight snow"
+		72.0: return "Moderate snow"
+		73.0: return "Moderate snow"
+		74.0: return "Heavy snow"
+		75.0: return "Heavy snow"
+		76.0: return "Diamond dust"
+		77.0: return "Snow grains"
+		78.0: return "Snow crystals"
+		79.0: return "Ice pellets"
+		80.0: return "Slight rain showers"
+		81.0: return "Moderate rain showers"
+		82.0: return "Heavy rain showers"
+		83.0: return "Slight sleet showers"
+		84.0: return "Heavy sleet showers"
+		85.0: return "Slight snow showers"
+		86.0: return "Heavy snow showers"
+		87.0: return "Small hail showers"
+		88.0: return "Small hail showers"
+		89.0: return "Hail showers"
+		90.0: return "Hail showers"
+		91.0: return "Slight rain"
+		92.0: return "Heavy rain"
+		93.0: return "Slight snow and hail"
+		94.0: return "Heavy snow and hail"
+		95.0: return "Thunderstorm"
+		96.0: return "Thunderstorm and hail"
+		97.0: return "Heavy thunderstorm"
+		98.0: return "Thunder and dust storm"
+		99.0: return "Heavy thunder and hail"
+		_: return "Unknown"
 
 func getWeekdayString(weekday):
 	if weekday == 0:
@@ -123,7 +232,7 @@ func getMonthString(month):
 
 func getLunarPhase():
 	var date1 = "2026-02-17T12:03:00.00"
-	var date2 = Time.get_unix_time_from_system()
+	var date2 = selectedDateUnix
 	var seconds = date2 - Time.get_unix_time_from_datetime_string(date1)
 	var days = float(seconds) / 60.0 / 60.0 / 24.0
 	var age = fmod(days, 29.53059)
@@ -144,6 +253,24 @@ func getLunarPhase():
 		get_node_or_null(moonPhaseText).text = "Last Quarter"
 	elif age >= 25.0:
 		get_node_or_null(moonPhaseText).text = "Waning Crescent"
+
+func _on_previous_day_button_pressed() -> void:
+	startDay -= 1
+	if startDay < 0:
+		startDay = 0
+	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	populateForecastTable(openMeteoJSON, startDay)
+	populateDaySummary(openMeteoJSON, startDay)
+	getLunarPhase()
+
+func on_next_day_button_pressed() -> void:
+	startDay += 1
+	if startDay > 20:
+		startDay = 20
+	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	populateForecastTable(openMeteoJSON, startDay)
+	populateDaySummary(openMeteoJSON, startDay)
+	getLunarPhase()
 
 # TO-DO
 # You have to wait for a request to finish before sending another one. Making multiple request at once requires you to have one node per request. A common strategy is to create and delete HTTPRequest nodes at runtime as necessary.
