@@ -266,6 +266,8 @@ texture = ExtResource("5_v1gob")
 expand_mode = 1
 stretch_mode = 5
 
+[connection signal="text_changed" from="LineEdit" to="HTTPRequest2" method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="LineEdit" to="HTTPRequest2" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="TodayButton" to="HTTPRequest" method="_on_today_button_pressed"]
 [connection signal="pressed" from="NextDayButton" to="HTTPRequest" method="on_next_day_button_pressed"]
 [connection signal="pressed" from="PreviousDayButton" to="HTTPRequest" method="_on_previous_day_button_pressed"]
