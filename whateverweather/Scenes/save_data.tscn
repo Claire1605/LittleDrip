@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciso4gdkv1grp"]
+
+[ext_resource type="Script" uid="uid://dxtncyg6rfkx4" path="res://Scripts/SaveData.gd" id="1_h8p7e"]
+
+[node name="SaveData" type="Node" groups=["Persist"]]
+script = ExtResource("1_h8p7e")

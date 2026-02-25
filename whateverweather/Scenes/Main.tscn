@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://46bxwnfm5bec"]
+[gd_scene load_steps=10 format=3 uid="uid://46bxwnfm5bec"]
 
+[ext_resource type="PackedScene" uid="uid://ciso4gdkv1grp" path="res://Scenes/save_data.tscn" id="1_vy5pj"]
 [ext_resource type="Script" uid="uid://d28c3fhqkyiy1" path="res://Scripts/LocationRequest.gd" id="2_50glp"]
 [ext_resource type="Script" uid="uid://be66rpgutl5mn" path="res://Scripts/WeatherRequest.gd" id="2_idj7w"]
 [ext_resource type="Theme" uid="uid://b06rmsyrr1jt6" path="res://Themes/weatherTheme.tres" id="3_kln2b"]
@@ -17,8 +18,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="SaveData" parent="." instance=ExtResource("1_vy5pj")]
+
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="."]
 script = ExtResource("2_idj7w")
+control = NodePath("..")
+locationText = NodePath("../LocationText")
 dateText = NodePath("../DateText")
 errorText = NodePath("../ErrorText")
 tableParent = NodePath("../GridContainer")
@@ -28,11 +33,15 @@ dayAppTempText = NodePath("../DailyTempApparent")
 dayWindText = NodePath("../DailyWind")
 daySunText = NodePath("../DailySun")
 moonPhaseText = NodePath("../MoonPhaseText")
+saveDataPath = NodePath("../SaveData")
 
-[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+[node name="HTTPRequest_Location" type="HTTPRequest" parent="."]
 script = ExtResource("2_50glp")
+locationResults = NodePath("../LocationResults")
+locationSearch = NodePath("../LocationSearch")
+weatherRequest = NodePath("../HTTPRequest_Weather")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LocationSearch" type="LineEdit" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -42,13 +51,27 @@ anchor_bottom = 0.05
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Location..."
 
+[node name="LocationText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.1
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "DUNDEE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="TodayButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.07
+anchor_top = 0.11
 anchor_right = 0.9
-anchor_bottom = 0.1
+anchor_bottom = 0.14
 theme_override_font_sizes/font_size = 30
 text = "GO TO TODAY"
 
@@ -56,9 +79,9 @@ text = "GO TO TODAY"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.9
-anchor_top = 0.1
+anchor_top = 0.15
 anchor_right = 1.0
-anchor_bottom = 0.15
+anchor_bottom = 0.2
 offset_bottom = 0.439987
 texture_normal = ExtResource("6_jw32o")
 ignore_texture_size = true
@@ -67,9 +90,9 @@ stretch_mode = 0
 [node name="PreviousDayButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.1
+anchor_top = 0.15
 anchor_right = 0.1
-anchor_bottom = 0.15
+anchor_bottom = 0.2
 offset_bottom = 0.439987
 texture_normal = ExtResource("7_50glp")
 ignore_texture_size = true
@@ -79,9 +102,9 @@ stretch_mode = 0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.1
+anchor_top = 0.15
 anchor_right = 0.9
-anchor_bottom = 0.15
+anchor_bottom = 0.2
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "WHATEVER WEATHER"
@@ -100,7 +123,7 @@ offset_bottom = 126.0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.15
+anchor_top = 0.2
 anchor_right = 0.9
 anchor_bottom = 0.65
 grow_horizontal = 2
@@ -266,8 +289,17 @@ texture = ExtResource("5_v1gob")
 expand_mode = 1
 stretch_mode = 5
 
-[connection signal="text_changed" from="LineEdit" to="HTTPRequest2" method="_on_line_edit_text_changed"]
-[connection signal="text_submitted" from="LineEdit" to="HTTPRequest2" method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="TodayButton" to="HTTPRequest" method="_on_today_button_pressed"]
-[connection signal="pressed" from="NextDayButton" to="HTTPRequest" method="on_next_day_button_pressed"]
-[connection signal="pressed" from="PreviousDayButton" to="HTTPRequest" method="_on_previous_day_button_pressed"]
+[node name="LocationResults" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.3
+
+[connection signal="text_changed" from="LocationSearch" to="HTTPRequest_Location" method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="LocationSearch" to="HTTPRequest_Location" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="TodayButton" to="HTTPRequest_Weather" method="_on_today_button_pressed"]
+[connection signal="pressed" from="NextDayButton" to="HTTPRequest_Weather" method="on_next_day_button_pressed"]
+[connection signal="pressed" from="PreviousDayButton" to="HTTPRequest_Weather" method="_on_previous_day_button_pressed"]

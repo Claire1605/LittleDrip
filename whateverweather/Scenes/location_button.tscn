@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbrrh5vphn243"]
+
+[ext_resource type="Theme" uid="uid://crvwd62ev1ac2" path="res://Themes/locationButton.tres" id="1_cwwv5"]
+[ext_resource type="Script" uid="uid://bc63bbtbmhg34" path="res://Scripts/LocationButton.gd" id="1_muigb"]
+
+[node name="LocationButton" type="Button"]
+z_index = 1
+theme = ExtResource("1_cwwv5")
+theme_override_font_sizes/font_size = 32
+alignment = 0
+script = ExtResource("1_muigb")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

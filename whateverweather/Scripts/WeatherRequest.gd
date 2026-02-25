@@ -1,4 +1,6 @@
 extends HTTPRequest
+@export_node_path("Node") var control
+@export_node_path("Label") var locationText
 @export_node_path("Label") var dateText
 @export_node_path("Label") var errorText
 @export_node_path("GridContainer") var tableParent
@@ -8,6 +10,8 @@ extends HTTPRequest
 @export_node_path("Label") var dayWindText
 @export_node_path("Label") var daySunText
 @export_node_path("Label") var moonPhaseText
+@export_node_path("Node") var saveDataPath
+var saveData
 var startDay: int = 7
 var openMeteoJSON
 var todayUnix: float
@@ -16,17 +20,22 @@ var tableLabelScene
 var gridChildren: Array[Node]
 
 func _ready():
-	request_completed.connect(_on_request_completed)
-
-	# Perform a GET request. The URL below returns JSON as of writing.
-	var error = request("https://api.open-meteo.com/v1/forecast?latitude=56.4691&longitude=-2.9749&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=GMT&past_days=7&forecast_days=14&wind_speed_unit=mph")
-	if error != OK:
-		get_node_or_null(dateText).text = "An error occurred in the HTTP request."
-		#push_error("An error occurred in the HTTP request.")
-		
+	saveData = get_node_or_null(saveDataPath)
+	saveData.load_game()
+	get_node_or_null(locationText).text = saveData.placeName
+	
 	tableLabelScene = preload("res://Scenes/label_table_entry.tscn")
 	todayUnix = Time.get_unix_time_from_system()
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	request_completed.connect(_on_request_completed)
+	weatherRequest()
+
+func weatherRequest():
+	# Perform a GET request. The URL below returns JSON as of writing.
+	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=GMT&past_days=7&forecast_days=14&wind_speed_unit=mph")
+	if error != OK:
+		get_node_or_null(dateText).text = "An error occurred in the HTTP request."
+		#push_error("An error occurred in the HTTP request.")
 
 func _on_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
@@ -252,6 +261,11 @@ func getLunarPhase():
 		get_node_or_null(moonPhaseText).text = "Last Quarter"
 	elif age >= 25.0:
 		get_node_or_null(moonPhaseText).text = "Waning Crescent"
+
+func updateLocation(placeName: String, lat: float, long: float):
+	saveData.save_game(placeName, lat, long)	
+	get_node_or_null(locationText).text = saveData.placeName
+	weatherRequest()
 
 func _on_today_button_pressed() -> void:
 	startDay = 7
