@@ -245,21 +245,21 @@ func getLunarPhase():
 	var days = float(seconds) / 60.0 / 60.0 / 24.0
 	var age = fmod(days, 29.53059)
 	#print(age)
-	if age >= 0.0 and age < 1.0:
+	if (age >= 0.0 and age < 0.75) or age >= 28.75:
 		get_node_or_null(moonPhaseText).text = "New Moon"
-	elif age >= 1.0 and age < 5.0:
+	elif age >= 0.75 and age < 6.65:
 		get_node_or_null(moonPhaseText).text = "Waxing Crescent"
-	elif age >= 5.0 and age < 9.0:
-		get_node_or_null(moonPhaseText).text = "First Quarter"
-	elif age >= 9.0 and age < 13.0:
+	elif age >= 6.65 and age < 8.15:
+		get_node_or_null(moonPhaseText).text = "First Quarter" #7.4
+	elif age >= 8.15 and age < 14.05:
 		get_node_or_null(moonPhaseText).text = "Waxing Gibbous"
-	elif age >= 13.0 and age < 17.0:
-		get_node_or_null(moonPhaseText).text = "Full Moon"
-	elif age >= 17.0 and age < 21.0:
+	elif age >= 14.05 and age < 15.55:
+		get_node_or_null(moonPhaseText).text = "Full Moon" #14.8
+	elif age >= 15.55 and age < 21.45:
 		get_node_or_null(moonPhaseText).text = "Waning Gibbous"
-	elif age >= 21.0 and age < 25.0:
-		get_node_or_null(moonPhaseText).text = "Last Quarter"
-	elif age >= 25.0:
+	elif age >= 21.45 and age < 22.95:
+		get_node_or_null(moonPhaseText).text = "Last Quarter" #22.2
+	elif age >= 22.95:
 		get_node_or_null(moonPhaseText).text = "Waning Crescent"
 
 func updateLocation(placeName: String, lat: float, long: float):
