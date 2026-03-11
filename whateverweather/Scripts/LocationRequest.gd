@@ -10,16 +10,12 @@ func _ready() -> void:
 	locationButtonScene = preload("res://Scenes/location_button.tscn")
 	print(self.get_path())
 
-func _on_line_edit_text_changed(new_text: String) -> void:
-	if new_text.length() > 1:
-		search(new_text)
-	else:
-		clearLocationResults()
-	
 func search(text: String):
 	get_node_or_null(locationResults).show()
 	
 	request_completed.connect(geocoding)
+	
+	text = text.replace(' ', '+')
 
 	# Perform a GET request. The URL below returns JSON as of writing.
 	var error = request("https://geocoding-api.open-meteo.com/v1/search?name=" + text + "&count=10&language=en&format=json")
@@ -63,3 +59,9 @@ func clearLocationResults():
 					node.queue_free()
 	
 	get_node_or_null(locationResults).hide()
+
+func _on_location_search_text_submitted(new_text: String) -> void:
+	if new_text.length() > 1:
+		search(new_text)
+	else:
+		clearLocationResults()

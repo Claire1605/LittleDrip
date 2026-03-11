@@ -41,13 +41,35 @@ locationResults = NodePath("../LocationResults")
 locationSearch = NodePath("../LocationSearch")
 weatherRequest = NodePath("../HTTPRequest_Weather")
 
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.04
+anchor_right = 0.15
+anchor_bottom = 0.09
+texture_normal = ExtResource("5_v1gob")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85
+anchor_top = 0.04
+anchor_right = 0.95
+anchor_bottom = 0.09
+texture_normal = ExtResource("5_v1gob")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="LocationSearch" type="LineEdit" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.01
-anchor_right = 0.9
-anchor_bottom = 0.05
+anchor_left = 0.18
+anchor_top = 0.05
+anchor_right = 0.82
+anchor_bottom = 0.08
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Location..."
 
@@ -55,12 +77,25 @@ placeholder_text = "Location..."
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.05
+anchor_top = 0.08
 anchor_right = 0.9
-anchor_bottom = 0.1
+anchor_bottom = 0.12
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 text = "DUNDEE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DateText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.12
+anchor_right = 0.9
+anchor_bottom = 0.15
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -68,20 +103,20 @@ autowrap_mode = 3
 [node name="TodayButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.11
-anchor_right = 0.9
-anchor_bottom = 0.14
+anchor_left = 0.38
+anchor_top = 0.16
+anchor_right = 0.62
+anchor_bottom = 0.19
 theme_override_font_sizes/font_size = 30
 text = "GO TO TODAY"
 
 [node name="NextDayButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9
-anchor_top = 0.15
-anchor_right = 1.0
-anchor_bottom = 0.2
+anchor_left = 0.66
+anchor_top = 0.16
+anchor_right = 0.73
+anchor_bottom = 0.19
 offset_bottom = 0.439987
 texture_normal = ExtResource("6_jw32o")
 ignore_texture_size = true
@@ -90,27 +125,14 @@ stretch_mode = 0
 [node name="PreviousDayButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.15
-anchor_right = 0.1
-anchor_bottom = 0.2
+anchor_left = 0.27
+anchor_top = 0.16
+anchor_right = 0.34
+anchor_bottom = 0.19
 offset_bottom = 0.439987
 texture_normal = ExtResource("7_50glp")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="DateText" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.15
-anchor_right = 0.9
-anchor_bottom = 0.2
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "WHATEVER WEATHER"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="ErrorText" type="Label" parent="."]
 layout_mode = 0
@@ -119,13 +141,110 @@ offset_top = 103.0
 offset_right = 267.0
 offset_bottom = 126.0
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="DailyWeatherCode" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.2
 anchor_right = 0.9
-anchor_bottom = 0.65
+anchor_bottom = 0.24
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Day summary: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailyTemp" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.24
+anchor_right = 0.9
+anchor_bottom = 0.28
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Day temperature range: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailyTempApparent" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.28
+anchor_right = 0.9
+anchor_bottom = 0.32
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Day apparent temp. range: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailyWind" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.32
+anchor_right = 0.9
+anchor_bottom = 0.36
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Day wind: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailySun" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.36
+anchor_right = 0.9
+anchor_bottom = 0.4
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Day sun hours: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MoonPhaseText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.42
+anchor_right = 0.9
+anchor_bottom = 0.46
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MoonTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.46
+anchor_right = 0.7
+anchor_bottom = 0.56
+offset_top = 0.379883
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_pbw6q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.56
+anchor_right = 0.9
+anchor_bottom = 1.0
 grow_horizontal = 2
 theme = ExtResource("3_kln2b")
 columns = 6
@@ -178,104 +297,8 @@ theme = ExtResource("4_rgh2o")
 text = "weather"
 horizontal_alignment = 1
 
-[node name="DailyWeatherCode" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.65
-anchor_right = 0.9
-anchor_bottom = 0.67
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day summary: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailyTemp" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.67
-anchor_right = 0.9
-anchor_bottom = 0.69
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day temperature range: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailyTempApparent" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.69
-anchor_right = 0.9
-anchor_bottom = 0.71
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day apparent temp. range: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailyWind" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.71
-anchor_right = 0.9
-anchor_bottom = 0.73
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day wind: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailySun" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.73
-anchor_right = 0.9
-anchor_bottom = 0.75
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day sun hours: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="MoonTexture" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.75
-anchor_right = 0.7
-anchor_bottom = 0.85
-offset_top = 0.379883
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_pbw6q")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MoonPhaseText" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.85
-anchor_right = 0.9
-anchor_bottom = 0.89
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [node name="SunTexture" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.85
@@ -294,12 +317,11 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.05
+anchor_top = 0.08
 anchor_right = 0.9
 anchor_bottom = 0.3
 
-[connection signal="text_changed" from="LocationSearch" to="HTTPRequest_Location" method="_on_line_edit_text_changed"]
-[connection signal="text_submitted" from="LocationSearch" to="HTTPRequest_Location" method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="LocationSearch" to="HTTPRequest_Location" method="_on_location_search_text_submitted"]
 [connection signal="pressed" from="TodayButton" to="HTTPRequest_Weather" method="_on_today_button_pressed"]
 [connection signal="pressed" from="NextDayButton" to="HTTPRequest_Weather" method="on_next_day_button_pressed"]
 [connection signal="pressed" from="PreviousDayButton" to="HTTPRequest_Weather" method="_on_previous_day_button_pressed"]

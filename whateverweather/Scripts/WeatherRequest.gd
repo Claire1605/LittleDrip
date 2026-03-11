@@ -82,14 +82,14 @@ func populateForecastTable(openMeteoJSON, day):
 					tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
 
 func populateDaySummary(openMeteoJSON, day):
-	get_node_or_null(dayWMOText).text = "Day summary: " + getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
+	get_node_or_null(dayWMOText).text = "Day summary: " +  getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
 	get_node_or_null(dayTempText).text = "Day temperature range: " + str(openMeteoJSON["daily"]["temperature_2m_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["temperature_2m_max"][day]) + "°C"
 	get_node_or_null(dayAppTempText).text = "Day apparent temp. range: " + str(openMeteoJSON["daily"]["apparent_temperature_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["apparent_temperature_max"][day]) + "°C"
-	get_node_or_null(dayWindText).text = "Day wind: " + str(openMeteoJSON["daily"]["wind_speed_10m_max"][day]) + " mph, " + str(openMeteoJSON["daily"]["wind_gusts_10m_max"][day]) + " mph gusts, at "+ str(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]) + "°"
+	get_node_or_null(dayWindText).text = "Day max. wind: " + str(openMeteoJSON["daily"]["wind_speed_10m_max"][day]) + " mph, " + str(openMeteoJSON["daily"]["wind_gusts_10m_max"][day]) + " mph gusts, at "+ str(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]) + "°"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
-	get_node_or_null(daySunText).text = "Day sun hours: " + str(sunrise.hour) + ":" + str(sunrise.minute) + " - " + str(sunset.hour) + ":" + str(sunset.minute)
+	get_node_or_null(daySunText).text = "Day sun hours: " +  str("%02d" % sunrise.hour) + ":" + str("%02d" % sunrise.minute) + " - " + str("%02d" % sunset.hour) + ":" + str("%02d" % sunset.minute)
 
 func getWMOCode(wmo):
 	# https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
@@ -291,6 +291,13 @@ func on_next_day_button_pressed() -> void:
 	populateForecastTable(openMeteoJSON, startDay)
 	populateDaySummary(openMeteoJSON, startDay)
 	getLunarPhase()
+
+func getDayWeatherCodeAverage(day):
+	var code: float = 0
+	for h in 24:
+		code += openMeteoJSON["hourly"]["weather_code"][h]
+	code /= 24.0
+	return getWMOCode(round(code))
 
 # TO-DO
 # You have to wait for a request to finish before sending another one. Making multiple request at once requires you to have one node per request. A common strategy is to create and delete HTTPRequest nodes at runtime as necessary.
