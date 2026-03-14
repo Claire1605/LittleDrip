@@ -1,14 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://46bxwnfm5bec"]
+[gd_scene load_steps=38 format=3 uid="uid://46bxwnfm5bec"]
 
 [ext_resource type="PackedScene" uid="uid://ciso4gdkv1grp" path="res://Scenes/save_data.tscn" id="1_vy5pj"]
 [ext_resource type="Script" uid="uid://d28c3fhqkyiy1" path="res://Scripts/LocationRequest.gd" id="2_50glp"]
 [ext_resource type="Script" uid="uid://be66rpgutl5mn" path="res://Scripts/WeatherRequest.gd" id="2_idj7w"]
 [ext_resource type="Theme" uid="uid://b06rmsyrr1jt6" path="res://Themes/weatherTheme.tres" id="3_kln2b"]
-[ext_resource type="Texture2D" uid="uid://rp8fas643bik" path="res://Art/moon_000.png" id="4_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://dso4k6j8gwmic" path="res://Art/moon_001.png" id="4_6heos"]
+[ext_resource type="Texture2D" uid="uid://3gf157aiplcn" path="res://Art/moon_000.png" id="4_pbw6q"]
 [ext_resource type="Theme" uid="uid://dsb6u3nnai6kd" path="res://Themes/table.tres" id="4_rgh2o"]
 [ext_resource type="Texture2D" uid="uid://dwn4qmgssok10" path="res://Art/venus_000.png" id="5_v1gob"]
+[ext_resource type="Texture2D" uid="uid://odxq7qk6nabd" path="res://Art/moon_002.png" id="5_vvnwx"]
+[ext_resource type="Texture2D" uid="uid://bv4wsmcq071a1" path="res://Art/moon_003.png" id="6_btbly"]
 [ext_resource type="Texture2D" uid="uid://cn6x6jj1yex2p" path="res://Art/arrowRight.png" id="6_jw32o"]
 [ext_resource type="Texture2D" uid="uid://goxtkyhsrjxn" path="res://Art/arrowLeft.png" id="7_50glp"]
+[ext_resource type="Texture2D" uid="uid://d3yywyyfogpm5" path="res://Art/moon_004.png" id="7_vs04g"]
+[ext_resource type="Texture2D" uid="uid://bwm6p5mc1nho" path="res://Art/moon_005.png" id="8_6ehlx"]
+[ext_resource type="Texture2D" uid="uid://br4fu55ahx1a1" path="res://Art/moon_006.png" id="9_utia5"]
+[ext_resource type="Texture2D" uid="uid://ci6k3k6r1u8nl" path="res://Art/moon_007.png" id="10_f7hdo"]
+[ext_resource type="Texture2D" uid="uid://l6kvh0r8qnsi" path="res://Art/moon_008.png" id="11_clvyn"]
+[ext_resource type="Texture2D" uid="uid://cq5nfvl8r5dvy" path="res://Art/moon_009.png" id="12_d8m2u"]
+[ext_resource type="Texture2D" uid="uid://obbgpwu1u6uu" path="res://Art/moon_010.png" id="13_5psol"]
+[ext_resource type="Texture2D" uid="uid://ck1hd7vfusq0k" path="res://Art/moon_011.png" id="14_m4llh"]
+[ext_resource type="Texture2D" uid="uid://b07l3gnojv4sm" path="res://Art/moon_012.png" id="15_lac6x"]
+[ext_resource type="Texture2D" uid="uid://bco2nfn0gumec" path="res://Art/moon_013.png" id="16_hpjjw"]
+[ext_resource type="Texture2D" uid="uid://cmcii1oc01i61" path="res://Art/moon_014.png" id="17_off7b"]
+[ext_resource type="Texture2D" uid="uid://ncimxbcom3ry" path="res://Art/moon_015.png" id="18_lfh1j"]
+[ext_resource type="Texture2D" uid="uid://bek6v7oaaog4y" path="res://Art/moon_016.png" id="19_7sj7i"]
+[ext_resource type="Texture2D" uid="uid://b3n3d7x5rrpol" path="res://Art/moon_017.png" id="20_semxg"]
+[ext_resource type="Texture2D" uid="uid://b06hlw8ljtmdk" path="res://Art/moon_018.png" id="21_ep8v8"]
+[ext_resource type="Texture2D" uid="uid://jw5nvggvjshe" path="res://Art/moon_019.png" id="22_3133c"]
+[ext_resource type="Texture2D" uid="uid://b078vcmb5yaw6" path="res://Art/moon_020.png" id="23_js5gh"]
+[ext_resource type="Texture2D" uid="uid://b0gmc4d6jwjs7" path="res://Art/moon_021.png" id="24_vvjo1"]
+[ext_resource type="Texture2D" uid="uid://cej6yuyp46ryo" path="res://Art/moon_022.png" id="25_yisvs"]
+[ext_resource type="Texture2D" uid="uid://c31rjcx8sct41" path="res://Art/moon_023.png" id="26_rgw24"]
+[ext_resource type="Texture2D" uid="uid://dyimh7q6rajkf" path="res://Art/moon_024.png" id="27_5gwyn"]
+[ext_resource type="Texture2D" uid="uid://8dx7kt603hus" path="res://Art/moon_025.png" id="28_r6gtk"]
+[ext_resource type="Texture2D" uid="uid://dbmebu0rhsgss" path="res://Art/moon_026.png" id="29_81ldr"]
+[ext_resource type="Texture2D" uid="uid://p1ck2k2ynu6i" path="res://Art/moon_027.png" id="30_eywpa"]
+[ext_resource type="Texture2D" uid="uid://faw7qlpulttb" path="res://Art/moon_028.png" id="31_vvnwx"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,7 +61,9 @@ dayAppTempText = NodePath("../DailyTempApparent")
 dayWindText = NodePath("../DailyWind")
 daySunText = NodePath("../DailySun")
 moonPhaseText = NodePath("../MoonPhaseText")
+moonPhaseTexture = NodePath("../MoonTexture")
 saveDataPath = NodePath("../SaveData")
+moonTextures = Array[Texture]([ExtResource("4_pbw6q"), ExtResource("4_6heos"), ExtResource("5_vvnwx"), ExtResource("6_btbly"), ExtResource("7_vs04g"), ExtResource("8_6ehlx"), ExtResource("9_utia5"), ExtResource("10_f7hdo"), ExtResource("11_clvyn"), ExtResource("12_d8m2u"), ExtResource("13_5psol"), ExtResource("14_m4llh"), ExtResource("15_lac6x"), ExtResource("16_hpjjw"), ExtResource("17_off7b"), ExtResource("18_lfh1j"), ExtResource("19_7sj7i"), ExtResource("20_semxg"), ExtResource("21_ep8v8"), ExtResource("22_3133c"), ExtResource("23_js5gh"), ExtResource("24_vvjo1"), ExtResource("25_yisvs"), ExtResource("26_rgw24"), ExtResource("27_5gwyn"), ExtResource("28_r6gtk"), ExtResource("29_81ldr"), ExtResource("30_eywpa"), ExtResource("31_vvnwx")])
 
 [node name="HTTPRequest_Location" type="HTTPRequest" parent="."]
 script = ExtResource("2_50glp")

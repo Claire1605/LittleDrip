@@ -10,7 +10,9 @@ extends HTTPRequest
 @export_node_path("Label") var dayWindText
 @export_node_path("Label") var daySunText
 @export_node_path("Label") var moonPhaseText
+@export_node_path("TextureRect") var moonPhaseTexture
 @export_node_path("Node") var saveDataPath
+@export var moonTextures: Array[Texture] = []
 var saveData
 var startDay: int = 7
 var openMeteoJSON
@@ -239,7 +241,7 @@ func getMonthString(month):
 		return "December"
 
 func getLunarPhase():
-	var date1 = "2026-02-17T12:03:00.00"
+	var date1 = "2026-02-17T12:03:00.00" #recent known new moon
 	var date2 = selectedDateUnix
 	var seconds = date2 - Time.get_unix_time_from_datetime_string(date1)
 	var days = float(seconds) / 60.0 / 60.0 / 24.0
@@ -261,6 +263,9 @@ func getLunarPhase():
 		get_node_or_null(moonPhaseText).text = "Last Quarter" #22.2
 	elif age >= 22.95:
 		get_node_or_null(moonPhaseText).text = "Waning Crescent"
+		
+	var moonIndex: float = floor((age / 29.53059) * 29.0)
+	get_node_or_null(moonPhaseTexture).texture = moonTextures[moonIndex]
 
 func updateLocation(placeName: String, lat: float, long: float):
 	saveData.save_game(placeName, lat, long)	
