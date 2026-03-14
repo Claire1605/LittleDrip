@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://46bxwnfm5bec"]
+[gd_scene load_steps=39 format=3 uid="uid://46bxwnfm5bec"]
 
 [ext_resource type="PackedScene" uid="uid://ciso4gdkv1grp" path="res://Scenes/save_data.tscn" id="1_vy5pj"]
 [ext_resource type="Script" uid="uid://d28c3fhqkyiy1" path="res://Scripts/LocationRequest.gd" id="2_50glp"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://dbmebu0rhsgss" path="res://Art/moon_026.png" id="29_81ldr"]
 [ext_resource type="Texture2D" uid="uid://p1ck2k2ynu6i" path="res://Art/moon_027.png" id="30_eywpa"]
 [ext_resource type="Texture2D" uid="uid://faw7qlpulttb" path="res://Art/moon_028.png" id="31_vvnwx"]
+[ext_resource type="Texture2D" uid="uid://dddld3qm4fnwa" path="res://Art/placeholder.png" id="36_btbly"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -48,22 +49,27 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="."]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." node_paths=PackedStringArray("dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 locationText = NodePath("../LocationText")
 dateText = NodePath("../DateText")
 errorText = NodePath("../ErrorText")
 tableParent = NodePath("../GridContainer")
-dayWMOText = NodePath("../DailyWeatherCode")
-dayTempText = NodePath("../DailyTemp")
-dayAppTempText = NodePath("../DailyTempApparent")
-dayWindText = NodePath("../DailyWind")
-daySunText = NodePath("../DailySun")
 moonPhaseText = NodePath("../MoonPhaseText")
 moonPhaseTexture = NodePath("../MoonTexture")
+moonPhaseTexturePrevious = NodePath("../MoonTexture-1")
+moonPhaseTextureNext = NodePath("../MoonTexture+1")
 saveDataPath = NodePath("../SaveData")
+previousDayPanel = NodePath("../SummaryPanelPrevious")
+nextDayPanel = NodePath("../SummaryPanelNext")
 moonTextures = Array[Texture]([ExtResource("4_pbw6q"), ExtResource("4_6heos"), ExtResource("5_vvnwx"), ExtResource("6_btbly"), ExtResource("7_vs04g"), ExtResource("8_6ehlx"), ExtResource("9_utia5"), ExtResource("10_f7hdo"), ExtResource("11_clvyn"), ExtResource("12_d8m2u"), ExtResource("13_5psol"), ExtResource("14_m4llh"), ExtResource("15_lac6x"), ExtResource("16_hpjjw"), ExtResource("17_off7b"), ExtResource("18_lfh1j"), ExtResource("19_7sj7i"), ExtResource("20_semxg"), ExtResource("21_ep8v8"), ExtResource("22_3133c"), ExtResource("23_js5gh"), ExtResource("24_vvjo1"), ExtResource("25_yisvs"), ExtResource("26_rgw24"), ExtResource("27_5gwyn"), ExtResource("28_r6gtk"), ExtResource("29_81ldr"), ExtResource("30_eywpa"), ExtResource("31_vvnwx")])
+dayDateText = [NodePath("../SummaryPanelPrevious/DateText2"), NodePath("../SummaryPanelToday/DateText2"), NodePath("../SummaryPanelNext/DateText2")]
+dayWMOText = [NodePath("../SummaryPanelPrevious/DailyWeatherCode"), NodePath("../SummaryPanelToday/DailyWeatherCode"), NodePath("../SummaryPanelNext/DailyWeatherCode")]
+dayTempText = [NodePath("../SummaryPanelPrevious/DailyTemp"), NodePath("../SummaryPanelToday/DailyTemp"), NodePath("../SummaryPanelNext/DailyTemp")]
+dayAppTempText = [NodePath("../SummaryPanelPrevious/DailyTempApparent"), NodePath("../SummaryPanelToday/DailyTempApparent"), NodePath("../SummaryPanelNext/DailyTempApparent")]
+dayWindText = [NodePath("../SummaryPanelPrevious/DailyWind"), NodePath("../SummaryPanelToday/DailyWind"), NodePath("../SummaryPanelNext/DailyWind")]
+daySunText = [NodePath("../SummaryPanelPrevious/DailySun"), NodePath("../SummaryPanelToday/DailySun"), NodePath("../SummaryPanelNext/DailySun")]
 
 [node name="HTTPRequest_Location" type="HTTPRequest" parent="."]
 script = ExtResource("2_50glp")
@@ -130,12 +136,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="PreviousDayButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.16
+anchor_right = 0.34
+anchor_bottom = 0.19
+offset_bottom = 0.439987
+texture_normal = ExtResource("7_50glp")
+stretch_mode = 5
+
 [node name="TodayButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.38
+anchor_left = 0.36
 anchor_top = 0.16
-anchor_right = 0.62
+anchor_right = 0.64
 anchor_bottom = 0.19
 theme_override_font_sizes/font_size = 30
 text = "GO TO TODAY"
@@ -145,24 +162,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66
 anchor_top = 0.16
-anchor_right = 0.73
+anchor_right = 0.94
 anchor_bottom = 0.19
-offset_bottom = 0.439987
+offset_bottom = 0.439972
 texture_normal = ExtResource("6_jw32o")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="PreviousDayButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.27
-anchor_top = 0.16
-anchor_right = 0.34
-anchor_bottom = 0.19
-offset_bottom = 0.439987
-texture_normal = ExtResource("7_50glp")
-ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="ErrorText" type="Label" parent="."]
 layout_mode = 0
@@ -171,96 +175,324 @@ offset_top = 103.0
 offset_right = 267.0
 offset_bottom = 126.0
 
-[node name="DailyWeatherCode" type="Label" parent="."]
+[node name="SummaryPanelPrevious" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.22
+anchor_right = 0.34
+anchor_bottom = 0.4
+texture = ExtResource("36_btbly")
+expand_mode = 1
+
+[node name="DateText2" type="Label" parent="SummaryPanelPrevious"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.2
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailyWeatherCode" type="Label" parent="SummaryPanelPrevious"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.2
 anchor_right = 0.9
-anchor_bottom = 0.24
+anchor_bottom = 0.3
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Day summary: "
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
-[node name="DailyTemp" type="Label" parent="."]
+[node name="DailyTemp" type="Label" parent="SummaryPanelPrevious"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.24
-anchor_right = 0.9
-anchor_bottom = 0.28
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day temperature range: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailyTempApparent" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.28
-anchor_right = 0.9
-anchor_bottom = 0.32
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day apparent temp. range: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailyWind" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.32
-anchor_right = 0.9
-anchor_bottom = 0.36
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Day wind: "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="DailySun" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.36
+anchor_top = 0.3
 anchor_right = 0.9
 anchor_bottom = 0.4
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Day sun hours: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyTempApparent" type="Label" parent="SummaryPanelPrevious"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyWind" type="Label" parent="SummaryPanelPrevious"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.8
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="DailySun" type="Label" parent="SummaryPanelPrevious"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SummaryPanelToday" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36
+anchor_top = 0.2
+anchor_right = 0.64
+anchor_bottom = 0.42
+texture = ExtResource("36_btbly")
+expand_mode = 1
+
+[node name="DateText2" type="Label" parent="SummaryPanelToday"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.2
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailyWeatherCode" type="Label" parent="SummaryPanelToday"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.3
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyTemp" type="Label" parent="SummaryPanelToday"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.4
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyTempApparent" type="Label" parent="SummaryPanelToday"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyWind" type="Label" parent="SummaryPanelToday"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.8
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailySun" type="Label" parent="SummaryPanelToday"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SummaryPanelNext" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.22
+anchor_right = 0.94
+anchor_bottom = 0.4
+texture = ExtResource("36_btbly")
+expand_mode = 1
+
+[node name="DateText2" type="Label" parent="SummaryPanelNext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.2
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailyWeatherCode" type="Label" parent="SummaryPanelNext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.3
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyTemp" type="Label" parent="SummaryPanelNext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.4
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyTempApparent" type="Label" parent="SummaryPanelNext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DailyWind" type="Label" parent="SummaryPanelNext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.8
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DailySun" type="Label" parent="SummaryPanelNext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MoonPhaseText" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.42
-anchor_right = 0.9
+anchor_left = 0.3
+anchor_top = 0.44
+anchor_right = 0.7
 anchor_bottom = 0.46
+offset_bottom = 11.2
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 42
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
+
+[node name="MoonTexture-1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.48
+anchor_right = 0.34
+anchor_bottom = 0.54
+offset_top = 0.379883
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_pbw6q")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MoonTexture" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
+anchor_left = 0.36
 anchor_top = 0.46
-anchor_right = 0.7
+anchor_right = 0.64
 anchor_bottom = 0.56
+offset_top = 0.379883
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_pbw6q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoonTexture+1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.48
+anchor_right = 0.94
+anchor_bottom = 0.54
 offset_top = 0.379883
 grow_horizontal = 2
 grow_vertical = 0
@@ -352,6 +584,6 @@ anchor_right = 0.9
 anchor_bottom = 0.3
 
 [connection signal="text_submitted" from="LocationSearch" to="HTTPRequest_Location" method="_on_location_search_text_submitted"]
+[connection signal="pressed" from="PreviousDayButton" to="HTTPRequest_Weather" method="_on_previous_day_button_pressed"]
 [connection signal="pressed" from="TodayButton" to="HTTPRequest_Weather" method="_on_today_button_pressed"]
 [connection signal="pressed" from="NextDayButton" to="HTTPRequest_Weather" method="on_next_day_button_pressed"]
-[connection signal="pressed" from="PreviousDayButton" to="HTTPRequest_Weather" method="_on_previous_day_button_pressed"]

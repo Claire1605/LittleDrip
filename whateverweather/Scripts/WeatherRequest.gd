@@ -4,15 +4,20 @@ extends HTTPRequest
 @export_node_path("Label") var dateText
 @export_node_path("Label") var errorText
 @export_node_path("GridContainer") var tableParent
-@export_node_path("Label") var dayWMOText
-@export_node_path("Label") var dayTempText
-@export_node_path("Label") var dayAppTempText
-@export_node_path("Label") var dayWindText
-@export_node_path("Label") var daySunText
 @export_node_path("Label") var moonPhaseText
 @export_node_path("TextureRect") var moonPhaseTexture
+@export_node_path("TextureRect") var moonPhaseTexturePrevious
+@export_node_path("TextureRect") var moonPhaseTextureNext
 @export_node_path("Node") var saveDataPath
+@export_node_path("Node") var previousDayPanel
+@export_node_path("Node") var nextDayPanel
 @export var moonTextures: Array[Texture] = []
+@export var dayDateText: Array[Label] = []
+@export var dayWMOText: Array[Label] = []
+@export var dayTempText: Array[Label] = []
+@export var dayAppTempText: Array[Label] = []
+@export var dayWindText: Array[Label] = []
+@export var daySunText: Array[Label] = []
 var saveData
 var startDay: int = 7
 var openMeteoJSON
@@ -47,13 +52,14 @@ func _on_request_completed(result, response_code, headers, body):
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if (openMeteoJSON != null):
 		populateForecastTable(openMeteoJSON, startDay)
-		populateDaySummary(openMeteoJSON, startDay)
+		daySummarySetup()
 	
 	getLunarPhase()
 
 func populateForecastTable(openMeteoJSON, day):
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
 	var date = getWeekdayString(selectedDate.weekday) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month) + " " + str(selectedDate.year)
+	
 	get_node_or_null(dateText).text = date
 	
 	if !gridChildren.is_empty():
@@ -83,16 +89,40 @@ func populateForecastTable(openMeteoJSON, day):
 				if x == 5:
 					tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
 
-func populateDaySummary(openMeteoJSON, day):
-	get_node_or_null(dayWMOText).text = "Day summary: " +  getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
-	get_node_or_null(dayTempText).text = "Day temperature range: " + str(openMeteoJSON["daily"]["temperature_2m_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["temperature_2m_max"][day]) + "°C"
-	get_node_or_null(dayAppTempText).text = "Day apparent temp. range: " + str(openMeteoJSON["daily"]["apparent_temperature_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["apparent_temperature_max"][day]) + "°C"
-	get_node_or_null(dayWindText).text = "Day max. wind: " + str(openMeteoJSON["daily"]["wind_speed_10m_max"][day]) + " mph, " + str(openMeteoJSON["daily"]["wind_gusts_10m_max"][day]) + " mph gusts, at "+ str(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]) + "°"
+func daySummarySetup():
+	if startDay > 0:
+		get_node_or_null(previousDayPanel).show()
+		populateDaySummary(openMeteoJSON, startDay - 1, 0)
+	else:
+		get_node_or_null(previousDayPanel).hide()
+	
+	populateDaySummary(openMeteoJSON, startDay, 1)
+	
+	if startDay < 20:
+		get_node_or_null(nextDayPanel).show()
+		populateDaySummary(openMeteoJSON, startDay + 1, 2)
+	else:
+		get_node_or_null(nextDayPanel).hide()
+
+func populateDaySummary(openMeteoJSON, day, position):
+	var d = 0
+	if position == 0:
+		d = -86400
+	elif position == 2:
+		d = 86400
+		
+	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix + d) # 86400 is 1 day in unix time
+	var date2 = getWeekdayString(selectedDate.weekday).erase(3,100) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month).erase(3,100)
+	dayDateText[position].text = date2
+	dayWMOText[position].text = getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
+	dayTempText[position].text = str(openMeteoJSON["daily"]["temperature_2m_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["temperature_2m_max"][day]) + "°C"
+	dayAppTempText[position].text = "(" + str(openMeteoJSON["daily"]["apparent_temperature_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["apparent_temperature_max"][day]) + "°C)"
+	dayWindText[position].text = str(openMeteoJSON["daily"]["wind_speed_10m_max"][day]) + " mph, " + str(openMeteoJSON["daily"]["wind_gusts_10m_max"][day]) + " mph gusts, at "+ str(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]) + "°"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
-	get_node_or_null(daySunText).text = "Day sun hours: " +  str("%02d" % sunrise.hour) + ":" + str("%02d" % sunrise.minute) + " - " + str("%02d" % sunset.hour) + ":" + str("%02d" % sunset.minute)
-
+	daySunText[position].text = "Sun: " +  str("%02d" % sunrise.hour) + ":" + str("%02d" % sunrise.minute) + " - " + str("%02d" % sunset.hour) + ":" + str("%02d" % sunset.minute)
+	
 func getWMOCode(wmo):
 	# https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
 	match wmo:
@@ -241,31 +271,52 @@ func getMonthString(month):
 		return "December"
 
 func getLunarPhase():
-	var date1 = "2026-02-17T12:03:00.00" #recent known new moon
-	var date2 = selectedDateUnix
-	var seconds = date2 - Time.get_unix_time_from_datetime_string(date1)
+	var dateReference = "2026-02-17T12:03:00.00" #recent known new moon
+	var dateSelected = selectedDateUnix
+	
+	var seconds = dateSelected - Time.get_unix_time_from_datetime_string(dateReference)
 	var days = float(seconds) / 60.0 / 60.0 / 24.0
 	var age = fmod(days, 29.53059)
-	#print(age)
+	
+	var daysPrevious = float(seconds - 86400) / 60.0 / 60.0 / 24.0
+	var agePrevious = fmod(daysPrevious, 29.53059)
+	
+	var daysNext = float(seconds + 86400) / 60.0 / 60.0 / 24.0
+	var ageNext = fmod(daysNext, 29.53059)
+	
 	if (age >= 0.0 and age < 0.75) or age >= 28.75:
 		get_node_or_null(moonPhaseText).text = "New Moon"
 	elif age >= 0.75 and age < 6.65:
-		get_node_or_null(moonPhaseText).text = "Waxing Crescent"
+		get_node_or_null(moonPhaseText).text = "Waxing Crescent Moon"
 	elif age >= 6.65 and age < 8.15:
-		get_node_or_null(moonPhaseText).text = "First Quarter" #7.4
+		get_node_or_null(moonPhaseText).text = "First Quarter Moon" #7.4
 	elif age >= 8.15 and age < 14.05:
-		get_node_or_null(moonPhaseText).text = "Waxing Gibbous"
+		get_node_or_null(moonPhaseText).text = "Waxing Gibbous Moon"
 	elif age >= 14.05 and age < 15.55:
 		get_node_or_null(moonPhaseText).text = "Full Moon" #14.8
 	elif age >= 15.55 and age < 21.45:
-		get_node_or_null(moonPhaseText).text = "Waning Gibbous"
+		get_node_or_null(moonPhaseText).text = "Waning Gibbous Moon"
 	elif age >= 21.45 and age < 22.95:
-		get_node_or_null(moonPhaseText).text = "Last Quarter" #22.2
+		get_node_or_null(moonPhaseText).text = "Last Quarter Moon" #22.2
 	elif age >= 22.95:
-		get_node_or_null(moonPhaseText).text = "Waning Crescent"
+		get_node_or_null(moonPhaseText).text = "Waning Crescent Moon"
 		
 	var moonIndex: float = floor((age / 29.53059) * 29.0)
+	var moonIndexPrevious: float = floor((agePrevious / 29.53059) * 29.0)
+	var moonIndexNext: float = floor((ageNext / 29.53059) * 29.0)
 	get_node_or_null(moonPhaseTexture).texture = moonTextures[moonIndex]
+	get_node_or_null(moonPhaseTexturePrevious).texture = moonTextures[moonIndexPrevious]
+	get_node_or_null(moonPhaseTextureNext).texture = moonTextures[moonIndexNext]
+	
+	if startDay > 0:
+		get_node_or_null(moonPhaseTexturePrevious).show()
+	else:
+		get_node_or_null(moonPhaseTexturePrevious).hide()
+		
+	if startDay < 20:
+		get_node_or_null(moonPhaseTextureNext).show()
+	else:
+		get_node_or_null(moonPhaseTextureNext).hide()
 
 func updateLocation(placeName: String, lat: float, long: float):
 	saveData.save_game(placeName, lat, long)	
@@ -276,7 +327,7 @@ func _on_today_button_pressed() -> void:
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	populateForecastTable(openMeteoJSON, startDay)
-	populateDaySummary(openMeteoJSON, startDay)
+	daySummarySetup()
 	getLunarPhase()
 
 func _on_previous_day_button_pressed() -> void:
@@ -285,7 +336,7 @@ func _on_previous_day_button_pressed() -> void:
 		startDay = 0
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	populateForecastTable(openMeteoJSON, startDay)
-	populateDaySummary(openMeteoJSON, startDay)
+	daySummarySetup()
 	getLunarPhase()
 
 func on_next_day_button_pressed() -> void:
@@ -294,7 +345,7 @@ func on_next_day_button_pressed() -> void:
 		startDay = 20
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	populateForecastTable(openMeteoJSON, startDay)
-	populateDaySummary(openMeteoJSON, startDay)
+	daySummarySetup()
 	getLunarPhase()
 
 func getDayWeatherCodeAverage(day):
