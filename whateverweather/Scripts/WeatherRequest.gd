@@ -11,6 +11,7 @@ extends HTTPRequest
 @export_node_path("Node") var saveDataPath
 @export_node_path("Node") var previousDayPanel
 @export_node_path("Node") var nextDayPanel
+@export_node_path("TextureButton") var clock
 @export var moonTextures: Array[Texture] = []
 @export var dayDateText: Array[Label] = []
 @export var dayWMOText: Array[Label] = []
@@ -88,6 +89,8 @@ func populateForecastTable(openMeteoJSON, day):
 					tableLabel.text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
 				if x == 5:
 					tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
+			
+	clockSetup()
 
 func daySummarySetup():
 	if startDay > 0:
@@ -354,6 +357,12 @@ func getDayWeatherCodeAverage(day):
 		code += openMeteoJSON["hourly"]["weather_code"][h]
 	code /= 24.0
 	return getWMOCode(round(code))
+
+func clockSetup():
+	var h = Time.get_datetime_dict_from_system().hour
+	print(h*15)
+	get_node_or_null(clock).rotation = 15 * h
+	print(get_node_or_null(clock).rotation)
 
 # TO-DO
 # You have to wait for a request to finish before sending another one. Making multiple request at once requires you to have one node per request. A common strategy is to create and delete HTTPRequest nodes at runtime as necessary.

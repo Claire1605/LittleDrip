@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://46bxwnfm5bec"]
+[gd_scene format=3 uid="uid://46bxwnfm5bec"]
 
 [ext_resource type="PackedScene" uid="uid://ciso4gdkv1grp" path="res://Scenes/save_data.tscn" id="1_vy5pj"]
 [ext_resource type="Script" uid="uid://d28c3fhqkyiy1" path="res://Scripts/LocationRequest.gd" id="2_50glp"]
@@ -38,8 +38,9 @@
 [ext_resource type="Texture2D" uid="uid://p1ck2k2ynu6i" path="res://Art/moon_027.png" id="30_eywpa"]
 [ext_resource type="Texture2D" uid="uid://faw7qlpulttb" path="res://Art/moon_028.png" id="31_vvnwx"]
 [ext_resource type="Texture2D" uid="uid://dddld3qm4fnwa" path="res://Art/placeholder.png" id="36_btbly"]
+[ext_resource type="Texture2D" uid="uid://54fqmisml5y0" path="res://Art/clock.png" id="39_vs04g"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1289431972]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,9 +48,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SaveData" parent="." instance=ExtResource("1_vy5pj")]
+[node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." node_paths=PackedStringArray("dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 locationText = NodePath("../LocationText")
@@ -63,6 +64,7 @@ moonPhaseTextureNext = NodePath("../MoonTexture+1")
 saveDataPath = NodePath("../SaveData")
 previousDayPanel = NodePath("../SummaryPanelPrevious")
 nextDayPanel = NodePath("../SummaryPanelNext")
+clock = NodePath("../Clock")
 moonTextures = Array[Texture]([ExtResource("4_pbw6q"), ExtResource("4_6heos"), ExtResource("5_vvnwx"), ExtResource("6_btbly"), ExtResource("7_vs04g"), ExtResource("8_6ehlx"), ExtResource("9_utia5"), ExtResource("10_f7hdo"), ExtResource("11_clvyn"), ExtResource("12_d8m2u"), ExtResource("13_5psol"), ExtResource("14_m4llh"), ExtResource("15_lac6x"), ExtResource("16_hpjjw"), ExtResource("17_off7b"), ExtResource("18_lfh1j"), ExtResource("19_7sj7i"), ExtResource("20_semxg"), ExtResource("21_ep8v8"), ExtResource("22_3133c"), ExtResource("23_js5gh"), ExtResource("24_vvjo1"), ExtResource("25_yisvs"), ExtResource("26_rgw24"), ExtResource("27_5gwyn"), ExtResource("28_r6gtk"), ExtResource("29_81ldr"), ExtResource("30_eywpa"), ExtResource("31_vvnwx")])
 dayDateText = [NodePath("../SummaryPanelPrevious/DateText2"), NodePath("../SummaryPanelToday/DateText2"), NodePath("../SummaryPanelNext/DateText2")]
 dayWMOText = [NodePath("../SummaryPanelPrevious/DailyWeatherCode"), NodePath("../SummaryPanelToday/DailyWeatherCode"), NodePath("../SummaryPanelNext/DailyWeatherCode")]
@@ -71,13 +73,13 @@ dayAppTempText = [NodePath("../SummaryPanelPrevious/DailyTempApparent"), NodePat
 dayWindText = [NodePath("../SummaryPanelPrevious/DailyWind"), NodePath("../SummaryPanelToday/DailyWind"), NodePath("../SummaryPanelNext/DailyWind")]
 daySunText = [NodePath("../SummaryPanelPrevious/DailySun"), NodePath("../SummaryPanelToday/DailySun"), NodePath("../SummaryPanelNext/DailySun")]
 
-[node name="HTTPRequest_Location" type="HTTPRequest" parent="."]
+[node name="HTTPRequest_Location" type="HTTPRequest" parent="." unique_id=1768424176]
 script = ExtResource("2_50glp")
 locationResults = NodePath("../LocationResults")
 locationSearch = NodePath("../LocationSearch")
 weatherRequest = NodePath("../HTTPRequest_Weather")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="TextureButton" type="TextureButton" parent="." unique_id=2118107427]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -88,7 +90,7 @@ texture_normal = ExtResource("5_v1gob")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=988223023]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.85
@@ -99,7 +101,7 @@ texture_normal = ExtResource("5_v1gob")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="LocationSearch" type="LineEdit" parent="."]
+[node name="LocationSearch" type="LineEdit" parent="." unique_id=226273910]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
@@ -109,7 +111,7 @@ anchor_bottom = 0.08
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Location..."
 
-[node name="LocationText" type="Label" parent="."]
+[node name="LocationText" type="Label" parent="." unique_id=1805236289]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -123,7 +125,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DateText" type="Label" parent="."]
+[node name="DateText" type="Label" parent="." unique_id=955131132]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -136,7 +138,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="PreviousDayButton" type="TextureButton" parent="."]
+[node name="PreviousDayButton" type="TextureButton" parent="." unique_id=968523514]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
@@ -147,7 +149,7 @@ offset_bottom = 0.439987
 texture_normal = ExtResource("7_50glp")
 stretch_mode = 5
 
-[node name="TodayButton" type="Button" parent="."]
+[node name="TodayButton" type="Button" parent="." unique_id=1786719962]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.36
@@ -157,7 +159,7 @@ anchor_bottom = 0.19
 theme_override_font_sizes/font_size = 30
 text = "GO TO TODAY"
 
-[node name="NextDayButton" type="TextureButton" parent="."]
+[node name="NextDayButton" type="TextureButton" parent="." unique_id=1390468560]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66
@@ -168,14 +170,14 @@ offset_bottom = 0.439972
 texture_normal = ExtResource("6_jw32o")
 stretch_mode = 5
 
-[node name="ErrorText" type="Label" parent="."]
+[node name="ErrorText" type="Label" parent="." unique_id=217427805]
 layout_mode = 0
 offset_left = 103.0
 offset_top = 103.0
 offset_right = 267.0
 offset_bottom = 126.0
 
-[node name="SummaryPanelPrevious" type="TextureRect" parent="."]
+[node name="SummaryPanelPrevious" type="TextureRect" parent="." unique_id=1054788666]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
@@ -185,7 +187,7 @@ anchor_bottom = 0.4
 texture = ExtResource("36_btbly")
 expand_mode = 1
 
-[node name="DateText2" type="Label" parent="SummaryPanelPrevious"]
+[node name="DateText2" type="Label" parent="SummaryPanelPrevious" unique_id=1701299402]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -199,7 +201,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailyWeatherCode" type="Label" parent="SummaryPanelPrevious"]
+[node name="DailyWeatherCode" type="Label" parent="SummaryPanelPrevious" unique_id=1115892707]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -212,7 +214,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyTemp" type="Label" parent="SummaryPanelPrevious"]
+[node name="DailyTemp" type="Label" parent="SummaryPanelPrevious" unique_id=880357210]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -225,7 +227,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyTempApparent" type="Label" parent="SummaryPanelPrevious"]
+[node name="DailyTempApparent" type="Label" parent="SummaryPanelPrevious" unique_id=1235450271]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -238,7 +240,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyWind" type="Label" parent="SummaryPanelPrevious"]
+[node name="DailyWind" type="Label" parent="SummaryPanelPrevious" unique_id=1378090731]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -252,7 +254,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailySun" type="Label" parent="SummaryPanelPrevious"]
+[node name="DailySun" type="Label" parent="SummaryPanelPrevious" unique_id=2143167597]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -265,7 +267,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SummaryPanelToday" type="TextureRect" parent="."]
+[node name="SummaryPanelToday" type="TextureRect" parent="." unique_id=245186422]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.36
@@ -275,7 +277,7 @@ anchor_bottom = 0.42
 texture = ExtResource("36_btbly")
 expand_mode = 1
 
-[node name="DateText2" type="Label" parent="SummaryPanelToday"]
+[node name="DateText2" type="Label" parent="SummaryPanelToday" unique_id=1603029563]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -289,7 +291,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailyWeatherCode" type="Label" parent="SummaryPanelToday"]
+[node name="DailyWeatherCode" type="Label" parent="SummaryPanelToday" unique_id=31564755]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -302,7 +304,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyTemp" type="Label" parent="SummaryPanelToday"]
+[node name="DailyTemp" type="Label" parent="SummaryPanelToday" unique_id=746154246]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -315,7 +317,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyTempApparent" type="Label" parent="SummaryPanelToday"]
+[node name="DailyTempApparent" type="Label" parent="SummaryPanelToday" unique_id=118378086]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -328,7 +330,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyWind" type="Label" parent="SummaryPanelToday"]
+[node name="DailyWind" type="Label" parent="SummaryPanelToday" unique_id=919995776]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -342,7 +344,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailySun" type="Label" parent="SummaryPanelToday"]
+[node name="DailySun" type="Label" parent="SummaryPanelToday" unique_id=1626310283]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -355,7 +357,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SummaryPanelNext" type="TextureRect" parent="."]
+[node name="SummaryPanelNext" type="TextureRect" parent="." unique_id=2100141040]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66
@@ -365,7 +367,7 @@ anchor_bottom = 0.4
 texture = ExtResource("36_btbly")
 expand_mode = 1
 
-[node name="DateText2" type="Label" parent="SummaryPanelNext"]
+[node name="DateText2" type="Label" parent="SummaryPanelNext" unique_id=1338256005]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -379,7 +381,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailyWeatherCode" type="Label" parent="SummaryPanelNext"]
+[node name="DailyWeatherCode" type="Label" parent="SummaryPanelNext" unique_id=1307513351]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -392,7 +394,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyTemp" type="Label" parent="SummaryPanelNext"]
+[node name="DailyTemp" type="Label" parent="SummaryPanelNext" unique_id=1950361638]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -405,7 +407,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyTempApparent" type="Label" parent="SummaryPanelNext"]
+[node name="DailyTempApparent" type="Label" parent="SummaryPanelNext" unique_id=1268056024]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -418,7 +420,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DailyWind" type="Label" parent="SummaryPanelNext"]
+[node name="DailyWind" type="Label" parent="SummaryPanelNext" unique_id=1889488825]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -432,7 +434,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailySun" type="Label" parent="SummaryPanelNext"]
+[node name="DailySun" type="Label" parent="SummaryPanelNext" unique_id=1723322491]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -445,7 +447,7 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MoonPhaseText" type="Label" parent="."]
+[node name="MoonPhaseText" type="Label" parent="." unique_id=2023853065]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
@@ -458,7 +460,7 @@ theme_override_font_sizes/font_size = 42
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MoonTexture-1" type="TextureRect" parent="."]
+[node name="MoonTexture-1" type="TextureRect" parent="." unique_id=1513432326]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
@@ -472,7 +474,7 @@ texture = ExtResource("4_pbw6q")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoonTexture" type="TextureRect" parent="."]
+[node name="MoonTexture" type="TextureRect" parent="." unique_id=916721225]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.36
@@ -486,7 +488,7 @@ texture = ExtResource("4_pbw6q")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoonTexture+1" type="TextureRect" parent="."]
+[node name="MoonTexture+1" type="TextureRect" parent="." unique_id=1610001803]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66
@@ -500,7 +502,7 @@ texture = ExtResource("4_pbw6q")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=475480291]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -511,7 +513,7 @@ grow_horizontal = 2
 theme = ExtResource("3_kln2b")
 columns = 6
 
-[node name="Label-hour" type="Label" parent="GridContainer"]
+[node name="Label-hour" type="Label" parent="GridContainer" unique_id=203772312]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -519,7 +521,7 @@ theme = ExtResource("4_rgh2o")
 text = "hour"
 horizontal_alignment = 1
 
-[node name="Label-temp" type="Label" parent="GridContainer"]
+[node name="Label-temp" type="Label" parent="GridContainer" unique_id=1590709039]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -527,7 +529,7 @@ theme = ExtResource("4_rgh2o")
 text = "temp. °C"
 horizontal_alignment = 1
 
-[node name="Label-rain" type="Label" parent="GridContainer"]
+[node name="Label-rain" type="Label" parent="GridContainer" unique_id=677460613]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -535,7 +537,7 @@ theme = ExtResource("4_rgh2o")
 text = "precip. %"
 horizontal_alignment = 1
 
-[node name="Label-cloud" type="Label" parent="GridContainer"]
+[node name="Label-cloud" type="Label" parent="GridContainer" unique_id=1079803948]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -543,7 +545,7 @@ theme = ExtResource("4_rgh2o")
 text = "cloud %"
 horizontal_alignment = 1
 
-[node name="Label-wind" type="Label" parent="GridContainer"]
+[node name="Label-wind" type="Label" parent="GridContainer" unique_id=377162969]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -551,7 +553,7 @@ theme = ExtResource("4_rgh2o")
 text = "wind mph"
 horizontal_alignment = 1
 
-[node name="Label-weathercode" type="Label" parent="GridContainer"]
+[node name="Label-weathercode" type="Label" parent="GridContainer" unique_id=637791901]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -559,7 +561,7 @@ theme = ExtResource("4_rgh2o")
 text = "weather"
 horizontal_alignment = 1
 
-[node name="SunTexture" type="TextureRect" parent="."]
+[node name="SunTexture" type="TextureRect" parent="." unique_id=520227156]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -574,7 +576,7 @@ texture = ExtResource("5_v1gob")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LocationResults" type="VBoxContainer" parent="."]
+[node name="LocationResults" type="VBoxContainer" parent="." unique_id=1476899233]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -582,6 +584,22 @@ anchor_left = 0.1
 anchor_top = 0.08
 anchor_right = 0.9
 anchor_bottom = 0.3
+
+[node name="Clock" type="TextureButton" parent="." unique_id=1361334874]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -540.0
+offset_right = 540.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("39_vs04g")
 
 [connection signal="text_submitted" from="LocationSearch" to="HTTPRequest_Location" method="_on_location_search_text_submitted"]
 [connection signal="pressed" from="PreviousDayButton" to="HTTPRequest_Weather" method="_on_previous_day_button_pressed"]
