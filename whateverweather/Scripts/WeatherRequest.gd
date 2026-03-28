@@ -12,6 +12,7 @@ extends HTTPRequest
 @export_node_path("Node") var previousDayPanel
 @export_node_path("Node") var nextDayPanel
 @export_node_path("TextureButton") var clock
+@export var tempText: Array[Label] = []
 @export var moonTextures: Array[Texture] = []
 @export var dayDateText: Array[Label] = []
 @export var dayWMOText: Array[Label] = []
@@ -81,6 +82,7 @@ func populateForecastTable(openMeteoJSON, day):
 					tableLabel.text = str(hour)
 				if x == 1:
 					tableLabel.text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + " (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + ")"
+					tempText[hour].text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + "°C)"
 				if x == 2:
 					tableLabel.text = str(openMeteoJSON["hourly"]["precipitation_probability"][h])
 				if x == 3:
@@ -307,9 +309,9 @@ func getLunarPhase():
 	var moonIndex: float = floor((age / 29.53059) * 29.0)
 	var moonIndexPrevious: float = floor((agePrevious / 29.53059) * 29.0)
 	var moonIndexNext: float = floor((ageNext / 29.53059) * 29.0)
-	get_node_or_null(moonPhaseTexture).texture = moonTextures[moonIndex]
-	get_node_or_null(moonPhaseTexturePrevious).texture = moonTextures[moonIndexPrevious]
-	get_node_or_null(moonPhaseTextureNext).texture = moonTextures[moonIndexNext]
+	get_node_or_null(moonPhaseTexture).texture_normal = moonTextures[moonIndex]
+	get_node_or_null(moonPhaseTexturePrevious).texture_normal = moonTextures[moonIndexPrevious]
+	get_node_or_null(moonPhaseTextureNext).texture_normal = moonTextures[moonIndexNext]
 	
 	if startDay > 0:
 		get_node_or_null(moonPhaseTexturePrevious).show()
