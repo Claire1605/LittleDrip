@@ -362,8 +362,7 @@ func getDayWeatherCodeAverage(day):
 
 func clockSetup():
 	var h = Time.get_datetime_dict_from_system().hour
-	print(h*15)
-	get_node_or_null(clock).rotation = 15 * h
+	get_node_or_null(clock).set_rotation_degrees(-15 * h)
 	print(get_node_or_null(clock).rotation)
 
 # TO-DO
