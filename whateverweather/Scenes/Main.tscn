@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://faw7qlpulttb" path="res://Art/moon_028.png" id="31_vvnwx"]
 [ext_resource type="Texture2D" uid="uid://dddld3qm4fnwa" path="res://Art/placeholder.png" id="36_btbly"]
 [ext_resource type="Texture2D" uid="uid://54fqmisml5y0" path="res://Art/clock.png" id="39_vs04g"]
+[ext_resource type="Script" uid="uid://d3rpplbndnmue" path="res://Scripts/ClockSwipe.gd" id="40_6ehlx"]
 
 [node name="Control" type="Control" unique_id=1289431972]
 layout_mode = 3
@@ -602,6 +603,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture_normal = ExtResource("39_vs04g")
+script = ExtResource("40_6ehlx")
 
 [node name="Temp00" type="TextureRect" parent="Clock" unique_id=309009367]
 layout_mode = 1
@@ -1500,3 +1502,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="MoonTexture-1" to="HTTPRequest_Weather" method="_on_previous_day_button_pressed"]
 [connection signal="pressed" from="MoonTexture" to="HTTPRequest_Weather" method="_on_today_button_pressed"]
 [connection signal="pressed" from="MoonTexture+1" to="HTTPRequest_Weather" method="on_next_day_button_pressed"]
+[connection signal="button_down" from="Clock" to="Clock" method="_on_button_down"]
+[connection signal="button_up" from="Clock" to="Clock" method="_on_button_up"]
+[connection signal="pressed" from="Clock" to="Clock" method="_on_pressed"]
