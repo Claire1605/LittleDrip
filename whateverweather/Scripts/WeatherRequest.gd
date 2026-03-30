@@ -13,6 +13,10 @@ extends HTTPRequest
 @export_node_path("Node") var nextDayPanel
 @export_node_path("TextureButton") var clock
 @export var tempText: Array[Label] = []
+@export var windText: Array[Label] = []
+@export var cloudText: Array[Label] = []
+@export var precText: Array[Label] = []
+@export var weatherText: Array[Label] = []
 @export var moonTextures: Array[Texture] = []
 @export var dayDateText: Array[Label] = []
 @export var dayWMOText: Array[Label] = []
@@ -64,33 +68,37 @@ func populateForecastTable(openMeteoJSON, day):
 	
 	get_node_or_null(dateText).text = date
 	
-	if !gridChildren.is_empty():
-		for g in gridChildren:
-			if is_instance_valid(g):
-				g.queue_free()
+	#if !gridChildren.is_empty():
+	#	for g in gridChildren:
+	#		if is_instance_valid(g):
+	#			g.queue_free()
 
 	var hour = -1
 	for h in openMeteoJSON["hourly"]["temperature_2m"].size():
 		if h >= (day * 24) and h < ((day + 1) * 24):
 			hour += 1
 			for x in 6:
-				var tableLabel = tableLabelScene.instantiate()
-				get_node(tableParent).add_child(tableLabel)
-				gridChildren.append(tableLabel as Node)
+				#var tableLabel = tableLabelScene.instantiate()
+				#get_node(tableParent).add_child(tableLabel)
+				#gridChildren.append(tableLabel as Node)
 				
-				if x == 0:
-					tableLabel.text = str(hour)
+				#if x == 0:
+					#tableLabel.text = str(hour)
 				if x == 1:
-					tableLabel.text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + " (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + ")"
+					#tableLabel.text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + " (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + ")"
 					tempText[hour].text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + "°C)"
 				if x == 2:
-					tableLabel.text = str(openMeteoJSON["hourly"]["precipitation_probability"][h])
+					#tableLabel.text = str(openMeteoJSON["hourly"]["precipitation_probability"][h])
+					precText[hour].text = str(openMeteoJSON["hourly"]["precipitation_probability"][h]) + "% p."
 				if x == 3:
-					tableLabel.text = str(openMeteoJSON["hourly"]["cloud_cover"][h])
+					#tableLabel.text = str(openMeteoJSON["hourly"]["cloud_cover"][h])
+					cloudText[hour].text = str(openMeteoJSON["hourly"]["cloud_cover"][h]) + "% cc"
 				if x == 4:
-					tableLabel.text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
+					#tableLabel.text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
+					windText[hour].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
 				if x == 5:
-					tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
+					#tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
+					weatherText[hour].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
 			
 	clockSetup()
 
