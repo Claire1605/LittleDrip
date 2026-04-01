@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cphcxen3iddbt"]
+
+[ext_resource type="Shader" uid="uid://bs6yupbuynuja" path="res://Scripts/Shaders/Dial.gdshader" id="1_r5voi"]
+
+[resource]
+shader = ExtResource("1_r5voi")
+shader_parameter/cooldown_progress = 0.7790000370025
+shader_parameter/use_transparency = false
+shader_parameter/transparency_alpha = 0.0
+shader_parameter/cooldown_offset = 0.310000014725
