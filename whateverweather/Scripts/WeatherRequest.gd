@@ -83,7 +83,7 @@ func populateForecastTable():
 			hour += 1
 			tempText[hour].text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + "°C)"
 			precText[hour].text = str(openMeteoJSON["hourly"]["precipitation_probability"][h]) + "% p."
-			cloudText[hour].text = str(openMeteoJSON["hourly"]["cloud_cover"][h]) + "% cc"# + "\n" + str(get_node_or_null(clock).clockHourDates[hour])
+			cloudText[hour].text = str(openMeteoJSON["hourly"]["cloud_cover"][h]) + "% cc" + "\n" + str(get_node_or_null(clock).clockHourDates[hour])
 			windText[hour].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
 			weatherText[hour].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
 

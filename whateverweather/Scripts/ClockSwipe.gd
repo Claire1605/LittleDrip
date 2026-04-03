@@ -24,33 +24,12 @@ var rotationOnMouseDown = 0.0
 var timeOnMouseDown
 
 func _ready():
-	'var startDay = get_node_or_null(weatherRequest).startDay
+	var startDay = get_node_or_null(weatherRequest).startDay
 	
 	for x in 24:
 		clockHourDates.append(startDay)
 	
-	var h = Time.get_datetime_dict_from_system().hour
-	
-	if h < 12: # before 12 oclock
-		for x in range(h):
-			clockHourDates[x] = startDay
-			print(str(x) + " " + str(clockHourDates[x]))
-		for x in range(12):
-			clockHourDates[h + x] = startDay
-			print(str(h + x) + " " + str(clockHourDates[h + x]))
-		for x in range(12 - h):
-			clockHourDates[23 - x] = startDay - 1
-			print(str(23 - x) + " " + str(clockHourDates[23 - x]))
-	elif h >= 12: # after 12 oclock
-		for x in range(h - 12):
-			clockHourDates[x] = startDay + 1
-			print(str(x) + " " + str(clockHourDates[x]))
-		for x in range(12):
-			clockHourDates[h - 12 + x] = startDay
-			print(str(h - 12 + x) + " " + str(clockHourDates[h - 12 + x]))
-		for x in range(23 - h):
-			clockHourDates[23 - x] = startDay
-			print(str(23 - x) + " " + str(clockHourDates[23 - x]))'
+	checkRotation()
 
 func resetSwipe():
 	holdTime = 0.0
@@ -70,56 +49,27 @@ func checkRotation():
 	
 	var r = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
 	
-	if r > 255 and r <= 270:
-		currentSegment = 0
-	elif r > 240 and r <= 255:
-		currentSegment = 1
-	elif r > 225 and r <= 240:
-		currentSegment = 2
-	elif r > 210 and r <= 225:
-		currentSegment = 3
-	elif r > 195 and r <= 210:
-		currentSegment = 4
-	elif r > 180 and r <= 195:
-		currentSegment = 5
-	elif r > 165 and r <= 180:
-		currentSegment = 6
-	elif r > 150 and r <= 165:
-		currentSegment = 7
-	elif r > 135 and r <= 150:
-		currentSegment = 8
-	elif r > 120 and r <= 135:
-		currentSegment = 9
-	elif r > 105 and r <= 120:
-		currentSegment = 10
-	elif r > 90 and r <= 105:
-		currentSegment = 11
-	elif r > 75 and r <= 90:
-		currentSegment = 12
-	elif r > 60 and r <= 75:
-		currentSegment = 13
-	elif r > 45 and r <= 60:
-		currentSegment = 14
-	elif r > 30 and r <= 45:
-		currentSegment = 15
-	elif r > 15 and r <= 30:
-		currentSegment = 16
-	elif r > 0 and r <= 15:
-		currentSegment = 17
-	elif r > 345 and r <= 360:
-		currentSegment = 18
-	elif r > 330 and r <= 345:
-		currentSegment = 19
-	elif r > 315 and r <= 330:
-		currentSegment = 20
-	elif r > 300 and r <= 315:
-		currentSegment = 21
-	elif r > 285 and r <= 300:
-		currentSegment = 22
-	elif r > 270 and r <= 285:
-		currentSegment = 23
-		
+	if r >= 270:
+		currentSegment = 24 - (floorf(r / 15.0) - 17)
+	else:
+		currentSegment = 0 - (floorf(r / 15.0) - 17)
+	
 	if currentSegment != previousSegment:
+		if currentSegment > 12:
+			for s in range(currentSegment - 12, 23):
+				clockHourDates[s] = get_node_or_null(weatherRequest).startDay
+			for s in range(0, currentSegment - 12):
+				clockHourDates[s] = get_node_or_null(weatherRequest).startDay + 1
+
+		if currentSegment <= 12:
+			for s in range(0, 12):
+				clockHourDates[s] = get_node_or_null(weatherRequest).startDay
+			for s in range(12, 23):
+				clockHourDates[s] = get_node_or_null(weatherRequest).startDay - 1
+	
+	previousSegment = currentSegment
+	
+	'if currentSegment != previousSegment:
 		if movingClockwise > 0: #back in time
 			if currentSegment > previousSegment: #looped around
 				for s in range(currentSegment):
@@ -139,7 +89,7 @@ func checkRotation():
 				for s in range(currentSegment):
 					updateClockDate(s, -1)
 	
-	previousSegment = currentSegment
+	previousSegment = currentSegment'
 
 func updateClockDate(segment, clockwise):
 	var s = wrap(segment + 12, 0, 24)
@@ -159,6 +109,7 @@ func updateClockDate(segment, clockwise):
 
 func _process(delta: float) -> void:
 	if requestReady:	
+		checkRotation()
 		if mouseDown:  # Left mouse button.
 			if mouseDownFirstFrame:
 				resetSwipe()
@@ -166,7 +117,6 @@ func _process(delta: float) -> void:
 			mouseCurrentPosition = get_viewport().get_mouse_position()	
 			currentRot = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
 			distance = mouseCurrentPosition - mouseInitialPosition
-			#checkRotation()
 			
 			if abs(mouseCurrentPosition.x - mouseLastFramePosition.x) < 50.0:
 				holdTime += get_process_delta_time()
@@ -234,5 +184,5 @@ func _on_button_up() -> void:
 			var a = angle_difference(rotationOnMouseDown, wrapf(rotation, -PI, PI)) # degrees in radians from -PI to +PI
 			var t = Time.get_unix_time_from_system() - timeOnMouseDown # time in seconds
 			velocity = clampf(rad_to_deg(a) / t, -135.0, 135.0) 
-			print(velocity)
+			#print(velocity)
 			hasClicked = false
