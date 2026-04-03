@@ -35,7 +35,6 @@ var todayUnix: float
 var selectedDateUnix: float
 var tableLabelScene
 var gridChildren: Array[Node]
-var clockHourDates: Array[int]
 var clockDatePreviousUnix: float
 var clockDateNextUnix: float
 
@@ -43,9 +42,6 @@ func _ready():
 	saveData = get_node_or_null(saveDataPath)
 	saveData.load_game()
 	get_node_or_null(locationText).text = saveData.placeName
-	
-	for x in 24:
-		clockHourDates.append(startDay)
 	
 	tableLabelScene = preload("res://Scenes/label_table_entry.tscn")
 	todayUnix = Time.get_unix_time_from_system()
@@ -69,50 +65,27 @@ func _on_request_completed(result, response_code, headers, body):
 
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if (openMeteoJSON != null):
-		populateForecastTable(openMeteoJSON)
+		populateForecastTable()
 		daySummarySetup()
 		clockRotation()
 		resetClockDates()
 	
 	getLunarPhase()
 
-func populateForecastTable(openMeteoJSON):
+func populateForecastTable():
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
 	var date = getWeekdayString(selectedDate.weekday) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month) + " " + str(selectedDate.year)
-	
 	get_node_or_null(dateText).text = date
-	
-	#if !gridChildren.is_empty():
-	#	for g in gridChildren:
-	#		if is_instance_valid(g):
-	#			g.queue_free()
 
 	var hour = -1
 	for h in openMeteoJSON["hourly"]["temperature_2m"].size():
 		if h >= (startDay * 24) and h < ((startDay + 1) * 24):
 			hour += 1
-			for x in 6:
-				#var tableLabel = tableLabelScene.instantiate()
-				#get_node(tableParent).add_child(tableLabel)
-				#gridChildren.append(tableLabel as Node)
-				
-				#if x == 0:
-					#tableLabel.text = str(hour)
-				if x == 1:
-					#tableLabel.text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + " (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + ")"
-					tempText[hour].text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + "°C)"
-				if x == 2:
-					#tableLabel.text = str(openMeteoJSON["hourly"]["precipitation_probability"][h])
-					precText[hour].text = str(openMeteoJSON["hourly"]["precipitation_probability"][h]) + "% p."
-				if x == 3:
-					#tableLabel.text = str(openMeteoJSON["hourly"]["cloud_cover"][h])
-					cloudText[hour].text = str(openMeteoJSON["hourly"]["cloud_cover"][h]) + "% cc"
-				if x == 4:
-					#tableLabel.text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " / " + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
-					windText[hour].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
-				if x == 5:
-					#tableLabel.text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
-					weatherText[hour].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
+			tempText[hour].text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + "°C)"
+			precText[hour].text = str(openMeteoJSON["hourly"]["precipitation_probability"][h]) + "% p."
+			cloudText[hour].text = str(openMeteoJSON["hourly"]["cloud_cover"][h]) + "% cc"# + "\n" + str(get_node_or_null(clock).clockHourDates[hour])
+			windText[hour].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
+			weatherText[hour].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
 
 func daySummarySetup():
 	if startDay > 0:
@@ -373,7 +346,7 @@ func _on_today_button_pressed() -> void:
 func today():
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
-	populateForecastTable(openMeteoJSON)
+	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
 	clockRotation()
@@ -389,7 +362,7 @@ func previousDay():
 	if startDay < 0:
 		startDay = 0
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
-	populateForecastTable(openMeteoJSON)
+	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
 
@@ -403,7 +376,7 @@ func nextDay():
 	if startDay > 20:
 		startDay = 20
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
-	populateForecastTable(openMeteoJSON)
+	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
 
