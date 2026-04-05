@@ -1,7 +1,6 @@
 extends TextureButton
 @export_node_path("HTTPRequest") var weatherRequestPath
 var weatherRequest
-@export_node_path("Label") var clockPreviousDay
 var mouseDown: bool = false
 var hasClicked: bool = false
 var mouseDownFirstFrame: bool = true
@@ -33,8 +32,6 @@ func _ready():
 	
 	for x in 24:
 		clockHourDates.append(startDay)
-	
-	checkRotation()
 
 func resetSwipe():
 	holdTime = 0.0
@@ -44,7 +41,7 @@ func resetSwipe():
 	mouseInitialPosition = get_viewport().get_mouse_position()
 	mouseDownFirstFrame = false
 
-func checkRotation():
+func updateRotationData():
 	if mouseCurrentPosition.x - mouseLastFramePosition.x > 0:
 		movingClockwise = 1
 	elif mouseCurrentPosition.x - mouseLastFramePosition.x < 0:
@@ -56,11 +53,24 @@ func checkRotation():
 	
 	startDay = weatherRequest.startDay
 	
+	# UPDATE CURRENT SEGMENT
 	if r >= 270:
 		currentSegment = 24 - (floorf(r / 15.0) - 17)
 	else:
 		currentSegment = 0 - (floorf(r / 15.0) - 17)
 	
+	# UPDATE CLOCK DATE LABELS
+	if currentSegment == 12:
+		if previousSegment == 11:
+			weatherRequest.updateClockLabels(startDay, startDay + 1)
+		elif previousSegment == 13:
+			weatherRequest.updateClockLabels(startDay - 1, startDay)
+	elif currentSegment >= 12:
+		weatherRequest.updateClockLabels(startDay, startDay + 1)
+	elif previousSegment < 12:
+		weatherRequest.updateClockLabels(startDay - 1, startDay)
+	
+	# UPDATE HOURLY DATES
 	if currentSegment != previousSegment or startDay != previousStartDay:
 		if currentSegment >= 12:
 			for s in range(currentSegment - 12, 24):
@@ -76,55 +86,19 @@ func checkRotation():
 	
 	previousSegment = currentSegment
 	previousStartDay = startDay
-	
-	'if currentSegment != previousSegment:
-		if movingClockwise > 0: #back in time
-			if currentSegment > previousSegment: #looped around
-				for s in range(currentSegment):
-					updateClockDate(currentSegment - s, 1)
-				for s in range(23 - previousSegment):
-					updateClockDate(23 - s, 1)
-			else:
-				for s in range(previousSegment - currentSegment):
-					updateClockDate(previousSegment - s, 1)
-		elif movingClockwise < 0: #forward in time
-			if currentSegment > previousSegment:
-				for s in range(currentSegment - previousSegment):
-					updateClockDate(previousSegment + s, -1)
-			else: # looped around
-				for s in range(23 - previousSegment + 1):
-					updateClockDate(previousSegment + s, -1)
-				for s in range(currentSegment):
-					updateClockDate(s, -1)
-	
-	previousSegment = currentSegment'
-
-func updateClockDate(segment, clockwise):
-	var s = wrap(segment + 12, 0, 24)
-	
-	if clockwise > 0:
-		if segment >= 12 and clockHourDates[s] != weatherRequest.startDay:
-			clockHourDates[s] = weatherRequest.startDay
-		elif segment < 12 and clockHourDates[s] != weatherRequest.startDay:
-			clockHourDates[s] = weatherRequest.startDay - 1
-	elif clockwise < 0:
-		if segment >= 12 and clockHourDates[s] != weatherRequest.startDay:
-			clockHourDates[s] = weatherRequest.startDay + 1
-		elif segment < 12 and clockHourDates[s] != weatherRequest.startDay:
-			clockHourDates[s] = weatherRequest.startDay
-	
-	weatherRequest.populateForecastTable()
 
 func _process(delta: float) -> void:
 	if weatherRequest.get_node_or_null(weatherRequest.debug).visible:
 		weatherRequest.get_node_or_null(weatherRequest.debug).text = ""
 		weatherRequest.get_node_or_null(weatherRequest.debug).text += "Current Segment: " + str(currentSegment)
 		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nStart Day: " + str(weatherRequest.startDay)
-		for x in clockHourDates.size():
-			weatherRequest.get_node_or_null(weatherRequest.debug).text += ("\n" + str(x) + " : " + str(clockHourDates[x]))
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockPreviousDay).text)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nNext Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockNextDay).text)
+		#for x in clockHourDates.size():
+		#	weatherRequest.get_node_or_null(weatherRequest.debug).text += ("\n" + str(x) + " : " + str(clockHourDates[x]))
 		
-	if requestReady:	
-		checkRotation()
+	if requestReady:
+		updateRotationData()
 		if mouseDown:  # Left mouse button.
 			if mouseDownFirstFrame:
 				resetSwipe()
@@ -171,14 +145,6 @@ func _process(delta: float) -> void:
 			weatherRequest.nextDay()
 		elif previousRot > 180 and previousRot < 270 and currentRot > 270 and currentRot < 360:
 			weatherRequest.previousDay()
-			
-		#update date text
-		if previousRot > 90 and previousRot < 180 and currentRot > 0 and currentRot < 90:
-			weatherRequest.increaseClockDates()
-			weatherRequest.updateClockLabels()
-		elif previousRot > 0 and previousRot < 90 and currentRot > 90 and currentRot < 180:
-			weatherRequest.decreaseClockDates()
-			weatherRequest.updateClockLabels()
 		
 		previousRot = currentRot
 

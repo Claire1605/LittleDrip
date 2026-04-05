@@ -120,7 +120,6 @@ texture_normal = ExtResource("39_vs04g")
 stretch_mode = 3
 script = ExtResource("40_6ehlx")
 weatherRequestPath = NodePath("../../HTTPRequest_Weather")
-clockPreviousDay = NodePath("Label-PreviousDay")
 
 [node name="Clock-Nighttime" type="TextureRect" parent="ClockAnchor/Clock - Daytime" unique_id=1705253797]
 material = ExtResource("33_utia5")
@@ -5276,7 +5275,6 @@ anchor_right = 0.9
 anchor_bottom = 0.3
 
 [node name="DEBUG" type="Control" parent="." unique_id=1552592124]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
