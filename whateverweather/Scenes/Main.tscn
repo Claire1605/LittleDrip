@@ -56,6 +56,7 @@ grow_vertical = 2
 [node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("tempText", "windText", "cloudText", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
+debug = NodePath("../DEBUG/Label")
 locationText = NodePath("../LocationText")
 dateText = NodePath("../DateText")
 errorText = NodePath("../ErrorText")
@@ -118,7 +119,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture_normal = ExtResource("39_vs04g")
 stretch_mode = 3
 script = ExtResource("40_6ehlx")
-weatherRequest = NodePath("../../HTTPRequest_Weather")
+weatherRequestPath = NodePath("../../HTTPRequest_Weather")
 clockPreviousDay = NodePath("Label-PreviousDay")
 
 [node name="Clock-Nighttime" type="TextureRect" parent="ClockAnchor/Clock - Daytime" unique_id=1705253797]
@@ -5273,6 +5274,29 @@ anchor_left = 0.1
 anchor_top = 0.08
 anchor_right = 0.9
 anchor_bottom = 0.3
+
+[node name="DEBUG" type="Control" parent="." unique_id=1552592124]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="DEBUG" unique_id=284022408]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.6029072, 0.5794098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 50
+autowrap_mode = 3
 
 [connection signal="button_down" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_down"]
 [connection signal="button_up" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_up"]

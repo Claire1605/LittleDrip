@@ -1,5 +1,6 @@
 extends TextureButton
-@export_node_path("HTTPRequest") var weatherRequest
+@export_node_path("HTTPRequest") var weatherRequestPath
+var weatherRequest
 @export_node_path("Label") var clockPreviousDay
 var mouseDown: bool = false
 var hasClicked: bool = false
@@ -22,9 +23,13 @@ var clockHourDates: Array[int]
 var velocity = 0.0
 var rotationOnMouseDown = 0.0
 var timeOnMouseDown
+var startDay
+var previousStartDay
 
 func _ready():
-	var startDay = get_node_or_null(weatherRequest).startDay
+	weatherRequest = get_node_or_null(weatherRequestPath)
+	
+	startDay = weatherRequest.startDay
 	
 	for x in 24:
 		clockHourDates.append(startDay)
@@ -49,25 +54,28 @@ func checkRotation():
 	
 	var r = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
 	
+	startDay = weatherRequest.startDay
+	
 	if r >= 270:
 		currentSegment = 24 - (floorf(r / 15.0) - 17)
 	else:
 		currentSegment = 0 - (floorf(r / 15.0) - 17)
 	
-	if currentSegment != previousSegment:
-		if currentSegment > 12:
-			for s in range(currentSegment - 12, 23):
-				clockHourDates[s] = get_node_or_null(weatherRequest).startDay
+	if currentSegment != previousSegment or startDay != previousStartDay:
+		if currentSegment >= 12:
+			for s in range(currentSegment - 12, 24):
+				clockHourDates[s] = weatherRequest.startDay
 			for s in range(0, currentSegment - 12):
-				clockHourDates[s] = get_node_or_null(weatherRequest).startDay + 1
+				clockHourDates[s] = weatherRequest.startDay + 1
 
-		if currentSegment <= 12:
-			for s in range(0, 12):
-				clockHourDates[s] = get_node_or_null(weatherRequest).startDay
-			for s in range(12, 23):
-				clockHourDates[s] = get_node_or_null(weatherRequest).startDay - 1
+		if currentSegment < 12:
+			for s in range(currentSegment, 12 + currentSegment):
+				clockHourDates[s] = weatherRequest.startDay
+			for s in range(12 + currentSegment, 24):
+				clockHourDates[s] = weatherRequest.startDay - 1
 	
 	previousSegment = currentSegment
+	previousStartDay = startDay
 	
 	'if currentSegment != previousSegment:
 		if movingClockwise > 0: #back in time
@@ -95,19 +103,26 @@ func updateClockDate(segment, clockwise):
 	var s = wrap(segment + 12, 0, 24)
 	
 	if clockwise > 0:
-		if segment >= 12 and clockHourDates[s] != get_node_or_null(weatherRequest).startDay:
-			clockHourDates[s] = get_node_or_null(weatherRequest).startDay
-		elif segment < 12 and clockHourDates[s] != get_node_or_null(weatherRequest).startDay:
-			clockHourDates[s] = get_node_or_null(weatherRequest).startDay - 1
+		if segment >= 12 and clockHourDates[s] != weatherRequest.startDay:
+			clockHourDates[s] = weatherRequest.startDay
+		elif segment < 12 and clockHourDates[s] != weatherRequest.startDay:
+			clockHourDates[s] = weatherRequest.startDay - 1
 	elif clockwise < 0:
-		if segment >= 12 and clockHourDates[s] != get_node_or_null(weatherRequest).startDay:
-			clockHourDates[s] = get_node_or_null(weatherRequest).startDay + 1
-		elif segment < 12 and clockHourDates[s] != get_node_or_null(weatherRequest).startDay:
-			clockHourDates[s] = get_node_or_null(weatherRequest).startDay
+		if segment >= 12 and clockHourDates[s] != weatherRequest.startDay:
+			clockHourDates[s] = weatherRequest.startDay + 1
+		elif segment < 12 and clockHourDates[s] != weatherRequest.startDay:
+			clockHourDates[s] = weatherRequest.startDay
 	
-	get_node_or_null(weatherRequest).populateForecastTable()
+	weatherRequest.populateForecastTable()
 
 func _process(delta: float) -> void:
+	if weatherRequest.get_node_or_null(weatherRequest.debug).visible:
+		weatherRequest.get_node_or_null(weatherRequest.debug).text = ""
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "Current Segment: " + str(currentSegment)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nStart Day: " + str(weatherRequest.startDay)
+		for x in clockHourDates.size():
+			weatherRequest.get_node_or_null(weatherRequest.debug).text += ("\n" + str(x) + " : " + str(clockHourDates[x]))
+		
 	if requestReady:	
 		checkRotation()
 		if mouseDown:  # Left mouse button.
@@ -153,20 +168,19 @@ func _process(delta: float) -> void:
 			set_rotation_degrees(wrap(get_rotation_degrees() + (velocity * delta), 0.0, 360.0))
 
 		if previousRot > 270 and previousRot < 360 and currentRot > 180 and currentRot < 270:
-			get_node_or_null(weatherRequest).nextDay()
+			weatherRequest.nextDay()
 		elif previousRot > 180 and previousRot < 270 and currentRot > 270 and currentRot < 360:
-			get_node_or_null(weatherRequest).previousDay()
+			weatherRequest.previousDay()
 			
 		#update date text
 		if previousRot > 90 and previousRot < 180 and currentRot > 0 and currentRot < 90:
-			get_node_or_null(weatherRequest).increaseClockDates()
-			get_node_or_null(weatherRequest).updateClockLabels()
+			weatherRequest.increaseClockDates()
+			weatherRequest.updateClockLabels()
 		elif previousRot > 0 and previousRot < 90 and currentRot > 90 and currentRot < 180:
-			get_node_or_null(weatherRequest).decreaseClockDates()
-			get_node_or_null(weatherRequest).updateClockLabels()
+			weatherRequest.decreaseClockDates()
+			weatherRequest.updateClockLabels()
 		
 		previousRot = currentRot
-
 
 func _on_button_down() -> void:
 	if requestReady:

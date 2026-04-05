@@ -1,5 +1,6 @@
 extends HTTPRequest
 @export_node_path("Node") var control
+@export_node_path("Label") var debug
 @export_node_path("Label") var locationText
 @export_node_path("Label") var dateText
 @export_node_path("Label") var errorText
@@ -64,7 +65,7 @@ func _on_request_completed(result, response_code, headers, body):
 		get_node_or_null(clock).requestReady = true
 
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
-	if (openMeteoJSON != null):
+	if openMeteoJSON != null:
 		populateForecastTable()
 		daySummarySetup()
 		clockRotation()
@@ -72,20 +73,35 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	getLunarPhase()
 
+func _process(delta: float) -> void:
+	if get_node_or_null(clock).requestReady == true:
+		populateForecastTable()
+
 func populateForecastTable():
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
 	var date = getWeekdayString(selectedDate.weekday) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month) + " " + str(selectedDate.year)
 	get_node_or_null(dateText).text = date
 
-	var hour = -1
-	for h in openMeteoJSON["hourly"]["temperature_2m"].size():
-		if h >= (startDay * 24) and h < ((startDay + 1) * 24):
-			hour += 1
-			tempText[hour].text = str(openMeteoJSON["hourly"]["temperature_2m"][h]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][h]) + "°C)"
-			precText[hour].text = str(openMeteoJSON["hourly"]["precipitation_probability"][h]) + "% p."
-			cloudText[hour].text = str(openMeteoJSON["hourly"]["cloud_cover"][h]) + "% cc" + "\n" + str(get_node_or_null(clock).clockHourDates[hour])
-			windText[hour].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][h]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][h]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][h]) + "°"
-			weatherText[hour].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][h])
+	for h in range(0,24):
+		var day = get_node_or_null(clock).clockHourDates[h]
+		var i = (day * 24) + h
+		if day < 0 or day > 20:
+			tempText[h].get_parent().visible = false
+			precText[h].get_parent().visible = false
+			cloudText[h].get_parent().visible = false
+			windText[h].get_parent().visible = false
+			weatherText[h].get_parent().visible = false
+		else:
+			tempText[h].get_parent().visible = true
+			precText[h].get_parent().visible = true
+			cloudText[h].get_parent().visible = true
+			windText[h].get_parent().visible = true
+			weatherText[h].get_parent().visible = true
+			tempText[h].text = str(openMeteoJSON["hourly"]["temperature_2m"][i]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][i]) + "°C)"
+			precText[h].text = str(openMeteoJSON["hourly"]["precipitation_probability"][i]) + "% p."
+			cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
+			windText[h].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][i]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][i]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][i]) + "°"
+			weatherText[h].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
 
 func daySummarySetup():
 	if startDay > 0:
