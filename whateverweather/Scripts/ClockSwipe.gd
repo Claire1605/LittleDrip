@@ -92,8 +92,9 @@ func _process(delta: float) -> void:
 		weatherRequest.get_node_or_null(weatherRequest.debug).text = ""
 		weatherRequest.get_node_or_null(weatherRequest.debug).text += "Current Segment: " + str(currentSegment)
 		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nStart Day: " + str(weatherRequest.startDay)
-		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockPreviousDay).text)
-		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nNext Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockNextDay).text)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nRotation: " + str(clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0))
+		#weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockPreviousDay).text)
+		#weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nNext Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockNextDay).text)
 		#for x in clockHourDates.size():
 		#	weatherRequest.get_node_or_null(weatherRequest.debug).text += ("\n" + str(x) + " : " + str(clockHourDates[x]))
 		
@@ -112,20 +113,22 @@ func _process(delta: float) -> void:
 			else:
 				holdTime = 0.0
 			
-			'if get_node_or_null(weatherRequest).clockDay == 0 and !get_node_or_null(clockPreviousDay).visible and wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) > 270.0:
-				#set_rotation_degrees(271.0)
-				#get_node_or_null(weatherRequest).clockDay = 0
-				#resetSwipe()
-				print("nope")
-				#set_rotation_degrees(wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0))
-			elif get_node_or_null(weatherRequest).clockDay > 20:
-				print(currentRot)
-			else:
-				set_rotation_degrees(wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0))
-				print(currentRot)
-				print(get_node_or_null(weatherRequest).clockDay)'
+			var canRotate = true
 			
-			set_rotation_degrees(wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0))
+			if startDay == 0 and currentRot <= 269 and currentRot > 180:
+				if wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) > 269:
+					set_rotation_degrees(268)
+					canRotate = false
+					velocity = 0
+			
+			if startDay == 20 and currentRot < 350 and currentRot >= 286:
+				if wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) < 286:
+					set_rotation_degrees(287)
+					canRotate = false
+					velocity = 0
+			
+			if canRotate:
+				set_rotation_degrees(wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0))
 			
 			mouseLastFramePosition = mouseCurrentPosition
 		
