@@ -18,7 +18,18 @@ extends HTTPRequest
 @export_node_path("Label") var clockNextDay
 @export var tempText: Array[Label] = []
 @export var windText: Array[Label] = []
+@export var windRotation: Array[Node] = []
+@export var windImage: Array[TextureRect] = []
+@export var gustImage: Array[TextureRect] = []
+@export var windLevel: Array[Texture] = []
+@export var gustLevel: Array[Texture] = []
 @export var cloudText: Array[Label] = []
+@export var cloudImage: Array[TextureRect] = []
+@export var cloudLevel: Array[Texture] = []
+@export var rainLevel: Array[Texture] = []
+@export var snowLevel: Array[Texture] = []
+#Thunder / Lightning?
+@export var rainImage: Array[TextureRect] = []
 @export var precText: Array[Label] = []
 @export var weatherText: Array[Label] = []
 @export var moonTextures: Array[Texture] = []
@@ -49,7 +60,7 @@ func _ready():
 
 func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
-	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14&wind_speed_unit=mph")
+	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14&wind_speed_unit=mph")
 	if error != OK:
 		get_node_or_null(dateText).text = "An error occurred in the HTTP request."
 		#push_error("An error occurred in the HTTP request.")
@@ -84,19 +95,70 @@ func populateForecastTable():
 		if day < 0 or day > 20:
 			tempText[h].get_parent().visible = false
 			precText[h].get_parent().visible = false
-			cloudText[h].get_parent().visible = false
+			cloudImage[h].visible = false
 			windText[h].get_parent().visible = false
 			weatherText[h].get_parent().visible = false
 		else:
 			tempText[h].get_parent().visible = true
 			precText[h].get_parent().visible = true
-			cloudText[h].get_parent().visible = true
+			cloudImage[h].visible = true
 			windText[h].get_parent().visible = true
 			weatherText[h].get_parent().visible = true
-			tempText[h].text = str(openMeteoJSON["hourly"]["temperature_2m"][i]) + "°C\n (" + str(openMeteoJSON["hourly"]["apparent_temperature"][i]) + "°C)"
-			precText[h].text = str(openMeteoJSON["hourly"]["precipitation_probability"][i]) + "% p."
-			cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
-			windText[h].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][i]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][i]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][i]) + "°"
+			tempText[h].text = str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°C\n (" + str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°C)"
+			
+			#Cloud Cover
+			if openMeteoJSON["hourly"]["cloud_cover"][i] >= 0 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 25:
+				cloudImage[h].texture = cloudLevel[0]
+			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 25 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 50:
+				cloudImage[h].texture = cloudLevel[1]
+			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 50 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 75:
+				cloudImage[h].texture = cloudLevel[2]
+			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 75 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 100:
+				cloudImage[h].texture = cloudLevel[3]
+			
+			#Rain and Snow
+			precText[h].text = str(openMeteoJSON["hourly"]["precipitation_probability"][i]) + "%"
+			
+			if openMeteoJSON["hourly"]["rain"][i] == 0:
+				rainImage[h].texture = rainLevel[0]
+			elif openMeteoJSON["hourly"]["rain"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 1:
+				rainImage[h].texture = rainLevel[1]
+			elif openMeteoJSON["hourly"]["rain"][i] > 1 and openMeteoJSON["hourly"]["rain"][i] <= 3:
+				rainImage[h].texture = rainLevel[2]
+			elif openMeteoJSON["hourly"]["rain"][i] > 3:
+				rainImage[h].texture = rainLevel[3]
+			
+			if openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 0.1:
+				rainImage[h].texture = snowLevel[1]
+			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.1 and openMeteoJSON["hourly"]["rain"][i] <= 0.3:
+				rainImage[h].texture = snowLevel[2]
+			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3:
+				rainImage[h].texture = snowLevel[3]
+			
+			#Wind
+			if openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 7:
+				windImage[h].texture = windLevel[0]
+			elif openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 8 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 15:
+				windImage[h].texture = windLevel[1]
+			elif openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 16 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 23:
+				windImage[h].texture = windLevel[2]
+			elif openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 24:
+				windImage[h].texture = windLevel[3]
+				
+			if openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_gusts_10m"][i] <= 12:
+				gustImage[h].texture = gustLevel[0]
+			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 13 and openMeteoJSON["hourly"]["wind_gusts_10m"][i] <= 25:
+				gustImage[h].texture = gustLevel[1]
+			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 26 and openMeteoJSON["hourly"]["wind_gusts_10m"][i] <= 39:
+				gustImage[h].texture = gustLevel[2]
+			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 40:
+				gustImage[h].texture = gustLevel[3]
+				
+			windRotation[h].set_rotation_degrees(wrapf(openMeteoJSON["hourly"]["wind_direction_10m"][i] + 180.0, 0.0, 360.0))
+			
+			
+			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
+			#windText[h].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][i]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][i]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][i]) + "°"
 			weatherText[h].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
 
 func daySummarySetup():
@@ -125,9 +187,9 @@ func populateDaySummary(openMeteoJSON, day, position):
 	var date2 = getWeekdayString(selectedDate.weekday).erase(3,100) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month).erase(3,100)
 	dayDateText[position].text = date2
 	dayWMOText[position].text = getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
-	dayTempText[position].text = str(openMeteoJSON["daily"]["temperature_2m_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["temperature_2m_max"][day]) + "°C"
-	dayAppTempText[position].text = "(" + str(openMeteoJSON["daily"]["apparent_temperature_min"][day]) + "°C - "+ str(openMeteoJSON["daily"]["apparent_temperature_max"][day]) + "°C)"
-	dayWindText[position].text = str(openMeteoJSON["daily"]["wind_speed_10m_max"][day]) + " mph, " + str(openMeteoJSON["daily"]["wind_gusts_10m_max"][day]) + " mph gusts, at "+ str(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]) + "°"
+	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "°C - "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°C"
+	dayAppTempText[position].text = "(" + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "°C - "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°C)"
+	dayWindText[position].text = str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " mph\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " mph gusts\nat "+ str(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + "°"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
