@@ -74,10 +74,10 @@ func _on_request_completed(result, response_code, headers, body):
 
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if openMeteoJSON != null:
-		populateInitialWindDirection()
-		populateForecastTable()
-		daySummarySetup()
 		clockRotation()
+		populateForecastTable()
+		populateInitialWindDirection()
+		daySummarySetup()
 	
 	getLunarPhase()
 
@@ -90,7 +90,7 @@ func populateInitialWindDirection(): # this is separate so that it only happens 
 		var day = get_node_or_null(clock).clockHourDates[h]
 		var i = (day * 24) + h
 		if !(day < 0 or day > 20):
-			windRotation[h].SetInitialRotation(wrapf(openMeteoJSON["hourly"]["wind_direction_10m"][i] + 180.0, 0.0, 360.0))
+			windRotation[h].SetInitialRotation(wrapf(openMeteoJSON["hourly"]["wind_direction_10m"][i] + 180.0, 0.0, 360.0), windRotation[h].get_parent().get_rotation_degrees() ,get_node_or_null(clock).get_rotation_degrees())
 
 func populateForecastTable():
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
@@ -162,6 +162,7 @@ func populateForecastTable():
 			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 40:
 				gustImage[h].texture = gustLevel[3]
 			
+			populateInitialWindDirection()
 			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
 			#windText[h].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][i]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][i]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][i]) + "°"
 			weatherText[h].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])

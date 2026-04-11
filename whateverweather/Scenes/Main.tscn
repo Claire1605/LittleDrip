@@ -98,8 +98,8 @@ clockPreviousDay = NodePath("../ClockAnchor/Clock - Daytime/Label-PreviousDay")
 clockNextDay = NodePath("../ClockAnchor/Clock - Daytime/Label-NextDay")
 tempText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp00/Label-temp00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp01/Label-temp01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp02/Label-temp02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp03/Label-temp03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp04/Label-temp04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp05/Label-temp05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp06/Label-temp06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp07/Label-temp07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp08/Label-temp08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp09/Label-temp09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp10/Label-temp10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp11/Label-temp11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp12/Label-temp12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp13/Label-temp13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp14/Label-temp14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp15/Label-temp15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp16/Label-temp16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp17/Label-temp17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp18/Label-temp18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp19/Label-temp19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp20/Label-temp20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp21/Label-temp21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp22/Label-temp22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp23/Label-temp23")]
 windText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/Label-wind00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/Label-wind01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/Label-wind02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/Label-wind03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/Label-wind04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/Label-wind05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/Label-wind06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/Label-wind07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/Label-wind08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/Label-wind09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/Label-wind10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/Label-wind11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/Label-wind12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/Label-wind13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/Label-wind14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/Label-wind15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/Label-wind16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/Label-wind17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/Label-wind18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/Label-wind19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/Label-wind20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/Label-wind21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/Label-wind22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/Label-wind23")]
-windRotation = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation")]
-windImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation/WindPower")]
+windRotation = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation")]
+windImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation/WindPower")]
 gustImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/GustPower")]
 windLevel = Array[Texture]([ExtResource("42_off7b"), ExtResource("4_js5gh"), ExtResource("5_vvjo1"), ExtResource("6_yisvs")])
 gustLevel = Array[Texture]([ExtResource("43_lfh1j"), ExtResource("8_rgw24"), ExtResource("9_5gwyn"), ExtResource("10_r6gtk")])
@@ -2157,6 +2157,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01" unique_id=728279081]
@@ -2219,6 +2220,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02" unique_id=724787383]
@@ -2281,6 +2283,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03" unique_id=764136042]
@@ -2343,6 +2346,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04" unique_id=1625186679]
@@ -2405,6 +2409,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05" unique_id=627662124]
@@ -2467,6 +2472,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06" unique_id=1090700529]
@@ -2529,6 +2535,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07" unique_id=1063776362]
@@ -2591,6 +2598,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08" unique_id=1814150943]
@@ -2653,6 +2661,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09" unique_id=252941772]
@@ -2715,6 +2724,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10" unique_id=114102850]
@@ -2777,6 +2787,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11" unique_id=1454696689]
@@ -2839,6 +2850,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12" unique_id=166901619]
@@ -2901,6 +2913,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13" unique_id=1196231004]
@@ -2963,6 +2976,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14" unique_id=1687373038]
@@ -3025,6 +3039,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15" unique_id=1708138271]
@@ -3087,6 +3102,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16" unique_id=737910894]
@@ -3149,6 +3165,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17" unique_id=1195782004]
@@ -3211,6 +3228,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18" unique_id=560407966]
@@ -3273,6 +3291,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19" unique_id=811866582]
@@ -3335,6 +3354,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20" unique_id=1641335988]
@@ -3382,7 +3402,7 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21" unique_id=2106034061]
+[node name="WindRotation21" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21" unique_id=2106034061]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3392,12 +3412,13 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation" unique_id=275860902]
-layout_mode = 1
+[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21" unique_id=275860902]
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("42_off7b")
+mouse_filter = 2
+texture = ExtResource("6_yisvs")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21" unique_id=1053211719]
 layout_mode = 1
@@ -3459,6 +3480,7 @@ layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("42_off7b")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22" unique_id=1944336730]

@@ -129,9 +129,8 @@ func _process(delta: float) -> void:
 			
 			if canRotate:
 				set_rotation_degrees(wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0))
-				var newRot = wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0)
 				for x in range(24):
-					weatherRequest.windRotation[x].UpdateRotation(newRot)
+					weatherRequest.windRotation[x].UpdateRotation(get_rotation_degrees())
 			
 			mouseLastFramePosition = mouseCurrentPosition
 		
