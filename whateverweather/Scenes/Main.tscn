@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://hvt31564nhn4" path="res://Art/weatherCode.png" id="42_lac6x"]
 [ext_resource type="Texture2D" uid="uid://dqf6xmlreqfc3" path="res://Art/Wind0.png" id="42_off7b"]
 [ext_resource type="Texture2D" uid="uid://bcoeguv8sea6x" path="res://Art/Gust0.png" id="43_lfh1j"]
+[ext_resource type="Script" uid="uid://bcaap0qjnov2y" path="res://Scripts/WindRotation.gd" id="58_1bbis"]
 [ext_resource type="Texture2D" uid="uid://qbpvungyvfkh" path="res://Art/LittleDrip.png" id="61_t3x2a"]
 
 [node name="Control" type="Control" unique_id=1289431972]
@@ -2086,6 +2087,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation" unique_id=2025551990]
 layout_mode = 1
@@ -2148,6 +2150,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation" unique_id=1657512890]
 layout_mode = 1
@@ -2209,6 +2212,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation" unique_id=887107134]
 layout_mode = 1
@@ -2270,6 +2274,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation" unique_id=564004344]
 layout_mode = 1
@@ -2331,6 +2336,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation" unique_id=649527369]
 layout_mode = 1
@@ -2392,6 +2398,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation" unique_id=1239698184]
 layout_mode = 1
@@ -2453,6 +2460,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation" unique_id=1808009601]
 layout_mode = 1
@@ -2514,6 +2522,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation" unique_id=1760738648]
 layout_mode = 1
@@ -2575,6 +2584,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation" unique_id=1861134852]
 layout_mode = 1
@@ -2636,6 +2646,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation" unique_id=797149454]
 layout_mode = 1
@@ -2697,6 +2708,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation" unique_id=1340608447]
 layout_mode = 1
@@ -2758,6 +2770,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation" unique_id=995521147]
 layout_mode = 1
@@ -2819,6 +2832,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation" unique_id=14658466]
 layout_mode = 1
@@ -2880,6 +2894,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation" unique_id=1670747557]
 layout_mode = 1
@@ -2941,6 +2956,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation" unique_id=953797125]
 layout_mode = 1
@@ -3002,6 +3018,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation" unique_id=224794976]
 layout_mode = 1
@@ -3063,6 +3080,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation" unique_id=1692815708]
 layout_mode = 1
@@ -3124,6 +3142,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation" unique_id=1840272035]
 layout_mode = 1
@@ -3185,6 +3204,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation" unique_id=701247099]
 layout_mode = 1
@@ -3246,6 +3266,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation" unique_id=1825148340]
 layout_mode = 1
@@ -3307,6 +3328,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation" unique_id=315078103]
 layout_mode = 1
@@ -3368,6 +3390,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation" unique_id=275860902]
 layout_mode = 1
@@ -3429,6 +3452,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation" unique_id=816194650]
 layout_mode = 1
@@ -3490,6 +3514,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("58_1bbis")
 
 [node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation" unique_id=2003948686]
 layout_mode = 1
