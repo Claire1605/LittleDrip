@@ -146,10 +146,10 @@ func _process(delta: float) -> void:
 			
 			set_rotation_degrees(wrap(get_rotation_degrees() + (velocity * delta), 0.0, 360.0))
 
-		if previousRot > 270 and previousRot < 360 and currentRot > 180 and currentRot < 270:
+		if previousRot > 270 and previousRot < 360 and currentRot > 180 and currentRot <= 270:
 			weatherRequest.nextDay()
-		elif previousRot > 180 and previousRot < 270 and currentRot > 270 and currentRot < 360:
-			weatherRequest.previousDay()
+		elif previousRot > 180 and previousRot < 270 and currentRot >= 270 and currentRot < 360:
+			weatherRequest.previousDay()		
 		
 		previousRot = currentRot
 

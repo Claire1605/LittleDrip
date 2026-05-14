@@ -3,20 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://ciso4gdkv1grp" path="res://Scenes/save_data.tscn" id="1_vy5pj"]
 [ext_resource type="Script" uid="uid://d28c3fhqkyiy1" path="res://Scripts/LocationRequest.gd" id="2_50glp"]
 [ext_resource type="Script" uid="uid://be66rpgutl5mn" path="res://Scripts/WeatherRequest.gd" id="2_idj7w"]
+[ext_resource type="Texture2D" uid="uid://byghrqtihn4wx" path="res://Art/ClayWind0.png" id="3_8n4h5"]
 [ext_resource type="Theme" uid="uid://b06rmsyrr1jt6" path="res://Themes/weatherTheme.tres" id="3_kln2b"]
 [ext_resource type="Texture2D" uid="uid://dso4k6j8gwmic" path="res://Art/moon_001.png" id="4_6heos"]
-[ext_resource type="Texture2D" uid="uid://bxnm15fulvn7o" path="res://Art/Wind1.png" id="4_js5gh"]
-[ext_resource type="Texture2D" uid="uid://bgmkw014qm46i" path="res://Art/Cloud1.png" id="4_m4llh"]
+[ext_resource type="Texture2D" uid="uid://dqnckixyxppxe" path="res://Art/ClayWind1.png" id="4_as1io"]
 [ext_resource type="Texture2D" uid="uid://3gf157aiplcn" path="res://Art/moon_000.png" id="4_pbw6q"]
 [ext_resource type="Theme" uid="uid://dsb6u3nnai6kd" path="res://Themes/table.tres" id="4_rgh2o"]
-[ext_resource type="Texture2D" uid="uid://3eshnyp2b7k" path="res://Art/Cloud2.png" id="5_lac6x"]
 [ext_resource type="Texture2D" uid="uid://dwn4qmgssok10" path="res://Art/venus_000.png" id="5_v1gob"]
-[ext_resource type="Texture2D" uid="uid://b0w60iolwwugm" path="res://Art/Wind2.png" id="5_vvjo1"]
 [ext_resource type="Texture2D" uid="uid://odxq7qk6nabd" path="res://Art/moon_002.png" id="5_vvnwx"]
+[ext_resource type="Texture2D" uid="uid://cpot5mruetwnc" path="res://Art/ClayWind2.png" id="5_xd5mi"]
 [ext_resource type="Texture2D" uid="uid://bv4wsmcq071a1" path="res://Art/moon_003.png" id="6_btbly"]
-[ext_resource type="Texture2D" uid="uid://cu86s6o2wqfox" path="res://Art/Cloud3.png" id="6_hpjjw"]
 [ext_resource type="Texture2D" uid="uid://cn6x6jj1yex2p" path="res://Art/arrowRight.png" id="6_jw32o"]
-[ext_resource type="Texture2D" uid="uid://c010xm3by17v7" path="res://Art/Wind3.png" id="6_yisvs"]
+[ext_resource type="Texture2D" uid="uid://cg1optl4yjjar" path="res://Art/ClayWind3.png" id="6_tt1x2"]
 [ext_resource type="Texture2D" uid="uid://goxtkyhsrjxn" path="res://Art/arrowLeft.png" id="7_50glp"]
 [ext_resource type="Texture2D" uid="uid://d3yywyyfogpm5" path="res://Art/moon_004.png" id="7_vs04g"]
 [ext_resource type="Texture2D" uid="uid://bwm6p5mc1nho" path="res://Art/moon_005.png" id="8_6ehlx"]
@@ -26,25 +24,28 @@
 [ext_resource type="Texture2D" uid="uid://ci6k3k6r1u8nl" path="res://Art/moon_007.png" id="10_f7hdo"]
 [ext_resource type="Texture2D" uid="uid://cxvumb1cnourd" path="res://Art/Gust3.png" id="10_r6gtk"]
 [ext_resource type="Texture2D" uid="uid://l6kvh0r8qnsi" path="res://Art/moon_008.png" id="11_clvyn"]
-[ext_resource type="Texture2D" uid="uid://c8urqg502ars6" path="res://Art/sunny.png" id="11_y2ulj"]
+[ext_resource type="Texture2D" uid="uid://6vxuwyu3pjju" path="res://Art/ClaySun00.png" id="11_ex7s8"]
 [ext_resource type="Texture2D" uid="uid://cq5nfvl8r5dvy" path="res://Art/moon_009.png" id="12_d8m2u"]
+[ext_resource type="Texture2D" uid="uid://c2du1hg6dpwuf" path="res://Art/ClaySun01a.png" id="12_h2tpa"]
 [ext_resource type="Texture2D" uid="uid://obbgpwu1u6uu" path="res://Art/moon_010.png" id="13_5psol"]
+[ext_resource type="Texture2D" uid="uid://ybs4pso17caq" path="res://Art/ClaySun02a.png" id="13_h2tpa"]
 [ext_resource type="Texture2D" uid="uid://ck1hd7vfusq0k" path="res://Art/moon_011.png" id="14_m4llh"]
+[ext_resource type="Texture2D" uid="uid://bo3el8rxprfp1" path="res://Art/ClaySun03.png" id="14_nkjwg"]
+[ext_resource type="Texture2D" uid="uid://w7v8x287e6wl" path="res://Art/ClayRain0.png" id="15_4clwk"]
 [ext_resource type="Texture2D" uid="uid://bk0bkbxiofoa" path="res://Art/Rain0.png" id="15_j7e3e"]
 [ext_resource type="Texture2D" uid="uid://b07l3gnojv4sm" path="res://Art/moon_012.png" id="15_lac6x"]
+[ext_resource type="Texture2D" uid="uid://tpm1r0hfae42" path="res://Art/ClayRain1.png" id="16_h2tpa"]
 [ext_resource type="Texture2D" uid="uid://bco2nfn0gumec" path="res://Art/moon_013.png" id="16_hpjjw"]
-[ext_resource type="Texture2D" uid="uid://d1v267vskygk5" path="res://Art/Rain1.png" id="16_y2ulj"]
+[ext_resource type="Texture2D" uid="uid://hnwfosynn86b" path="res://Art/ClayRain2.png" id="17_nkjwg"]
 [ext_resource type="Texture2D" uid="uid://cmcii1oc01i61" path="res://Art/moon_014.png" id="17_off7b"]
-[ext_resource type="Texture2D" uid="uid://dywdbe0lketnp" path="res://Art/Rain2.png" id="17_t3x2a"]
-[ext_resource type="Texture2D" uid="uid://batbp7yyq2748" path="res://Art/Rain3.png" id="18_1bbis"]
+[ext_resource type="Texture2D" uid="uid://1c2upd8gql7e" path="res://Art/ClayRain3.png" id="18_8n4h5"]
 [ext_resource type="Texture2D" uid="uid://ncimxbcom3ry" path="res://Art/moon_015.png" id="18_lfh1j"]
 [ext_resource type="Texture2D" uid="uid://bek6v7oaaog4y" path="res://Art/moon_016.png" id="19_7sj7i"]
-[ext_resource type="Texture2D" uid="uid://rwebeh85xk5y" path="res://Art/Snow0.png" id="19_yn2g2"]
+[ext_resource type="Texture2D" uid="uid://cnrpsg56hjfn0" path="res://Art/ClaySnow1.png" id="19_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://dyhhb6h3i077k" path="res://Art/ClaySnow2.png" id="20_4clwk"]
 [ext_resource type="Texture2D" uid="uid://b3n3d7x5rrpol" path="res://Art/moon_017.png" id="20_semxg"]
-[ext_resource type="Texture2D" uid="uid://dgelbqtjof7ve" path="res://Art/Snow1.png" id="20_yic5e"]
 [ext_resource type="Texture2D" uid="uid://b06hlw8ljtmdk" path="res://Art/moon_018.png" id="21_ep8v8"]
-[ext_resource type="Texture2D" uid="uid://c0in5lp65xo27" path="res://Art/Snow2.png" id="21_ex7s8"]
-[ext_resource type="Texture2D" uid="uid://sntjbq58jmuo" path="res://Art/Snow3.png" id="22_4clwk"]
+[ext_resource type="Texture2D" uid="uid://2hl76yvntx6k" path="res://Art/ClaySnow3.png" id="21_h2tpa"]
 [ext_resource type="Texture2D" uid="uid://jw5nvggvjshe" path="res://Art/moon_019.png" id="22_3133c"]
 [ext_resource type="Texture2D" uid="uid://b078vcmb5yaw6" path="res://Art/moon_020.png" id="23_js5gh"]
 [ext_resource type="Texture2D" uid="uid://b0gmc4d6jwjs7" path="res://Art/moon_021.png" id="24_vvjo1"]
@@ -56,16 +57,20 @@
 [ext_resource type="Texture2D" uid="uid://p1ck2k2ynu6i" path="res://Art/moon_027.png" id="30_eywpa"]
 [ext_resource type="Texture2D" uid="uid://faw7qlpulttb" path="res://Art/moon_028.png" id="31_vvnwx"]
 [ext_resource type="Material" uid="uid://cphcxen3iddbt" path="res://Scripts/Shaders/Radial.tres" id="33_utia5"]
-[ext_resource type="Texture2D" uid="uid://ljs0byl4taqh" path="res://Art/clock-night.png" id="35_utia5"]
-[ext_resource type="Texture2D" uid="uid://dddld3qm4fnwa" path="res://Art/placeholder.png" id="36_btbly"]
 [ext_resource type="Texture2D" uid="uid://ce6xe3mye77f" path="res://Art/Cloud0.png" id="38_clvyn"]
-[ext_resource type="Texture2D" uid="uid://54fqmisml5y0" path="res://Art/clock.png" id="39_vs04g"]
 [ext_resource type="Script" uid="uid://d3rpplbndnmue" path="res://Scripts/ClockSwipe.gd" id="40_6ehlx"]
-[ext_resource type="Texture2D" uid="uid://hvt31564nhn4" path="res://Art/weatherCode.png" id="42_lac6x"]
-[ext_resource type="Texture2D" uid="uid://dqf6xmlreqfc3" path="res://Art/Wind0.png" id="42_off7b"]
 [ext_resource type="Texture2D" uid="uid://bcoeguv8sea6x" path="res://Art/Gust0.png" id="43_lfh1j"]
+[ext_resource type="Texture2D" uid="uid://dkvkk7fwdcbnf" path="res://Art/SpaceBackground.png" id="52_4clwk"]
+[ext_resource type="Texture2D" uid="uid://w7gps2lr58vx" path="res://Art/daySky.png" id="53_1bbis"]
+[ext_resource type="Texture2D" uid="uid://3jw4yvata6s2" path="res://Art/nightSkyTransparent.png" id="56_1bbis"]
+[ext_resource type="Texture2D" uid="uid://cls1vmnxjm1qx" path="res://Art/ClayCircle1.png" id="57_ex7s8"]
 [ext_resource type="Script" uid="uid://bcaap0qjnov2y" path="res://Scripts/WindRotation.gd" id="58_1bbis"]
-[ext_resource type="Texture2D" uid="uid://qbpvungyvfkh" path="res://Art/LittleDrip.png" id="61_t3x2a"]
+[ext_resource type="Texture2D" uid="uid://hb67w5jillh6" path="res://Art/ClayCircle2.png" id="58_4clwk"]
+[ext_resource type="Texture2D" uid="uid://bdrck3x0fhi17" path="res://Art/ClayCircle3.png" id="59_h2tpa"]
+[ext_resource type="Texture2D" uid="uid://cj8np7sk1awo8" path="res://Art/ClaySpeechBubble.png" id="62_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://dvfmy1ohmap8s" path="res://Art/LittleDrip-Small.png" id="64_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://bpioibqsc425r" path="res://Art/ClaySummary2.png" id="68_h2tpa"]
+[ext_resource type="Texture2D" uid="uid://b5nafap0ymdpy" path="res://Art/ClaySummary1.png" id="69_h2tpa"]
 
 [node name="Control" type="Control" unique_id=1289431972]
 layout_mode = 3
@@ -101,13 +106,13 @@ windText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/Label
 windRotation = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation")]
 windImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation/WindPower")]
 gustImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/GustPower")]
-windLevel = Array[Texture]([ExtResource("42_off7b"), ExtResource("4_js5gh"), ExtResource("5_vvjo1"), ExtResource("6_yisvs")])
+windLevel = Array[Texture]([ExtResource("3_8n4h5"), ExtResource("4_as1io"), ExtResource("5_xd5mi"), ExtResource("6_tt1x2")])
 gustLevel = Array[Texture]([ExtResource("43_lfh1j"), ExtResource("8_rgw24"), ExtResource("9_5gwyn"), ExtResource("10_r6gtk")])
 cloudText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud00/Label-cloud00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud01/Label-cloud01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud02/Label-cloud02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud03/Label-cloud03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud04/Label-cloud04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud05/Label-cloud05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud06/Label-cloud06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud07/Label-cloud07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud08/Label-cloud08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud09/Label-cloud09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud10/Label-cloud10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud11/Label-cloud11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud12/Label-cloud12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud13/Label-cloud13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud14/Label-cloud14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud15/Label-cloud15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud16/Label-cloud16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud17/Label-cloud17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud18/Label-cloud18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud19/Label-cloud19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud20/Label-cloud20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud21/Label-cloud21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud22/Label-cloud22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud23/Label-cloud23")]
 cloudImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud23")]
-cloudLevel = Array[Texture]([ExtResource("11_y2ulj"), ExtResource("4_m4llh"), ExtResource("5_lac6x"), ExtResource("6_hpjjw")])
-rainLevel = Array[Texture]([ExtResource("15_j7e3e"), ExtResource("16_y2ulj"), ExtResource("17_t3x2a"), ExtResource("18_1bbis")])
-snowLevel = Array[Texture]([ExtResource("19_yn2g2"), ExtResource("20_yic5e"), ExtResource("21_ex7s8"), ExtResource("22_4clwk")])
+cloudLevel = Array[Texture]([ExtResource("11_ex7s8"), ExtResource("12_h2tpa"), ExtResource("13_h2tpa"), ExtResource("14_nkjwg")])
+rainLevel = Array[Texture]([ExtResource("15_4clwk"), ExtResource("16_h2tpa"), ExtResource("17_nkjwg"), ExtResource("18_8n4h5")])
+snowLevel = Array[Texture]([ExtResource("15_4clwk"), ExtResource("19_ex7s8"), ExtResource("20_4clwk"), ExtResource("21_h2tpa")])
 rainImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount")]
 precText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/Label-prec00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/Label-prec01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/Label-prec02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/Label-prec03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/Label-prec04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/Label-prec05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/Label-prec06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/Label-prec07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/Label-prec08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/Label-prec09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/Label-prec10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/Label-prec11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/Label-prec12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/Label-prec13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/Label-prec14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/Label-prec15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/Label-prec16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/Label-prec17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/Label-prec18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/Label-prec19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/Label-prec20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/Label-prec21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/Label-prec22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/Label-prec23")]
 weatherText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather00/Label-weather00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather01/Label-weather01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather02/Label-weather02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather03/Label-weather03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather05/Label-weather05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather04/Label-weather04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather06/Label-weather06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather07/Label-weather07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather08/Label-weather08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather09/Label-weather09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather10/Label-weather10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather11/Label-weather11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather12/Label-weather12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather13/Label-weather13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather14/Label-weather14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather15/Label-weather15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather16/Label-weather16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather17/Label-weather17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather18/Label-weather18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather19/Label-weather19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather20/Label-weather20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather21/Label-weather21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather22/Label-weather22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather23/Label-weather23")]
@@ -124,6 +129,17 @@ script = ExtResource("2_50glp")
 locationResults = NodePath("../LocationResults")
 locationSearch = NodePath("../LocationSearch")
 weatherRequest = NodePath("../HTTPRequest_Weather")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=443430196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("52_4clwk")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="ClockAnchor" type="Control" parent="." unique_id=2052414442]
 layout_mode = 1
@@ -150,7 +166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5707964
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture_normal = ExtResource("39_vs04g")
+texture_normal = ExtResource("53_1bbis")
 stretch_mode = 3
 script = ExtResource("40_6ehlx")
 weatherRequestPath = NodePath("../../HTTPRequest_Weather")
@@ -170,7 +186,7 @@ offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("35_utia5")
+texture = ExtResource("56_1bbis")
 stretch_mode = 3
 
 [node name="Label-PreviousDay" type="Label" parent="ClockAnchor/Clock - Daytime" unique_id=241965030]
@@ -1148,7 +1164,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp00" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp00" unique_id=914279071]
 layout_mode = 1
@@ -1186,7 +1202,7 @@ rotation = 0.2617994
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp01" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp01" unique_id=1386973812]
 layout_mode = 1
@@ -1224,7 +1240,7 @@ rotation = 0.5235988
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp02" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp02" unique_id=1795247888]
 layout_mode = 1
@@ -1262,7 +1278,7 @@ rotation = 0.7853982
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp03" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp03" unique_id=46952862]
 layout_mode = 1
@@ -1300,7 +1316,7 @@ rotation = 1.0471976
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp04" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp04" unique_id=386485584]
 layout_mode = 1
@@ -1338,7 +1354,7 @@ rotation = 1.3089969
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp05" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp05" unique_id=1480470179]
 layout_mode = 1
@@ -1376,7 +1392,7 @@ rotation = 1.5707964
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp06" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp06" unique_id=955270326]
 layout_mode = 1
@@ -1414,7 +1430,7 @@ rotation = 1.8325957
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp07" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp07" unique_id=1564363296]
 layout_mode = 1
@@ -1452,7 +1468,7 @@ rotation = 2.0943952
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp08" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp08" unique_id=1953690976]
 layout_mode = 1
@@ -1490,7 +1506,7 @@ rotation = 2.3561945
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp09" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp09" unique_id=1184812029]
 layout_mode = 1
@@ -1528,7 +1544,7 @@ rotation = 2.6179938
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp10" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp10" unique_id=386525759]
 layout_mode = 1
@@ -1566,7 +1582,7 @@ rotation = 2.8797932
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp11" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp11" unique_id=828988098]
 layout_mode = 1
@@ -1604,7 +1620,7 @@ rotation = 3.1415927
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp12" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp12" unique_id=589506641]
 layout_mode = 1
@@ -1642,7 +1658,7 @@ rotation = 3.403392
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp13" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp13" unique_id=124104920]
 layout_mode = 1
@@ -1680,7 +1696,7 @@ rotation = 3.6651914
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp14" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp14" unique_id=649312]
 layout_mode = 1
@@ -1718,7 +1734,7 @@ rotation = 3.9269907
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp15" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp15" unique_id=381806428]
 layout_mode = 1
@@ -1756,7 +1772,7 @@ rotation = 4.1887903
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp16" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp16" unique_id=1815484191]
 layout_mode = 1
@@ -1794,7 +1810,7 @@ rotation = 4.4505897
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp17" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp17" unique_id=1569011473]
 layout_mode = 1
@@ -1832,7 +1848,7 @@ rotation = 4.712389
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp18" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp18" unique_id=1699427218]
 layout_mode = 1
@@ -1870,7 +1886,7 @@ rotation = 4.9741883
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp19" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp19" unique_id=1059752915]
 layout_mode = 1
@@ -1908,7 +1924,7 @@ rotation = 5.2359877
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp20" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp20" unique_id=1151308035]
 layout_mode = 1
@@ -1946,7 +1962,7 @@ rotation = 5.497787
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("57_ex7s8")
 
 [node name="Label-temp21" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp21" unique_id=598885554]
 layout_mode = 1
@@ -1984,7 +2000,7 @@ rotation = 5.7595863
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("58_4clwk")
 
 [node name="Label-temp22" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp22" unique_id=369372552]
 layout_mode = 1
@@ -2022,7 +2038,7 @@ rotation = 6.021386
 pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("36_btbly")
+texture = ExtResource("59_h2tpa")
 
 [node name="Label-temp23" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp23" unique_id=1893037726]
 layout_mode = 1
@@ -2095,7 +2111,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00" unique_id=1047537958]
 layout_mode = 1
@@ -2158,7 +2174,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01" unique_id=728279081]
 layout_mode = 1
@@ -2221,7 +2237,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02" unique_id=724787383]
 layout_mode = 1
@@ -2284,7 +2300,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03" unique_id=764136042]
 layout_mode = 1
@@ -2347,7 +2363,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04" unique_id=1625186679]
 layout_mode = 1
@@ -2410,7 +2426,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05" unique_id=627662124]
 layout_mode = 1
@@ -2473,7 +2489,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06" unique_id=1090700529]
 layout_mode = 1
@@ -2536,7 +2552,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07" unique_id=1063776362]
 layout_mode = 1
@@ -2599,7 +2615,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08" unique_id=1814150943]
 layout_mode = 1
@@ -2662,7 +2678,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09" unique_id=252941772]
 layout_mode = 1
@@ -2725,7 +2741,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10" unique_id=114102850]
 layout_mode = 1
@@ -2788,7 +2804,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11" unique_id=1454696689]
 layout_mode = 1
@@ -2851,7 +2867,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12" unique_id=166901619]
 layout_mode = 1
@@ -2914,7 +2930,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13" unique_id=1196231004]
 layout_mode = 1
@@ -2977,7 +2993,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14" unique_id=1687373038]
 layout_mode = 1
@@ -3040,7 +3056,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15" unique_id=1708138271]
 layout_mode = 1
@@ -3103,7 +3119,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16" unique_id=737910894]
 layout_mode = 1
@@ -3166,7 +3182,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17" unique_id=1195782004]
 layout_mode = 1
@@ -3229,7 +3245,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18" unique_id=560407966]
 layout_mode = 1
@@ -3292,7 +3308,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19" unique_id=811866582]
 layout_mode = 1
@@ -3355,7 +3371,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20" unique_id=1641335988]
 layout_mode = 1
@@ -3418,7 +3434,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("6_yisvs")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21" unique_id=1053211719]
 layout_mode = 1
@@ -3481,7 +3497,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22" unique_id=1944336730]
 layout_mode = 1
@@ -3544,7 +3560,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_off7b")
+texture = ExtResource("3_8n4h5")
 
 [node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23" unique_id=1211762450]
 layout_mode = 1
@@ -3577,8 +3593,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3622,8 +3639,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3667,8 +3685,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3712,8 +3731,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3757,8 +3777,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3802,8 +3823,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3847,8 +3869,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3892,8 +3915,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3937,8 +3961,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -3982,8 +4007,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4027,8 +4053,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4072,8 +4099,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4117,8 +4145,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4162,8 +4191,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4207,8 +4237,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4252,8 +4283,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4297,8 +4329,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4342,8 +4375,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4387,8 +4421,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4432,8 +4467,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4477,8 +4513,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4522,8 +4559,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4567,8 +4605,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4612,8 +4651,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 50.0
+offset_bottom = 5.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -5608,7 +5648,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5619,9 +5659,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5649,7 +5689,7 @@ rotation = 0.2617994
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5660,9 +5700,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5690,7 +5730,7 @@ rotation = 0.5235988
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5701,9 +5741,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5731,7 +5771,7 @@ rotation = 0.7853982
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5742,9 +5782,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5772,7 +5812,7 @@ rotation = 1.0471976
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5783,9 +5823,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5813,7 +5853,7 @@ rotation = 1.3089969
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5824,9 +5864,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5854,7 +5894,7 @@ rotation = 1.5707964
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5865,9 +5905,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5895,7 +5935,7 @@ rotation = 1.8325957
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5906,9 +5946,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5936,7 +5976,7 @@ rotation = 2.0943952
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5947,9 +5987,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -5977,7 +6017,7 @@ rotation = 2.3561945
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -5988,9 +6028,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6018,7 +6058,7 @@ rotation = 2.6179938
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6029,9 +6069,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6059,7 +6099,7 @@ rotation = 2.8797932
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6070,9 +6110,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6100,7 +6140,7 @@ rotation = 3.1415927
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6111,9 +6151,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6141,7 +6181,7 @@ rotation = 3.403392
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6152,9 +6192,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6182,7 +6222,7 @@ rotation = 3.6651914
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6193,9 +6233,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6223,7 +6263,7 @@ rotation = 3.9269907
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6234,9 +6274,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6264,7 +6304,7 @@ rotation = 4.1887903
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6275,9 +6315,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6305,7 +6345,7 @@ rotation = 4.4505897
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6316,9 +6356,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6346,7 +6386,7 @@ rotation = 4.712389
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6357,9 +6397,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6387,7 +6427,7 @@ rotation = 4.9741883
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6398,9 +6438,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6428,7 +6468,7 @@ rotation = 5.2359877
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6439,9 +6479,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6469,7 +6509,7 @@ rotation = 5.497787
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6480,9 +6520,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6510,7 +6550,7 @@ rotation = 5.7595863
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6521,9 +6561,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6551,7 +6591,7 @@ rotation = 6.021386
 pivot_offset = Vector2(0, 1010)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("42_lac6x")
+texture = ExtResource("62_ex7s8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -6562,9 +6602,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.695915
+offset_left = -59.915367
 offset_top = -30.000122
-offset_right = 88.304085
+offset_right = 70.084625
 offset_bottom = 31.999878
 grow_horizontal = 2
 grow_vertical = 2
@@ -6593,7 +6633,9 @@ anchor_left = 0.85
 anchor_top = 0.04
 anchor_right = 0.95
 anchor_bottom = 0.09
-texture_normal = ExtResource("61_t3x2a")
+offset_right = 20.0
+offset_bottom = 10.999939
+texture_normal = ExtResource("64_ex7s8")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -6683,7 +6725,7 @@ anchor_left = 0.06
 anchor_top = 0.2
 anchor_right = 0.34
 anchor_bottom = 0.38
-texture_normal = ExtResource("36_btbly")
+texture_normal = ExtResource("68_h2tpa")
 stretch_mode = 0
 
 [node name="DateText2" type="Label" parent="SummaryPanelPrevious" unique_id=1701299402]
@@ -6693,6 +6735,8 @@ anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.2
+offset_right = -14.0
+offset_bottom = 2.8799973
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6707,6 +6751,8 @@ anchor_left = 0.1
 anchor_top = 0.2
 anchor_right = 0.9
 anchor_bottom = 0.3
+offset_right = -14.0
+offset_bottom = 2.8799973
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6720,6 +6766,8 @@ anchor_left = 0.1
 anchor_top = 0.3
 anchor_right = 0.9
 anchor_bottom = 0.4
+offset_right = -14.0
+offset_bottom = 2.880005
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6733,6 +6781,8 @@ anchor_left = 0.1
 anchor_top = 0.4
 anchor_right = 0.9
 anchor_bottom = 0.5
+offset_right = -14.0
+offset_bottom = 2.880005
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6746,6 +6796,7 @@ anchor_left = 0.1
 anchor_top = 0.5
 anchor_right = 0.9
 anchor_bottom = 0.8
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6760,6 +6811,8 @@ anchor_left = 0.1
 anchor_top = 0.8
 anchor_right = 0.9
 anchor_bottom = 0.9
+offset_right = -14.0
+offset_bottom = 2.8800354
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6773,7 +6826,7 @@ anchor_left = 0.36
 anchor_top = 0.18
 anchor_right = 0.64
 anchor_bottom = 0.4
-texture_normal = ExtResource("36_btbly")
+texture_normal = ExtResource("69_h2tpa")
 stretch_mode = 0
 
 [node name="DateText2" type="Label" parent="SummaryPanelToday" unique_id=1603029563]
@@ -6783,6 +6836,7 @@ anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.2
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6797,6 +6851,7 @@ anchor_left = 0.1
 anchor_top = 0.2
 anchor_right = 0.9
 anchor_bottom = 0.3
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6810,6 +6865,7 @@ anchor_left = 0.1
 anchor_top = 0.3
 anchor_right = 0.9
 anchor_bottom = 0.4
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6823,6 +6879,7 @@ anchor_left = 0.1
 anchor_top = 0.4
 anchor_right = 0.9
 anchor_bottom = 0.5
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6836,6 +6893,7 @@ anchor_left = 0.1
 anchor_top = 0.5
 anchor_right = 0.9
 anchor_bottom = 0.8
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6850,6 +6908,7 @@ anchor_left = 0.1
 anchor_top = 0.8
 anchor_right = 0.9
 anchor_bottom = 0.9
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6863,7 +6922,7 @@ anchor_left = 0.66
 anchor_top = 0.2
 anchor_right = 0.94
 anchor_bottom = 0.38
-texture_normal = ExtResource("36_btbly")
+texture_normal = ExtResource("68_h2tpa")
 stretch_mode = 0
 
 [node name="DateText2" type="Label" parent="SummaryPanelNext" unique_id=1338256005]
@@ -6873,6 +6932,8 @@ anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.2
+offset_right = -14.0
+offset_bottom = 2.8799973
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6887,6 +6948,8 @@ anchor_left = 0.1
 anchor_top = 0.2
 anchor_right = 0.9
 anchor_bottom = 0.3
+offset_right = -14.0
+offset_bottom = 2.8799973
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6900,6 +6963,8 @@ anchor_left = 0.1
 anchor_top = 0.3
 anchor_right = 0.9
 anchor_bottom = 0.4
+offset_right = -14.0
+offset_bottom = 2.880005
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6913,6 +6978,8 @@ anchor_left = 0.1
 anchor_top = 0.4
 anchor_right = 0.9
 anchor_bottom = 0.5
+offset_right = -14.0
+offset_bottom = 2.880005
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6926,6 +6993,7 @@ anchor_left = 0.1
 anchor_top = 0.5
 anchor_right = 0.9
 anchor_bottom = 0.8
+offset_right = -14.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -6940,6 +7008,8 @@ anchor_left = 0.1
 anchor_top = 0.8
 anchor_right = 0.9
 anchor_bottom = 0.9
+offset_right = -14.0
+offset_bottom = 2.8800354
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32

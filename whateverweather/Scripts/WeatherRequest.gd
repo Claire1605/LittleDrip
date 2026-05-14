@@ -82,9 +82,9 @@ func _on_request_completed(result, response_code, headers, body):
 	getLunarPhase()
 
 func _process(delta: float) -> void:
-	if get_node_or_null(clock).requestReady == true:
+	if get_node_or_null(clock).requestReady:
 		populateForecastTable()
-		
+
 func populateInitialWindDirection(): # this is separate so that it only happens once and not every frame
 	for h in range(0,24):
 		var day = get_node_or_null(clock).clockHourDates[h]
@@ -116,12 +116,20 @@ func populateForecastTable():
 			
 			#Cloud Cover
 			if openMeteoJSON["hourly"]["cloud_cover"][i] >= 0 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 25:
+				if h == 22:
+					print("0, day: " + str(day) + ", h: " + str(h))
 				cloudImage[h].texture = cloudLevel[0]
 			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 25 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 50:
+				if h == 22:
+					print("1, day: " + str(day) + ", h: " + str(h))
 				cloudImage[h].texture = cloudLevel[1]
 			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 50 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 75:
+				if h == 22:
+					print("2, day: " + str(day) + ", h: " + str(h))
 				cloudImage[h].texture = cloudLevel[2]
 			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 75 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 100:
+				if h == 22:
+					print("3, day: " + str(day) + ", h: " + str(h))
 				cloudImage[h].texture = cloudLevel[3]
 			
 			#Rain and Snow

@@ -20,7 +20,7 @@ config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0, 0.152847, 0.190748, 1)
 boot_splash/show_image=false
 boot_splash/image="uid://dmbbxbdncd246"
-config/icon="uid://dmbbxbdncd246"
+config/icon="uid://dc8n2rrscgule"
 
 [display]
 
