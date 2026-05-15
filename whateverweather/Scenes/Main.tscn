@@ -70,11 +70,15 @@
 [ext_resource type="Script" uid="uid://bcaap0qjnov2y" path="res://Scripts/WindRotation.gd" id="58_1bbis"]
 [ext_resource type="Texture2D" uid="uid://hb67w5jillh6" path="res://Art/ClayCircle2.png" id="58_4clwk"]
 [ext_resource type="Texture2D" uid="uid://bdrck3x0fhi17" path="res://Art/ClayCircle3.png" id="59_h2tpa"]
+[ext_resource type="Theme" uid="uid://5dsnv0fiux1o" path="res://Themes/ClockDateText.tres" id="60_atu2d"]
+[ext_resource type="Theme" uid="uid://c23ev4glymqnu" path="res://Themes/ClockText.tres" id="60_tt1x2"]
 [ext_resource type="Shader" uid="uid://clpwyg7thik51" path="res://Scripts/Shaders/colourTint.gdshader" id="60_xd5mi"]
 [ext_resource type="Texture2D" uid="uid://cj8np7sk1awo8" path="res://Art/ClaySpeechBubble.png" id="62_ex7s8"]
+[ext_resource type="Theme" uid="uid://dek1lhvw5b8vv" path="res://Themes/TempText.tres" id="63_2wrh7"]
 [ext_resource type="Texture2D" uid="uid://dvfmy1ohmap8s" path="res://Art/LittleDrip-Small.png" id="64_ex7s8"]
 [ext_resource type="Texture2D" uid="uid://bpioibqsc425r" path="res://Art/ClaySummary2.png" id="68_h2tpa"]
 [ext_resource type="Texture2D" uid="uid://cq04wb7fq8q4c" path="res://Art/ClaySummary1a.png" id="72_xd5mi"]
+[ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="73_x5wht"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1x2"]
 shader = ExtResource("60_xd5mi")
@@ -213,7 +217,7 @@ offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_atu2d")
 horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 2
@@ -232,7 +236,7 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_atu2d")
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -264,7 +268,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp00" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour00" unique_id=1514559992]
+[node name="Label-hour00" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour00" unique_id=1514559992]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,8 +282,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -302,7 +305,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp01" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour01" unique_id=1756005355]
+[node name="Label-hour01" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour01" unique_id=1756005355]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -316,8 +319,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "01:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -340,7 +342,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp02" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour02" unique_id=387791752]
+[node name="Label-hour02" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour02" unique_id=387791752]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -354,8 +356,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "02:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -378,7 +379,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp03" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour03" unique_id=1949373047]
+[node name="Label-hour03" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour03" unique_id=1949373047]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -392,8 +393,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "03:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -416,7 +416,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp04" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour04" unique_id=1501243636]
+[node name="Label-hour04" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour04" unique_id=1501243636]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -430,8 +430,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "04:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -454,7 +453,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp05" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour05" unique_id=588515744]
+[node name="Label-hour05" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour05" unique_id=588515744]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -468,8 +467,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "05:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -492,7 +490,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp06" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour06" unique_id=1456719691]
+[node name="Label-hour06" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour06" unique_id=1456719691]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -506,8 +504,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "06:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -530,7 +527,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp07" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour07" unique_id=1189931917]
+[node name="Label-hour07" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour07" unique_id=1189931917]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -544,8 +541,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "07:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -568,7 +564,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp08" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour08" unique_id=1577290910]
+[node name="Label-hour08" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour08" unique_id=1577290910]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -582,8 +578,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "08:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -606,7 +601,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp09" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour09" unique_id=2015505526]
+[node name="Label-hour09" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour09" unique_id=2015505526]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -620,8 +615,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "09:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -644,7 +638,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp10" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour10" unique_id=1961432187]
+[node name="Label-hour10" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour10" unique_id=1961432187]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -658,8 +652,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "10:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -682,7 +675,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp11" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour11" unique_id=1404439203]
+[node name="Label-hour11" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour11" unique_id=1404439203]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -696,8 +689,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "11:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -720,7 +712,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp12" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour12" unique_id=844895108]
+[node name="Label-hour12" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour12" unique_id=844895108]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -734,8 +726,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "12:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -758,7 +749,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp13" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour13" unique_id=634769927]
+[node name="Label-hour13" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour13" unique_id=634769927]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -772,8 +763,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "13:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -796,7 +786,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp14" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour14" unique_id=81469126]
+[node name="Label-hour14" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour14" unique_id=81469126]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -810,8 +800,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "14:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -834,7 +823,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp15" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour15" unique_id=1491890746]
+[node name="Label-hour15" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour15" unique_id=1491890746]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -848,8 +837,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "15:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -872,7 +860,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp16" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour16" unique_id=1084848792]
+[node name="Label-hour16" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour16" unique_id=1084848792]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -886,8 +874,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "16:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -910,7 +897,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp17" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour17" unique_id=547474330]
+[node name="Label-hour17" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour17" unique_id=547474330]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -924,8 +911,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "17:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -948,7 +934,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp18" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour18" unique_id=1637934805]
+[node name="Label-hour18" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour18" unique_id=1637934805]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -962,8 +948,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "18:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -986,7 +971,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp19" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour19" unique_id=1831609754]
+[node name="Label-hour19" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour19" unique_id=1831609754]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1000,8 +985,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "19:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1024,7 +1008,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp20" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour20" unique_id=1852491303]
+[node name="Label-hour20" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour20" unique_id=1852491303]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1038,8 +1022,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "20:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1062,7 +1045,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp21" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour21" unique_id=1282095858]
+[node name="Label-hour21" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour21" unique_id=1282095858]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1076,8 +1059,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "21:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1100,7 +1082,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp22" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour22" unique_id=185372919]
+[node name="Label-hour22" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour22" unique_id=185372919]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1114,8 +1096,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "22:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1138,7 +1119,7 @@ pivot_offset = Vector2(0, 490)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="Label-temp23" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour23" unique_id=1598098114]
+[node name="Label-hour23" type="Label" parent="ClockAnchor/Clock - Daytime/RotationOffset/Hour23" unique_id=1598098114]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1152,8 +1133,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("60_tt1x2")
 text = "23:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1191,8 +1171,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1230,8 +1209,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1269,8 +1247,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1308,8 +1285,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1347,8 +1323,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1386,8 +1361,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1425,8 +1399,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1464,8 +1437,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1503,8 +1475,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1542,8 +1513,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1581,8 +1551,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1620,8 +1589,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1659,8 +1627,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1698,8 +1665,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1737,8 +1703,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1776,8 +1741,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1815,8 +1779,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1854,8 +1817,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1893,8 +1855,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1932,8 +1893,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1971,8 +1931,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2010,8 +1969,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2049,8 +2007,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2088,8 +2045,7 @@ offset_bottom = 49.999847
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("63_2wrh7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -6763,7 +6719,8 @@ anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.14
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("73_x5wht")
+theme_override_font_sizes/font_size = 80
 text = "DUNDEE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -6777,7 +6734,8 @@ anchor_top = 0.14
 anchor_right = 0.9
 anchor_bottom = 0.17
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 46
+theme_override_fonts/font = ExtResource("73_x5wht")
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -7131,7 +7089,8 @@ anchor_right = 0.7
 anchor_bottom = 0.44
 offset_bottom = 11.2
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 42
+theme_override_fonts/font = ExtResource("73_x5wht")
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 
