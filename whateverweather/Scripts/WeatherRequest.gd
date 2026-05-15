@@ -17,6 +17,7 @@ extends HTTPRequest
 @export_node_path("Label") var clockPreviousDay
 @export_node_path("Label") var clockNextDay
 @export var tempText: Array[Label] = []
+@export var tempColours: Array[Color] = []
 @export var windText: Array[Label] = []
 @export var windRotation: Array[Node] = []
 @export var windImage: Array[TextureRect] = []
@@ -26,6 +27,7 @@ extends HTTPRequest
 @export var cloudText: Array[Label] = []
 @export var cloudImage: Array[TextureRect] = []
 @export var cloudLevel: Array[Texture] = []
+@export var cloudLevelNight: Array[Texture] = []
 @export var rainLevel: Array[Texture] = []
 @export var snowLevel: Array[Texture] = []
 #Thunder / Lightning?
@@ -114,28 +116,40 @@ func populateForecastTable():
 			weatherText[h].get_parent().visible = true
 			tempText[h].text = str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°C\n (" + str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°C)"
 			
+			#Temperature
+			var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
+			tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
+			tempText[h].get_parent().material.set_shader_parameter('colour', temperature_color)
+			
+			var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
+			var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
+	
 			#Cloud Cover
 			if openMeteoJSON["hourly"]["cloud_cover"][i] >= 0 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 25:
-				if h == 22:
-					print("0, day: " + str(day) + ", h: " + str(h))
-				cloudImage[h].texture = cloudLevel[0]
+				if isHourInDaylight(h, sunrise.hour, sunset.hour):
+					cloudImage[h].texture = cloudLevel[0]
+				else:
+					cloudImage[h].texture = cloudLevelNight[0]
 			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 25 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 50:
-				if h == 22:
-					print("1, day: " + str(day) + ", h: " + str(h))
-				cloudImage[h].texture = cloudLevel[1]
+				if isHourInDaylight(h, sunrise.hour, sunset.hour):
+					cloudImage[h].texture = cloudLevel[1]
+				else:
+					cloudImage[h].texture = cloudLevelNight[1]
 			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 50 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 75:
-				if h == 22:
-					print("2, day: " + str(day) + ", h: " + str(h))
-				cloudImage[h].texture = cloudLevel[2]
+				if isHourInDaylight(h, sunrise.hour, sunset.hour):
+					cloudImage[h].texture = cloudLevel[2]
+				else:
+					cloudImage[h].texture = cloudLevelNight[2]
 			elif openMeteoJSON["hourly"]["cloud_cover"][i] > 75 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 100:
-				if h == 22:
-					print("3, day: " + str(day) + ", h: " + str(h))
-				cloudImage[h].texture = cloudLevel[3]
+				if isHourInDaylight(h, sunrise.hour, sunset.hour):
+					cloudImage[h].texture = cloudLevel[3]
+				else:
+					cloudImage[h].texture = cloudLevelNight[3]
 			
 			#Rain and Snow
-			precText[h].text = str(openMeteoJSON["hourly"]["precipitation_probability"][i]) + "%"
+			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "% rain"
 			
-			if openMeteoJSON["hourly"]["rain"][i] == 0:
+			'if openMeteoJSON["hourly"]["rain"][i] == 0:
 				rainImage[h].texture = rainLevel[0]
 			elif openMeteoJSON["hourly"]["rain"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 1:
 				rainImage[h].texture = rainLevel[1]
@@ -149,7 +163,28 @@ func populateForecastTable():
 			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.1 and openMeteoJSON["hourly"]["rain"][i] <= 0.3:
 				rainImage[h].texture = snowLevel[2]
 			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3:
-				rainImage[h].texture = snowLevel[3]
+				rainImage[h].texture = snowLevel[3]'
+				
+			if openMeteoJSON["hourly"]["precipitation_probability"][i] >= 0 and openMeteoJSON["hourly"]["precipitation_probability"][i] <= 15:
+				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
+					rainImage[h].texture = snowLevel[0]
+				else:
+					rainImage[h].texture = rainLevel[0]
+			elif openMeteoJSON["hourly"]["precipitation_probability"][i] > 15 and openMeteoJSON["hourly"]["precipitation_probability"][i] <= 40:
+				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
+					rainImage[h].texture = snowLevel[1]
+				else:
+					rainImage[h].texture = rainLevel[1]
+			elif openMeteoJSON["hourly"]["precipitation_probability"][i] > 40 and openMeteoJSON["hourly"]["precipitation_probability"][i] <= 70:
+				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
+					rainImage[h].texture = snowLevel[2]
+				else:
+					rainImage[h].texture = rainLevel[2]
+			elif openMeteoJSON["hourly"]["precipitation_probability"][i] > 70:
+				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
+					rainImage[h].texture = snowLevel[3]
+				else:
+					rainImage[h].texture = rainLevel[3]
 			
 			#Wind
 			if openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 7:
@@ -498,6 +533,58 @@ func sundial(sunrise, sunset):
 	get_node_or_null(clockNight).material.set_shader_parameter("cooldown_progress", sunrise)
 	get_node_or_null(clockNight).material.set_shader_parameter("cooldown_offset", sunset)
 
+func isHourInDaylight(hour, sunriseHour, sunsetHour):
+	if hour > sunriseHour and hour <= sunsetHour:
+		return true
+	else:
+		return false
+
+func getTemperatureColor(temp):
+	#Colours from https://www.bbc.co.uk/weather/features/66293839
+	
+	if temp <= -22:
+		return 0
+	elif temp > -22 and temp <= -16:
+		return 1
+	elif temp > -16 and temp <= -11:
+		return 2
+	elif temp > -11 and temp <= -6:
+		return 3
+	elif temp > -6 and temp <= -3:
+		return 4
+	elif temp > -3 and temp <= 0:
+		return 5
+	elif temp > 0 and temp <= 2:
+		return 6
+	elif temp > 2 and temp <= 4:
+		return 7
+	elif temp > 4 and temp <= 6:
+		return 8
+	elif temp > 6 and temp <= 8:
+		return 9
+	elif temp > 8 and temp <= 10:
+		return 10
+	elif temp > 10 and temp <= 12:
+		return 11
+	elif temp > 12 and temp <= 14:
+		return 12
+	elif temp > 14 and temp <= 16:
+		return 13
+	elif temp > 16 and temp <= 18:
+		return 14
+	elif temp > 18 and temp <= 20:
+		return 15
+	elif temp > 20 and temp <= 24:
+		return 16
+	elif temp > 24 and temp <= 29:
+		return 17
+	elif temp > 29 and temp <= 35:
+		return 18
+	elif temp > 35 and temp <= 40:
+		return 19
+	elif temp > 40:
+		return 20
+	
 # TO-DO
 # You have to wait for a request to finish before sending another one. Making multiple request at once requires you to have one node per request. A common strategy is to create and delete HTTPRequest nodes at runtime as necessary.
 # Need more feedback if HTTP request unsuccesful, e.g. prompt to connect to internet
