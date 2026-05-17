@@ -1,11 +1,13 @@
 [gd_resource type="Theme" format=3 uid="uid://crvwd62ev1ac2"]
 
+[ext_resource type="StyleBox" uid="uid://d271hx342reqd" path="res://Themes/LocationButtonStyleNormal.tres" id="1_0ygvg"]
+[ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="1_i267k"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ygvg"]
 bg_color = Color(0, 0.0837233, 0.0541153, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbr82"]
-bg_color = Color(2.4667e-07, 0.195141, 0.156307, 1)
-
 [resource]
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_i267k")
 Button/styles/hover = SubResource("StyleBoxFlat_0ygvg")
-Button/styles/normal = SubResource("StyleBoxFlat_qbr82")
+Button/styles/normal = ExtResource("1_0ygvg")

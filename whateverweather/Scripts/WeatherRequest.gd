@@ -29,6 +29,8 @@ extends HTTPRequest
 @export var cloudLevel: Array[Texture] = []
 @export var cloudLevelNight: Array[Texture] = []
 @export var rainLevel: Array[Texture] = []
+@export var rainLevelMedium: Array[Texture] = []
+@export var rainLevelSmall: Array[Texture] = []
 @export var snowLevel: Array[Texture] = []
 #Thunder / Lightning?
 @export var rainImage: Array[TextureRect] = []
@@ -102,6 +104,8 @@ func populateForecastTable():
 	for h in range(0,24):
 		var day = get_node_or_null(clock).clockHourDates[h]
 		var i = (day * 24) + h
+		var weatherCodeText = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
+		
 		if day < 0 or day > 20:
 			tempText[h].get_parent().visible = false
 			precText[h].get_parent().visible = false
@@ -147,7 +151,7 @@ func populateForecastTable():
 					cloudImage[h].texture = cloudLevelNight[3]
 			
 			#Rain and Snow
-			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "% rain"
+			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "%"
 			
 			'if openMeteoJSON["hourly"]["rain"][i] == 0:
 				rainImage[h].texture = rainLevel[0]
@@ -164,27 +168,28 @@ func populateForecastTable():
 				rainImage[h].texture = snowLevel[2]
 			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3:
 				rainImage[h].texture = snowLevel[3]'
-				
-			if openMeteoJSON["hourly"]["precipitation_probability"][i] >= 0 and openMeteoJSON["hourly"]["precipitation_probability"][i] <= 15:
-				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
-					rainImage[h].texture = snowLevel[0]
-				else:
-					rainImage[h].texture = rainLevel[0]
-			elif openMeteoJSON["hourly"]["precipitation_probability"][i] > 15 and openMeteoJSON["hourly"]["precipitation_probability"][i] <= 40:
-				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
-					rainImage[h].texture = snowLevel[1]
-				else:
-					rainImage[h].texture = rainLevel[1]
-			elif openMeteoJSON["hourly"]["precipitation_probability"][i] > 40 and openMeteoJSON["hourly"]["precipitation_probability"][i] <= 70:
-				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
-					rainImage[h].texture = snowLevel[2]
-				else:
-					rainImage[h].texture = rainLevel[2]
-			elif openMeteoJSON["hourly"]["precipitation_probability"][i] > 70:
-				if openMeteoJSON["hourly"]["snowfall"][i] > 0:
-					rainImage[h].texture = snowLevel[3]
-				else:
+			
+			#Rain
+			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
+				if weatherCodeText.contains("rain"):
 					rainImage[h].texture = rainLevel[3]
+				elif weatherCodeText.contains("drizzle"):
+					rainImage[h].texture = rainLevelMedium[3]
+				else:
+					rainImage[h].texture = rainLevelSmall[3]
+			else:
+				rainImage[h].texture = rainLevel[0]
+			
+			#Snow
+			if openMeteoJSON["hourly"]["snowfall"][i] > 0 or (weatherCodeText.contains("snow") or weatherCodeText.contains("hail") or weatherCodeText.contains("ice ") or weatherCodeText.contains("sleet")):
+				if openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 0.1:
+					rainImage[h].texture = snowLevel[1]
+				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.1 and openMeteoJSON["hourly"]["rain"][i] <= 0.3:
+					rainImage[h].texture = snowLevel[2]
+				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3:
+					rainImage[h].texture = snowLevel[3]
+			
+			#Lightning
 			
 			#Wind
 			if openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 7:
@@ -208,7 +213,7 @@ func populateForecastTable():
 			populateInitialWindDirection()
 			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
 			#windText[h].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][i]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][i]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][i]) + "°"
-			weatherText[h].text = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
+			weatherText[h].text = weatherCodeText
 
 func daySummarySetup():
 	if startDay > 0:
