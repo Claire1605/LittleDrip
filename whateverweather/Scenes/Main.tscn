@@ -87,6 +87,7 @@
 [ext_resource type="Texture2D" uid="uid://bo0cche28qypc" path="res://Art/ClaySun.png" id="73_c5nnb"]
 [ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="73_x5wht"]
 [ext_resource type="Theme" uid="uid://ht73t2tlbnw4" path="res://Themes/DaySummaryText.tres" id="79_fsd2l"]
+[ext_resource type="StyleBox" uid="uid://c3bgrsg4dbnhb" path="res://Themes/LocationSearch.tres" id="82_fq6d3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1x2"]
 shader = ExtResource("60_xd5mi")
@@ -6674,6 +6675,8 @@ anchor_right = 0.82
 anchor_bottom = 0.08
 theme_override_fonts/font = ExtResource("73_x5wht")
 theme_override_font_sizes/font_size = 54
+theme_override_styles/normal = ExtResource("82_fq6d3")
+theme_override_styles/focus = ExtResource("82_fq6d3")
 placeholder_text = "Location..."
 
 [node name="LocationText" type="Label" parent="." unique_id=1805236289]
@@ -7104,6 +7107,7 @@ anchor_left = 0.18
 anchor_top = 0.085
 anchor_right = 0.82
 anchor_bottom = 0.3
+theme_override_constants/separation = 0
 
 [node name="DEBUG" type="Control" parent="." unique_id=1552592124]
 visible = false
