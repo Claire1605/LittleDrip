@@ -18,7 +18,7 @@ extends HTTPRequest
 @export_node_path("Label") var clockNextDay
 @export var tempText: Array[Label] = []
 @export var tempColours: Array[Color] = []
-@export var windText: Array[Label] = []
+@export var windText: Array[RichTextLabel] = []
 @export var windRotation: Array[Node] = []
 @export var windImage: Array[TextureRect] = []
 @export var gustImage: Array[TextureRect] = []
@@ -212,7 +212,7 @@ func populateForecastTable():
 			
 			populateInitialWindDirection()
 			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
-			#windText[h].text = str(openMeteoJSON["hourly"]["wind_speed_10m"][i]) + "mph\n" + str(openMeteoJSON["hourly"]["wind_gusts_10m"][i]) + " gust\n" + str(openMeteoJSON["hourly"]["wind_direction_10m"][i]) + "°"
+			windText[h].text = str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=18]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size]"
 			weatherText[h].text = weatherCodeText
 
 func daySummarySetup():
