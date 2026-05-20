@@ -590,3 +590,9 @@ func getTemperatureColor(temp):
 # TO-DO
 # You have to wait for a request to finish before sending another one. Making multiple request at once requires you to have one node per request. A common strategy is to create and delete HTTPRequest nodes at runtime as necessary.
 # Need more feedback if HTTP request unsuccesful, e.g. prompt to connect to internet
+
+
+func _on_location_text_pressed() -> void:
+	#https://www.cartograph.eu/v3/using-the-geo-uri-scheme-in-cartograph-maps/
+	#https://forum.godotengine.org/t/android-how-to-open-a-web-browser-at-a-specific-address/137838/8
+	OS.shell_open("geo:" + str(saveData.latitude) + "," + str(saveData.longitude) + "?z=12")
