@@ -43,14 +43,15 @@ func geocoding(result, response_code, headers, body):
 				get_node_or_null(locationResults).add_child(locationButton)
 				locationChildren.append(locationButton as Node)
 				locationButton.placeName = l["name"]
+				locationButton.adminName = l["admin1"]
 				locationButton.lat = l["latitude"]
 				locationButton.long = l["longitude"]
 				locationButton.text = l["name"] + " (" + l["admin1"] + ")"
 
-func updateLocation(placeName: String, lat: float, long: float):
+func updateLocation(placeName: String, adminName: String, lat: float, long: float):
 	clearLocationResults()
 	get_node_or_null(locationSearch).text = ""
-	get_node_or_null(weatherRequest).updateLocation(placeName, lat, long)
+	get_node_or_null(weatherRequest).updateLocation(placeName, adminName, lat, long)
 
 func clearLocationResults():
 	if !locationChildren.is_empty():

@@ -8,6 +8,7 @@ z_index = 1
 custom_minimum_size = Vector2(0, 80)
 theme = ExtResource("1_cwwv5")
 alignment = 0
+text_overrun_behavior = 3
 script = ExtResource("1_muigb")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

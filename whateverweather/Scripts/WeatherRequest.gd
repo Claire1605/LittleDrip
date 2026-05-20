@@ -3,8 +3,6 @@ extends HTTPRequest
 @export_node_path("Label") var debug
 @export_node_path("Label") var locationText
 @export_node_path("Label") var dateText
-@export_node_path("Label") var errorText
-@export_node_path("GridContainer") var tableParent
 @export_node_path("Label") var moonPhaseText
 @export_node_path("TextureRect") var moonPhaseTexture
 @export_node_path("TextureRect") var moonPhaseTexturePrevious
@@ -16,7 +14,7 @@ extends HTTPRequest
 @export_node_path("TextureButton") var clockNight
 @export_node_path("Label") var clockPreviousDay
 @export_node_path("Label") var clockNextDay
-@export var tempText: Array[Label] = []
+@export var tempText: Array[RichTextLabel] = []
 @export var tempColours: Array[Color] = []
 @export var windText: Array[RichTextLabel] = []
 @export var windRotation: Array[Node] = []
@@ -118,7 +116,7 @@ func populateForecastTable():
 			cloudImage[h].visible = true
 			windText[h].get_parent().visible = true
 			weatherText[h].get_parent().visible = true
-			tempText[h].text = str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°C\n (" + str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°C)"
+			tempText[h].text = str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=30]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
 			
 			#Temperature
 			var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
@@ -160,14 +158,7 @@ func populateForecastTable():
 			elif openMeteoJSON["hourly"]["rain"][i] > 1 and openMeteoJSON["hourly"]["rain"][i] <= 3:
 				rainImage[h].texture = rainLevel[2]
 			elif openMeteoJSON["hourly"]["rain"][i] > 3:
-				rainImage[h].texture = rainLevel[3]
-			
-			if openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 0.1:
-				rainImage[h].texture = snowLevel[1]
-			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.1 and openMeteoJSON["hourly"]["rain"][i] <= 0.3:
-				rainImage[h].texture = snowLevel[2]
-			elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3:
-				rainImage[h].texture = snowLevel[3]'
+				rainImage[h].texture = rainLevel[3]'
 			
 			#Rain
 			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
@@ -182,12 +173,16 @@ func populateForecastTable():
 			
 			#Snow
 			if openMeteoJSON["hourly"]["snowfall"][i] > 0 or (weatherCodeText.contains("snow") or weatherCodeText.contains("hail") or weatherCodeText.contains("ice ") or weatherCodeText.contains("sleet")):
-				if openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 0.1:
+				if (openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.15) or weatherCodeText.contains("sleet") or weatherCodeText.contains("slight"):
+					#print("1: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[1]
-				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.1 and openMeteoJSON["hourly"]["rain"][i] <= 0.3:
-					rainImage[h].texture = snowLevel[2]
-				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3:
+				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3 or weatherCodeText.contains("heavy"):
+					#print("3: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[3]
+				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.15 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.3:
+					#print("2: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
+					rainImage[h].texture = snowLevel[2]
+				
 			
 			#Lightning
 			
@@ -212,9 +207,10 @@ func populateForecastTable():
 			
 			populateInitialWindDirection()
 			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
-			windText[h].text = str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=18]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size]"
+			var amp = clampi(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i]) * 2, 0, 40)
+			windText[h].text = "[wave amp=" + str(amp) + " freq=5.0 connected=1]" + str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=24]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size][/wave]"
 			weatherText[h].text = weatherCodeText
-
+			
 func daySummarySetup():
 	if startDay > 0:
 		get_node_or_null(previousDayPanel).show()
@@ -241,8 +237,8 @@ func populateDaySummary(openMeteoJSON, day, position):
 	var date2 = getWeekdayString(selectedDate.weekday).erase(3,100) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month).erase(3,100)
 	dayDateText[position].text = date2
 	dayWMOText[position].text = getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
-	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "°C - "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°C"
-	dayAppTempText[position].text = "(" + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "°C - "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°C)"
+	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° <-> "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
+	dayAppTempText[position].text = "(" + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° <-> "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°)"
 	dayWindText[position].text = str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " mph\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " mph gusts\nat "+ str(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + "°"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
@@ -463,8 +459,8 @@ func getLunarPhase():
 	else:
 		get_node_or_null(moonPhaseTextureNext).hide()
 
-func updateLocation(placeName: String, lat: float, long: float):
-	saveData.save_game(placeName, lat, long)	
+func updateLocation(placeName: String, adminName: String, lat: float, long: float):
+	saveData.save_game(placeName + " (" + adminName + ")", lat, long)	
 	get_node_or_null(locationText).text = saveData.placeName
 	weatherRequest()
 
@@ -472,6 +468,7 @@ func _on_today_button_pressed() -> void:
 	today()
 
 func today():
+	todayUnix = Time.get_unix_time_from_system()
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	populateForecastTable()

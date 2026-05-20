@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://iiwccqjl4q26"]
 
-[ext_resource type="FontFile" uid="uid://d2t20gjrx285c" path="res://Fonts/Lambda_Font_0_25/OpenType (.otf)/Lambda-Regular.otf" id="1_rca4d"]
+[ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="1_rca4d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34mut"]
 content_margin_left = 4.0
@@ -29,14 +29,16 @@ expand_margin_bottom = 2.0
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-Label/constants/line_spacing = -8
+Label/constants/line_spacing = -32
 Label/constants/outline_size = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 32
+Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("1_rca4d")
 Label/styles/focus = SubResource("StyleBoxFlat_34mut")
 Label/styles/normal = SubResource("StyleBoxEmpty_e4hqi")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/constants/line_separation = -12
+RichTextLabel/font_sizes/normal_font_size = 36
+RichTextLabel/fonts/normal_font = ExtResource("1_rca4d")

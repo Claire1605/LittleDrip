@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://dc8aw0y48fagd"]
 
-[ext_resource type="FontFile" uid="uid://d2t20gjrx285c" path="res://Fonts/Lambda_Font_0_25/OpenType (.otf)/Lambda-Regular.otf" id="1_0ottu"]
+[ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="1_0ottu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34mut"]
 content_margin_left = 4.0
