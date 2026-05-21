@@ -29,8 +29,8 @@ extends HTTPRequest
 @export var rainLevel: Array[Texture] = []
 @export var rainLevelMedium: Array[Texture] = []
 @export var rainLevelSmall: Array[Texture] = []
+@export var lightning: Array[TextureRect] = []
 @export var snowLevel: Array[Texture] = []
-#Thunder / Lightning?
 @export var rainImage: Array[TextureRect] = []
 @export var precText: Array[Label] = []
 @export var weatherText: Array[Label] = []
@@ -41,6 +41,8 @@ extends HTTPRequest
 @export var dayAppTempText: Array[Label] = []
 @export var dayWindText: Array[Label] = []
 @export var daySunText: Array[Label] = []
+@export var creditsPanel: Node
+@export var settingsPanel: Node
 var saveData
 var startDay: int = 7
 var openMeteoJSON
@@ -162,9 +164,9 @@ func populateForecastTable():
 			
 			#Rain
 			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
-				if weatherCodeText.contains("rain"):
+				if weatherCodeText.containsn("rain"):
 					rainImage[h].texture = rainLevel[3]
-				elif weatherCodeText.contains("drizzle"):
+				elif weatherCodeText.containsn("drizzle"):
 					rainImage[h].texture = rainLevelMedium[3]
 				else:
 					rainImage[h].texture = rainLevelSmall[3]
@@ -172,11 +174,11 @@ func populateForecastTable():
 				rainImage[h].texture = rainLevel[0]
 			
 			#Snow
-			if openMeteoJSON["hourly"]["snowfall"][i] > 0 or (weatherCodeText.contains("snow") or weatherCodeText.contains("hail") or weatherCodeText.contains("ice ") or weatherCodeText.contains("sleet")):
-				if (openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.15) or weatherCodeText.contains("sleet") or weatherCodeText.contains("slight"):
+			if openMeteoJSON["hourly"]["snowfall"][i] > 0 or (weatherCodeText.containsn("snow") or weatherCodeText.contains("hail") or weatherCodeText.containsn("ice ") or weatherCodeText.containsn("sleet")):
+				if (openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.15) or weatherCodeText.containsn("sleet") or weatherCodeText.containsn("slight"):
 					#print("1: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[1]
-				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3 or weatherCodeText.contains("heavy"):
+				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3 or weatherCodeText.containsn("heavy"):
 					#print("3: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[3]
 				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.15 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.3:
@@ -185,6 +187,10 @@ func populateForecastTable():
 				
 			
 			#Lightning
+			if weatherCodeText.containsn("thunder") or weatherCodeText.containsn("lightning"):
+				lightning[h].show()
+			else:
+				lightning[h].hide()
 			
 			#Wind
 			if openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 7:
@@ -237,13 +243,13 @@ func populateDaySummary(openMeteoJSON, day, position):
 	var date2 = getWeekdayString(selectedDate.weekday).erase(3,100) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month).erase(3,100)
 	dayDateText[position].text = date2
 	dayWMOText[position].text = getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
-	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° <-> "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
-	dayAppTempText[position].text = "(" + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° <-> "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°)"
-	dayWindText[position].text = str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " mph\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " mph gusts\nat "+ str(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + "°"
+	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
+	dayAppTempText[position].text = "feels " + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°"
+	dayWindText[position].text = getWindDirection(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + " wind\n" + str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " mph\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " mph gusts"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
-	daySunText[position].text = "Sun: " +  str("%02d" % sunrise.hour) + ":" + str("%02d" % sunrise.minute) + " - " + str("%02d" % sunset.hour) + ":" + str("%02d" % sunset.minute)
+	daySunText[position].text = "Sun " +  str("%02d" % sunrise.hour) + ":" + str("%02d" % sunrise.minute) + "\nto " + str("%02d" % sunset.hour) + ":" + str("%02d" % sunset.minute)
 	
 	var sunriseFraction = float(sunrise.hour) + (float(sunrise.minute) / 60.0)
 	var sunsetFraction = float(sunset.hour) + (float(sunset.minute) / 60.0)
@@ -264,6 +270,24 @@ func populateDaySummary(openMeteoJSON, day, position):
 	sundial(sr, ss)
 	#clockDateLabels()
 	
+func getWindDirection(dir):
+	if dir >= 337.5 and dir < 22.5:
+		return "North"
+	elif dir >= 22.5 and dir < 67.5:
+		return "Northeast"
+	elif dir >= 67.5 and dir < 112.5:
+		return "East"
+	elif dir >= 112.5 and dir < 157.5:
+		return "Southeast"
+	elif dir >= 157.5 and dir < 292.5:
+		return "South"
+	elif dir >= 202.5 and dir < 247.5:
+		return "Southwest"
+	elif dir >= 247.5 and dir < 292.5:
+		return "West"
+	elif dir >= 292.5 and dir < 337.5:
+		return "Northwest"
+	
 func getWMOCode(wmo):
 	# https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
 	match wmo:
@@ -276,7 +300,7 @@ func getWMOCode(wmo):
 		6.0: return "Light dust"
 		7.0: return "Heavy dust"
 		8.0: return "Dust whirl"
-		9.0: return "Duststorm"
+		9.0: return "Dust storm"
 		10.0: return "Mist"
 		11.0: return "Shallow fog"
 		12.0: return "Shallow fog"
@@ -284,7 +308,7 @@ func getWMOCode(wmo):
 		14.0: return "Precipitation nearby"
 		15.0: return "Precipitation nearby"
 		16.0: return "Precipitation nearby"
-		17.0: return "Thunderstorm"
+		17.0: return "Thunder storm"
 		18.0: return "Squalls"
 		19.0: return "Funnel cloud"
 		20.0: return "Drizzle"
@@ -296,13 +320,13 @@ func getWMOCode(wmo):
 		26.0: return "Snow showers"
 		27.0: return "Hail showers"
 		28.0: return "Recent fog"
-		29.0: return "Thunderstorm"
-		30.0: return "Slight duststorm"
-		31.0: return "Slight duststorm"
-		32.0: return "Slight duststorm"
-		33.0: return "Severe duststorm"
-		34.0: return "Severe duststorm"
-		35.0: return "Severe duststorm"
+		29.0: return "Thunder storm"
+		30.0: return "Slight dust storm"
+		31.0: return "Slight dust storm"
+		32.0: return "Slight dust storm"
+		33.0: return "Severe dust storm"
+		34.0: return "Severe dust storm"
+		35.0: return "Severe dust storm"
 		36.0: return "Slight blowing snow"
 		37.0: return "Heavy drifting snow"
 		38.0: return "Slight blowing snow"
@@ -362,9 +386,9 @@ func getWMOCode(wmo):
 		92.0: return "Heavy rain"
 		93.0: return "Slight snow and hail"
 		94.0: return "Heavy snow and hail"
-		95.0: return "Thunderstorm"
-		96.0: return "Thunderstorm and hail"
-		97.0: return "Heavy thunderstorm"
+		95.0: return "Thunder storm"
+		96.0: return "Thunder storm and hail"
+		97.0: return "Heavy thunder storm"
 		98.0: return "Thunder and dust storm"
 		99.0: return "Heavy thunder and hail"
 		_: return "Unknown"
@@ -596,3 +620,19 @@ func _on_location_text_pressed() -> void:
 	#https://www.cartograph.eu/v3/using-the-geo-uri-scheme-in-cartograph-maps/
 	#https://forum.godotengine.org/t/android-how-to-open-a-web-browser-at-a-specific-address/137838/8
 	OS.shell_open("geo:" + str(saveData.latitude) + "," + str(saveData.longitude) + "?z=12")
+
+
+func _on_credits_button_pressed() -> void:
+	creditsPanel.show()
+
+
+func _on_back_button_pressed() -> void:
+	creditsPanel.hide()
+
+
+func _on_settings_button_pressed() -> void:
+	settingsPanel.show()
+
+
+func _on_back_settings_button_pressed() -> void:
+	settingsPanel.hide()
