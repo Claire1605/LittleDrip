@@ -88,10 +88,18 @@
 [ext_resource type="Texture2D" uid="uid://csqwd4u8nkvec" path="res://Art/DaySummary2Small.png" id="83_rpc3w"]
 [ext_resource type="Texture2D" uid="uid://n8m8m3iqsvug" path="res://Art/DaySummary1Small.png" id="85_3k6d1"]
 [ext_resource type="Texture2D" uid="uid://dwdxvxfe5f1ua" path="res://Art/LittleDripLogo.png" id="87_fq6d3"]
+[ext_resource type="Texture2D" uid="uid://dxt8wtdirsg7x" path="res://Art/locationKey.png" id="89_othpo"]
+[ext_resource type="Theme" uid="uid://0gig5dwmyn2v" path="res://Themes/KeyText.tres" id="90_s0riu"]
+[ext_resource type="Texture2D" uid="uid://dfbuwngpix06p" path="res://Art/ClaySun01.png" id="91_hjjnx"]
+[ext_resource type="Texture2D" uid="uid://ionj285tor5v" path="res://Art/rain%icon.png" id="92_s0riu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1x2"]
 shader = ExtResource("60_xd5mi")
 shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjjnx"]
+shader = ExtResource("60_xd5mi")
+shader_parameter/colour = Color(0.68235296, 0.8235294, 0.32941177, 1)
 
 [node name="Control" type="Control" unique_id=1289431972]
 layout_mode = 3
@@ -242,9 +250,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 170.0
-offset_top = 20.0
+offset_top = 37.0
 offset_right = 370.0
-offset_bottom = 120.0
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
@@ -7636,14 +7644,15 @@ stretch_mode = 6
 custom_minimum_size = Vector2(0, 800)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
+anchor_left = 0.2
 anchor_top = 0.02
-anchor_right = 0.9
-anchor_bottom = 0.35
+anchor_right = 0.8
+anchor_bottom = 0.3
+offset_top = -100.0
 grow_horizontal = 2
 mouse_filter = 2
 texture = ExtResource("87_fq6d3")
-expand_mode = 1
+expand_mode = 5
 stretch_mode = 5
 
 [node name="BackButton" type="TextureButton" parent="Credits" unique_id=1056420240]
@@ -7658,15 +7667,307 @@ texture_normal = ExtResource("64_ex7s8")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Credits" unique_id=1530052874]
+[node name="IconKey" type="Label" parent="Credits" unique_id=1241418943]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.28
+theme = ExtResource("60_atu2d")
+theme_override_font_sizes/font_size = 60
+text = "Icon key"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Location" type="TextureRect" parent="Credits" unique_id=1548097956]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.295
+anchor_right = 0.21
+anchor_bottom = 0.325
+texture = ExtResource("89_othpo")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="LocationDesc" type="Label" parent="Credits" unique_id=1968870433]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.295
+anchor_right = 0.98
+anchor_bottom = 0.325
+theme = ExtResource("90_s0riu")
+text = "Tap to search for a location. Tap the location name below it for a secret."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Moon" type="TextureRect" parent="Credits" unique_id=232082500]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.34
+anchor_right = 0.09
+anchor_bottom = 0.38
+texture = ExtResource("11_clvyn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="MoonDesc" type="Label" parent="Credits" unique_id=303841948]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.35
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_top = 0.34
+anchor_right = 0.98
+anchor_bottom = 0.38
+theme = ExtResource("90_s0riu")
+text = "Moon phase. 'Waxing' means the visible moon is thickening, 'waning' means thinning. 'Gibbous' means bulging outwards. 'Crescent' means bulging inwards."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-WMO" type="TextureRect" parent="Credits" unique_id=526463196]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.39
+anchor_right = 0.22
+anchor_bottom = 0.43
+texture = ExtResource("62_ex7s8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="WMODesc" type="Label" parent="Credits" unique_id=376424434]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.39
+anchor_right = 0.98
+anchor_bottom = 0.43
+theme = ExtResource("90_s0riu")
+text = "Little Drip's hourly weather summary, based on hourly WMO (World Meteorological Organization) codes."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Cloud" type="TextureRect" parent="Credits" unique_id=1965008011]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.44
+anchor_right = 0.14
+anchor_bottom = 0.48
+texture = ExtResource("91_hjjnx")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="CloudDesc" type="Label" parent="Credits" unique_id=614259051]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.44
+anchor_right = 0.98
+anchor_bottom = 0.48
+theme = ExtResource("90_s0riu")
+text = "Cloud Cover. 0 clouds = 0-25% cloud cover. 1 cloud = 25-50% cloud cover. 2 clouds = 50-75% cloud cover. 3 clouds = 75-100% cloud cover."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Rain" type="TextureRect" parent="Credits" unique_id=1943462271]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.49
+anchor_right = 0.09
+anchor_bottom = 0.53
+texture = ExtResource("27_s0riu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key-Snow" type="TextureRect" parent="Credits" unique_id=2061457658]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.49
+anchor_right = 0.16
+anchor_bottom = 0.53
+texture = ExtResource("27_3k6d1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key-Lightning" type="TextureRect" parent="Credits" unique_id=1289253699]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.49
+anchor_right = 0.09
+anchor_bottom = 0.53
+texture = ExtResource("74_rpc3w")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PrecDesc" type="Label" parent="Credits" unique_id=1617074568]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17
+anchor_top = 0.49
+anchor_right = 0.98
+anchor_bottom = 0.53
+theme = ExtResource("90_s0riu")
+text = "Precipitation / lightning. A rain icon is shown when rain chance >15%. Snow if forecasted snowfall >0mm. Larger icons = heavier precipitation. "
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-RainChance" type="TextureRect" parent="Credits" unique_id=1701936759]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.55
+anchor_right = 0.09
+anchor_bottom = 0.57
+texture = ExtResource("92_s0riu")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="RainChanceDesc" type="Label" parent="Credits" unique_id=1466021494]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11
+anchor_top = 0.55
+anchor_right = 0.98
+anchor_bottom = 0.57
+theme = ExtResource("90_s0riu")
+text = "Precipitation probability. The likelihood that precipitation will fall in the specified location during this hour."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Wind" type="TextureRect" parent="Credits" unique_id=1111591193]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.6
+anchor_right = 0.11
+anchor_bottom = 0.64
+texture = ExtResource("74_he124")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key-WindText" type="RichTextLabel" parent="Credits" unique_id=1184854764]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.6
+anchor_right = 0.11
+anchor_bottom = 0.64
+theme = ExtResource("70_52a0j")
+bbcode_enabled = true
+text = "[wave amp=12 freq=5.0 connected=1]12
+[font_size=24]25[/font_size][/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindDesc" type="Label" parent="Credits" unique_id=1470844983]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11
+anchor_top = 0.6
+anchor_right = 0.98
+anchor_bottom = 0.64
+theme = ExtResource("90_s0riu")
+text = "Wind speed (larger text), gust speed (smaller text below), and wind direction (top of phone represents North). Wavier = windier. See Settings to change units."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Temp" type="TextureRect" parent="Credits" unique_id=1706861260]
+material = SubResource("ShaderMaterial_hjjnx")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.665
+anchor_right = 0.1
+anchor_bottom = 0.69
+texture = ExtResource("59_h2tpa")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key-TempText" type="RichTextLabel" parent="Credits" unique_id=2036617851]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.665
+anchor_right = 0.095
+anchor_bottom = 0.69
+theme = ExtResource("63_2wrh7")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "10°
+[font_size=22]8°[/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempDesc" type="Label" parent="Credits" unique_id=1753652732]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11
+anchor_top = 0.665
+anchor_right = 0.98
+anchor_bottom = 0.69
+theme = ExtResource("90_s0riu")
+text = "Hourly temperature (above) and apparent temperature (below). Background colour changes from blue (cold) to red (hot). See Settings to change units."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Key-Earth" type="TextureRect" parent="Credits" unique_id=812629432]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.72
+anchor_right = 0.1
+anchor_bottom = 0.76
+texture = ExtResource("53_1bbis")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Earth-Desc" type="Label" parent="Credits" unique_id=1579970734]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.72
+anchor_right = 0.98
+anchor_bottom = 0.76
+theme = ExtResource("90_s0riu")
+text = "Spin the Earth to go forward and backward in time! Darker areas show when sunset and sunrise is each day."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsTitle" type="Label" parent="Credits" unique_id=1669601746]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.77
+anchor_right = 0.95
+anchor_bottom = 0.8
 theme = ExtResource("60_atu2d")
-text = "Created by Claire Morwood."
+theme_override_font_sizes/font_size = 60
+text = "Credits and important stuff"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsLabel" type="Label" parent="Credits" unique_id=1530052874]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.81
+anchor_right = 0.95
+anchor_bottom = 0.98
+theme = ExtResource("60_atu2d")
+theme_override_font_sizes/font_size = 38
+text = "This app does not provide weather warnings, only weather forecasts. Please refer to official sources for weather warnings.
+
+Created by Claire Morwood, using Godot Engine and Open-Meteo weather API.
+
+If you like this project, great! You can support it by taking a break from your phone and enjoying the weather! :)"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Settings" type="TextureRect" parent="." unique_id=497117635]
 visible = false
@@ -7681,18 +7982,20 @@ texture = ExtResource("52_4clwk")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="LittleDripLogo" type="TextureRect" parent="Settings" unique_id=2085106997]
+[node name="LittleDripLogo" type="TextureRect" parent="Settings" unique_id=985606895]
 custom_minimum_size = Vector2(0, 800)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
+anchor_left = 0.2
 anchor_top = 0.02
-anchor_right = 0.9
-anchor_bottom = 0.35
+anchor_right = 0.8
+anchor_bottom = 0.3
+offset_top = -100.0
+offset_bottom = 44.799988
 grow_horizontal = 2
 mouse_filter = 2
 texture = ExtResource("87_fq6d3")
-expand_mode = 1
+expand_mode = 5
 stretch_mode = 5
 
 [node name="BackSettingsButton" type="TextureButton" parent="Settings" unique_id=1693961870]
@@ -7707,6 +8010,19 @@ texture_normal = ExtResource("64_ex7s8")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="IconKey2" type="Label" parent="Settings" unique_id=268560728]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.28
+theme = ExtResource("60_atu2d")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Label" type="Label" parent="Settings" unique_id=352325511]
 layout_mode = 1
 anchors_preset = -1
@@ -7715,7 +8031,11 @@ anchor_top = 0.35
 anchor_right = 0.9
 anchor_bottom = 0.9
 theme = ExtResource("60_atu2d")
-text = "Settings"
+text = "C or F
+Mph or Kph (Kmph?)
+turn off wind wave
+turn off temperature colours
+toggle open maps"
 
 [connection signal="button_down" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_down"]
 [connection signal="button_up" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_up"]
