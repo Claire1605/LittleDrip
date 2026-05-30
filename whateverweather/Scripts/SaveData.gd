@@ -2,16 +2,25 @@ extends Node
 var placeName: String = "Dundee"
 var latitude: float = 56.4691
 var longitude: float = -2.9749
+var tempUnit: String = ""
+var windUnit: String = "mph"
 
-func save_game(pName, lat, long):
+func save_game(pName, lat, long, temp, wind):
 	placeName = pName
 	latitude = lat
 	longitude = long
+	tempUnit = temp
+	windUnit = wind
+	
+	print("sdtu: " + tempUnit)
+	print("sdwu: " + windUnit)
 	
 	var save_dict = {
 		"placeName" : placeName,
 		"latitude" : latitude,
-		"longitude" : longitude
+		"longitude" : longitude,
+		"tempUnit" : tempUnit,
+		"windUnit" : windUnit
 	}
 	
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
@@ -42,3 +51,8 @@ func load_game():
 		placeName = node_data.placeName
 		latitude = node_data.latitude
 		longitude = node_data.longitude
+		tempUnit = node_data.tempUnit
+		windUnit = node_data.windUnit
+		
+		print("ldtu: " + tempUnit)
+		print("ldwu: " + windUnit)

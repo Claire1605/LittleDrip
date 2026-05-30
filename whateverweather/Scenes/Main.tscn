@@ -10,11 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bv4wsmcq071a1" path="res://Art/moon_003.png" id="6_btbly"]
 [ext_resource type="Texture2D" uid="uid://d3yywyyfogpm5" path="res://Art/moon_004.png" id="7_vs04g"]
 [ext_resource type="Texture2D" uid="uid://bwm6p5mc1nho" path="res://Art/moon_005.png" id="8_6ehlx"]
-[ext_resource type="Texture2D" uid="uid://bq3pc04p0rfq1" path="res://Art/Gust1.png" id="8_rgw24"]
-[ext_resource type="Texture2D" uid="uid://mvnd32n28jub" path="res://Art/Gust2.png" id="9_5gwyn"]
 [ext_resource type="Texture2D" uid="uid://br4fu55ahx1a1" path="res://Art/moon_006.png" id="9_utia5"]
 [ext_resource type="Texture2D" uid="uid://ci6k3k6r1u8nl" path="res://Art/moon_007.png" id="10_f7hdo"]
-[ext_resource type="Texture2D" uid="uid://cxvumb1cnourd" path="res://Art/Gust3.png" id="10_r6gtk"]
 [ext_resource type="Texture2D" uid="uid://l6kvh0r8qnsi" path="res://Art/moon_008.png" id="11_clvyn"]
 [ext_resource type="Texture2D" uid="uid://6vxuwyu3pjju" path="res://Art/ClaySun00.png" id="11_ex7s8"]
 [ext_resource type="Texture2D" uid="uid://cq5nfvl8r5dvy" path="res://Art/moon_009.png" id="12_d8m2u"]
@@ -60,7 +57,6 @@
 [ext_resource type="Material" uid="uid://cphcxen3iddbt" path="res://Scripts/Shaders/Radial.tres" id="33_utia5"]
 [ext_resource type="Texture2D" uid="uid://ce6xe3mye77f" path="res://Art/Cloud0.png" id="38_clvyn"]
 [ext_resource type="Script" uid="uid://d3rpplbndnmue" path="res://Scripts/ClockSwipe.gd" id="40_6ehlx"]
-[ext_resource type="Texture2D" uid="uid://bcoeguv8sea6x" path="res://Art/Gust0.png" id="43_lfh1j"]
 [ext_resource type="Texture2D" uid="uid://dkvkk7fwdcbnf" path="res://Art/SpaceBackground.png" id="52_4clwk"]
 [ext_resource type="Texture2D" uid="uid://w7gps2lr58vx" path="res://Art/daySky.png" id="53_1bbis"]
 [ext_resource type="Texture2D" uid="uid://3jw4yvata6s2" path="res://Art/nightSkyTransparent.png" id="56_1bbis"]
@@ -92,6 +88,7 @@
 [ext_resource type="Theme" uid="uid://0gig5dwmyn2v" path="res://Themes/KeyText.tres" id="90_s0riu"]
 [ext_resource type="Texture2D" uid="uid://dfbuwngpix06p" path="res://Art/ClaySun01.png" id="91_hjjnx"]
 [ext_resource type="Texture2D" uid="uid://ionj285tor5v" path="res://Art/rain%icon.png" id="92_s0riu"]
+[ext_resource type="Theme" uid="uid://dgojte6j4gj6q" path="res://Themes/SettingsText.tres" id="93_hjjnx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1x2"]
 shader = ExtResource("60_xd5mi")
@@ -111,7 +108,7 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("tempText", "windText", "windRotation", "windImage", "gustImage", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("tempText", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
@@ -131,11 +128,7 @@ clockNextDay = NodePath("../ClockAnchor/Clock - Daytime/Label-NextDay")
 tempText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp00/Label-temp00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp01/Label-temp01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp02/Label-temp02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp03/Label-temp03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp04/Label-temp04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp05/Label-temp05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp06/Label-temp06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp07/Label-temp07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp08/Label-temp08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp09/Label-temp09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp10/Label-temp10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp11/Label-temp11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp12/Label-temp12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp13/Label-temp13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp14/Label-temp14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp15/Label-temp15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp16/Label-temp16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp17/Label-temp17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp18/Label-temp18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp19/Label-temp19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp20/Label-temp20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp21/Label-temp21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp22/Label-temp22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp23/Label-temp23")]
 tempColours = Array[Color]([Color(0.16862746, 0.3529412, 0.7372549, 1), Color(0.27450982, 0.44705883, 0.8117647, 1), Color(0.39215687, 0.5529412, 0.8901961, 1), Color(0.43529412, 0.6392157, 0.91764706, 1), Color(0.48235294, 0.74509805, 0.9372549, 1), Color(0.59607846, 0.8784314, 0.98039216, 1), Color(0.68235296, 0.8627451, 0.84705883, 1), Color(0.65882355, 0.8392157, 0.6784314, 1), Color(0.61960787, 0.8156863, 0.49803922, 1), Color(0.68235296, 0.8235294, 0.32941177, 1), Color(0.8156863, 0.8509804, 0.24313726, 1), Color(1, 0.9137255, 0.2901961, 1), Color(1, 0.78039217, 0.22352941, 1), Color(1, 0.6901961, 0.18039216, 1), Color(1, 0.61960787, 0.13725491, 1), Color(0.98039216, 0.50980395, 0.12156863, 1), Color(0.9607843, 0.4117647, 0.09019608, 1), Color(0.94509804, 0.3372549, 0.1882353, 1), Color(0.9372549, 0.25882354, 0.21568628, 1), Color(0.9098039, 0.19215687, 0.20392157, 1), Color(0.8627451, 0.15294118, 0.16078432, 1)])
 windText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/Label-wind00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/Label-wind01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/Label-wind02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/Label-wind03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/Label-wind04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/Label-wind05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/Label-wind06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/Label-wind07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/Label-wind08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/Label-wind09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/Label-wind10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/Label-wind11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/Label-wind12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/Label-wind13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/Label-wind14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/Label-wind15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/Label-wind16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/Label-wind17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/Label-wind18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/Label-wind19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/Label-wind20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/Label-wind21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/Label-wind22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/Label-wind23")]
-windRotation = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation")]
-windImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation/WindPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation/WindPower")]
-gustImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/GustPower"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/GustPower")]
-windLevel = Array[Texture]([ExtResource("74_he124"), ExtResource("74_he124"), ExtResource("74_he124"), ExtResource("74_he124")])
-gustLevel = Array[Texture]([ExtResource("43_lfh1j"), ExtResource("8_rgw24"), ExtResource("9_5gwyn"), ExtResource("10_r6gtk")])
+windRotation = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation23")]
 cloudText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud00/Label-cloud00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud01/Label-cloud01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud02/Label-cloud02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud03/Label-cloud03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud04/Label-cloud04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud05/Label-cloud05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud06/Label-cloud06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud07/Label-cloud07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud08/Label-cloud08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud09/Label-cloud09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud10/Label-cloud10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud11/Label-cloud11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud12/Label-cloud12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud13/Label-cloud13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud14/Label-cloud14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud15/Label-cloud15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud16/Label-cloud16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud17/Label-cloud17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud18/Label-cloud18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud19/Label-cloud19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud20/Label-cloud20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud21/Label-cloud21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud22/Label-cloud22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud23/Label-cloud23")]
 cloudImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Cloud23")]
 cloudLevel = Array[Texture]([ExtResource("11_ex7s8"), ExtResource("12_h2tpa"), ExtResource("13_h2tpa"), ExtResource("14_nkjwg")])
@@ -143,11 +136,11 @@ cloudLevelNight = Array[Texture]([ExtResource("15_as1io"), ExtResource("16_xd5mi
 rainLevel = Array[Texture]([ExtResource("15_4clwk"), ExtResource("16_h2tpa"), ExtResource("17_nkjwg"), ExtResource("18_8n4h5")])
 rainLevelMedium = Array[Texture]([ExtResource("15_4clwk"), ExtResource("22_3k6d1"), ExtResource("23_fq6d3"), ExtResource("24_he124")])
 rainLevelSmall = Array[Texture]([ExtResource("15_4clwk"), ExtResource("25_478hk"), ExtResource("26_othpo"), ExtResource("27_s0riu")])
-lightning = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount/Lightning"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount/Lightning")]
+lightning = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount00/Lightning00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount01/Lightning01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount02/Lightning02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount03/Lightning03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount04/Lightning04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount05/Lightning05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount06/Lightning06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount07/Lightning07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount08/Lightning08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount09/Lightning09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount10/Lightning10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount11/Lightning11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount12/Lightning12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount13/Lightning13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount14/Lightning14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount15/Lightning15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount16/Lightning16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount17/Lightning17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount18/Lightning18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount19/Lightning19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount20/Lightning20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount21/Lightning21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount22/Lightning22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount23/Lightning23")]
 snowLevel = Array[Texture]([ExtResource("15_4clwk"), ExtResource("25_mx20r"), ExtResource("26_rpc3w"), ExtResource("27_3k6d1")])
-rainImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount")]
+rainImage = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount23")]
 precText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/Label-prec00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec01/Label-prec01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec02/Label-prec02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec03/Label-prec03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec04/Label-prec04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec05/Label-prec05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec06/Label-prec06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec07/Label-prec07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec08/Label-prec08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec09/Label-prec09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec10/Label-prec10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec11/Label-prec11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec12/Label-prec12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec13/Label-prec13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec14/Label-prec14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec15/Label-prec15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec16/Label-prec16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec17/Label-prec17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec18/Label-prec18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec19/Label-prec19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec20/Label-prec20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec21/Label-prec21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec22/Label-prec22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec23/Label-prec23")]
-weatherText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather00/Label-weather00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather01/Label-weather01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather02/Label-weather02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather03/Label-weather03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather05/Label-weather05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather04/Label-weather04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather06/Label-weather06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather07/Label-weather07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather08/Label-weather08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather09/Label-weather09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather10/Label-weather10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather11/Label-weather11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather12/Label-weather12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather13/Label-weather13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather14/Label-weather14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather15/Label-weather15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather16/Label-weather16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather17/Label-weather17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather18/Label-weather18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather19/Label-weather19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather20/Label-weather20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather21/Label-weather21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather22/Label-weather22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather23/Label-weather23")]
+weatherText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather00/Label-weather00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather01/Label-weather01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather02/Label-weather02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather03/Label-weather03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather04/Label-weather04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather05/Label-weather05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather06/Label-weather06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather07/Label-weather07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather08/Label-weather08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather09/Label-weather09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather10/Label-weather10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather11/Label-weather11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather12/Label-weather12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather13/Label-weather13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather14/Label-weather14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather15/Label-weather15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather16/Label-weather16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather17/Label-weather17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather18/Label-weather18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather19/Label-weather19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather20/Label-weather20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather21/Label-weather21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather22/Label-weather22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather23/Label-weather23")]
 moonTextures = Array[Texture]([ExtResource("4_pbw6q"), ExtResource("4_6heos"), ExtResource("5_vvnwx"), ExtResource("6_btbly"), ExtResource("7_vs04g"), ExtResource("8_6ehlx"), ExtResource("9_utia5"), ExtResource("10_f7hdo"), ExtResource("11_clvyn"), ExtResource("12_d8m2u"), ExtResource("13_5psol"), ExtResource("14_m4llh"), ExtResource("15_lac6x"), ExtResource("16_hpjjw"), ExtResource("17_off7b"), ExtResource("18_lfh1j"), ExtResource("19_7sj7i"), ExtResource("20_semxg"), ExtResource("21_ep8v8"), ExtResource("22_3133c"), ExtResource("23_js5gh"), ExtResource("24_vvjo1"), ExtResource("25_yisvs"), ExtResource("26_rgw24"), ExtResource("27_5gwyn"), ExtResource("28_r6gtk"), ExtResource("29_81ldr"), ExtResource("30_eywpa"), ExtResource("31_vvnwx")])
 dayDateText = [NodePath("../SummaryPanelPrevious/DateText2"), NodePath("../SummaryPanelToday/DateText2"), NodePath("../SummaryPanelNext/DateText2")]
 dayWMOText = [NodePath("../SummaryPanelPrevious/DailyWeatherCode"), NodePath("../SummaryPanelToday/DailyWeatherCode"), NodePath("../SummaryPanelNext/DailyWeatherCode")]
@@ -2156,7 +2149,7 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00" unique_id=1106490366]
+[node name="WindRotation00" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00" unique_id=1106490366]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2168,22 +2161,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation" unique_id=2025551990]
+[node name="WindImg00" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation00" unique_id=2025551990]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind00" unique_id=1047537958]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind01" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=2123413154]
 layout_mode = 1
@@ -2223,7 +2207,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01" unique_id=669866514]
+[node name="WindRotation01" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01" unique_id=669866514]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2235,22 +2219,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation" unique_id=1657512890]
+[node name="WindImg01" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation01" unique_id=1657512890]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind01" unique_id=728279081]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind02" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=299189826]
 layout_mode = 1
@@ -2290,7 +2265,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02" unique_id=46581250]
+[node name="WindRotation02" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02" unique_id=46581250]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2302,22 +2277,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation" unique_id=887107134]
+[node name="WindImg02" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation02" unique_id=887107134]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind02" unique_id=724787383]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind03" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1400348027]
 layout_mode = 1
@@ -2357,7 +2323,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03" unique_id=1373944154]
+[node name="WindRotation03" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03" unique_id=1373944154]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2369,22 +2335,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation" unique_id=564004344]
+[node name="WindImg03" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation03" unique_id=564004344]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind03" unique_id=764136042]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind04" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=380156516]
 layout_mode = 1
@@ -2424,7 +2381,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04" unique_id=409949610]
+[node name="WindRotation04" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04" unique_id=409949610]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2436,22 +2393,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation" unique_id=649527369]
+[node name="WindImg04" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation04" unique_id=649527369]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind04" unique_id=1625186679]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind05" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=923430763]
 layout_mode = 1
@@ -2491,7 +2439,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05" unique_id=2056680476]
+[node name="WindRotation05" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05" unique_id=2056680476]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2503,22 +2451,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation" unique_id=1239698184]
+[node name="WindImg05" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation05" unique_id=1239698184]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind05" unique_id=627662124]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind06" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1894662819]
 layout_mode = 1
@@ -2558,7 +2497,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06" unique_id=1892509149]
+[node name="WindRotation06" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06" unique_id=1892509149]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2570,22 +2509,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation" unique_id=1808009601]
+[node name="WindImg06" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation06" unique_id=1808009601]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind06" unique_id=1090700529]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind07" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=744776099]
 layout_mode = 1
@@ -2625,7 +2555,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07" unique_id=1636403792]
+[node name="WindRotation07" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07" unique_id=1636403792]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2637,22 +2567,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation" unique_id=1760738648]
+[node name="WindImg07" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation07" unique_id=1760738648]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind07" unique_id=1063776362]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind08" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1054778983]
 layout_mode = 1
@@ -2692,7 +2613,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08" unique_id=1027319947]
+[node name="WindRotation08" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08" unique_id=1027319947]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2704,22 +2625,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation" unique_id=1861134852]
+[node name="WindImg08" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation08" unique_id=1861134852]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind08" unique_id=1814150943]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind09" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=441802170]
 layout_mode = 1
@@ -2759,7 +2671,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09" unique_id=1756377577]
+[node name="WindRotation09" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09" unique_id=1756377577]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2771,22 +2683,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation" unique_id=797149454]
+[node name="WindImg09" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation09" unique_id=797149454]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind09" unique_id=252941772]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind10" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1053229596]
 layout_mode = 1
@@ -2826,7 +2729,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10" unique_id=1478386774]
+[node name="WindRotation10" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10" unique_id=1478386774]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2838,22 +2741,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation" unique_id=1340608447]
+[node name="WindImg10" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation10" unique_id=1340608447]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind10" unique_id=114102850]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind11" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=64857087]
 layout_mode = 1
@@ -2893,7 +2787,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11" unique_id=219684492]
+[node name="WindRotation11" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11" unique_id=219684492]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2905,22 +2799,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation" unique_id=995521147]
+[node name="WindImg11" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation11" unique_id=995521147]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind11" unique_id=1454696689]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind12" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=236991428]
 layout_mode = 1
@@ -2960,7 +2845,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12" unique_id=808117629]
+[node name="WindRotation12" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12" unique_id=808117629]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -2972,22 +2857,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation" unique_id=14658466]
+[node name="WindImg12" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation12" unique_id=14658466]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind12" unique_id=166901619]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind13" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1010649557]
 layout_mode = 1
@@ -3027,7 +2903,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13" unique_id=1376121482]
+[node name="WindRotation13" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13" unique_id=1376121482]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3039,22 +2915,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation" unique_id=1670747557]
+[node name="WindImg13" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation13" unique_id=1670747557]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind13" unique_id=1196231004]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind14" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=771084602]
 layout_mode = 1
@@ -3094,7 +2961,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14" unique_id=791908640]
+[node name="WindRotation14" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14" unique_id=791908640]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3106,22 +2973,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation" unique_id=953797125]
+[node name="WindImg14" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation14" unique_id=953797125]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind14" unique_id=1687373038]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind15" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1221077064]
 layout_mode = 1
@@ -3161,7 +3019,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15" unique_id=472755304]
+[node name="WindRotation15" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15" unique_id=472755304]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3173,22 +3031,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation" unique_id=224794976]
+[node name="WindImg15" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation15" unique_id=224794976]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind15" unique_id=1708138271]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind16" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1251309356]
 layout_mode = 1
@@ -3228,7 +3077,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16" unique_id=583900076]
+[node name="WindRotation16" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16" unique_id=583900076]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3240,22 +3089,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation" unique_id=1692815708]
+[node name="WindImg16" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation16" unique_id=1692815708]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind16" unique_id=737910894]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind17" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1174385626]
 layout_mode = 1
@@ -3295,7 +3135,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17" unique_id=603642369]
+[node name="WindRotation17" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17" unique_id=603642369]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3307,22 +3147,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation" unique_id=1840272035]
+[node name="WindImg17" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation17" unique_id=1840272035]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind17" unique_id=1195782004]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind18" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1382263131]
 layout_mode = 1
@@ -3362,7 +3193,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18" unique_id=1514259959]
+[node name="WindRotation18" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18" unique_id=1514259959]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3374,22 +3205,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation" unique_id=701247099]
+[node name="WindImg18" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation18" unique_id=701247099]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind18" unique_id=560407966]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind19" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=216622521]
 layout_mode = 1
@@ -3429,7 +3251,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19" unique_id=1607403357]
+[node name="WindRotation19" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19" unique_id=1607403357]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3441,22 +3263,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation" unique_id=1825148340]
+[node name="WindImg19" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation19" unique_id=1825148340]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind19" unique_id=811866582]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind20" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=17365077]
 layout_mode = 1
@@ -3496,7 +3309,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20" unique_id=2057412597]
+[node name="WindRotation20" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20" unique_id=2057412597]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3508,22 +3321,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation" unique_id=315078103]
+[node name="WindImg20" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation20" unique_id=315078103]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind20" unique_id=1641335988]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind21" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1082197845]
 layout_mode = 1
@@ -3575,22 +3379,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21" unique_id=275860902]
+[node name="WindImg21" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21" unique_id=275860902]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind21" unique_id=1053211719]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind22" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=840028528]
 layout_mode = 1
@@ -3630,7 +3425,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22" unique_id=662747470]
+[node name="WindRotation22" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22" unique_id=662747470]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3642,22 +3437,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation" unique_id=816194650]
+[node name="WindImg22" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation22" unique_id=816194650]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind22" unique_id=1944336730]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Wind23" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1063602834]
 layout_mode = 1
@@ -3697,7 +3483,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindRotation" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23" unique_id=58170030]
+[node name="WindRotation23" type="Control" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23" unique_id=58170030]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3709,22 +3495,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("58_1bbis")
 
-[node name="WindPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation" unique_id=2003948686]
+[node name="WindImg23" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation23" unique_id=2003948686]
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("74_he124")
-
-[node name="GustPower" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Wind23" unique_id=1211762450]
-visible = false
-layout_mode = 1
-offset_right = 100.0
-offset_bottom = 100.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("43_lfh1j")
 
 [node name="Prec00" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=126553850]
 layout_mode = 1
@@ -3758,7 +3535,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec00" unique_id=1119253377]
+[node name="PrecAmount00" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec00" unique_id=1119253377]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3772,7 +3549,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount" unique_id=159785094]
+[node name="Lightning00" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec00/PrecAmount00" unique_id=159785094]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -3822,7 +3599,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec01" unique_id=53168855]
+[node name="PrecAmount01" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec01" unique_id=53168855]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3836,7 +3613,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount" unique_id=1352498505]
+[node name="Lightning01" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec01/PrecAmount01" unique_id=1352498505]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -3886,7 +3663,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec02" unique_id=434736458]
+[node name="PrecAmount02" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec02" unique_id=434736458]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3900,7 +3677,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount" unique_id=1400088571]
+[node name="Lightning02" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec02/PrecAmount02" unique_id=1400088571]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -3950,7 +3727,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec03" unique_id=840044825]
+[node name="PrecAmount03" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec03" unique_id=840044825]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3964,7 +3741,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount" unique_id=1668751258]
+[node name="Lightning03" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec03/PrecAmount03" unique_id=1668751258]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4014,7 +3791,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec04" unique_id=1183157304]
+[node name="PrecAmount04" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec04" unique_id=1183157304]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4028,7 +3805,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount" unique_id=652330199]
+[node name="Lightning04" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec04/PrecAmount04" unique_id=652330199]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4078,7 +3855,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec05" unique_id=742358155]
+[node name="PrecAmount05" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec05" unique_id=742358155]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4092,7 +3869,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount" unique_id=2079251726]
+[node name="Lightning05" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec05/PrecAmount05" unique_id=2079251726]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4142,7 +3919,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec06" unique_id=1210480482]
+[node name="PrecAmount06" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec06" unique_id=1210480482]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4156,7 +3933,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount" unique_id=630978166]
+[node name="Lightning06" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec06/PrecAmount06" unique_id=630978166]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4206,7 +3983,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec07" unique_id=1818253431]
+[node name="PrecAmount07" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec07" unique_id=1818253431]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4220,7 +3997,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount" unique_id=240949370]
+[node name="Lightning07" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec07/PrecAmount07" unique_id=240949370]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4270,7 +4047,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec08" unique_id=1793605582]
+[node name="PrecAmount08" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec08" unique_id=1793605582]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4284,7 +4061,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount" unique_id=581797085]
+[node name="Lightning08" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec08/PrecAmount08" unique_id=581797085]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4334,7 +4111,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec09" unique_id=1261101874]
+[node name="PrecAmount09" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec09" unique_id=1261101874]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4348,7 +4125,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount" unique_id=275833269]
+[node name="Lightning09" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec09/PrecAmount09" unique_id=275833269]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4398,7 +4175,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec10" unique_id=500733307]
+[node name="PrecAmount10" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec10" unique_id=500733307]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4412,7 +4189,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount" unique_id=1946215380]
+[node name="Lightning10" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec10/PrecAmount10" unique_id=1946215380]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4462,7 +4239,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec11" unique_id=1888037134]
+[node name="PrecAmount11" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec11" unique_id=1888037134]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4476,7 +4253,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount" unique_id=33836926]
+[node name="Lightning11" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec11/PrecAmount11" unique_id=33836926]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4526,7 +4303,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec12" unique_id=926823277]
+[node name="PrecAmount12" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec12" unique_id=926823277]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4540,7 +4317,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount" unique_id=1508430103]
+[node name="Lightning12" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec12/PrecAmount12" unique_id=1508430103]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4590,7 +4367,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec13" unique_id=1508142908]
+[node name="PrecAmount13" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec13" unique_id=1508142908]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4604,7 +4381,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount" unique_id=1534433995]
+[node name="Lightning13" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec13/PrecAmount13" unique_id=1534433995]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4654,7 +4431,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec14" unique_id=1046556355]
+[node name="PrecAmount14" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec14" unique_id=1046556355]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4668,7 +4445,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount" unique_id=266058243]
+[node name="Lightning14" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec14/PrecAmount14" unique_id=266058243]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4718,7 +4495,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec15" unique_id=1867898922]
+[node name="PrecAmount15" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec15" unique_id=1867898922]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4732,7 +4509,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount" unique_id=1420958618]
+[node name="Lightning15" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec15/PrecAmount15" unique_id=1420958618]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4782,7 +4559,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec16" unique_id=2144420063]
+[node name="PrecAmount16" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec16" unique_id=2144420063]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4796,7 +4573,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount" unique_id=40652153]
+[node name="Lightning16" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec16/PrecAmount16" unique_id=40652153]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4846,7 +4623,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec17" unique_id=915554689]
+[node name="PrecAmount17" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec17" unique_id=915554689]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4860,7 +4637,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount" unique_id=1083887428]
+[node name="Lightning17" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec17/PrecAmount17" unique_id=1083887428]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4910,7 +4687,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec18" unique_id=1927533851]
+[node name="PrecAmount18" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec18" unique_id=1927533851]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4924,7 +4701,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount" unique_id=1216590245]
+[node name="Lightning18" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec18/PrecAmount18" unique_id=1216590245]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -4974,7 +4751,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec19" unique_id=1769700689]
+[node name="PrecAmount19" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec19" unique_id=1769700689]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4988,7 +4765,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount" unique_id=1313255285]
+[node name="Lightning19" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec19/PrecAmount19" unique_id=1313255285]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -5038,7 +4815,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec20" unique_id=1444866308]
+[node name="PrecAmount20" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec20" unique_id=1444866308]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5052,7 +4829,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount" unique_id=144113900]
+[node name="Lightning20" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec20/PrecAmount20" unique_id=144113900]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -5102,7 +4879,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec21" unique_id=1537086027]
+[node name="PrecAmount21" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec21" unique_id=1537086027]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5116,7 +4893,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount" unique_id=2117976515]
+[node name="Lightning21" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec21/PrecAmount21" unique_id=2117976515]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -5166,7 +4943,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec22" unique_id=107155633]
+[node name="PrecAmount22" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec22" unique_id=107155633]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5180,7 +4957,7 @@ texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount" unique_id=20702370]
+[node name="Lightning22" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec22/PrecAmount22" unique_id=20702370]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -5230,7 +5007,7 @@ theme = ExtResource("68_tbeql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrecAmount" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec23" unique_id=1735108677]
+[node name="PrecAmount23" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec23" unique_id=1735108677]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5243,7 +5020,7 @@ mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Lightning" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount" unique_id=540250762]
+[node name="Lightning23" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Prec23/PrecAmount23" unique_id=540250762]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -8010,7 +7787,7 @@ texture_normal = ExtResource("64_ex7s8")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="IconKey2" type="Label" parent="Settings" unique_id=268560728]
+[node name="SettingsTitle" type="Label" parent="Settings" unique_id=268560728]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -8023,19 +7800,172 @@ text = "Settings"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="Settings" unique_id=352325511]
+[node name="TempUnits" type="Label" parent="Settings" unique_id=23964722]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.35
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_left = 0.05
+anchor_top = 0.3
+anchor_right = 0.95
+anchor_bottom = 0.33
+theme = ExtResource("93_hjjnx")
+text = "Temperature units"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label-C" type="Label" parent="Settings" unique_id=352325511]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.34
+anchor_right = 0.95
+anchor_bottom = 0.36
 theme = ExtResource("60_atu2d")
-text = "C or F
-Mph or Kph (Kmph?)
-turn off wind wave
-turn off temperature colours
-toggle open maps"
+text = "Celsius"
+
+[node name="Label-F" type="Label" parent="Settings" unique_id=1396524315]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.37
+anchor_right = 0.95
+anchor_bottom = 0.39
+theme = ExtResource("60_atu2d")
+text = "Fahrenheit"
+
+[node name="WindSpeedUnits" type="Label" parent="Settings" unique_id=687470434]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.42
+anchor_right = 0.95
+anchor_bottom = 0.45
+theme = ExtResource("93_hjjnx")
+text = "Wind speed units"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label-mph" type="Label" parent="Settings" unique_id=330755559]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.46
+anchor_right = 0.95
+anchor_bottom = 0.48
+theme = ExtResource("60_atu2d")
+text = "Mph"
+
+[node name="Label-kmh" type="Label" parent="Settings" unique_id=545947452]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.49
+anchor_right = 0.95
+anchor_bottom = 0.51
+offset_bottom = 0.2000122
+theme = ExtResource("60_atu2d")
+text = "Km/h"
+
+[node name="WindSpeedAnimation" type="Label" parent="Settings" unique_id=268893509]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.54
+anchor_right = 0.95
+anchor_bottom = 0.57
+theme = ExtResource("93_hjjnx")
+text = "Wind speed animation"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label-on" type="Label" parent="Settings" unique_id=622683223]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.58
+anchor_right = 0.95
+anchor_bottom = 0.6
+offset_bottom = 0.19995117
+theme = ExtResource("60_atu2d")
+text = "On"
+
+[node name="Label-off" type="Label" parent="Settings" unique_id=1679413143]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.61
+anchor_right = 0.95
+anchor_bottom = 0.63
+offset_bottom = 0.19995117
+theme = ExtResource("60_atu2d")
+text = "Off"
+
+[node name="TemperatureColours" type="Label" parent="Settings" unique_id=308008540]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.65
+anchor_right = 0.95
+anchor_bottom = 0.68
+theme = ExtResource("93_hjjnx")
+text = "Temperature colours"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label-on2" type="Label" parent="Settings" unique_id=723134973]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.69
+anchor_right = 0.95
+anchor_bottom = 0.71
+offset_bottom = 0.19995117
+theme = ExtResource("60_atu2d")
+text = "On"
+
+[node name="Label-off2" type="Label" parent="Settings" unique_id=1979791714]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.72
+anchor_right = 0.95
+anchor_bottom = 0.74
+offset_bottom = 0.19995117
+theme = ExtResource("60_atu2d")
+text = "Off"
+
+[node name="LocationMapLink" type="Label" parent="Settings" unique_id=2021980533]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.77
+anchor_right = 0.95
+anchor_bottom = 0.8
+theme = ExtResource("93_hjjnx")
+text = "Open maps from location"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label-on3" type="Label" parent="Settings" unique_id=482039234]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.81
+anchor_right = 0.95
+anchor_bottom = 0.83
+offset_bottom = 0.19995117
+theme = ExtResource("60_atu2d")
+text = "On"
+
+[node name="Label-off3" type="Label" parent="Settings" unique_id=2086155410]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.84
+anchor_right = 0.95
+anchor_bottom = 0.86
+offset_bottom = 0.19995117
+theme = ExtResource("60_atu2d")
+text = "Off"
 
 [connection signal="button_down" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_down"]
 [connection signal="button_up" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_up"]

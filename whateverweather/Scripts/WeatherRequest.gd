@@ -18,10 +18,6 @@ extends HTTPRequest
 @export var tempColours: Array[Color] = []
 @export var windText: Array[RichTextLabel] = []
 @export var windRotation: Array[Node] = []
-@export var windImage: Array[TextureRect] = []
-@export var gustImage: Array[TextureRect] = []
-@export var windLevel: Array[Texture] = []
-@export var gustLevel: Array[Texture] = []
 @export var cloudText: Array[Label] = []
 @export var cloudImage: Array[TextureRect] = []
 @export var cloudLevel: Array[Texture] = []
@@ -64,7 +60,18 @@ func _ready():
 
 func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
-	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14&wind_speed_unit=mph")
+	# tempUnit: blank = celsius, temperature_unit=fahrenheit
+	# windUnit: blank = km/h, wind_speed_unit=mph wind_speed_unit=ms wind_speed_unit=kn
+	var temp = ""
+	if saveData.tempUnit != "":
+		temp = "&temperature_unit=" + saveData.tempUnit
+	print("t: " + temp)
+	var wind = ""
+	if saveData.windUnit != "":
+		wind = "&wind_speed_unit=" + saveData.windUnit
+	print("w: " + wind)
+	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14" + wind + temp)
+	print("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14" + wind + temp)
 	if error != OK:
 		get_node_or_null(dateText).text = "An error occurred in the HTTP request."
 		#push_error("An error occurred in the HTTP request.")
@@ -152,16 +159,7 @@ func populateForecastTable():
 			
 			#Rain and Snow
 			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "%"
-			
-			'if openMeteoJSON["hourly"]["rain"][i] == 0:
-				rainImage[h].texture = rainLevel[0]
-			elif openMeteoJSON["hourly"]["rain"][i] > 0 and openMeteoJSON["hourly"]["rain"][i] <= 1:
-				rainImage[h].texture = rainLevel[1]
-			elif openMeteoJSON["hourly"]["rain"][i] > 1 and openMeteoJSON["hourly"]["rain"][i] <= 3:
-				rainImage[h].texture = rainLevel[2]
-			elif openMeteoJSON["hourly"]["rain"][i] > 3:
-				rainImage[h].texture = rainLevel[3]'
-			
+
 			#Rain
 			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
 				if weatherCodeText.containsn("rain"):
@@ -184,32 +182,12 @@ func populateForecastTable():
 				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.15 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.3:
 					#print("2: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[2]
-				
 			
 			#Lightning
 			if weatherCodeText.containsn("thunder") or weatherCodeText.containsn("lightning"):
 				lightning[h].show()
 			else:
 				lightning[h].hide()
-			
-			#Wind
-			if openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 7:
-				windImage[h].texture = windLevel[0]
-			elif openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 8 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 15:
-				windImage[h].texture = windLevel[1]
-			elif openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 16 and openMeteoJSON["hourly"]["wind_speed_10m"][i] <= 23:
-				windImage[h].texture = windLevel[2]
-			elif openMeteoJSON["hourly"]["wind_speed_10m"][i] >= 24:
-				windImage[h].texture = windLevel[3]
-				
-			if openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 0 and openMeteoJSON["hourly"]["wind_gusts_10m"][i] <= 12:
-				gustImage[h].texture = gustLevel[0]
-			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 13 and openMeteoJSON["hourly"]["wind_gusts_10m"][i] <= 25:
-				gustImage[h].texture = gustLevel[1]
-			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 26 and openMeteoJSON["hourly"]["wind_gusts_10m"][i] <= 39:
-				gustImage[h].texture = gustLevel[2]
-			elif openMeteoJSON["hourly"]["wind_gusts_10m"][i] >= 40:
-				gustImage[h].texture = gustLevel[3]
 			
 			populateInitialWindDirection()
 			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
@@ -484,7 +462,7 @@ func getLunarPhase():
 		get_node_or_null(moonPhaseTextureNext).hide()
 
 func updateLocation(placeName: String, adminName: String, lat: float, long: float):
-	saveData.save_game(placeName + " (" + adminName + ")", lat, long)	
+	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit)	
 	get_node_or_null(locationText).text = saveData.placeName
 	weatherRequest()
 
