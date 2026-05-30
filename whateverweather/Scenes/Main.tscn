@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://be66rpgutl5mn" path="res://Scripts/WeatherRequest.gd" id="2_idj7w"]
 [ext_resource type="Texture2D" uid="uid://dso4k6j8gwmic" path="res://Art/moon_001.png" id="4_6heos"]
 [ext_resource type="Texture2D" uid="uid://3gf157aiplcn" path="res://Art/moon_000.png" id="4_pbw6q"]
-[ext_resource type="Texture2D" uid="uid://dwn4qmgssok10" path="res://Art/venus_000.png" id="5_v1gob"]
 [ext_resource type="Texture2D" uid="uid://odxq7qk6nabd" path="res://Art/moon_002.png" id="5_vvnwx"]
 [ext_resource type="Texture2D" uid="uid://bv4wsmcq071a1" path="res://Art/moon_003.png" id="6_btbly"]
 [ext_resource type="Texture2D" uid="uid://d3yywyyfogpm5" path="res://Art/moon_004.png" id="7_vs04g"]
@@ -22,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://bo3el8rxprfp1" path="res://Art/ClaySun03.png" id="14_nkjwg"]
 [ext_resource type="Texture2D" uid="uid://w7v8x287e6wl" path="res://Art/ClayRain0.png" id="15_4clwk"]
 [ext_resource type="Texture2D" uid="uid://dfb6gxce0yc1f" path="res://Art/ClayMoon00.png" id="15_as1io"]
-[ext_resource type="Texture2D" uid="uid://bk0bkbxiofoa" path="res://Art/Rain0.png" id="15_j7e3e"]
 [ext_resource type="Texture2D" uid="uid://b07l3gnojv4sm" path="res://Art/moon_012.png" id="15_lac6x"]
 [ext_resource type="Texture2D" uid="uid://tpm1r0hfae42" path="res://Art/ClayRain1.png" id="16_h2tpa"]
 [ext_resource type="Texture2D" uid="uid://bco2nfn0gumec" path="res://Art/moon_013.png" id="16_hpjjw"]
@@ -55,7 +53,6 @@
 [ext_resource type="Texture2D" uid="uid://p1ck2k2ynu6i" path="res://Art/moon_027.png" id="30_eywpa"]
 [ext_resource type="Texture2D" uid="uid://faw7qlpulttb" path="res://Art/moon_028.png" id="31_vvnwx"]
 [ext_resource type="Material" uid="uid://cphcxen3iddbt" path="res://Scripts/Shaders/Radial.tres" id="33_utia5"]
-[ext_resource type="Texture2D" uid="uid://ce6xe3mye77f" path="res://Art/Cloud0.png" id="38_clvyn"]
 [ext_resource type="Script" uid="uid://d3rpplbndnmue" path="res://Scripts/ClockSwipe.gd" id="40_6ehlx"]
 [ext_resource type="Texture2D" uid="uid://dkvkk7fwdcbnf" path="res://Art/SpaceBackground.png" id="52_4clwk"]
 [ext_resource type="Texture2D" uid="uid://w7gps2lr58vx" path="res://Art/daySky.png" id="53_1bbis"]
@@ -85,6 +82,8 @@
 [ext_resource type="Texture2D" uid="uid://n8m8m3iqsvug" path="res://Art/DaySummary1Small.png" id="85_3k6d1"]
 [ext_resource type="Texture2D" uid="uid://dwdxvxfe5f1ua" path="res://Art/LittleDripLogo.png" id="87_fq6d3"]
 [ext_resource type="Texture2D" uid="uid://dxt8wtdirsg7x" path="res://Art/locationKey.png" id="89_othpo"]
+[ext_resource type="Texture2D" uid="uid://kvroju4hhmbj" path="res://Art/ClayCircle-ToggleOn.png" id="90_478hk"]
+[ext_resource type="Theme" uid="uid://ctcpathk724kt" path="res://Themes/SettingsText-small.tres" id="90_othpo"]
 [ext_resource type="Theme" uid="uid://0gig5dwmyn2v" path="res://Themes/KeyText.tres" id="90_s0riu"]
 [ext_resource type="Texture2D" uid="uid://dfbuwngpix06p" path="res://Art/ClaySun01.png" id="91_hjjnx"]
 [ext_resource type="Texture2D" uid="uid://ionj285tor5v" path="res://Art/rain%icon.png" id="92_s0riu"]
@@ -3545,7 +3544,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3609,7 +3607,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3673,7 +3670,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3737,7 +3733,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3801,7 +3796,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3865,7 +3859,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3929,7 +3922,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -3993,7 +3985,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4057,7 +4048,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4121,7 +4111,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4185,7 +4174,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4249,7 +4237,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4313,7 +4300,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4377,7 +4363,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4441,7 +4426,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4505,7 +4489,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4569,7 +4552,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4633,7 +4615,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4697,7 +4678,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4761,7 +4741,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4825,7 +4804,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4889,7 +4867,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -4953,7 +4930,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_j7e3e")
 expand_mode = 2
 stretch_mode = 5
 
@@ -5053,7 +5029,6 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5093,7 +5068,6 @@ rotation = 0.2617994
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5133,7 +5107,6 @@ rotation = 0.5235988
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5173,7 +5146,6 @@ rotation = 0.7853982
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5213,7 +5185,6 @@ rotation = 1.0471976
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5253,7 +5224,6 @@ rotation = 1.3089969
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5293,7 +5263,6 @@ rotation = 1.5707964
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5333,7 +5302,6 @@ rotation = 1.8325957
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5373,7 +5341,6 @@ rotation = 2.0943952
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5413,7 +5380,6 @@ rotation = 2.3561945
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5453,7 +5419,6 @@ rotation = 2.6179938
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5493,7 +5458,6 @@ rotation = 2.8797932
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5533,7 +5497,6 @@ rotation = 3.1415927
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5573,7 +5536,6 @@ rotation = 3.403392
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5613,7 +5575,6 @@ rotation = 3.6651914
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5653,7 +5614,6 @@ rotation = 3.9269907
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5693,7 +5653,6 @@ rotation = 4.1887903
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5733,7 +5692,6 @@ rotation = 4.4505897
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5773,7 +5731,6 @@ rotation = 4.712389
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5813,7 +5770,6 @@ rotation = 4.9741883
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5853,7 +5809,6 @@ rotation = 5.2359877
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5893,7 +5848,6 @@ rotation = 5.497787
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5933,7 +5887,6 @@ rotation = 5.7595863
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -5973,7 +5926,6 @@ rotation = 6.021386
 pivot_offset = Vector2(0, 990)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("38_clvyn")
 expand_mode = 3
 stretch_mode = 3
 
@@ -7356,21 +7308,6 @@ grow_vertical = 0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="SunTexture" type="TextureRect" parent="." unique_id=520227156]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.85
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.379883
-offset_bottom = 600.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("5_v1gob")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="LocationResults" type="VBoxContainer" parent="." unique_id=1476899233]
 visible = false
 layout_mode = 1
@@ -7452,7 +7389,7 @@ anchor_top = 0.25
 anchor_right = 0.95
 anchor_bottom = 0.28
 theme = ExtResource("60_atu2d")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 70
 text = "Icon key"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -7724,7 +7661,7 @@ anchor_top = 0.77
 anchor_right = 0.95
 anchor_bottom = 0.8
 theme = ExtResource("60_atu2d")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 70
 text = "Credits and important stuff"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -7795,7 +7732,7 @@ anchor_top = 0.25
 anchor_right = 0.95
 anchor_bottom = 0.28
 theme = ExtResource("60_atu2d")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -7815,22 +7752,50 @@ autowrap_mode = 3
 [node name="Label-C" type="Label" parent="Settings" unique_id=352325511]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
+anchor_left = 0.13
 anchor_top = 0.34
-anchor_right = 0.95
-anchor_bottom = 0.36
-theme = ExtResource("60_atu2d")
-text = "Celsius"
+anchor_right = 0.5
+anchor_bottom = 0.365
+theme = ExtResource("90_othpo")
+text = "celsius"
+vertical_alignment = 1
 
 [node name="Label-F" type="Label" parent="Settings" unique_id=1396524315]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.37
+anchor_right = 0.5
+anchor_bottom = 0.395
+theme = ExtResource("90_othpo")
+text = "fahrenheit"
+vertical_alignment = 1
+
+[node name="TextureButton-C" type="TextureButton" parent="Settings" unique_id=1008139670]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.34
+anchor_right = 0.5
+anchor_bottom = 0.365
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-F" type="TextureButton" parent="Settings" unique_id=456711638]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.37
-anchor_right = 0.95
-anchor_bottom = 0.39
-theme = ExtResource("60_atu2d")
-text = "Fahrenheit"
+anchor_right = 0.5
+anchor_bottom = 0.395
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="WindSpeedUnits" type="Label" parent="Settings" unique_id=687470434]
 layout_mode = 1
@@ -7847,31 +7812,109 @@ autowrap_mode = 3
 [node name="Label-mph" type="Label" parent="Settings" unique_id=330755559]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
+anchor_left = 0.13
 anchor_top = 0.46
-anchor_right = 0.95
-anchor_bottom = 0.48
-theme = ExtResource("60_atu2d")
-text = "Mph"
+anchor_right = 0.5
+anchor_bottom = 0.485
+theme = ExtResource("90_othpo")
+text = "mph"
+vertical_alignment = 1
 
 [node name="Label-kmh" type="Label" parent="Settings" unique_id=545947452]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.49
+anchor_right = 0.5
+anchor_bottom = 0.515
+offset_bottom = 0.2000122
+theme = ExtResource("90_othpo")
+text = "km/h"
+vertical_alignment = 1
+
+[node name="Label-ms" type="Label" parent="Settings" unique_id=736307998]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.52
+anchor_right = 0.5
+anchor_bottom = 0.545
+offset_bottom = 0.2000122
+theme = ExtResource("90_othpo")
+text = "m/s"
+vertical_alignment = 1
+
+[node name="Label-kn" type="Label" parent="Settings" unique_id=2062570568]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.575
+offset_bottom = 0.2000122
+theme = ExtResource("90_othpo")
+text = "knots"
+vertical_alignment = 1
+
+[node name="TextureButton-mph" type="TextureButton" parent="Settings" unique_id=2068537778]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.46
+anchor_right = 0.5
+anchor_bottom = 0.485
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-kmh" type="TextureButton" parent="Settings" unique_id=1645741674]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.49
-anchor_right = 0.95
-anchor_bottom = 0.51
-offset_bottom = 0.2000122
-theme = ExtResource("60_atu2d")
-text = "Km/h"
+anchor_right = 0.5
+anchor_bottom = 0.515
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-ms" type="TextureButton" parent="Settings" unique_id=1139663137]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.52
+anchor_right = 0.5
+anchor_bottom = 0.545
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-kn" type="TextureButton" parent="Settings" unique_id=940703767]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.575
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="WindSpeedAnimation" type="Label" parent="Settings" unique_id=268893509]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.54
+anchor_top = 0.6
 anchor_right = 0.95
-anchor_bottom = 0.57
+anchor_bottom = 0.63
 theme = ExtResource("93_hjjnx")
 text = "Wind speed animation"
 vertical_alignment = 1
@@ -7880,32 +7923,60 @@ autowrap_mode = 3
 [node name="Label-on" type="Label" parent="Settings" unique_id=622683223]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.58
-anchor_right = 0.95
-anchor_bottom = 0.6
+anchor_left = 0.13
+anchor_top = 0.64
+anchor_right = 0.5
+anchor_bottom = 0.665
 offset_bottom = 0.19995117
-theme = ExtResource("60_atu2d")
-text = "On"
+theme = ExtResource("90_othpo")
+text = "on"
+vertical_alignment = 1
 
 [node name="Label-off" type="Label" parent="Settings" unique_id=1679413143]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.61
-anchor_right = 0.95
-anchor_bottom = 0.63
+anchor_left = 0.13
+anchor_top = 0.67
+anchor_right = 0.5
+anchor_bottom = 0.695
 offset_bottom = 0.19995117
-theme = ExtResource("60_atu2d")
-text = "Off"
+theme = ExtResource("90_othpo")
+text = "off"
+vertical_alignment = 1
+
+[node name="TextureButton-on" type="TextureButton" parent="Settings" unique_id=1260627611]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.64
+anchor_right = 0.5
+anchor_bottom = 0.665
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-off" type="TextureButton" parent="Settings" unique_id=984095101]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.67
+anchor_right = 0.5
+anchor_bottom = 0.695
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="TemperatureColours" type="Label" parent="Settings" unique_id=308008540]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.65
+anchor_top = 0.71
 anchor_right = 0.95
-anchor_bottom = 0.68
+anchor_bottom = 0.74
 theme = ExtResource("93_hjjnx")
 text = "Temperature colours"
 vertical_alignment = 1
@@ -7914,32 +7985,60 @@ autowrap_mode = 3
 [node name="Label-on2" type="Label" parent="Settings" unique_id=723134973]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.69
-anchor_right = 0.95
-anchor_bottom = 0.71
+anchor_left = 0.13
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.775
 offset_bottom = 0.19995117
-theme = ExtResource("60_atu2d")
-text = "On"
+theme = ExtResource("90_othpo")
+text = "on"
+vertical_alignment = 1
 
 [node name="Label-off2" type="Label" parent="Settings" unique_id=1979791714]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.72
-anchor_right = 0.95
-anchor_bottom = 0.74
+anchor_left = 0.13
+anchor_top = 0.78
+anchor_right = 0.5
+anchor_bottom = 0.805
 offset_bottom = 0.19995117
-theme = ExtResource("60_atu2d")
-text = "Off"
+theme = ExtResource("90_othpo")
+text = "off"
+vertical_alignment = 1
+
+[node name="TextureButton-on2" type="TextureButton" parent="Settings" unique_id=1458835790]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.775
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-off2" type="TextureButton" parent="Settings" unique_id=938892213]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.78
+anchor_right = 0.5
+anchor_bottom = 0.805
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="LocationMapLink" type="Label" parent="Settings" unique_id=2021980533]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.77
+anchor_top = 0.83
 anchor_right = 0.95
-anchor_bottom = 0.8
+anchor_bottom = 0.86
 theme = ExtResource("93_hjjnx")
 text = "Open maps from location"
 vertical_alignment = 1
@@ -7948,24 +8047,52 @@ autowrap_mode = 3
 [node name="Label-on3" type="Label" parent="Settings" unique_id=482039234]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.81
-anchor_right = 0.95
-anchor_bottom = 0.83
+anchor_left = 0.13
+anchor_top = 0.87
+anchor_right = 0.5
+anchor_bottom = 0.895
 offset_bottom = 0.19995117
-theme = ExtResource("60_atu2d")
-text = "On"
+theme = ExtResource("90_othpo")
+text = "on"
+vertical_alignment = 1
 
 [node name="Label-off3" type="Label" parent="Settings" unique_id=2086155410]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.84
-anchor_right = 0.95
-anchor_bottom = 0.86
+anchor_left = 0.13
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.925
 offset_bottom = 0.19995117
-theme = ExtResource("60_atu2d")
-text = "Off"
+theme = ExtResource("90_othpo")
+text = "off"
+vertical_alignment = 1
+
+[node name="TextureButton-on3" type="TextureButton" parent="Settings" unique_id=519603360]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.87
+anchor_right = 0.5
+anchor_bottom = 0.895
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton-off3" type="TextureButton" parent="Settings" unique_id=1747988064]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.925
+toggle_mode = true
+texture_normal = ExtResource("57_ex7s8")
+texture_pressed = ExtResource("90_478hk")
+ignore_texture_size = true
+stretch_mode = 4
 
 [connection signal="button_down" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_down"]
 [connection signal="button_up" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_up"]
