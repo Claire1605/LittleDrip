@@ -13,7 +13,8 @@ func _ready() -> void:
 func search(text: String):
 	get_node_or_null(locationResults).show()
 	
-	request_completed.connect(geocoding)
+	if !request_completed.is_connected(geocoding):
+		request_completed.connect(geocoding)
 	
 	text = text.replace(' ', '+')
 

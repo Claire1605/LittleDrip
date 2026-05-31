@@ -4,27 +4,48 @@ var latitude: float = 56.4691
 var longitude: float = -2.9749
 var tempUnit: String = ""
 var windUnit: String = "mph"
+var windAnim: bool = true
+var tempColours: bool = true
+var mapConnect: bool = true
 
-func save_game(pName, lat, long, temp, wind):
+func save_game(pName, lat, long, temp, wind, anim, tempCol, mapConn):
 	placeName = pName
 	latitude = lat
 	longitude = long
 	tempUnit = temp
 	windUnit = wind
-	
-	print("sdtu: " + tempUnit)
-	print("sdwu: " + windUnit)
+	windAnim = anim
+	tempColours = tempCol
+	mapConnect = mapConn
 	
 	var save_dict = {
 		"placeName" : placeName,
 		"latitude" : latitude,
 		"longitude" : longitude,
 		"tempUnit" : tempUnit,
-		"windUnit" : windUnit
+		"windUnit" : windUnit,
+		"windAnim" : windAnim,
+		"tempColours" : tempColours,
+		"mapConnect" : mapConnect
 	}
 	
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	save_file.store_line(JSON.stringify(save_dict))
+
+func saveTempUnit(t):
+	save_game(placeName, latitude, longitude, t, windUnit, windAnim, tempColours, mapConnect)
+
+func saveWindUnit(w):
+	save_game(placeName, latitude, longitude, tempUnit, w, windAnim, tempColours, mapConnect)
+	
+func saveWindAnim(a):
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, a, tempColours, mapConnect)
+	
+func saveTempColours(c):
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, c, mapConnect)
+	
+func saveMapConnect(m):
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, tempColours, m)
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -53,6 +74,6 @@ func load_game():
 		longitude = node_data.longitude
 		tempUnit = node_data.tempUnit
 		windUnit = node_data.windUnit
-		
-		print("ldtu: " + tempUnit)
-		print("ldwu: " + windUnit)
+		windAnim = node_data.windAnim
+		tempColours = node_data.tempColours
+		mapConnect = node_data.mapConnect

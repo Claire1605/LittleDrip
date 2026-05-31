@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgv01x40ygcir"
-path="res://.godot/imported/ClayCircle-Toggle.png-064b225bb3297c37fa7b3d3b8531e122.ctex"
+uid="uid://bn480rl0ipj2a"
+path="res://.godot/imported/ClayCircle1-Border.png-94e857c7cb146f7eb25de3098f14c23b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ClayCircle-Toggle.png"
-dest_files=["res://.godot/imported/ClayCircle-Toggle.png-064b225bb3297c37fa7b3d3b8531e122.ctex"]
+source_file="res://Art/ClayCircle1-Border.png"
+dest_files=["res://.godot/imported/ClayCircle1-Border.png-94e857c7cb146f7eb25de3098f14c23b.ctex"]
 
 [params]
 

@@ -15,6 +15,7 @@ extends HTTPRequest
 @export_node_path("Label") var clockPreviousDay
 @export_node_path("Label") var clockNextDay
 @export var tempText: Array[RichTextLabel] = []
+@export var tempColourBorers: Array[TextureRect] = []
 @export var tempColours: Array[Color] = []
 @export var windText: Array[RichTextLabel] = []
 @export var windRotation: Array[Node] = []
@@ -46,6 +47,8 @@ var todayUnix: float
 var selectedDateUnix: float
 var tableLabelScene
 var gridChildren: Array[Node]
+var requestProcessing = false
+var waitForRequest = false
 
 func _ready():
 	saveData = get_node_or_null(saveDataPath)
@@ -56,7 +59,13 @@ func _ready():
 	todayUnix = Time.get_unix_time_from_system()
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	request_completed.connect(_on_request_completed)
-	weatherRequest()
+	TryWeatherRequest()
+
+func TryWeatherRequest():
+	if !requestProcessing:
+		weatherRequest()
+	else:
+		waitForRequest = true
 
 func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
@@ -65,20 +74,19 @@ func weatherRequest():
 	var temp = ""
 	if saveData.tempUnit != "":
 		temp = "&temperature_unit=" + saveData.tempUnit
-	print("t: " + temp)
 	var wind = ""
 	if saveData.windUnit != "":
 		wind = "&wind_speed_unit=" + saveData.windUnit
-	print("w: " + wind)
+	requestProcessing = true
 	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14" + wind + temp)
-	print("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14" + wind + temp)
 	if error != OK:
-		get_node_or_null(dateText).text = "An error occurred in the HTTP request."
+		get_node_or_null(dateText).text = ""
 		#push_error("An error occurred in the HTTP request.")
 
 func _on_request_completed(result, response_code, headers, body):
+	requestProcessing = false
 	if result != HTTPRequest.RESULT_SUCCESS:
-		get_node_or_null(dateText).text = "The HTTP request was unsuccesful"
+		get_node_or_null(dateText).text = "Could not retrieve weather data, please restart app"
 		#push_error("The HTTP request was unsuccesful")
 	else:
 		get_node_or_null(clock).requestReady = true
@@ -95,6 +103,11 @@ func _on_request_completed(result, response_code, headers, body):
 func _process(delta: float) -> void:
 	if get_node_or_null(clock).requestReady:
 		populateForecastTable()
+	
+	if waitForRequest:
+		if !requestProcessing:
+			waitForRequest = false
+			weatherRequest()
 
 func populateInitialWindDirection(): # this is separate so that it only happens once and not every frame
 	for h in range(0,24):
@@ -129,8 +142,19 @@ func populateForecastTable():
 			
 			#Temperature
 			var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
-			tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
-			tempText[h].get_parent().material.set_shader_parameter('colour', temperature_color)
+			if saveData.tempUnit == "fahrenheit":
+				var f = (openMeteoJSON["hourly"]["temperature_2m"][i] - 32) * (5.0/9.0)
+				temperature_color = tempColours[getTemperatureColor(roundi(f))] #conversion from fahrenheit to celsius
+			if saveData.tempColours:
+				tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
+				tempText[h].get_parent().material.set_shader_parameter('colour', temperature_color)
+				tempColourBorers[h].hide()
+			else:
+				tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
+				tempText[h].get_parent().material.set_shader_parameter('colour', Color.WHITE)
+				tempColourBorers[h].show()
+				tempColourBorers[h].material = tempText[h].get_parent().material.duplicate()
+				tempColourBorers[h].material.set_shader_parameter('colour', temperature_color)
 			
 			var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 			var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
@@ -190,8 +214,17 @@ func populateForecastTable():
 				lightning[h].hide()
 			
 			populateInitialWindDirection()
-			#cloudText[h].text = str(openMeteoJSON["hourly"]["cloud_cover"][i]) + "% cc"# + "\n" + str(day)
 			var amp = clampi(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i]) * 2, 0, 40)
+			if saveData.windUnit == "": #kmh
+				amp = clampi(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i]) * 2 * 0.62, 0, 40)
+			elif saveData.windUnit == "ms":
+				amp = clampi(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i]) * 2 * 2.24, 0, 40)
+			elif saveData.windUnit == "kn":
+				amp = clampi(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i]) * 2 * 1.15, 0, 40)
+			
+			if !saveData.windAnim:
+				amp = 0;
+			
 			windText[h].text = "[wave amp=" + str(amp) + " freq=5.0 connected=1]" + str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=24]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size][/wave]"
 			weatherText[h].text = weatherCodeText
 			
@@ -464,7 +497,7 @@ func getLunarPhase():
 func updateLocation(placeName: String, adminName: String, lat: float, long: float):
 	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit)	
 	get_node_or_null(locationText).text = saveData.placeName
-	weatherRequest()
+	TryWeatherRequest()
 
 func _on_today_button_pressed() -> void:
 	today()
@@ -597,20 +630,17 @@ func getTemperatureColor(temp):
 func _on_location_text_pressed() -> void:
 	#https://www.cartograph.eu/v3/using-the-geo-uri-scheme-in-cartograph-maps/
 	#https://forum.godotengine.org/t/android-how-to-open-a-web-browser-at-a-specific-address/137838/8
-	OS.shell_open("geo:" + str(saveData.latitude) + "," + str(saveData.longitude) + "?z=12")
-
+	if saveData.mapConnect:
+		OS.shell_open("geo:" + str(saveData.latitude) + "," + str(saveData.longitude) + "?z=12")
 
 func _on_credits_button_pressed() -> void:
 	creditsPanel.show()
 
-
 func _on_back_button_pressed() -> void:
 	creditsPanel.hide()
 
-
 func _on_settings_button_pressed() -> void:
 	settingsPanel.show()
-
 
 func _on_back_settings_button_pressed() -> void:
 	settingsPanel.hide()

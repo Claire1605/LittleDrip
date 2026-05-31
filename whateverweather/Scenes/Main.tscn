@@ -66,7 +66,9 @@
 [ext_resource type="Shader" uid="uid://clpwyg7thik51" path="res://Scripts/Shaders/colourTint.gdshader" id="60_xd5mi"]
 [ext_resource type="Texture2D" uid="uid://cj8np7sk1awo8" path="res://Art/ClaySpeechBubble.png" id="62_ex7s8"]
 [ext_resource type="Theme" uid="uid://dek1lhvw5b8vv" path="res://Themes/TempText.tres" id="63_2wrh7"]
-[ext_resource type="Texture2D" uid="uid://dvfmy1ohmap8s" path="res://Art/LittleDrip-Small.png" id="64_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://bn480rl0ipj2a" path="res://Art/ClayCircle1-Border.png" id="63_ok4ge"]
+[ext_resource type="Texture2D" uid="uid://deybdym0p0cjj" path="res://Art/ClayCircle2-Border.png" id="65_k6daw"]
+[ext_resource type="Texture2D" uid="uid://bv6m3ssyq2obn" path="res://Art/ClayCircle3-Border.png" id="67_05y1e"]
 [ext_resource type="Theme" uid="uid://ctx50jyi7rmvb" path="res://Themes/Precipitation%Text.tres" id="68_tbeql"]
 [ext_resource type="Theme" uid="uid://iiwccqjl4q26" path="res://Themes/WindText.tres" id="70_52a0j"]
 [ext_resource type="Theme" uid="uid://dc8aw0y48fagd" path="res://Themes/WeatherCodeText.tres" id="72_c5nnb"]
@@ -76,18 +78,24 @@
 [ext_resource type="Texture2D" uid="uid://dun83glfxhd1u" path="res://Art/lightningSmall.png" id="74_rpc3w"]
 [ext_resource type="Theme" uid="uid://ht73t2tlbnw4" path="res://Themes/DaySummaryText.tres" id="79_fsd2l"]
 [ext_resource type="Texture2D" uid="uid://rnf6go8xmmwc" path="res://Art/info.png" id="79_rpc3w"]
+[ext_resource type="Texture2D" uid="uid://bk14jc066xc0q" path="res://Art/X.png" id="81_hjjnx"]
 [ext_resource type="StyleBox" uid="uid://co0n2jfc43qmt" path="res://Themes/LocationTextButton.tres" id="81_mx20r"]
 [ext_resource type="StyleBox" uid="uid://c3bgrsg4dbnhb" path="res://Themes/LocationSearch.tres" id="82_fq6d3"]
 [ext_resource type="Texture2D" uid="uid://csqwd4u8nkvec" path="res://Art/DaySummary2Small.png" id="83_rpc3w"]
 [ext_resource type="Texture2D" uid="uid://n8m8m3iqsvug" path="res://Art/DaySummary1Small.png" id="85_3k6d1"]
 [ext_resource type="Texture2D" uid="uid://dwdxvxfe5f1ua" path="res://Art/LittleDripLogo.png" id="87_fq6d3"]
+[ext_resource type="Script" uid="uid://c681fgtrwima6" path="res://Scripts/SettingToggleTemp.gd" id="89_he124"]
 [ext_resource type="Texture2D" uid="uid://dxt8wtdirsg7x" path="res://Art/locationKey.png" id="89_othpo"]
 [ext_resource type="Texture2D" uid="uid://kvroju4hhmbj" path="res://Art/ClayCircle-ToggleOn.png" id="90_478hk"]
+[ext_resource type="Script" uid="uid://ba4idv2gko80b" path="res://Scripts/SettingToggleWind.gd" id="90_hjjnx"]
 [ext_resource type="Theme" uid="uid://ctcpathk724kt" path="res://Themes/SettingsText-small.tres" id="90_othpo"]
 [ext_resource type="Theme" uid="uid://0gig5dwmyn2v" path="res://Themes/KeyText.tres" id="90_s0riu"]
 [ext_resource type="Texture2D" uid="uid://dfbuwngpix06p" path="res://Art/ClaySun01.png" id="91_hjjnx"]
+[ext_resource type="Script" uid="uid://bf8bgwvpf2s00" path="res://Scripts/SettingToggleWindAnim.gd" id="91_othpo"]
+[ext_resource type="Script" uid="uid://cjpcecmgbp3dy" path="res://Scripts/SettingToggleTempColours.gd" id="92_hjjnx"]
 [ext_resource type="Texture2D" uid="uid://ionj285tor5v" path="res://Art/rain%icon.png" id="92_s0riu"]
 [ext_resource type="Theme" uid="uid://dgojte6j4gj6q" path="res://Themes/SettingsText.tres" id="93_hjjnx"]
+[ext_resource type="Script" uid="uid://5s082wrt6dg6" path="res://Scripts/SettingToggleOpenMaps.gd" id="93_ok4ge"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1x2"]
 shader = ExtResource("60_xd5mi")
@@ -107,7 +115,7 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("tempText", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
@@ -125,6 +133,7 @@ clockNight = NodePath("../ClockAnchor/Clock - Daytime/Clock-Nighttime")
 clockPreviousDay = NodePath("../ClockAnchor/Clock - Daytime/Label-PreviousDay")
 clockNextDay = NodePath("../ClockAnchor/Clock - Daytime/Label-NextDay")
 tempText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp00/Label-temp00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp01/Label-temp01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp02/Label-temp02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp03/Label-temp03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp04/Label-temp04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp05/Label-temp05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp06/Label-temp06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp07/Label-temp07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp08/Label-temp08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp09/Label-temp09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp10/Label-temp10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp11/Label-temp11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp12/Label-temp12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp13/Label-temp13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp14/Label-temp14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp15/Label-temp15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp16/Label-temp16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp17/Label-temp17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp18/Label-temp18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp19/Label-temp19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp20/Label-temp20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp21/Label-temp21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp22/Label-temp22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp23/Label-temp23")]
+tempColourBorers = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp00/TempBorder00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp01/TempBorder01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp02/TempBorder02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp03/TempBorder03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp04/TempBorder04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp05/TempBorder05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp06/TempBorder06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp07/TempBorder07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp08/TempBorder08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp09/TempBorder09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp10/TempBorder10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp11/TempBorder11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp12/TempBorder12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp13/TempBorder13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp14/TempBorder14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp15/TempBorder15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp16/TempBorder16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp17/TempBorder17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp18/TempBorder18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp19/TempBorder19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp20/TempBorder20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp21/TempBorder21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp22/TempBorder22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp23/TempBorder23")]
 tempColours = Array[Color]([Color(0.16862746, 0.3529412, 0.7372549, 1), Color(0.27450982, 0.44705883, 0.8117647, 1), Color(0.39215687, 0.5529412, 0.8901961, 1), Color(0.43529412, 0.6392157, 0.91764706, 1), Color(0.48235294, 0.74509805, 0.9372549, 1), Color(0.59607846, 0.8784314, 0.98039216, 1), Color(0.68235296, 0.8627451, 0.84705883, 1), Color(0.65882355, 0.8392157, 0.6784314, 1), Color(0.61960787, 0.8156863, 0.49803922, 1), Color(0.68235296, 0.8235294, 0.32941177, 1), Color(0.8156863, 0.8509804, 0.24313726, 1), Color(1, 0.9137255, 0.2901961, 1), Color(1, 0.78039217, 0.22352941, 1), Color(1, 0.6901961, 0.18039216, 1), Color(1, 0.61960787, 0.13725491, 1), Color(0.98039216, 0.50980395, 0.12156863, 1), Color(0.9607843, 0.4117647, 0.09019608, 1), Color(0.94509804, 0.3372549, 0.1882353, 1), Color(0.9372549, 0.25882354, 0.21568628, 1), Color(0.9098039, 0.19215687, 0.20392157, 1), Color(0.8627451, 0.15294118, 0.16078432, 1)])
 windText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/Label-wind00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/Label-wind01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/Label-wind02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/Label-wind03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/Label-wind04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/Label-wind05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/Label-wind06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/Label-wind07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/Label-wind08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/Label-wind09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/Label-wind10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/Label-wind11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/Label-wind12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/Label-wind13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/Label-wind14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/Label-wind15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/Label-wind16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/Label-wind17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/Label-wind18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/Label-wind19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/Label-wind20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/Label-wind21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/Label-wind22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/Label-wind23")]
 windRotation = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind00/WindRotation00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind01/WindRotation01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind02/WindRotation02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind03/WindRotation03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind04/WindRotation04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind05/WindRotation05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind06/WindRotation06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind07/WindRotation07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind08/WindRotation08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind09/WindRotation09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind10/WindRotation10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind11/WindRotation11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind12/WindRotation12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind13/WindRotation13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind14/WindRotation14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind15/WindRotation15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind16/WindRotation16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind17/WindRotation17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind18/WindRotation18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind19/WindRotation19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind20/WindRotation20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind21/WindRotation21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind22/WindRotation22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Wind23/WindRotation23")]
@@ -1189,6 +1198,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder00" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp00" unique_id=2038819841]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
 [node name="Temp01" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1227025547]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1228,6 +1256,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder01" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp01" unique_id=1090458012]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
 
 [node name="Temp02" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=996119715]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1269,6 +1316,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder02" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp02" unique_id=1242721475]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
+
 [node name="Temp03" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=2140150812]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1308,6 +1374,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder03" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp03" unique_id=403823928]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
 
 [node name="Temp04" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1147568171]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1349,6 +1434,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder04" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp04" unique_id=1890390729]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
+
 [node name="Temp05" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1683301644]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1388,6 +1492,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder05" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp05" unique_id=263322671]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
 
 [node name="Temp06" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1526810332]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1429,6 +1552,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder06" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp06" unique_id=1871295125]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
 [node name="Temp07" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=2105499095]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1468,6 +1610,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder07" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp07" unique_id=1231065213]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
 
 [node name="Temp08" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1390299304]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1509,6 +1670,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder08" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp08" unique_id=1862781760]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
+
 [node name="Temp09" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1731277867]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1548,6 +1728,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder09" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp09" unique_id=612269960]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
 
 [node name="Temp10" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=992178502]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1589,6 +1788,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder10" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp10" unique_id=522218367]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
+
 [node name="Temp11" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=914606345]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1628,6 +1846,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder11" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp11" unique_id=1550417666]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
 
 [node name="Temp12" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1098276331]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1669,6 +1906,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder12" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp12" unique_id=2079553806]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
 [node name="Temp13" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1069476226]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1708,6 +1964,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder13" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp13" unique_id=483501247]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
 
 [node name="Temp14" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=727577534]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1749,6 +2024,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder14" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp14" unique_id=1722066288]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
+
 [node name="Temp15" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1480172443]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1788,6 +2082,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder15" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp15" unique_id=919352372]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
 
 [node name="Temp16" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=863731289]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1829,6 +2142,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder16" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp16" unique_id=1286692543]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
+
 [node name="Temp17" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=909886109]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1868,6 +2200,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder17" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp17" unique_id=1465201085]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
 
 [node name="Temp18" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1375085451]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1909,6 +2260,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder18" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp18" unique_id=1262977007]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
 [node name="Temp19" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=686552466]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -1948,6 +2318,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder19" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp19" unique_id=468150609]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
 
 [node name="Temp20" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1394328074]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -1989,6 +2378,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder20" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp20" unique_id=1519949341]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
+
 [node name="Temp21" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1941564613]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -2028,6 +2436,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder21" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp21" unique_id=1531724705]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
 
 [node name="Temp22" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1573005176]
 material = SubResource("ShaderMaterial_tt1x2")
@@ -2069,6 +2496,25 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TempBorder22" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp22" unique_id=1488703594]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("65_k6daw")
+
 [node name="Temp23" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=1859726247]
 material = SubResource("ShaderMaterial_tt1x2")
 layout_mode = 1
@@ -2108,6 +2554,25 @@ theme = ExtResource("63_2wrh7")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TempBorder23" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset/Temp23" unique_id=1295907147]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 605)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("67_05y1e")
 
 [node name="Wind00" type="TextureRect" parent="ClockAnchor/Clock - Daytime/RotationOffset" unique_id=435571907]
 layout_mode = 1
@@ -7372,12 +7837,12 @@ stretch_mode = 5
 [node name="BackButton" type="TextureButton" parent="Credits" unique_id=1056420240]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.86
+anchor_left = 0.02
 anchor_top = 0.02
-anchor_right = 0.97
+anchor_right = 0.16
 anchor_bottom = 0.075
 grow_horizontal = 0
-texture_normal = ExtResource("64_ex7s8")
+texture_normal = ExtResource("81_hjjnx")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -7720,7 +8185,7 @@ anchor_top = 0.02
 anchor_right = 0.16
 anchor_bottom = 0.075
 grow_horizontal = 0
-texture_normal = ExtResource("64_ex7s8")
+texture_normal = ExtResource("81_hjjnx")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -7771,31 +8236,44 @@ theme = ExtResource("90_othpo")
 text = "fahrenheit"
 vertical_alignment = 1
 
-[node name="TextureButton-C" type="TextureButton" parent="Settings" unique_id=1008139670]
+[node name="TextureButton-C" type="TextureButton" parent="Settings" unique_id=315836730]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.34
 anchor_right = 0.5
 anchor_bottom = 0.365
+offset_bottom = 1.5
 toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("89_he124")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("."), NodePath("../TextureButton-F")])
 
-[node name="TextureButton-F" type="TextureButton" parent="Settings" unique_id=456711638]
+[node name="TextureButton-F" type="TextureButton" parent="Settings" unique_id=1803528853]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.37
 anchor_right = 0.5
 anchor_bottom = 0.395
+offset_bottom = 1.499939
 toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("89_he124")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-C"), NodePath(".")])
+thisTempUnit = "fahrenheit"
 
 [node name="WindSpeedUnits" type="Label" parent="Settings" unique_id=687470434]
 layout_mode = 1
@@ -7866,8 +8344,13 @@ anchor_bottom = 0.485
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("90_hjjnx")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("."), NodePath("../TextureButton-kmh"), NodePath("../TextureButton-ms"), NodePath("../TextureButton-kn")])
+thisWindUnit = "mph"
 
 [node name="TextureButton-kmh" type="TextureButton" parent="Settings" unique_id=1645741674]
 layout_mode = 1
@@ -7879,8 +8362,12 @@ anchor_bottom = 0.515
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("90_hjjnx")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-mph"), NodePath("."), NodePath("../TextureButton-ms"), NodePath("../TextureButton-kn")])
 
 [node name="TextureButton-ms" type="TextureButton" parent="Settings" unique_id=1139663137]
 layout_mode = 1
@@ -7892,8 +8379,13 @@ anchor_bottom = 0.545
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("90_hjjnx")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-mph"), NodePath("../TextureButton-kmh"), NodePath("."), NodePath("../TextureButton-kn")])
+thisWindUnit = "ms"
 
 [node name="TextureButton-kn" type="TextureButton" parent="Settings" unique_id=940703767]
 layout_mode = 1
@@ -7905,8 +8397,13 @@ anchor_bottom = 0.575
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("90_hjjnx")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-mph"), NodePath("../TextureButton-kmh"), NodePath("../TextureButton-ms"), NodePath(".")])
+thisWindUnit = "kn"
 
 [node name="WindSpeedAnimation" type="Label" parent="Settings" unique_id=268893509]
 layout_mode = 1
@@ -7954,8 +8451,13 @@ anchor_bottom = 0.665
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("91_othpo")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("."), NodePath("../TextureButton-off")])
+windAnim = true
 
 [node name="TextureButton-off" type="TextureButton" parent="Settings" unique_id=984095101]
 layout_mode = 1
@@ -7967,8 +8469,12 @@ anchor_bottom = 0.695
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("91_othpo")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-on"), NodePath(".")])
 
 [node name="TemperatureColours" type="Label" parent="Settings" unique_id=308008540]
 layout_mode = 1
@@ -8016,8 +8522,13 @@ anchor_bottom = 0.775
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("92_hjjnx")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("."), NodePath("../TextureButton-off2")])
+tempColours = true
 
 [node name="TextureButton-off2" type="TextureButton" parent="Settings" unique_id=938892213]
 layout_mode = 1
@@ -8029,8 +8540,12 @@ anchor_bottom = 0.805
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("92_hjjnx")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-on2"), NodePath(".")])
 
 [node name="LocationMapLink" type="Label" parent="Settings" unique_id=2021980533]
 layout_mode = 1
@@ -8040,7 +8555,7 @@ anchor_top = 0.83
 anchor_right = 0.95
 anchor_bottom = 0.86
 theme = ExtResource("93_hjjnx")
-text = "Open maps from location"
+text = "Connect location to map app"
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -8078,8 +8593,13 @@ anchor_bottom = 0.895
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("93_ok4ge")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("."), NodePath("../TextureButton-off3")])
+mapConnect = true
 
 [node name="TextureButton-off3" type="TextureButton" parent="Settings" unique_id=1747988064]
 layout_mode = 1
@@ -8091,8 +8611,12 @@ anchor_bottom = 0.925
 toggle_mode = true
 texture_normal = ExtResource("57_ex7s8")
 texture_pressed = ExtResource("90_478hk")
+texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("93_ok4ge")
+weatherRequest = NodePath("../../HTTPRequest_Weather")
+ToggleFamily = Array[NodePath]([NodePath("../TextureButton-on3"), NodePath(".")])
 
 [connection signal="button_down" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_down"]
 [connection signal="button_up" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_up"]
@@ -8109,3 +8633,15 @@ stretch_mode = 4
 [connection signal="pressed" from="MoonTexture+1" to="HTTPRequest_Weather" method="on_next_day_button_pressed"]
 [connection signal="pressed" from="Credits/BackButton" to="HTTPRequest_Weather" method="_on_back_button_pressed"]
 [connection signal="pressed" from="Settings/BackSettingsButton" to="HTTPRequest_Weather" method="_on_back_settings_button_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-C" to="Settings/TextureButton-C" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-F" to="Settings/TextureButton-F" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-mph" to="Settings/TextureButton-mph" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-kmh" to="Settings/TextureButton-kmh" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-ms" to="Settings/TextureButton-ms" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-kn" to="Settings/TextureButton-kn" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-on" to="Settings/TextureButton-on" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-off" to="Settings/TextureButton-off" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-on2" to="Settings/TextureButton-on2" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-off2" to="Settings/TextureButton-off2" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-on3" to="Settings/TextureButton-on3" method="_on_pressed"]
+[connection signal="pressed" from="Settings/TextureButton-off3" to="Settings/TextureButton-off3" method="_on_pressed"]
