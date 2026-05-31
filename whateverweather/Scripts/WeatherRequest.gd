@@ -495,7 +495,7 @@ func getLunarPhase():
 		get_node_or_null(moonPhaseTextureNext).hide()
 
 func updateLocation(placeName: String, adminName: String, lat: float, long: float):
-	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit)	
+	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit, saveData.windAnim, saveData.tempColours, saveData.mapConnect)	
 	get_node_or_null(locationText).text = saveData.placeName
 	TryWeatherRequest()
 
