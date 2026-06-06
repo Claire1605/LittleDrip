@@ -1,3 +1,5 @@
+class_name WeatherRequest
+
 extends HTTPRequest
 @export_node_path("Node") var control
 @export_node_path("Label") var debug
@@ -185,6 +187,8 @@ func populateForecastTable():
 			
 			#Rain and Snow
 			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "%"
+			if h == 0:
+				print("day: " + str(day))
 
 			#Rain
 			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
@@ -517,10 +521,12 @@ func _on_previous_day_button_pressed() -> void:
 	previousDay()
 
 func previousDay():
+	print("previous day")
 	startDay -= 1
 	if startDay < 0:
 		startDay = 0
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	get_node_or_null(clock).updateRotationData()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
@@ -529,10 +535,12 @@ func on_next_day_button_pressed() -> void:
 	nextDay()
 
 func nextDay():
+	print("next day")
 	startDay += 1
 	if startDay > 20:
 		startDay = 20
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	get_node_or_null(clock).updateRotationData()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
