@@ -59,6 +59,7 @@ func _ready():
 	todayUnix = Time.get_unix_time_from_system()
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	request_completed.connect(_on_request_completed)
+	clockRotation()
 	TryWeatherRequest()
 
 func TryWeatherRequest():
@@ -71,6 +72,7 @@ func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
 	# tempUnit: blank = celsius, temperature_unit=fahrenheit
 	# windUnit: blank = km/h, wind_speed_unit=mph wind_speed_unit=ms wind_speed_unit=kn
+	
 	var temp = ""
 	if saveData.tempUnit != "":
 		temp = "&temperature_unit=" + saveData.tempUnit
@@ -93,7 +95,7 @@ func _on_request_completed(result, response_code, headers, body):
 
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if openMeteoJSON != null:
-		clockRotation()
+		#clockRotation()
 		populateForecastTable()
 		populateInitialWindDirection()
 		daySummarySetup()
