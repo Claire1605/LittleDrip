@@ -142,7 +142,7 @@ func populateForecastTable():
 			cloudImage[h].visible = true
 			windText[h].get_parent().visible = true
 			weatherText[h].get_parent().visible = true
-			tempText[h].text = str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=30]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
+			tempText[h].text = "[font_size=44]" + str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=36]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
 			
 			#Temperature
 			var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
@@ -231,7 +231,7 @@ func populateForecastTable():
 			if !saveData.windAnim:
 				amp = 0;
 			
-			windText[h].text = "[wave amp=" + str(amp) + " freq=5.0 connected=1]" + str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=24]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size][/wave]"
+			windText[h].text = "[font_size=40]" + "[wave amp=" + str(amp) + " freq=5.0 connected=1]" + str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=32]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size][/wave]"
 			weatherText[h].text = weatherCodeText
 			
 func daySummarySetup():
@@ -262,7 +262,15 @@ func populateDaySummary(openMeteoJSON, day, position):
 	dayWMOText[position].text = getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
 	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
 	dayAppTempText[position].text = "feels " + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°"
-	dayWindText[position].text = getWindDirection(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + " wind\n" + str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " mph\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " mph gusts"
+	var windUnit = "mph"
+	if saveData.windUnit == "":
+		windUnit = "kmh"
+	elif saveData.windUnit == "ms":
+		windUnit = "ms"
+	elif saveData.windUnit == "kn":
+		windUnit = "kn"
+	
+	dayWindText[position].text = getWindDirection(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + " wind\n" + str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " " + windUnit + "\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " " + windUnit + " gusts"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)

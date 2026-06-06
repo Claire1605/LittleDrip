@@ -7,7 +7,7 @@
 bg_color = Color(0, 0.0837233, 0.0541153, 1)
 
 [resource]
-Button/font_sizes/font_size = 50
+Button/font_sizes/font_size = 54
 Button/fonts/font = ExtResource("1_i267k")
 Button/styles/hover = SubResource("StyleBoxFlat_0ygvg")
 Button/styles/normal = ExtResource("1_0ygvg")
