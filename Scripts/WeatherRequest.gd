@@ -51,6 +51,7 @@ var tableLabelScene
 var gridChildren: Array[Node]
 var requestProcessing = false
 var waitForRequest = false
+var updatingTempUnit = false;
 
 func _ready():
 	saveData = get_node_or_null(saveDataPath)
@@ -98,6 +99,7 @@ func _on_request_completed(result, response_code, headers, body):
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if openMeteoJSON != null:
 		#clockRotation()
+		updatingTempUnit = false
 		populateForecastTable()
 		populateInitialWindDirection()
 		daySummarySetup()
@@ -145,20 +147,21 @@ func populateForecastTable():
 			tempText[h].text = "[font_size=44]" + str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=36]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
 			
 			#Temperature
-			var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
-			if saveData.tempUnit == "fahrenheit":
-				var f = (openMeteoJSON["hourly"]["temperature_2m"][i] - 32) * (5.0/9.0)
-				temperature_color = tempColours[getTemperatureColor(roundi(f))] #conversion from fahrenheit to celsius
-			if saveData.tempColours:
-				tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
-				tempText[h].get_parent().material.set_shader_parameter('colour', temperature_color)
-				tempColourBorers[h].hide()
-			else:
-				tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
-				tempText[h].get_parent().material.set_shader_parameter('colour', Color.WHITE)
-				tempColourBorers[h].show()
-				tempColourBorers[h].material = tempText[h].get_parent().material.duplicate()
-				tempColourBorers[h].material.set_shader_parameter('colour', temperature_color)
+			if !updatingTempUnit:
+				var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
+				if saveData.tempUnit == "fahrenheit":
+					var f = (openMeteoJSON["hourly"]["temperature_2m"][i] - 32) * (5.0/9.0)
+					temperature_color = tempColours[getTemperatureColor(roundi(f))] #conversion from fahrenheit to celsius
+				if saveData.tempColours:
+					tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
+					tempText[h].get_parent().material.set_shader_parameter('colour', temperature_color)
+					tempColourBorers[h].hide()
+				else:
+					tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
+					tempText[h].get_parent().material.set_shader_parameter('colour', Color.WHITE)
+					tempColourBorers[h].show()
+					tempColourBorers[h].material = tempText[h].get_parent().material.duplicate()
+					tempColourBorers[h].material.set_shader_parameter('colour', temperature_color)
 			
 			var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 			var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)

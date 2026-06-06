@@ -18,6 +18,7 @@ func _on_pressed() -> void:
 	
 
 func SelectSetting(node):
+	get_node_or_null(weatherRequest).updatingTempUnit = true
 	get_node_or_null(weatherRequest).saveData.saveTempUnit(thisTempUnit)
 	get_node_or_null(weatherRequest).TryWeatherRequest()
 	node.disabled = true
