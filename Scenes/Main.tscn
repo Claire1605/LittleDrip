@@ -176,6 +176,32 @@ texture = ExtResource("52_4clwk")
 expand_mode = 2
 stretch_mode = 5
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1801452244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1710.0
+offset_right = 2970.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("52_4clwk")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1343351242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2970.0
+offset_right = -1710.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("52_4clwk")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="ClockAnchor" type="Control" parent="." unique_id=2052414442]
 layout_mode = 1
 anchors_preset = 7
@@ -7445,10 +7471,13 @@ autowrap_mode = 3
 [node name="SummaryPanelPrevious" type="TextureButton" parent="." unique_id=1909361824]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.06
+anchor_left = 0.2
 anchor_top = 0.17
-anchor_right = 0.34
+anchor_right = 0.2
 anchor_bottom = 0.36
+offset_left = -152.5
+offset_right = 152.5
+grow_horizontal = 2
 texture_normal = ExtResource("83_rpc3w")
 stretch_mode = 5
 
@@ -7536,20 +7565,23 @@ vertical_alignment = 1
 [node name="SummaryPanelToday" type="TextureButton" parent="." unique_id=795605317]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
+anchor_left = 0.5
 anchor_top = 0.145
-anchor_right = 0.69
+anchor_right = 0.5
 anchor_bottom = 0.39
+offset_left = -175.0
+offset_right = 175.0
+grow_horizontal = 2
 texture_normal = ExtResource("85_3k6d1")
 stretch_mode = 5
 
 [node name="DateText2" type="Label" parent="SummaryPanelToday" unique_id=1603029563]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29
-anchor_top = 0.09
-anchor_right = 0.75
-anchor_bottom = 0.16
+anchor_left = 0.251
+anchor_top = 0.115
+anchor_right = 0.822
+anchor_bottom = 0.185
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 36
@@ -7560,11 +7592,10 @@ autowrap_mode = 3
 [node name="DailyWeatherCode" type="Label" parent="SummaryPanelToday" unique_id=31564755]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.271
+anchor_left = 0.22
 anchor_top = 0.17
-anchor_right = 0.81
+anchor_right = 0.839
 anchor_bottom = 0.31
-offset_right = -14.0
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 36
@@ -7575,11 +7606,10 @@ autowrap_mode = 3
 [node name="DailyTemp" type="Label" parent="SummaryPanelToday" unique_id=746154246]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24
+anchor_left = 0.183
 anchor_top = 0.32
-anchor_right = 0.837
+anchor_right = 0.862
 anchor_bottom = 0.39
-offset_right = -14.0
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 36
@@ -7589,11 +7619,10 @@ vertical_alignment = 1
 [node name="DailyTempApparent" type="Label" parent="SummaryPanelToday" unique_id=118378086]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.255
+anchor_left = 0.201
 anchor_top = 0.41
-anchor_right = 0.82
+anchor_right = 0.856
 anchor_bottom = 0.47
-offset_right = -14.0
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 36
@@ -7603,11 +7632,10 @@ vertical_alignment = 1
 [node name="DailyWind" type="Label" parent="SummaryPanelToday" unique_id=919995776]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.26
-anchor_top = 0.5
-anchor_right = 0.82
-anchor_bottom = 0.65
-offset_right = -14.0
+anchor_left = 0.193
+anchor_top = 0.49
+anchor_right = 0.86
+anchor_bottom = 0.682
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 36
@@ -7618,10 +7646,10 @@ autowrap_mode = 3
 [node name="DailySun" type="Label" parent="SummaryPanelToday" unique_id=1626310283]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.27
-anchor_top = 0.815
-anchor_right = 0.74
-anchor_bottom = 0.94
+anchor_left = 0.227
+anchor_top = 0.811
+anchor_right = 0.797
+anchor_bottom = 0.936
 offset_right = -14.0
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
@@ -7632,10 +7660,13 @@ vertical_alignment = 1
 [node name="SummaryPanelNext" type="TextureButton" parent="." unique_id=573408137]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.66
+anchor_left = 0.8
 anchor_top = 0.17
-anchor_right = 0.94
+anchor_right = 0.8
 anchor_bottom = 0.36
+offset_left = -152.5
+offset_right = 152.5
+grow_horizontal = 2
 texture_normal = ExtResource("83_rpc3w")
 stretch_mode = 5
 
