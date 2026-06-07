@@ -113,6 +113,107 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 shader = ExtResource("60_xd5mi")
 shader_parameter/colour = Color(0.68235296, 0.8235294, 0.32941177, 1)
 
+[sub_resource type="Animation" id="Animation_siwj1"]
+resource_name = "ChangeDay"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SummaryPanelToday:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.1, -0.0005585551, 1.0996766, -0.04, 0, 0.043333333, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(1.6510472e-10, 0.1125, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SummaryPanelToday:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.1, 2.9325485e-05, 1.0996766, -0.04, 0, 0.043333333, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(1.6510472e-10, 0.1125, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MoonTexture:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.041666668, 0.016666671, 1.1, -0.04, 0, 0.043333333, 0, 1, -0.041666668, 0.016666671, 0, 0),
+"times": PackedFloat32Array(1.6510472e-10, 0.037499998, 0.3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MoonTexture:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.041666668, 0.016666671, 1.1, -0.04, 0, 0.043333333, 0, 1, -0.041666668, 0.016666671, 0, 0),
+"times": PackedFloat32Array(1.6510472e-10, 0.037499998, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_w1ool"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SummaryPanelToday:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SummaryPanelToday:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MoonTexture:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MoonTexture:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbpwj"]
+_data = {
+&"ChangeDay": SubResource("Animation_siwj1"),
+&"RESET": SubResource("Animation_w1ool")
+}
+
 [node name="Control" type="Control" unique_id=1289431972]
 layout_mode = 3
 anchors_preset = 15
@@ -166,6 +267,7 @@ dayWindText = [NodePath("../SummaryPanelPrevious/DailyWind"), NodePath("../Summa
 daySunText = [NodePath("../SummaryPanelPrevious/DailySun"), NodePath("../SummaryPanelToday/DailySun"), NodePath("../SummaryPanelNext/DailySun")]
 creditsPanel = NodePath("../Credits")
 settingsPanel = NodePath("../Settings")
+anim = NodePath("../AnimationPlayer")
 
 [node name="HTTPRequest_Location" type="HTTPRequest" parent="." unique_id=1768424176]
 script = ExtResource("2_50glp")
@@ -7595,6 +7697,7 @@ anchor_bottom = 0.394
 offset_left = -185.0
 offset_right = 185.0
 grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture_normal = ExtResource("85_3k6d1")
 stretch_mode = 5
 
@@ -7801,6 +7904,7 @@ anchor_bottom = 0.51
 offset_top = 0.3798828
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_pbw6q")
 ignore_texture_size = true
 stretch_mode = 5
@@ -7823,7 +7927,7 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
-anchor_top = 0.075
+anchor_top = 0.06
 anchor_right = 0.82
 anchor_bottom = 0.3
 theme_override_constants/separation = 0
@@ -8741,6 +8845,9 @@ stretch_mode = 4
 script = ExtResource("93_ok4ge")
 weatherRequest = NodePath("../../HTTPRequest_Weather")
 ToggleFamily = Array[NodePath]([NodePath("../TextureButton-on3"), NodePath(".")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=662011402]
+libraries/ = SubResource("AnimationLibrary_cbpwj")
 
 [connection signal="button_down" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_down"]
 [connection signal="button_up" from="ClockAnchor/Clock - Daytime" to="ClockAnchor/Clock - Daytime" method="_on_button_up"]

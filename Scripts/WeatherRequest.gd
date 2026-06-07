@@ -42,6 +42,7 @@ extends HTTPRequest
 @export var daySunText: Array[Label] = []
 @export var creditsPanel: Node
 @export var settingsPanel: Node
+@export_node_path("AnimationPlayer") var anim
 var saveData
 var startDay: int = 7
 var openMeteoJSON
@@ -518,6 +519,7 @@ func _on_today_button_pressed() -> void:
 	today()
 
 func today():
+	get_node_or_null(anim).play("ChangeDay")
 	todayUnix = Time.get_unix_time_from_system()
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
@@ -531,6 +533,7 @@ func _on_previous_day_button_pressed() -> void:
 
 func previousDay():
 	#print("previous day")
+	get_node_or_null(anim).play("ChangeDay")
 	startDay -= 1
 	if startDay < 0:
 		startDay = 0
@@ -545,6 +548,7 @@ func on_next_day_button_pressed() -> void:
 
 func nextDay():
 	#print("next day")
+	get_node_or_null(anim).play("ChangeDay")
 	startDay += 1
 	if startDay > 20:
 		startDay = 20
