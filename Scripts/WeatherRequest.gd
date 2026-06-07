@@ -191,8 +191,8 @@ func populateForecastTable():
 			
 			#Rain and Snow
 			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "%"
-			if h == 0:
-				print("day: " + str(day))
+			#if h == 0:
+				#print("day: " + str(day))
 
 			#Rain
 			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
@@ -208,13 +208,10 @@ func populateForecastTable():
 			#Snow
 			if openMeteoJSON["hourly"]["snowfall"][i] > 0 or (weatherCodeText.containsn("snow") or weatherCodeText.contains("hail") or weatherCodeText.containsn("ice ") or weatherCodeText.containsn("sleet")):
 				if (openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.15) or weatherCodeText.containsn("sleet") or weatherCodeText.containsn("slight"):
-					#print("1: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[1]
 				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.3 or weatherCodeText.containsn("heavy"):
-					#print("3: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[3]
 				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.15 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.3:
-					#print("2: " + str(i) + str(openMeteoJSON["hourly"]["snowfall"]))
 					rainImage[h].texture = snowLevel[2]
 			
 			#Lightning
@@ -533,7 +530,7 @@ func _on_previous_day_button_pressed() -> void:
 	previousDay()
 
 func previousDay():
-	print("previous day")
+	#print("previous day")
 	startDay -= 1
 	if startDay < 0:
 		startDay = 0
@@ -547,7 +544,7 @@ func on_next_day_button_pressed() -> void:
 	nextDay()
 
 func nextDay():
-	print("next day")
+	#print("next day")
 	startDay += 1
 	if startDay > 20:
 		startDay = 20
