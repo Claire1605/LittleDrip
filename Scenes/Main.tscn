@@ -7422,7 +7422,6 @@ offset_bottom = 1000.00073
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
-pivot_offset = Vector2(-5, 10)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("75_siwj1")
 
