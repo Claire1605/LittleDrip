@@ -538,7 +538,7 @@ func previousDay():
 	if startDay < 0:
 		startDay = 0
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
-	get_node_or_null(clock).updateRotationData()
+	get_node_or_null(clock).UpdateRotationData()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
@@ -553,7 +553,7 @@ func nextDay():
 	if startDay > 20:
 		startDay = 20
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
-	get_node_or_null(clock).updateRotationData()
+	get_node_or_null(clock).UpdateRotationData()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()

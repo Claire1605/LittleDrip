@@ -13,35 +13,55 @@ var requestReady: bool = false
 var currentRot: float
 var previousRot: float
 var canRotate: bool = true
-var movingClockwise = 0
 var currentSegment = 0;
 var previousSegment = 0;
 var clockHourDates: Array[int]
 var startDay
 var previousStartDay
 @export_node_path("TextureRect") var dialNow
+@export var dialTextures: Array[Texture] = []
 
 func _ready():
 	weatherRequest = get_node_or_null(weatherRequestPath)
-	
 	startDay = weatherRequest.startDay
-	
 	for x in 24:
 		clockHourDates.append(startDay)
 
-func resetSwipe():
-	rotationInitial = get_rotation_degrees()
-	mouseInitialPosition = get_viewport().get_mouse_position()
-	mouseDownFirstFrame = false
+func _process(delta: float) -> void:
+	# Debug
+	if weatherRequest.get_node_or_null(weatherRequest.debug).visible:
+		weatherRequest.get_node_or_null(weatherRequest.debug).text = ""
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "Current Segment: " + str(currentSegment)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Segment: " + str(previousSegment)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nStart Day: " + str(startDay)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Start Day: " + str(previousStartDay)
+		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nRotation: " + str(clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0))
+		#weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockPreviousDay).text)
+		#weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nNext Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockNextDay).text)
+		for x in clockHourDates.size():
+			weatherRequest.get_node_or_null(weatherRequest.debug).text += ("\n" + str(x) + " : " + str(clockHourDates[x]))
+		
+	if requestReady:
+		if mouseDown:  # Left mouse button / finger held down
+			if mouseDownFirstFrame:
+				InitialRotationSetup()
+			ApplyRotation()
+			CheckDayChange()
+			UpdateRotationData() # Update clock labels and hourly data
+		
+		# Dial showing 'now' hour
+		var h = Time.get_time_dict_from_system().hour
+		if Time.get_time_dict_from_system().minute >= 30:
+			h = wrap(h + 1, 0, 24)
+		
+		if clockHourDates[h] == 7:
+			get_node_or_null(dialNow).texture = dialTextures[0]
+			get_node_or_null(dialNow).set_rotation_degrees(90 + (h * 15))
+		else:
+			get_node_or_null(dialNow).texture = dialTextures[1] # this used to be .hide() but it made the dial spin round when tapped???
 
-func updateRotationData():
-	if mouseCurrentPosition.x - mouseLastFramePosition.x > 0:
-		movingClockwise = 1
-	elif mouseCurrentPosition.x - mouseLastFramePosition.x < 0:
-		movingClockwise = -1
-	else:
-		movingClockwise = 0
-	
+
+func UpdateRotationData():
 	var r = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
 	
 	startDay = weatherRequest.startDay
@@ -80,39 +100,6 @@ func updateRotationData():
 	previousSegment = currentSegment
 	previousStartDay = startDay
 
-func _process(delta: float) -> void:
-	if weatherRequest.get_node_or_null(weatherRequest.debug).visible:
-		weatherRequest.get_node_or_null(weatherRequest.debug).text = ""
-		weatherRequest.get_node_or_null(weatherRequest.debug).text += "Current Segment: " + str(currentSegment)
-		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nStart Day: " + str(weatherRequest.startDay)
-		weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nRotation: " + str(clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0))
-		#weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nPrevious Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockPreviousDay).text)
-		#weatherRequest.get_node_or_null(weatherRequest.debug).text += "\nNext Label: " + str(weatherRequest.get_node_or_null(weatherRequest.clockNextDay).text)
-		#for x in clockHourDates.size():
-		#	weatherRequest.get_node_or_null(weatherRequest.debug).text += ("\n" + str(x) + " : " + str(clockHourDates[x]))
-		
-	if requestReady:
-		updateRotationData()
-		if mouseDown:  # Left mouse button.
-			if mouseDownFirstFrame:
-				resetSwipe()
-				
-			ApplyRotation()
-
-		CheckDayChange()
-		
-		previousRot = currentRot
-		
-		var h = Time.get_time_dict_from_system().hour
-		if Time.get_time_dict_from_system().minute >= 30:
-			h = wrap(h + 1, 0, 24)
-		
-		if clockHourDates[h] == 7:
-			get_node_or_null(dialNow).show()
-			get_node_or_null(dialNow).set_rotation_degrees(90 + (h * 15))
-		else:
-			get_node_or_null(dialNow).hide()
-
 func ApplyRotation():
 	mouseCurrentPosition = get_viewport().get_mouse_position()	
 	currentRot = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
@@ -142,10 +129,21 @@ func ApplyRotation():
 
 func CheckDayChange():
 	#If swipe across midnight
-		if previousRot > 270 and previousRot < 360 and currentRot > 180 and currentRot <= 270:
-			weatherRequest.nextDay()
-		elif previousRot > 180 and previousRot < 270 and currentRot >= 270 and currentRot < 360:
-			weatherRequest.previousDay()
+	if previousRot > 270 and previousRot < 360 and currentRot > 180 and currentRot <= 270:
+		weatherRequest.nextDay()
+	elif previousRot > 180 and previousRot < 270 and currentRot >= 270 and currentRot < 360:
+		weatherRequest.previousDay()
+	
+	previousRot = currentRot
+			
+func resetSwipe():
+	distance = 0
+	mouseCurrentPosition = mouseInitialPosition
+
+func InitialRotationSetup():
+	rotationInitial = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
+	mouseInitialPosition = get_viewport().get_mouse_position()
+	mouseDownFirstFrame = false
 	
 func _on_button_down() -> void:
 	if requestReady:
@@ -154,4 +152,5 @@ func _on_button_down() -> void:
 
 func _on_button_up() -> void:
 	if requestReady:
+		resetSwipe()
 		mouseDown = false

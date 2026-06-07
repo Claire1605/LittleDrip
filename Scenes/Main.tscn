@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://w7gps2lr58vx" path="res://Art/daySky.png" id="53_1bbis"]
 [ext_resource type="Texture2D" uid="uid://3jw4yvata6s2" path="res://Art/nightSkyTransparent.png" id="56_1bbis"]
 [ext_resource type="Texture2D" uid="uid://cls1vmnxjm1qx" path="res://Art/ClayCircle1.png" id="57_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://cpgejcf5fmypq" path="res://Art/DialNow-blank.png" id="57_w1ool"]
 [ext_resource type="Script" uid="uid://bcaap0qjnov2y" path="res://Scripts/WindRotation.gd" id="58_1bbis"]
 [ext_resource type="Texture2D" uid="uid://hb67w5jillh6" path="res://Art/ClayCircle2.png" id="58_4clwk"]
 [ext_resource type="Texture2D" uid="uid://bdrck3x0fhi17" path="res://Art/ClayCircle3.png" id="59_h2tpa"]
@@ -342,6 +343,7 @@ stretch_mode = 3
 script = ExtResource("40_6ehlx")
 weatherRequestPath = NodePath("../../HTTPRequest_Weather")
 dialNow = NodePath("Dial-Now")
+dialTextures = Array[Texture]([ExtResource("75_siwj1"), ExtResource("57_w1ool")])
 
 [node name="Clock-Nighttime" type="TextureRect" parent="ClockAnchor/Clock - Daytime" unique_id=1705253797]
 material = ExtResource("33_utia5")
@@ -7525,7 +7527,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("75_siwj1")
+texture = ExtResource("57_w1ool")
 
 [node name="SettingsButton" type="TextureButton" parent="." unique_id=2118107427]
 layout_mode = 1
