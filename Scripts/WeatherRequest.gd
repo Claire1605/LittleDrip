@@ -53,6 +53,8 @@ var gridChildren: Array[Node]
 var requestProcessing = false
 var waitForRequest = false
 var updatingTempUnit = false;
+var tzLocal = 0;
+var tzOffset = 0;
 
 func _ready():
 	saveData = get_node_or_null(saveDataPath)
@@ -63,7 +65,6 @@ func _ready():
 	todayUnix = Time.get_unix_time_from_system()
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	request_completed.connect(_on_request_completed)
-	clockRotation()
 	TryWeatherRequest()
 
 func TryWeatherRequest():
@@ -96,11 +97,45 @@ func _on_request_completed(result, response_code, headers, body):
 		#push_error("The HTTP request was unsuccesful")
 	else:
 		get_node_or_null(clock).requestReady = true
-
+	
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if openMeteoJSON != null:
-		#clockRotation()
+		var tz = openMeteoJSON["timezone_abbreviation"]
+		tzLocal = "0"
+		var tzH = "0"
+		var tzM = "0"
+		if tz.contains("+"):
+			tzLocal = tz.substr(4, -1)
+			if tzLocal.contains(":"):
+				tzH = tzLocal.substr(0,tzLocal.find(':'))
+				tzM = tzLocal.substr(tzLocal.find(':') + 1, -1)
+			else:
+				tzH = tzLocal
+		if tz.contains("-"):
+			tzLocal = "-" + tz.substr(4, -1)
+			if tzLocal.contains(":"):
+				tzH = tzLocal.substr(0,tzLocal.find(':'))
+				tzM = "-" + tzLocal.substr(tzLocal.find(':') + 1, -1)
+			else:
+				tzH = tzLocal
+		
+		print(tzLocal)
+		print(tzH)
+		print(tzM)
+		tzLocal = int(float(tzH) * 60) + int(tzM)
+		tzOffset = tzLocal - Time.get_time_zone_from_system().bias
+		#print("utc_offset_seconds: " + str(openMeteoJSON["utc_offset_seconds"] / 60.0))
+		#print(str(tzLocal))
+		#print("timezone bias: " + str(Time.get_time_zone_from_system().bias))
+		print("difference between local time and search location time is: " + str(tzOffset))
+		
+		todayUnix = Time.get_unix_time_from_system() + (60 * tzLocal)
+		print(Time.get_unix_time_from_system())
+		print(todayUnix)
+		selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+		
 		updatingTempUnit = false
+		clockRotation()
 		populateForecastTable()
 		populateInitialWindDirection()
 		daySummarySetup()
@@ -271,8 +306,9 @@ func populateDaySummary(openMeteoJSON, day, position):
 		windUnit = "ms"
 	elif saveData.windUnit == "kn":
 		windUnit = "kn"
-	
-	dayWindText[position].text = getWindDirection(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day])) + " wind\n" + str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " " + windUnit + "\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " " + windUnit + " gusts"
+
+	if openMeteoJSON["daily"]["wind_speed_10m_max"][day]:
+		dayWindText[position].text = str(getWindDirection(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]))) + " wind\n" + str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " " + windUnit + "\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " " + windUnit + " gusts"
 
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
@@ -520,7 +556,7 @@ func _on_today_button_pressed() -> void:
 
 func today():
 	get_node_or_null(anim).play("ChangeDay")
-	todayUnix = Time.get_unix_time_from_system()
+	todayUnix = Time.get_unix_time_from_system() + ((86400 / 24 / 60) * tzLocal)
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	populateForecastTable()
@@ -566,9 +602,12 @@ func getDayWeatherCodeAverage(day):
 	return getWMOCode(round(code))
 
 func clockRotation():
-	var h = Time.get_datetime_dict_from_system().hour
-	var m = Time.get_datetime_dict_from_system().minute
+	var tzH = floor(tzOffset / 60)
+	var tzM = tzOffset % 60
+	var h = Time.get_datetime_dict_from_system().hour + tzH
+	var m = Time.get_datetime_dict_from_system().minute + tzM
 	get_node_or_null(clock).set_rotation_degrees((-15.0 * h) - (15.0 / 60.0 * m) -90)
+	#needs to go forward / backward a day if gmt +- whatever - data is correct, it just says the wrong date
 
 func updateClockLabels(previous, next):
 	var selectedDatePrevious = Time.get_datetime_dict_from_unix_time(todayUnix + (86400 * (previous - 7)))

@@ -51,9 +51,23 @@ func _process(delta: float) -> void:
 		UpdateRotationData() # Update clock labels and hourly data
 		
 		# Dial showing 'now' hour
-		var h = Time.get_time_dict_from_system().hour
-		if Time.get_time_dict_from_system().minute >= 30:
+		var tzH = floor(weatherRequest.tzOffset / 60)
+		#print("tzH: " + str(tzH))
+		var tzM = weatherRequest.tzOffset - (tzH * 60)
+		#print("tzM: " + str(tzM))
+		var h = wrap(Time.get_time_dict_from_system().hour + tzH, 0, 24)
+		var m = Time.get_time_dict_from_system().minute + tzM
+		if m > 60:
+			h += 1
+			m -=60
+		if m < 0:
+			h -= 1
+			m +=60
+		#print("h: " + str(h))
+		#print("m: " + str(m))
+		if m >= 30:
 			h = wrap(h + 1, 0, 24)
+			#print("h2: " + str(h))
 		
 		if clockHourDates[h] == 7:
 			get_node_or_null(dialNow).texture = dialTextures[0]
