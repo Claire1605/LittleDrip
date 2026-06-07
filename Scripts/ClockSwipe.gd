@@ -61,7 +61,6 @@ func _process(delta: float) -> void:
 		else:
 			get_node_or_null(dialNow).texture = dialTextures[1] # this used to be .hide() but it made the dial spin round when tapped???
 
-
 func UpdateRotationData():
 	var r = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
 	
@@ -109,9 +108,9 @@ func ApplyRotation():
 	var canRotate = true
 	
 	#Rotation at past extreme
-	if startDay == 0 and currentRot <= 269 and currentRot > 180:
-		if wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) > 269:
-			set_rotation_degrees(268)
+	if startDay == 0 and currentRot <= 254 and currentRot > 180:
+		if wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) > 254 or wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) < 90:
+			set_rotation_degrees(253)
 			canRotate = false
 	
 	#Rotation at future extreme
@@ -119,7 +118,6 @@ func ApplyRotation():
 		if wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0) < 286:
 			set_rotation_degrees(287)
 			canRotate = false
-			#velocity = 0
 	
 	if canRotate:
 		set_rotation_degrees(wrap(rotationInitial + (distance.x * 0.15), 0.0, 360.0))

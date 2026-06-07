@@ -132,9 +132,8 @@ func populateForecastTable():
 	for h in range(0,24):
 		var day = get_node_or_null(clock).clockHourDates[h]
 		var i = (day * 24) + h
-		var weatherCodeText = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
-		
-		if day < 0 or day > 20:
+
+		if day < 0 or day > 20 or i > 504: #21 days * 24 hours
 			tempText[h].get_parent().visible = false
 			precText[h].get_parent().visible = false
 			cloudImage[h].visible = false
@@ -147,7 +146,7 @@ func populateForecastTable():
 			windText[h].get_parent().visible = true
 			weatherText[h].get_parent().visible = true
 			tempText[h].text = "[font_size=44]" + str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=36]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
-			
+
 			#Temperature
 			if !updatingTempUnit:
 				var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
@@ -191,6 +190,7 @@ func populateForecastTable():
 					cloudImage[h].texture = cloudLevelNight[3]
 			
 			#Rain and Snow
+			var weatherCodeText = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
 			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "%"
 			#if h == 0:
 				#print("day: " + str(day))
