@@ -114,6 +114,7 @@ func _process(delta: float) -> void:
 		if !requestProcessing:
 			waitForRequest = false
 			weatherRequest()
+			
 
 func populateInitialWindDirection(): # this is separate so that it only happens once and not every frame
 	for h in range(0,24):

@@ -19,6 +19,7 @@ var previousSegment = 0;
 var clockHourDates: Array[int]
 var startDay
 var previousStartDay
+@export_node_path("TextureRect") var dialNow
 
 func _ready():
 	weatherRequest = get_node_or_null(weatherRequestPath)
@@ -101,6 +102,12 @@ func _process(delta: float) -> void:
 		CheckDayChange()
 		
 		previousRot = currentRot
+		
+		if startDay == 7:
+			get_node_or_null(dialNow).show()
+			get_node_or_null(dialNow).set_rotation_degrees(90 + (roundi(Time.get_time_dict_from_system().hour) * 15))
+		else:
+			get_node_or_null(dialNow).hide()
 
 func ApplyRotation():
 	mouseCurrentPosition = get_viewport().get_mouse_position()	

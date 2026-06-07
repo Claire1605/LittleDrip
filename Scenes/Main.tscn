@@ -76,6 +76,7 @@
 [ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="73_x5wht"]
 [ext_resource type="Texture2D" uid="uid://mgi5ohkes5dx" path="res://Art/WindTest.png" id="74_he124"]
 [ext_resource type="Texture2D" uid="uid://dun83glfxhd1u" path="res://Art/lightningSmall.png" id="74_rpc3w"]
+[ext_resource type="Texture2D" uid="uid://iwlw64ftmax4" path="res://Art/DialNow.png" id="75_siwj1"]
 [ext_resource type="Theme" uid="uid://ht73t2tlbnw4" path="res://Themes/DaySummaryText.tres" id="79_fsd2l"]
 [ext_resource type="Texture2D" uid="uid://rnf6go8xmmwc" path="res://Art/info.png" id="79_rpc3w"]
 [ext_resource type="Texture2D" uid="uid://bk14jc066xc0q" path="res://Art/X.png" id="81_hjjnx"]
@@ -238,6 +239,7 @@ texture_normal = ExtResource("53_1bbis")
 stretch_mode = 3
 script = ExtResource("40_6ehlx")
 weatherRequestPath = NodePath("../../HTTPRequest_Weather")
+dialNow = NodePath("Dial-Now")
 
 [node name="Clock-Nighttime" type="TextureRect" parent="ClockAnchor/Clock - Daytime" unique_id=1705253797]
 material = ExtResource("33_utia5")
@@ -7404,6 +7406,25 @@ theme = ExtResource("72_c5nnb")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Dial-Now" type="TextureRect" parent="ClockAnchor/Clock - Daytime" unique_id=2137521153]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.00073
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+pivot_offset = Vector2(-5, 10)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("75_siwj1")
 
 [node name="SettingsButton" type="TextureButton" parent="." unique_id=2118107427]
 layout_mode = 1
