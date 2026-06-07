@@ -46,8 +46,9 @@ func _process(delta: float) -> void:
 			if mouseDownFirstFrame:
 				InitialRotationSetup()
 			ApplyRotation()
-			CheckDayChange()
-			UpdateRotationData() # Update clock labels and hourly data
+		
+		CheckDayChange()
+		UpdateRotationData() # Update clock labels and hourly data
 		
 		# Dial showing 'now' hour
 		var h = Time.get_time_dict_from_system().hour
@@ -92,7 +93,7 @@ func UpdateRotationData():
 				clockHourDates[s] = weatherRequest.startDay + 1
 
 		if currentSegment < 12:
-			for s in range(currentSegment, 12 + currentSegment):
+			for s in range(0, 12 + currentSegment):
 				clockHourDates[s] = weatherRequest.startDay
 			for s in range(12 + currentSegment, 24):
 				clockHourDates[s] = weatherRequest.startDay - 1
