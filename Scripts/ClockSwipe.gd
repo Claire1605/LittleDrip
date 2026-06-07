@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 		
 		previousRot = currentRot
 		
-		if startDay == 7:
+		if clockHourDates[roundi(Time.get_time_dict_from_system().hour)] == 7:
 			get_node_or_null(dialNow).show()
 			get_node_or_null(dialNow).set_rotation_degrees(90 + (roundi(Time.get_time_dict_from_system().hour) * 15))
 		else:
