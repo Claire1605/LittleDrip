@@ -8,7 +8,7 @@ var locationChildren: Array[Node]
 
 func _ready() -> void:
 	locationButtonScene = preload("res://Scenes/location_button.tscn")
-	print(self.get_path())
+	#print(self.get_path())
 
 func search(text: String):
 	get_node_or_null(locationResults).show()

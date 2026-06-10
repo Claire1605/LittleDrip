@@ -229,6 +229,7 @@ grow_vertical = 2
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
+locationInput = NodePath("../LocationSearch")
 locationText = NodePath("../LocationText")
 dateText = NodePath("../DateText")
 moonPhaseText = NodePath("../MoonPhaseText")

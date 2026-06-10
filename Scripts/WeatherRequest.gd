@@ -3,6 +3,7 @@ class_name WeatherRequest
 extends HTTPRequest
 @export_node_path("Node") var control
 @export_node_path("Label") var debug
+@export_node_path("LineEdit") var locationInput
 @export_node_path("Label") var locationText
 @export_node_path("Label") var dateText
 @export_node_path("Label") var moonPhaseText
@@ -65,6 +66,7 @@ func _ready():
 	todayUnix = Time.get_unix_time_from_system()
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	request_completed.connect(_on_request_completed)
+	get_node_or_null(locationInput).editable = true
 	TryWeatherRequest()
 
 func TryWeatherRequest():
@@ -77,7 +79,7 @@ func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
 	# tempUnit: blank = celsius, temperature_unit=fahrenheit
 	# windUnit: blank = km/h, wind_speed_unit=mph wind_speed_unit=ms wind_speed_unit=kn
-	
+	get_node_or_null(locationInput).editable = false
 	var temp = ""
 	if saveData.tempUnit != "":
 		temp = "&temperature_unit=" + saveData.tempUnit
@@ -92,6 +94,7 @@ func weatherRequest():
 
 func _on_request_completed(result, response_code, headers, body):
 	requestProcessing = false
+	get_node_or_null(locationInput).editable = true
 	if result != HTTPRequest.RESULT_SUCCESS:
 		get_node_or_null(dateText).text = "Could not retrieve weather data, please restart app"
 		#push_error("The HTTP request was unsuccesful")
@@ -119,19 +122,16 @@ func _on_request_completed(result, response_code, headers, body):
 			else:
 				tzH = tzLocal
 		
-		print(tzLocal)
-		print(tzH)
-		print(tzM)
 		tzLocal = int(float(tzH) * 60) + int(tzM)
 		tzOffset = tzLocal - Time.get_time_zone_from_system().bias
 		#print("utc_offset_seconds: " + str(openMeteoJSON["utc_offset_seconds"] / 60.0))
 		#print(str(tzLocal))
 		#print("timezone bias: " + str(Time.get_time_zone_from_system().bias))
-		print("difference between local time and search location time is: " + str(tzOffset))
+		#print("difference between local time and search location time is: " + str(tzOffset))
 		
 		todayUnix = Time.get_unix_time_from_system() + (60 * tzLocal)
-		print(Time.get_unix_time_from_system())
-		print(todayUnix)
+		#print(Time.get_unix_time_from_system())
+		#print(todayUnix)
 		selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 		
 		updatingTempUnit = false
@@ -556,13 +556,18 @@ func _on_today_button_pressed() -> void:
 
 func today():
 	get_node_or_null(anim).play("ChangeDay")
-	todayUnix = Time.get_unix_time_from_system() + ((86400 / 24 / 60) * tzLocal)
+	#todayUnix = Time.get_unix_time_from_system() + ((86400 / 24 / 60) * tzLocal)
+	todayUnix = Time.get_unix_time_from_system() + (60 * tzLocal) # in case we've had the app open overnight!
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
+	clockRotation()
+	get_node_or_null(clock).currentRot = clampf(wrap(get_node_or_null(clock).get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
+	get_node_or_null(clock).previousRot = get_node_or_null(clock).currentRot
+	get_node_or_null(clock).UpdateRotationData()
+	get_node_or_null(clock).NowDial()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
-	clockRotation()
 
 func _on_previous_day_button_pressed() -> void:
 	previousDay()
@@ -575,6 +580,7 @@ func previousDay():
 		startDay = 0
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	get_node_or_null(clock).UpdateRotationData()
+	get_node_or_null(clock).NowDial()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
@@ -590,6 +596,7 @@ func nextDay():
 		startDay = 20
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	get_node_or_null(clock).UpdateRotationData()
+	get_node_or_null(clock).NowDial()
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
