@@ -86,9 +86,9 @@
 [ext_resource type="Theme" uid="uid://cy8nldymhbqkw" path="res://Themes/DaySummaryText-Large.tres" id="83_eef1t"]
 [ext_resource type="Texture2D" uid="uid://csqwd4u8nkvec" path="res://Art/DaySummary2Small.png" id="83_rpc3w"]
 [ext_resource type="Texture2D" uid="uid://n8m8m3iqsvug" path="res://Art/DaySummary1Small.png" id="85_3k6d1"]
+[ext_resource type="Texture2D" uid="uid://clttppxqpwbw3" path="res://Art/LittleDripLogo2.png" id="86_w1ool"]
 [ext_resource type="Texture2D" uid="uid://chv7ch2i2qc2m" path="res://Art/Moon-Key.png" id="87_5ltlj"]
 [ext_resource type="Texture2D" uid="uid://cagcgomlghnno" path="res://Art/ClaySpeechBubble-Key.png" id="87_05y1e"]
-[ext_resource type="Texture2D" uid="uid://dwdxvxfe5f1ua" path="res://Art/LittleDripLogo.png" id="87_fq6d3"]
 [ext_resource type="Script" uid="uid://c681fgtrwima6" path="res://Scripts/SettingToggleTemp.gd" id="89_he124"]
 [ext_resource type="Texture2D" uid="uid://4dahowaon5fb" path="res://Art/Cloud-Key.png" id="89_om687"]
 [ext_resource type="Texture2D" uid="uid://dxt8wtdirsg7x" path="res://Art/locationKey.png" id="89_othpo"]
@@ -8024,7 +8024,7 @@ anchor_right = 0.85
 anchor_bottom = 0.22
 grow_horizontal = 2
 mouse_filter = 2
-texture = ExtResource("87_fq6d3")
+texture = ExtResource("86_w1ool")
 expand_mode = 2
 stretch_mode = 5
 
@@ -8404,7 +8404,7 @@ anchor_right = 0.85
 anchor_bottom = 0.22
 grow_horizontal = 2
 mouse_filter = 2
-texture = ExtResource("87_fq6d3")
+texture = ExtResource("86_w1ool")
 expand_mode = 2
 stretch_mode = 5
 
