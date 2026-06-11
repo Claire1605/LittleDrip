@@ -16,7 +16,6 @@ func _on_pressed() -> void:
 				get_node_or_null(weatherRequest).TryWeatherRequest()
 			else:
 				DeselectSetting(get_node_or_null(ToggleFamily[t]))
-	
 
 func SelectSetting(node):
 	get_node_or_null(weatherRequest).updatingTempUnit = true

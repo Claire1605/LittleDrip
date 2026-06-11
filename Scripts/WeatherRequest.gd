@@ -69,40 +69,52 @@ func _ready():
 	get_node_or_null(locationInput).editable = true
 	TryWeatherRequest()
 
+func _process(delta: float) -> void:
+	if get_node_or_null(clock).requestReady:
+		populateForecastTable()
+	
+	if waitForRequest:
+		if !requestProcessing:
+			waitForRequest = false
+			weatherRequest()
+
 func TryWeatherRequest():
-	if !requestProcessing:
+	if !requestProcessing: # We don't want to start another request until the previous one has finished
 		weatherRequest()
 	else:
 		waitForRequest = true
 
 func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
-	# tempUnit: blank = celsius, temperature_unit=fahrenheit
-	# windUnit: blank = km/h, wind_speed_unit=mph wind_speed_unit=ms wind_speed_unit=kn
-	get_node_or_null(locationInput).editable = false
+	get_node_or_null(locationInput).editable = false # Set location search disabled until http request finished
+	
+	# Get temperature and wind units from save data
 	var temp = ""
 	if saveData.tempUnit != "":
 		temp = "&temperature_unit=" + saveData.tempUnit
 	var wind = ""
 	if saveData.windUnit != "":
 		wind = "&wind_speed_unit=" + saveData.windUnit
+	
 	requestProcessing = true
+	
+	# HTTP request
 	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14" + wind + temp)
 	if error != OK:
 		get_node_or_null(dateText).text = ""
-		#push_error("An error occurred in the HTTP request.")
 
 func _on_request_completed(result, response_code, headers, body):
 	requestProcessing = false
 	get_node_or_null(locationInput).editable = true
+	
 	if result != HTTPRequest.RESULT_SUCCESS:
 		get_node_or_null(dateText).text = "Could not retrieve weather data, please restart app"
-		#push_error("The HTTP request was unsuccesful")
 	else:
 		get_node_or_null(clock).requestReady = true
 	
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
 	if openMeteoJSON != null:
+		# Get the timezone offset in a usable format... there's probably a simpler way to do this!
 		var tz = openMeteoJSON["timezone_abbreviation"]
 		tzLocal = "0"
 		var tzH = "0"
@@ -124,14 +136,9 @@ func _on_request_completed(result, response_code, headers, body):
 		
 		tzLocal = int(float(tzH) * 60) + int(tzM)
 		tzOffset = tzLocal - Time.get_time_zone_from_system().bias
-		#print("utc_offset_seconds: " + str(openMeteoJSON["utc_offset_seconds"] / 60.0))
-		#print(str(tzLocal))
-		#print("timezone bias: " + str(Time.get_time_zone_from_system().bias))
-		#print("difference between local time and search location time is: " + str(tzOffset))
 		
+		# Convert to UNIX format
 		todayUnix = Time.get_unix_time_from_system() + (60 * tzLocal)
-		#print(Time.get_unix_time_from_system())
-		#print(todayUnix)
 		selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 		
 		updatingTempUnit = false
@@ -142,33 +149,16 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	getLunarPhase()
 
-func _process(delta: float) -> void:
-	if get_node_or_null(clock).requestReady:
-		populateForecastTable()
-	
-	if waitForRequest:
-		if !requestProcessing:
-			waitForRequest = false
-			weatherRequest()
-			
-
-func populateInitialWindDirection(): # this is separate so that it only happens once and not every frame
-	for h in range(0,24):
-		var day = get_node_or_null(clock).clockHourDates[h]
-		var i = (day * 24) + h
-		if !(day < 0 or day > 20):
-			windRotation[h].SetInitialRotation(wrapf(openMeteoJSON["hourly"]["wind_direction_10m"][i] + 180.0, 0.0, 360.0), windRotation[h].get_parent().get_rotation_degrees() ,get_node_or_null(clock).get_rotation_degrees())
-
 func populateForecastTable():
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
 	var date = getWeekdayString(selectedDate.weekday) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month) + " " + str(selectedDate.year)
 	get_node_or_null(dateText).text = date
 
-	for h in range(0,24):
+	for h in range(0,24): # Each hour in 24 hours
 		var day = get_node_or_null(clock).clockHourDates[h]
-		var i = (day * 24) + h
+		var i = (day * 24) + h # Index in JSON hourly data across 21 forecast days
 
-		if day < 0 or day > 20 or i > 504: #21 days * 24 hours
+		if day < 0 or day > 20 or i > 504: # If we are at either extreme end of forecast. 504 = 21 days * 24 hours
 			tempText[h].get_parent().visible = false
 			precText[h].get_parent().visible = false
 			cloudImage[h].visible = false
@@ -182,12 +172,12 @@ func populateForecastTable():
 			weatherText[h].get_parent().visible = true
 			tempText[h].text = "[font_size=44]" + str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=36]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
 
-			#Temperature
+			# TEMPERATURE
 			if !updatingTempUnit:
 				var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
 				if saveData.tempUnit == "fahrenheit":
-					var f = (openMeteoJSON["hourly"]["temperature_2m"][i] - 32) * (5.0/9.0)
-					temperature_color = tempColours[getTemperatureColor(roundi(f))] #conversion from fahrenheit to celsius
+					var f = (openMeteoJSON["hourly"]["temperature_2m"][i] - 32) * (5.0/9.0) #conversion from fahrenheit to celsius
+					temperature_color = tempColours[getTemperatureColor(roundi(f))]
 				if saveData.tempColours:
 					tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
 					tempText[h].get_parent().material.set_shader_parameter('colour', temperature_color)
@@ -199,10 +189,11 @@ func populateForecastTable():
 					tempColourBorers[h].material = tempText[h].get_parent().material.duplicate()
 					tempColourBorers[h].material.set_shader_parameter('colour', temperature_color)
 			
+			# SUNRISE AND SUNSET
 			var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 			var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
 	
-			#Cloud Cover
+			# CLOUD COVER
 			if openMeteoJSON["hourly"]["cloud_cover"][i] >= 0 and openMeteoJSON["hourly"]["cloud_cover"][i] <= 25:
 				if isHourInDaylight(h, sunrise.hour, sunset.hour):
 					cloudImage[h].texture = cloudLevel[0]
@@ -224,13 +215,11 @@ func populateForecastTable():
 				else:
 					cloudImage[h].texture = cloudLevelNight[3]
 			
-			#Rain and Snow
+			# PRECIPITATION
 			var weatherCodeText = getWMOCode(openMeteoJSON["hourly"]["weather_code"][i])
 			precText[h].text = str(roundi(openMeteoJSON["hourly"]["precipitation_probability"][i])) + "%"
-			#if h == 0:
-				#print("day: " + str(day))
 
-			#Rain
+			# Rain
 			if openMeteoJSON["hourly"]["precipitation_probability"][i] > 15:
 				if weatherCodeText.containsn("rain"):
 					rainImage[h].texture = rainLevel[3]
@@ -241,7 +230,7 @@ func populateForecastTable():
 			else:
 				rainImage[h].texture = rainLevel[0]
 			
-			#Snow
+			# Snow
 			if openMeteoJSON["hourly"]["snowfall"][i] > 0 or (weatherCodeText.containsn("snow") or weatherCodeText.contains("hail") or weatherCodeText.containsn("ice ") or weatherCodeText.containsn("sleet")):
 				if (openMeteoJSON["hourly"]["snowfall"][i] > 0 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.15) or weatherCodeText.containsn("sleet") or weatherCodeText.containsn("slight"):
 					rainImage[h].texture = snowLevel[1]
@@ -250,12 +239,13 @@ func populateForecastTable():
 				elif openMeteoJSON["hourly"]["snowfall"][i] > 0.15 and openMeteoJSON["hourly"]["snowfall"][i] <= 0.3:
 					rainImage[h].texture = snowLevel[2]
 			
-			#Lightning
+			# Lightning
 			if weatherCodeText.containsn("thunder") or weatherCodeText.containsn("lightning"):
 				lightning[h].show()
 			else:
 				lightning[h].hide()
 			
+			# WIND
 			populateInitialWindDirection()
 			var amp = clampi(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i]) * 2, 0, 40)
 			if saveData.windUnit == "": #kmh
@@ -270,7 +260,14 @@ func populateForecastTable():
 			
 			windText[h].text = "[font_size=40]" + "[wave amp=" + str(amp) + " freq=5.0 connected=1]" + str(roundi(openMeteoJSON["hourly"]["wind_speed_10m"][i])) + "\n" + "[font_size=32]" + str(roundi(openMeteoJSON["hourly"]["wind_gusts_10m"][i])) + "[/font_size][/wave]"
 			weatherText[h].text = weatherCodeText
-			
+
+func populateInitialWindDirection(): # this is separate so that it only happens once and not every frame
+	for h in range(0,24):
+		var day = get_node_or_null(clock).clockHourDates[h]
+		var i = (day * 24) + h
+		if !(day < 0 or day > 20):
+			windRotation[h].SetInitialRotation(wrapf(openMeteoJSON["hourly"]["wind_direction_10m"][i] + 180.0, 0.0, 360.0), windRotation[h].get_parent().get_rotation_degrees() ,get_node_or_null(clock).get_rotation_degrees())
+
 func daySummarySetup():
 	if startDay > 0:
 		get_node_or_null(previousDayPanel).show()
@@ -288,17 +285,21 @@ func daySummarySetup():
 
 func populateDaySummary(openMeteoJSON, day, position):
 	var d = 0
-	if position == 0:
+	if position == 0: # Previous day's summary
 		d = -86400
-	elif position == 2:
+	elif position == 2: # Next day's summary
 		d = 86400
 		
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix + d) # 86400 is 1 day in unix time
 	var date2 = getWeekdayString(selectedDate.weekday).erase(3,100) + " " + str(selectedDate.day) + " " + getMonthString(selectedDate.month).erase(3,100)
+	
+	# Update date, weather code, and temperature
 	dayDateText[position].text = date2
 	dayWMOText[position].text = getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
 	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
 	dayAppTempText[position].text = "feels " + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°"
+	
+	# Get saved wind unit
 	var windUnit = "mph"
 	if saveData.windUnit == "":
 		windUnit = "kmh"
@@ -306,17 +307,19 @@ func populateDaySummary(openMeteoJSON, day, position):
 		windUnit = "ms"
 	elif saveData.windUnit == "kn":
 		windUnit = "kn"
-
+	
+	# Update wind summary
 	if openMeteoJSON["daily"]["wind_speed_10m_max"][day]:
 		dayWindText[position].text = str(getWindDirection(roundi(openMeteoJSON["daily"]["wind_direction_10m_dominant"][day]))) + " wind\n" + str(roundi(openMeteoJSON["daily"]["wind_speed_10m_max"][day])) + " " + windUnit + "\n" + str(roundi(openMeteoJSON["daily"]["wind_gusts_10m_max"][day])) + " " + windUnit + " gusts"
-
+	
+	# Update sunrise / sunset summary
 	var sunrise = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunrise"][day]) + ":00", false)
 	var sunset = Time.get_datetime_dict_from_datetime_string(str(openMeteoJSON["daily"]["sunset"][day]) + ":00", false)
 	daySunText[position].text = "Sun " +  str("%02d" % sunrise.hour) + ":" + str("%02d" % sunrise.minute) + "\nto " + str("%02d" % sunset.hour) + ":" + str("%02d" % sunset.minute)
 	
+	# Use sunrise / sunset to update day / night visual on the clock dial
 	var sunriseFraction = float(sunrise.hour) + (float(sunrise.minute) / 60.0)
 	var sunsetFraction = float(sunset.hour) + (float(sunset.minute) / 60.0)
-	
 	var sr = 0.0
 	var ss = 0.0
 	
@@ -331,7 +334,6 @@ func populateDaySummary(openMeteoJSON, day, position):
 		ss = ((sunsetFraction / 12.0) * 0.5) + 0.5
 	
 	sundial(sr, ss)
-	#clockDateLabels()
 	
 func getWindDirection(dir):
 	if dir >= 337.5 and dir < 22.5:
@@ -350,9 +352,11 @@ func getWindDirection(dir):
 		return "West"
 	elif dir >= 292.5 and dir < 337.5:
 		return "Northwest"
+	else:
+		return ""
 	
 func getWMOCode(wmo):
-	# https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
+	# Modified from https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
 	match wmo:
 		0.0: return "Clear sky"
 		1.0: return "Mainly clear"
@@ -499,7 +503,8 @@ func getMonthString(month):
 		return "December"
 
 func getLunarPhase():
-	var dateReference = "2026-02-17T12:03:00.00" #recent known new moon
+	# This is a hard-coded calculation that will gradually drift as the date gets further from the 'dateReference' - a recent (at the time of coding) new moon
+	var dateReference = "2026-05-16T21:01:00.00" # Recent known new moon
 	var dateSelected = selectedDateUnix
 	
 	var seconds = dateSelected - Time.get_unix_time_from_datetime_string(dateReference)
@@ -536,6 +541,7 @@ func getLunarPhase():
 	get_node_or_null(moonPhaseTexturePrevious).texture_normal = moonTextures[moonIndexPrevious]
 	get_node_or_null(moonPhaseTextureNext).texture_normal = moonTextures[moonIndexNext]
 	
+	# Hide moon if beyond forecast date limits
 	if startDay > 0:
 		get_node_or_null(moonPhaseTexturePrevious).show()
 	else:
@@ -556,8 +562,7 @@ func _on_today_button_pressed() -> void:
 
 func today():
 	get_node_or_null(anim).play("ChangeDay")
-	#todayUnix = Time.get_unix_time_from_system() + ((86400 / 24 / 60) * tzLocal)
-	todayUnix = Time.get_unix_time_from_system() + (60 * tzLocal) # in case we've had the app open overnight!
+	todayUnix = Time.get_unix_time_from_system() + (60 * tzLocal) # Recalculates in case we've had the app open overnight!
 	startDay = 7
 	selectedDateUnix = todayUnix + (86400 * (startDay - 7))
 	clockRotation()
@@ -573,7 +578,6 @@ func _on_previous_day_button_pressed() -> void:
 	previousDay()
 
 func previousDay():
-	#print("previous day")
 	get_node_or_null(anim).play("ChangeDay")
 	startDay -= 1
 	if startDay < 0:
@@ -589,7 +593,6 @@ func on_next_day_button_pressed() -> void:
 	nextDay()
 
 func nextDay():
-	#print("next day")
 	get_node_or_null(anim).play("ChangeDay")
 	startDay += 1
 	if startDay > 20:
@@ -601,30 +604,26 @@ func nextDay():
 	daySummarySetup()
 	getLunarPhase()
 
-func getDayWeatherCodeAverage(day):
-	var code: float = 0
-	for h in 24:
-		code += openMeteoJSON["hourly"]["weather_code"][h]
-	code /= 24.0
-	return getWMOCode(round(code))
-
 func clockRotation():
+	# Rotates the clock dial to show the local time
 	var tzH = floor(tzOffset / 60)
 	var tzM = tzOffset % 60
 	var h = Time.get_datetime_dict_from_system().hour + tzH
 	var m = Time.get_datetime_dict_from_system().minute + tzM
 	get_node_or_null(clock).set_rotation_degrees((-15.0 * h) - (15.0 / 60.0 * m) -90)
-	#needs to go forward / backward a day if gmt +- whatever - data is correct, it just says the wrong date
 
 func updateClockLabels(previous, next):
 	var selectedDatePrevious = Time.get_datetime_dict_from_unix_time(todayUnix + (86400 * (previous - 7)))
 	var selectedDateNext = Time.get_datetime_dict_from_unix_time(todayUnix + (86400 * (next - 7)))
+	
+	#E.g. 'Mon' for Monday
 	var dateShortPrevious = getWeekdayString(selectedDatePrevious.weekday).erase(3,100) + "\n " + str(selectedDatePrevious.day) + " " + getMonthString(selectedDatePrevious.month).erase(3,100)
 	var dateShortNext = getWeekdayString(selectedDateNext.weekday).erase(3,100) + "\n " + str(selectedDateNext.day) + " " + getMonthString(selectedDateNext.month).erase(3,100)
 	
 	get_node_or_null(clockPreviousDay).text = dateShortPrevious
 	get_node_or_null(clockNextDay).text = dateShortNext
-
+	
+	# Hide for dates beyond forecast limits
 	if previous < 0:
 		get_node_or_null(clockPreviousDay).hide()
 	else:
@@ -646,7 +645,7 @@ func isHourInDaylight(hour, sunriseHour, sunsetHour):
 		return false
 
 func getTemperatureColor(temp):
-	#Colours from https://www.bbc.co.uk/weather/features/66293839
+	#Colours modified from https://www.bbc.co.uk/weather/features/66293839
 	
 	if temp <= -22:
 		return 0
@@ -690,15 +689,10 @@ func getTemperatureColor(temp):
 		return 19
 	elif temp > 40:
 		return 20
-	
-# TO-DO
-# You have to wait for a request to finish before sending another one. Making multiple request at once requires you to have one node per request. A common strategy is to create and delete HTTPRequest nodes at runtime as necessary.
-# Need more feedback if HTTP request unsuccesful, e.g. prompt to connect to internet
-
 
 func _on_location_text_pressed() -> void:
-	#https://www.cartograph.eu/v3/using-the-geo-uri-scheme-in-cartograph-maps/
-	#https://forum.godotengine.org/t/android-how-to-open-a-web-browser-at-a-specific-address/137838/8
+	# Reference: https://www.cartograph.eu/v3/using-the-geo-uri-scheme-in-cartograph-maps/
+	# Reference: https://forum.godotengine.org/t/android-how-to-open-a-web-browser-at-a-specific-address/137838/8
 	if saveData.mapConnect:
 		OS.shell_open("geo:" + str(saveData.latitude) + "," + str(saveData.longitude) + "?z=12")
 

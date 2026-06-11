@@ -51,8 +51,7 @@ func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 
-	# Load the file line by line and process that dictionary to restore
-	# the object it represents.
+	# Load the file line by line and process that dictionary to restore the object it represents.
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()

@@ -15,7 +15,6 @@ func _on_pressed() -> void:
 				SelectSetting(get_node_or_null(get_path()))
 			else:
 				DeselectSetting(get_node_or_null(ToggleFamily[t]))
-	
 
 func SelectSetting(node):
 	get_node_or_null(weatherRequest).saveData.saveMapConnect(mapConnect)

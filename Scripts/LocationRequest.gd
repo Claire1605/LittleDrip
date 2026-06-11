@@ -8,7 +8,6 @@ var locationChildren: Array[Node]
 
 func _ready() -> void:
 	locationButtonScene = preload("res://Scenes/location_button.tscn")
-	#print(self.get_path())
 
 func search(text: String):
 	get_node_or_null(locationResults).show()
@@ -21,12 +20,10 @@ func search(text: String):
 	# Perform a GET request. The URL below returns JSON as of writing.
 	var error = request("https://geocoding-api.open-meteo.com/v1/search?name=" + text + "&count=10&language=en&format=json")
 	if error != OK:
-		#get_node_or_null(dateText).text = "An error occurred in the HTTP request."
 		push_error("An error occurred in the HTTP request.")
 		
 func geocoding(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		#get_node_or_null(dateText).text = "The HTTP request was unsuccesful"
 		push_error("The HTTP request was unsuccesful")
 	
 	locationJSON = JSON.parse_string(body.get_string_from_utf8())
