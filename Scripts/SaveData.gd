@@ -7,8 +7,10 @@ var windUnit: String = "mph"
 var windAnim: bool = true
 var tempColours: bool = true
 var mapConnect: bool = true
+var hour24: int = 24
+var setToDefaultTime: bool = true
 
-func save_game(pName, lat, long, temp, wind, anim, tempCol, mapConn):
+func save_game(pName, lat, long, temp, wind, anim, tempCol, mapConn, h24, defaultTime):
 	placeName = pName
 	latitude = lat
 	longitude = long
@@ -17,6 +19,8 @@ func save_game(pName, lat, long, temp, wind, anim, tempCol, mapConn):
 	windAnim = anim
 	tempColours = tempCol
 	mapConnect = mapConn
+	hour24 = h24
+	setToDefaultTime = defaultTime
 	
 	var save_dict = {
 		"placeName" : placeName,
@@ -26,26 +30,34 @@ func save_game(pName, lat, long, temp, wind, anim, tempCol, mapConn):
 		"windUnit" : windUnit,
 		"windAnim" : windAnim,
 		"tempColours" : tempColours,
-		"mapConnect" : mapConnect
+		"mapConnect" : mapConnect,
+		"hour24" : hour24,
+		"setToDefaultTime" : setToDefaultTime
 	}
 	
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	save_file.store_line(JSON.stringify(save_dict))
 
 func saveTempUnit(t):
-	save_game(placeName, latitude, longitude, t, windUnit, windAnim, tempColours, mapConnect)
+	save_game(placeName, latitude, longitude, t, windUnit, windAnim, tempColours, mapConnect, hour24, setToDefaultTime)
 
 func saveWindUnit(w):
-	save_game(placeName, latitude, longitude, tempUnit, w, windAnim, tempColours, mapConnect)
+	save_game(placeName, latitude, longitude, tempUnit, w, windAnim, tempColours, mapConnect, hour24, setToDefaultTime)
 	
 func saveWindAnim(a):
-	save_game(placeName, latitude, longitude, tempUnit, windUnit, a, tempColours, mapConnect)
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, a, tempColours, mapConnect, hour24, setToDefaultTime)
 	
 func saveTempColours(c):
-	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, c, mapConnect)
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, c, mapConnect, hour24, setToDefaultTime)
 	
 func saveMapConnect(m):
-	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, tempColours, m)
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, tempColours, m, hour24, setToDefaultTime)
+	
+func saveHour24(h):
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, tempColours, mapConnect, h, setToDefaultTime)
+	
+func saveDefaultTime(d):
+	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, tempColours, mapConnect, hour24, d)
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -76,3 +88,7 @@ func load_game():
 		windAnim = node_data.windAnim
 		tempColours = node_data.tempColours
 		mapConnect = node_data.mapConnect
+		
+		#variables in v2, need to check if in dictionary first
+		hour24 = node_data.get("hour24", 24)	
+		setToDefaultTime = node_data.get("setToDefaultTime", false)

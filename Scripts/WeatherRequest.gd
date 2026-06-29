@@ -17,6 +17,8 @@ extends HTTPRequest
 @export_node_path("TextureButton") var clockNight
 @export_node_path("Label") var clockPreviousDay
 @export_node_path("Label") var clockNextDay
+@export var hour12: Array[Node] = []
+@export var hour24: Array[Node] = []
 @export var tempText: Array[RichTextLabel] = []
 @export var tempColourBorers: Array[TextureRect] = []
 @export var tempColours: Array[Color] = []
@@ -61,6 +63,7 @@ func _ready():
 	saveData = get_node_or_null(saveDataPath)
 	saveData.load_game()
 	get_node_or_null(locationText).text = saveData.placeName
+	updateClock24()
 	
 	tableLabelScene = preload("res://Scenes/label_table_entry.tscn")
 	todayUnix = Time.get_unix_time_from_system()
@@ -171,7 +174,7 @@ func populateForecastTable():
 			windText[h].get_parent().visible = true
 			weatherText[h].get_parent().visible = true
 			tempText[h].text = "[font_size=44]" + str(roundi(openMeteoJSON["hourly"]["temperature_2m"][i])) + "°\n[font_size=36]"+ str(roundi(openMeteoJSON["hourly"]["apparent_temperature"][i])) + "°[/font_size]"
-
+			
 			# TEMPERATURE
 			if !updatingTempUnit:
 				var temperature_color = tempColours[getTemperatureColor(roundi(openMeteoJSON["hourly"]["temperature_2m"][i]))]
@@ -553,7 +556,7 @@ func getLunarPhase():
 		get_node_or_null(moonPhaseTextureNext).hide()
 
 func updateLocation(placeName: String, adminName: String, lat: float, long: float):
-	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit, saveData.windAnim, saveData.tempColours, saveData.mapConnect)	
+	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit, saveData.windAnim, saveData.tempColours, saveData.mapConnect, saveData.hour24, saveData.setToDefaultTime)	
 	get_node_or_null(locationText).text = saveData.placeName
 	TryWeatherRequest()
 
@@ -575,9 +578,9 @@ func today():
 	getLunarPhase()
 
 func _on_previous_day_button_pressed() -> void:
-	previousDay()
+	previousDay(true)
 
-func previousDay():
+func previousDay(buttonPressed):
 	get_node_or_null(anim).play("ChangeDay")
 	startDay -= 1
 	if startDay < 0:
@@ -588,11 +591,13 @@ func previousDay():
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
+	if buttonPressed:
+		clockSet9AM() #if savedata is toggled on
 
 func on_next_day_button_pressed() -> void:
-	nextDay()
+	nextDay(true)
 
-func nextDay():
+func nextDay(buttonPressed):
 	get_node_or_null(anim).play("ChangeDay")
 	startDay += 1
 	if startDay > 20:
@@ -603,6 +608,12 @@ func nextDay():
 	populateForecastTable()
 	daySummarySetup()
 	getLunarPhase()
+	if buttonPressed:
+		clockSet9AM() #if savedata is toggled on
+
+func clockSet9AM():
+	if saveData.setToDefaultTime:
+		get_node_or_null(clock).set_rotation_degrees(45)
 
 func clockRotation():
 	# Rotates the clock dial to show the local time
@@ -611,6 +622,16 @@ func clockRotation():
 	var h = Time.get_datetime_dict_from_system().hour + tzH
 	var m = Time.get_datetime_dict_from_system().minute + tzM
 	get_node_or_null(clock).set_rotation_degrees((-15.0 * h) - (15.0 / 60.0 * m) -90)
+
+func updateClock24():
+	if saveData.hour24 == 24:
+		for h in range(0,24):
+			hour12[h].hide()
+			hour24[h].show()
+	else:
+		for h in range(0,24):
+			hour12[h].show()
+			hour24[h].hide()
 
 func updateClockLabels(previous, next):
 	var selectedDatePrevious = Time.get_datetime_dict_from_unix_time(todayUnix + (86400 * (previous - 7)))

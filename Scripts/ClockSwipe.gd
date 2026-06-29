@@ -146,10 +146,10 @@ func CheckDayChange():
 	#If swipe across midnight
 	currentRot = clampf(wrap(get_rotation_degrees(), 0.0, 360.0), 0.0, 360.0)
 	if previousRot > 270 and previousRot < 360 and currentRot > 180 and currentRot <= 270:
-		weatherRequest.nextDay()
+		weatherRequest.nextDay(false)
 	elif previousRot > 180 and previousRot < 270 and currentRot >= 270 and currentRot < 360:
 		#print("check day change - previous: PR: " + str(previousRot) + ", CR: " + str(currentRot))
-		weatherRequest.previousDay()
+		weatherRequest.previousDay(false)
 	
 	previousRot = currentRot
 			
