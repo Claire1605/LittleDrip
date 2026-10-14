@@ -327,8 +327,10 @@ func populateDaySummary(openMeteoJSON, day, position):
 	
 	# Update date and temperature
 	dayDateText[position].text = date2
-	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
-	dayAppTempText[position].text = "feels " + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°"
+	#dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°"
+	#dayAppTempText[position].text = "feels " + str(roundi(openMeteoJSON["daily"]["apparent_temperature_min"][day])) + "° to "+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°"
+	
+	dayTempText[position].text = str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "° (feels " + str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°)"
 	
 	# Temperature
 	daySummaryTempTexts[position].text = "[font_size=44]" + str(roundi(openMeteoJSON["daily"]["temperature_2m_max"][day])) + "°\n[font_size=36]"+ str(roundi(openMeteoJSON["daily"]["apparent_temperature_max"][day])) + "°[/font_size]"
@@ -643,7 +645,7 @@ func updateDailyWMO(wmoText : Label, wmoTexture : TextureRect, day, position):
 	else:
 		text = "Clear sky"
 		texture = 27 #"WMOIcon_ClearSky.png"
-	
+
 	wmoText.text = text #getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
 	wmoTexture.texture = daySummaryIcons[texture] #getWMOIcon(openMeteoJSON["daily"]["weather_code"][day])
 
