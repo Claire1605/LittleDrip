@@ -109,7 +109,9 @@
 [ext_resource type="Theme" uid="uid://ht73t2tlbnw4" path="res://Themes/DaySummaryText.tres" id="79_fsd2l"]
 [ext_resource type="Texture2D" uid="uid://rnf6go8xmmwc" path="res://Art/info.png" id="79_rpc3w"]
 [ext_resource type="Texture2D" uid="uid://bk14jc066xc0q" path="res://Art/X.png" id="81_hjjnx"]
+[ext_resource type="Script" uid="uid://dpe2xp3wfk2ne" path="res://Scripts/Warnings_XMLRequest.gd" id="81_mjyee"]
 [ext_resource type="StyleBox" uid="uid://co0n2jfc43qmt" path="res://Themes/LocationTextButton.tres" id="81_mx20r"]
+[ext_resource type="Script" uid="uid://dfxkj84qku015" path="res://Scripts/Warnings_GeoJSONRequest.gd" id="82_fend5"]
 [ext_resource type="StyleBox" uid="uid://c3bgrsg4dbnhb" path="res://Themes/LocationSearch.tres" id="82_fq6d3"]
 [ext_resource type="Theme" uid="uid://cy8nldymhbqkw" path="res://Themes/DaySummaryText-Large.tres" id="83_eef1t"]
 [ext_resource type="Texture2D" uid="uid://csqwd4u8nkvec" path="res://Art/DaySummary2Small.png" id="83_rpc3w"]
@@ -316,6 +318,14 @@ script = ExtResource("2_50glp")
 locationResults = NodePath("../LocationResults")
 locationSearch = NodePath("../LocationSearch")
 weatherRequest = NodePath("../HTTPRequest_Weather")
+
+[node name="HTTPRequest_Warning-XML" type="HTTPRequest" parent="." unique_id=1966957933 node_paths=PackedStringArray("jsonRequest")]
+script = ExtResource("81_mjyee")
+jsonRequest = NodePath("../HTTPRequest_Warning-GeoJSON")
+
+[node name="HTTPRequest_Warning-GeoJSON" type="HTTPRequest" parent="." unique_id=487685276]
+script = ExtResource("82_fend5")
+saveDataPath = NodePath("../SaveData")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=443430196]
 layout_mode = 1
