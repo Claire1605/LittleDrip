@@ -55,29 +55,57 @@
 [ext_resource type="Material" uid="uid://cphcxen3iddbt" path="res://Scripts/Shaders/Radial.tres" id="33_utia5"]
 [ext_resource type="Script" uid="uid://d3rpplbndnmue" path="res://Scripts/ClockSwipe.gd" id="40_6ehlx"]
 [ext_resource type="Texture2D" uid="uid://dkvkk7fwdcbnf" path="res://Art/SpaceBackground.png" id="52_4clwk"]
+[ext_resource type="Texture2D" uid="uid://bl71e44ho3lhf" path="res://Art/WMOIcon_ClearSky.png" id="52_bposm"]
+[ext_resource type="Texture2D" uid="uid://cnct8iv878ylc" path="res://Art/WMOIcon_Thunder_HailHeavy_Sunny.png" id="52_cchgx"]
 [ext_resource type="Texture2D" uid="uid://w7gps2lr58vx" path="res://Art/daySky.png" id="53_1bbis"]
+[ext_resource type="Texture2D" uid="uid://dvfkf0a4p5fdi" path="res://Art/WMOIcon_Thunder_Hail_Sunny.png" id="53_6jw1o"]
+[ext_resource type="Texture2D" uid="uid://ghxc8di8ip74" path="res://Art/WMOIcon_Thunder_HailHeavy_Cloudy.png" id="54_mhc43"]
+[ext_resource type="Texture2D" uid="uid://bf560umqd18ow" path="res://Art/WMOIcon_PartlyCloudy.png" id="54_qmo2n"]
+[ext_resource type="Texture2D" uid="uid://b0a8ky8t2mlfl" path="res://Art/WMOIcon_Overcast.png" id="55_mjyee"]
+[ext_resource type="Texture2D" uid="uid://5cgd806ycsbi" path="res://Art/WMOIcon_Thunder_Hail_Cloudy.png" id="55_qpal1"]
 [ext_resource type="Texture2D" uid="uid://3jw4yvata6s2" path="res://Art/nightSkyTransparent.png" id="56_1bbis"]
+[ext_resource type="Texture2D" uid="uid://bqxonjtmvxyrn" path="res://Art/WMOIcon_Thunder_HailHeavy.png" id="56_har0a"]
 [ext_resource type="Texture2D" uid="uid://cls1vmnxjm1qx" path="res://Art/ClayCircle1.png" id="57_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://t1vadt611hbn" path="res://Art/WMOIcon_Thunder_Hail.png" id="57_r8bee"]
 [ext_resource type="Texture2D" uid="uid://cpgejcf5fmypq" path="res://Art/DialNow-blank.png" id="57_w1ool"]
 [ext_resource type="Script" uid="uid://bcaap0qjnov2y" path="res://Scripts/WindRotation.gd" id="58_1bbis"]
 [ext_resource type="Texture2D" uid="uid://hb67w5jillh6" path="res://Art/ClayCircle2.png" id="58_4clwk"]
+[ext_resource type="Texture2D" uid="uid://citpujeccvuhj" path="res://Art/WMOIcon_Thunder_RainHeavy_Sunny.png" id="58_r8bee"]
 [ext_resource type="Texture2D" uid="uid://bdrck3x0fhi17" path="res://Art/ClayCircle3.png" id="59_h2tpa"]
+[ext_resource type="Texture2D" uid="uid://fm5tax5sdukd" path="res://Art/WMOIcon_Thunder_Rain_Sunny.png" id="59_rwa6c"]
 [ext_resource type="Theme" uid="uid://5dsnv0fiux1o" path="res://Themes/ClockDateText.tres" id="60_atu2d"]
+[ext_resource type="Texture2D" uid="uid://tagjmwhba6ey" path="res://Art/WMOIcon_Thunder_RainHeavy_Cloudy.png" id="60_ry2vk"]
 [ext_resource type="Theme" uid="uid://c23ev4glymqnu" path="res://Themes/ClockText.tres" id="60_tt1x2"]
 [ext_resource type="Shader" uid="uid://clpwyg7thik51" path="res://Scripts/Shaders/colourTint.gdshader" id="60_xd5mi"]
+[ext_resource type="Texture2D" uid="uid://dlp4xenkbpr26" path="res://Art/WMOIcon_Thunder_Rain_Cloudy.png" id="61_3d2lr"]
 [ext_resource type="Texture2D" uid="uid://cj8np7sk1awo8" path="res://Art/ClaySpeechBubble.png" id="62_ex7s8"]
+[ext_resource type="Texture2D" uid="uid://bdbsj0sdmwg2a" path="res://Art/WMOIcon_Thunder_RainHeavy.png" id="62_onym5"]
 [ext_resource type="Theme" uid="uid://dek1lhvw5b8vv" path="res://Themes/TempText.tres" id="63_2wrh7"]
+[ext_resource type="Texture2D" uid="uid://crbi0vhb8octn" path="res://Art/WMOIcon_Thunder_Rain.png" id="63_3pqs5"]
 [ext_resource type="Texture2D" uid="uid://bn480rl0ipj2a" path="res://Art/ClayCircle1-Border.png" id="63_ok4ge"]
+[ext_resource type="Texture2D" uid="uid://neormtydys86" path="res://Art/WMOIcon_SnowHeavy_Showers.png" id="64_3pqs5"]
 [ext_resource type="Texture2D" uid="uid://deybdym0p0cjj" path="res://Art/ClayCircle2-Border.png" id="65_k6daw"]
+[ext_resource type="Texture2D" uid="uid://cbj5txyi0kicl" path="res://Art/WMOIcon_Snow_Showers.png" id="65_lxea5"]
+[ext_resource type="Texture2D" uid="uid://dv45m6868t2jy" path="res://Art/WMOIcon_SnowHeavy_Rain.png" id="66_28d8q"]
 [ext_resource type="Texture2D" uid="uid://bv6m3ssyq2obn" path="res://Art/ClayCircle3-Border.png" id="67_05y1e"]
+[ext_resource type="Texture2D" uid="uid://dkug1r78fn3d5" path="res://Art/WMOIcon_Snow_Rain.png" id="67_ljb7l"]
+[ext_resource type="Texture2D" uid="uid://b1wdph6hf147b" path="res://Art/WMOIcon_SnowHeavy.png" id="68_ljb7l"]
 [ext_resource type="Theme" uid="uid://ctx50jyi7rmvb" path="res://Themes/Precipitation%Text.tres" id="68_tbeql"]
+[ext_resource type="Texture2D" uid="uid://cyytrwuw3857q" path="res://Art/WMOIcon_Snow_Moderate.png" id="69_y7h6l"]
+[ext_resource type="Texture2D" uid="uid://76ouuq43oryl" path="res://Art/WMOIcon_Snow_Light.png" id="70_7ikoh"]
 [ext_resource type="Theme" uid="uid://iiwccqjl4q26" path="res://Themes/WindText.tres" id="70_52a0j"]
+[ext_resource type="Texture2D" uid="uid://dk6kotaoa2sew" path="res://Art/WMOIcon_RainHeavy_Showers.png" id="71_7ikoh"]
 [ext_resource type="Theme" uid="uid://dc8aw0y48fagd" path="res://Themes/WeatherCodeText.tres" id="72_c5nnb"]
+[ext_resource type="Texture2D" uid="uid://b1qvvr301r6gn" path="res://Art/WMOIcon_RainModerateShowers.png" id="72_lt6nf"]
 [ext_resource type="Texture2D" uid="uid://bo0cche28qypc" path="res://Art/ClaySun.png" id="73_c5nnb"]
+[ext_resource type="Texture2D" uid="uid://k7mfet821r4w" path="res://Art/WMOIcon_RainSlight_Showers.png" id="73_ggkpb"]
 [ext_resource type="FontFile" uid="uid://cj2or2retj2i0" path="res://Fonts/FriendlySans_Font_0_1/OpenType (.otf)/FriendlySans-Regular.otf" id="73_x5wht"]
+[ext_resource type="Texture2D" uid="uid://c06hxv5j4pf6y" path="res://Art/WMOIcon_RainHeavy.png" id="74_48o01"]
 [ext_resource type="Texture2D" uid="uid://mgi5ohkes5dx" path="res://Art/WindTest.png" id="74_he124"]
 [ext_resource type="Texture2D" uid="uid://dun83glfxhd1u" path="res://Art/lightningSmall.png" id="74_rpc3w"]
+[ext_resource type="Texture2D" uid="uid://2d10pgnye2ah" path="res://Art/WMOIcon_RainModerate.png" id="75_hwg2s"]
 [ext_resource type="Texture2D" uid="uid://iwlw64ftmax4" path="res://Art/DialNow.png" id="75_siwj1"]
+[ext_resource type="Texture2D" uid="uid://hvn62xr6qmr0" path="res://Art/WMOIcon_RainSlight.png" id="76_bposm"]
 [ext_resource type="Theme" uid="uid://ht73t2tlbnw4" path="res://Themes/DaySummaryText.tres" id="79_fsd2l"]
 [ext_resource type="Texture2D" uid="uid://rnf6go8xmmwc" path="res://Art/info.png" id="79_rpc3w"]
 [ext_resource type="Texture2D" uid="uid://bk14jc066xc0q" path="res://Art/X.png" id="81_hjjnx"]
@@ -103,10 +131,10 @@
 [ext_resource type="Texture2D" uid="uid://ionj285tor5v" path="res://Art/rain%icon.png" id="92_s0riu"]
 [ext_resource type="Texture2D" uid="uid://c75kosok8q1wg" path="res://Art/Temp-key.png" id="93_a5sy2"]
 [ext_resource type="Theme" uid="uid://dgojte6j4gj6q" path="res://Themes/SettingsText.tres" id="93_hjjnx"]
-[ext_resource type="Script" uid="uid://5s082wrt6dg6" path="res://Scripts/SettingToggleOpenMaps.gd" id="93_ok4ge"]
 [ext_resource type="Texture2D" uid="uid://xmohuctq3mwc" path="res://Art/Dial-key.png" id="94_ulc4m"]
 [ext_resource type="Script" uid="uid://biqjjknlpgtdl" path="res://Scripts/SettingToggleHour24.gd" id="106_jw3lw"]
 [ext_resource type="Script" uid="uid://d4ci48ekwy3tp" path="res://Scripts/SettingToggleDefaultTime.gd" id="107_h7ft5"]
+[ext_resource type="Script" uid="uid://cxj0dyk2xgw4v" path="res://Scripts/SettingToggleDaySummaryIcons.gd" id="131_bposm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1x2"]
 shader = ExtResource("60_xd5mi")
@@ -227,7 +255,7 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
@@ -266,14 +294,22 @@ precText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Prec00/Label
 weatherText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather00/Label-weather00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather01/Label-weather01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather02/Label-weather02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather03/Label-weather03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather04/Label-weather04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather05/Label-weather05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather06/Label-weather06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather07/Label-weather07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather08/Label-weather08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather09/Label-weather09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather10/Label-weather10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather11/Label-weather11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather12/Label-weather12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather13/Label-weather13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather14/Label-weather14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather15/Label-weather15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather16/Label-weather16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather17/Label-weather17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather18/Label-weather18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather19/Label-weather19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather20/Label-weather20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather21/Label-weather21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather22/Label-weather22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Weather23/Label-weather23")]
 moonTextures = Array[Texture]([ExtResource("4_pbw6q"), ExtResource("4_6heos"), ExtResource("5_vvnwx"), ExtResource("6_btbly"), ExtResource("7_vs04g"), ExtResource("8_6ehlx"), ExtResource("9_utia5"), ExtResource("10_f7hdo"), ExtResource("11_clvyn"), ExtResource("12_d8m2u"), ExtResource("13_5psol"), ExtResource("14_m4llh"), ExtResource("15_lac6x"), ExtResource("16_hpjjw"), ExtResource("17_off7b"), ExtResource("18_lfh1j"), ExtResource("19_7sj7i"), ExtResource("20_semxg"), ExtResource("21_ep8v8"), ExtResource("22_3133c"), ExtResource("23_js5gh"), ExtResource("24_vvjo1"), ExtResource("25_yisvs"), ExtResource("26_rgw24"), ExtResource("27_5gwyn"), ExtResource("28_r6gtk"), ExtResource("29_81ldr"), ExtResource("30_eywpa"), ExtResource("31_vvnwx")])
 dayDateText = [NodePath("../SummaryPanelPrevious/DateText2"), NodePath("../SummaryPanelToday/DateText2"), NodePath("../SummaryPanelNext/DateText2")]
-dayWMOText = [NodePath("../SummaryPanelPrevious/DailyWeatherCode"), NodePath("../SummaryPanelToday/DailyWeatherCode"), NodePath("../SummaryPanelNext/DailyWeatherCode")]
+dayWMOText = [NodePath("../SummaryPanelPrevious/DailyWeatherCode-Previous"), NodePath("../SummaryPanelToday/DailyWeatherCode-Current"), NodePath("../SummaryPanelNext/DailyWeatherCode-Next")]
 dayTempText = [NodePath("../SummaryPanelPrevious/DailyTemp"), NodePath("../SummaryPanelToday/DailyTemp"), NodePath("../SummaryPanelNext/DailyTemp")]
 dayAppTempText = [NodePath("../SummaryPanelPrevious/DailyTempApparent"), NodePath("../SummaryPanelToday/DailyTempApparent"), NodePath("../SummaryPanelNext/DailyTempApparent")]
 dayWindText = [NodePath("../SummaryPanelPrevious/DailyWind"), NodePath("../SummaryPanelToday/DailyWind"), NodePath("../SummaryPanelNext/DailyWind")]
 daySunText = [NodePath("../SummaryPanelPrevious/DailySun"), NodePath("../SummaryPanelToday/DailySun"), NodePath("../SummaryPanelNext/DailySun")]
+daySummaryIcons = Array[Texture]([ExtResource("52_cchgx"), ExtResource("53_6jw1o"), ExtResource("54_mhc43"), ExtResource("55_qpal1"), ExtResource("56_har0a"), ExtResource("57_r8bee"), ExtResource("58_r8bee"), ExtResource("59_rwa6c"), ExtResource("60_ry2vk"), ExtResource("61_3d2lr"), ExtResource("62_onym5"), ExtResource("63_3pqs5"), ExtResource("64_3pqs5"), ExtResource("65_lxea5"), ExtResource("66_28d8q"), ExtResource("67_ljb7l"), ExtResource("68_ljb7l"), ExtResource("69_y7h6l"), ExtResource("70_7ikoh"), ExtResource("71_7ikoh"), ExtResource("72_lt6nf"), ExtResource("73_ggkpb"), ExtResource("74_48o01"), ExtResource("75_hwg2s"), ExtResource("76_bposm"), ExtResource("54_qmo2n"), ExtResource("55_mjyee"), ExtResource("52_bposm")])
 creditsPanel = NodePath("../Credits")
 settingsPanel = NodePath("../Settings")
 anim = NodePath("../AnimationPlayer")
+daySummaryWeatherCodeIcons = [NodePath("../SummaryPanelPrevious/WeatherCodeIcon"), NodePath("../SummaryPanelToday/WeatherCodeIcon"), NodePath("../SummaryPanelNext/WeatherCodeIcon")]
+daySummaryWindRotations = [NodePath("../SummaryPanelPrevious/WindIcon/WindRotation00"), NodePath("../SummaryPanelToday/WindIcon/WindRotation00"), NodePath("../SummaryPanelNext/WindIcon/WindRotation00")]
+daySummaryWindTexts = [NodePath("../SummaryPanelPrevious/WindIcon/Label-wind00"), NodePath("../SummaryPanelToday/WindIcon/Label-wind00"), NodePath("../SummaryPanelNext/WindIcon/Label-wind00")]
+daySummaryTempTexts = [NodePath("../SummaryPanelPrevious/AvgTempIcon/Label-temp00"), NodePath("../SummaryPanelToday/AvgTempIcon/Label-temp00"), NodePath("../SummaryPanelNext/AvgTempIcon/Label-temp00")]
+daySummaryTempColourBorders = [NodePath("../SummaryPanelPrevious/AvgTempIcon/TempBorder00"), NodePath("../SummaryPanelToday/AvgTempIcon/TempBorder00"), NodePath("../SummaryPanelNext/AvgTempIcon/TempBorder00")]
+daySummaryTextNodes = [NodePath("../SummaryPanelPrevious/DailyWeatherCode-Previous"), NodePath("../SummaryPanelPrevious/DailyTemp"), NodePath("../SummaryPanelPrevious/DailyTempApparent"), NodePath("../SummaryPanelPrevious/DailyWind"), NodePath("../SummaryPanelToday/DailyWeatherCode-Current"), NodePath("../SummaryPanelToday/DailyTemp"), NodePath("../SummaryPanelToday/DailyTempApparent"), NodePath("../SummaryPanelToday/DailyWind"), NodePath("../SummaryPanelNext/DailyWeatherCode-Next"), NodePath("../SummaryPanelNext/DailyTemp"), NodePath("../SummaryPanelNext/DailyTempApparent"), NodePath("../SummaryPanelNext/DailyWind")]
+daySummaryIconNodes = [NodePath("../SummaryPanelPrevious/WeatherCodeIcon"), NodePath("../SummaryPanelPrevious/AvgTempIcon"), NodePath("../SummaryPanelPrevious/WindIcon"), NodePath("../SummaryPanelToday/WeatherCodeIcon"), NodePath("../SummaryPanelToday/AvgTempIcon"), NodePath("../SummaryPanelToday/WindIcon"), NodePath("../SummaryPanelNext/WeatherCodeIcon"), NodePath("../SummaryPanelNext/AvgTempIcon"), NodePath("../SummaryPanelNext/WindIcon")]
 
 [node name="HTTPRequest_Location" type="HTTPRequest" parent="." unique_id=1768424176]
 script = ExtResource("2_50glp")
@@ -7044,10 +7080,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -179.99986
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.00014
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 1110)
@@ -7083,10 +7119,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0004
+offset_left = -180.00003
 offset_top = -1160.0
-offset_right = 150.00034
-offset_bottom = -1059.9998
+offset_right = 179.99997
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.2617994
@@ -7123,10 +7159,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00043
+offset_left = -180.00006
 offset_top = -1160.0
-offset_right = 150.0003
-offset_bottom = -1059.9998
+offset_right = 179.99994
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.5235988
@@ -7163,10 +7199,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0003
+offset_left = -179.99994
 offset_top = -1160.0
-offset_right = 150.00043
-offset_bottom = -1059.9998
+offset_right = 180.00006
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.7853982
@@ -7203,10 +7239,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.0471976
@@ -7243,10 +7279,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.3089969
@@ -7283,10 +7319,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00049
+offset_left = -180.00012
 offset_top = -1160.0
-offset_right = 150.00024
-offset_bottom = -1059.9998
+offset_right = 179.99988
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
@@ -7323,10 +7359,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00049
+offset_left = -180.00012
 offset_top = -1160.0
-offset_right = 150.00024
-offset_bottom = -1059.9998
+offset_right = 179.99988
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.8325957
@@ -7363,10 +7399,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0003
+offset_left = -179.99994
 offset_top = -1160.0
-offset_right = 150.00043
-offset_bottom = -1059.9998
+offset_right = 180.00006
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 2.0943952
@@ -7403,10 +7439,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0003
+offset_left = -179.99994
 offset_top = -1160.0
-offset_right = 150.00043
-offset_bottom = -1059.9998
+offset_right = 180.00006
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 2.3561945
@@ -7443,10 +7479,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 2.6179938
@@ -7483,10 +7519,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00034
+offset_left = -179.99997
 offset_top = -1160.0
-offset_right = 150.0004
-offset_bottom = -1059.9998
+offset_right = 180.00003
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 2.8797932
@@ -7523,10 +7559,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0004
+offset_left = -180.00003
 offset_top = -1160.0
-offset_right = 150.00034
-offset_bottom = -1059.9998
+offset_right = 179.99997
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
@@ -7563,10 +7599,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0004
+offset_left = -180.00003
 offset_top = -1160.0
-offset_right = 150.00034
-offset_bottom = -1059.9998
+offset_right = 179.99997
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.403392
@@ -7603,10 +7639,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.6651914
@@ -7643,10 +7679,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.9269907
@@ -7683,10 +7719,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 4.1887903
@@ -7723,10 +7759,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 4.4505897
@@ -7763,10 +7799,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 4.712389
@@ -7803,10 +7839,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 4.9741883
@@ -7843,10 +7879,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 5.2359877
@@ -7883,10 +7919,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 5.497787
@@ -7923,10 +7959,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 5.7595863
@@ -7963,10 +7999,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.00037
+offset_left = -180.0
 offset_top = -1160.0
-offset_right = 150.00037
-offset_bottom = -1059.9998
+offset_right = 180.0
+offset_bottom = -1045.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 6.021386
@@ -8104,6 +8140,10 @@ anchor_left = 0.193
 anchor_top = 0.1
 anchor_right = 0.837
 anchor_bottom = 0.18
+offset_left = -4.4800034
+offset_top = -14.297882
+offset_right = -4.480011
+offset_bottom = -0.8978882
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 40
@@ -8111,7 +8151,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailyWeatherCode" type="Label" parent="SummaryPanelPrevious" unique_id=1115892707]
+[node name="DailyWeatherCode-Previous" type="Label" parent="SummaryPanelPrevious" unique_id=1115892707]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.097
@@ -8125,6 +8166,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="DailyTemp" type="Label" parent="SummaryPanelPrevious" unique_id=880357210]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.144
@@ -8137,6 +8179,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DailyTempApparent" type="Label" parent="SummaryPanelPrevious" unique_id=1235450271]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.137
@@ -8149,6 +8192,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DailyWind" type="Label" parent="SummaryPanelPrevious" unique_id=1378090731]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.159
@@ -8174,6 +8218,159 @@ theme = ExtResource("79_fsd2l")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WeatherCodeIcon" type="TextureRect" parent="SummaryPanelPrevious" unique_id=856997988]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.575775
+offset_top = -140.70001
+offset_right = 79.93973
+offset_bottom = -40.699768
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Label-cloud00" type="Label" parent="SummaryPanelPrevious/WeatherCodeIcon" unique_id=660174121]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvgTempIcon" type="TextureRect" parent="SummaryPanelPrevious" unique_id=875505339]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -41.700012
+offset_right = 58.0
+offset_bottom = 58.299988
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("57_ex7s8")
+
+[node name="Label-temp00" type="RichTextLabel" parent="SummaryPanelPrevious/AvgTempIcon" unique_id=1576397199]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("63_2wrh7")
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempBorder00" type="TextureRect" parent="SummaryPanelPrevious/AvgTempIcon" unique_id=79086194]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
+[node name="WindIcon" type="TextureRect" parent="SummaryPanelPrevious" unique_id=1665480583]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 58.299988
+offset_right = 81.0
+offset_bottom = 208.29999
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="Label-wind00" type="RichTextLabel" parent="SummaryPanelPrevious/WindIcon" unique_id=1077887722]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("70_52a0j")
+bbcode_enabled = true
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindRotation00" type="Control" parent="SummaryPanelPrevious/WindIcon" unique_id=2100622373]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("58_1bbis")
+
+[node name="WindImg00" type="TextureRect" parent="SummaryPanelPrevious/WindIcon/WindRotation00" unique_id=860224935]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("74_he124")
+
 [node name="SummaryPanelToday" type="TextureButton" parent="." unique_id=795605317]
 layout_mode = 1
 anchors_preset = -1
@@ -8181,8 +8378,8 @@ anchor_left = 0.5
 anchor_top = 0.125
 anchor_right = 0.5
 anchor_bottom = 0.394
-offset_left = -185.0
-offset_right = 185.0
+offset_left = -190.0
+offset_right = 190.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture_normal = ExtResource("85_3k6d1")
@@ -8195,6 +8392,10 @@ anchor_left = 0.251
 anchor_top = 0.078
 anchor_right = 0.822
 anchor_bottom = 0.164
+offset_left = -5.3799973
+offset_top = -1.5978699
+offset_right = -5.380005
+offset_bottom = -1.5978699
 grow_horizontal = 2
 theme = ExtResource("83_eef1t")
 theme_override_font_sizes/font_size = 44
@@ -8202,7 +8403,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailyWeatherCode" type="Label" parent="SummaryPanelToday" unique_id=31564755]
+[node name="DailyWeatherCode-Current" type="Label" parent="SummaryPanelToday" unique_id=31564755]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.227
@@ -8216,6 +8418,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="DailyTemp" type="Label" parent="SummaryPanelToday" unique_id=746154246]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.183
@@ -8228,6 +8431,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DailyTempApparent" type="Label" parent="SummaryPanelToday" unique_id=118378086]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.201
@@ -8240,6 +8444,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DailyWind" type="Label" parent="SummaryPanelToday" unique_id=919995776]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.186
@@ -8259,11 +8464,167 @@ anchor_left = 0.22
 anchor_top = 0.805
 anchor_right = 0.797
 anchor_bottom = 0.936
-offset_right = -14.0
+offset_left = -1.5999985
+offset_top = 5.284729
+offset_right = -15.600006
+offset_bottom = 5.284851
 grow_horizontal = 2
 theme = ExtResource("83_eef1t")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WeatherCodeIcon" type="TextureRect" parent="SummaryPanelToday" unique_id=452073748]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -212.22998
+offset_right = 83.5155
+offset_bottom = -112.22974
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Label-cloud00" type="Label" parent="SummaryPanelToday/WeatherCodeIcon" unique_id=1918431385]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvgTempIcon" type="TextureRect" parent="SummaryPanelToday" unique_id=951794886]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -109.22998
+offset_right = 58.0
+offset_bottom = -9.22998
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("57_ex7s8")
+
+[node name="Label-temp00" type="RichTextLabel" parent="SummaryPanelToday/AvgTempIcon" unique_id=852402548]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("63_2wrh7")
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempBorder00" type="TextureRect" parent="SummaryPanelToday/AvgTempIcon" unique_id=937774296]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
+[node name="WindIcon" type="TextureRect" parent="SummaryPanelToday" unique_id=186608335]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = 0.77001953
+offset_right = 84.0
+offset_bottom = 150.77002
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="Label-wind00" type="RichTextLabel" parent="SummaryPanelToday/WindIcon" unique_id=343038203]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("70_52a0j")
+bbcode_enabled = true
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindRotation00" type="Control" parent="SummaryPanelToday/WindIcon" unique_id=305748433]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("58_1bbis")
+
+[node name="WindImg00" type="TextureRect" parent="SummaryPanelToday/WindIcon/WindRotation00" unique_id=16859416]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("74_he124")
 
 [node name="SummaryPanelNext" type="TextureButton" parent="." unique_id=573408137]
 layout_mode = 1
@@ -8285,6 +8646,10 @@ anchor_left = 0.193
 anchor_top = 0.1
 anchor_right = 0.837
 anchor_bottom = 0.18
+offset_left = -4.4800034
+offset_top = -14.297882
+offset_right = -4.480011
+offset_bottom = -0.8978882
 grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 theme_override_font_sizes/font_size = 40
@@ -8292,7 +8657,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DailyWeatherCode" type="Label" parent="SummaryPanelNext" unique_id=1307513351]
+[node name="DailyWeatherCode-Next" type="Label" parent="SummaryPanelNext" unique_id=1307513351]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.097
@@ -8306,6 +8672,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="DailyTemp" type="Label" parent="SummaryPanelNext" unique_id=1950361638]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.144
@@ -8318,6 +8685,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DailyTempApparent" type="Label" parent="SummaryPanelNext" unique_id=1268056024]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.137
@@ -8330,6 +8698,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DailyWind" type="Label" parent="SummaryPanelNext" unique_id=1889488825]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.159
@@ -8354,6 +8723,159 @@ grow_horizontal = 2
 theme = ExtResource("79_fsd2l")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WeatherCodeIcon" type="TextureRect" parent="SummaryPanelNext" unique_id=85407628]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.575775
+offset_top = -140.70001
+offset_right = 79.93973
+offset_bottom = -40.699768
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Label-cloud00" type="Label" parent="SummaryPanelNext/WeatherCodeIcon" unique_id=378674428]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvgTempIcon" type="TextureRect" parent="SummaryPanelNext" unique_id=1366182299]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -41.700012
+offset_right = 58.0
+offset_bottom = 58.299988
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("57_ex7s8")
+
+[node name="Label-temp00" type="RichTextLabel" parent="SummaryPanelNext/AvgTempIcon" unique_id=59874760]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("63_2wrh7")
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempBorder00" type="TextureRect" parent="SummaryPanelNext/AvgTempIcon" unique_id=1028617103]
+material = SubResource("ShaderMaterial_tt1x2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("63_ok4ge")
+
+[node name="WindIcon" type="TextureRect" parent="SummaryPanelNext" unique_id=256102519]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 58.299988
+offset_right = 81.0
+offset_bottom = 208.29999
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="Label-wind00" type="RichTextLabel" parent="SummaryPanelNext/WindIcon" unique_id=179709728]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.000153
+offset_right = 50.0
+offset_bottom = 49.999847
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("70_52a0j")
+bbcode_enabled = true
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindRotation00" type="Control" parent="SummaryPanelNext/WindIcon" unique_id=1527495327]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("58_1bbis")
+
+[node name="WindImg00" type="TextureRect" parent="SummaryPanelNext/WindIcon/WindRotation00" unique_id=1844802463]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("74_he124")
 
 [node name="MoonPhaseText" type="Label" parent="." unique_id=2023853065]
 layout_mode = 1
@@ -8731,7 +9253,7 @@ custom_minimum_size = Vector2(810, 30)
 layout_mode = 2
 size_flags_horizontal = 2
 theme = ExtResource("90_s0riu")
-text = "Wind speed (above), gust speed (below), and direction (top of phone = North). Wavier = windier. Change units in Settings."
+text = "Wind speed (above), gust speed (below). This example shows a 'south wind' (blowing from south). Change units in Settings."
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -9270,7 +9792,7 @@ anchor_top = 0.72
 anchor_right = 0.95
 anchor_bottom = 0.75
 theme = ExtResource("93_hjjnx")
-text = "Connect location to map app"
+text = "Day summary icons"
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -9311,10 +9833,10 @@ texture_pressed = ExtResource("90_478hk")
 texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
-script = ExtResource("93_ok4ge")
+script = ExtResource("131_bposm")
 weatherRequest = NodePath("../../HTTPRequest_Weather")
 ToggleFamily = Array[NodePath]([NodePath("."), NodePath("../TextureButton-off3")])
-mapConnect = true
+showIcons = true
 
 [node name="TextureButton-off3" type="TextureButton" parent="Settings" unique_id=1747988064]
 layout_mode = 1
@@ -9329,7 +9851,7 @@ texture_pressed = ExtResource("90_478hk")
 texture_disabled = ExtResource("90_478hk")
 ignore_texture_size = true
 stretch_mode = 4
-script = ExtResource("93_ok4ge")
+script = ExtResource("131_bposm")
 weatherRequest = NodePath("../../HTTPRequest_Weather")
 ToggleFamily = Array[NodePath]([NodePath("../TextureButton-on3"), NodePath(".")])
 
