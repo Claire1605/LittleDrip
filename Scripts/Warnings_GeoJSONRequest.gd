@@ -2,6 +2,9 @@ class_name GeoJSONRequest
 extends HTTPRequest
 
 @export_node_path("Node") var saveDataPath
+@export var wwYellow : Texture
+@export var wwAmber: Texture
+@export var wwRed : Texture
 var saveData
 var id = ""
 

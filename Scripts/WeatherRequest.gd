@@ -48,6 +48,9 @@ extends HTTPRequest
 @export var daySummaryIcons: Array[Texture] = []
 @export var creditsPanel: Node
 @export var settingsPanel: Node
+@export var locationPanel: Node
+@export var saveLocationButton: Button
+@export var removeLocationButton: Button
 @export_node_path("AnimationPlayer") var anim
 @export var daySummaryWeatherCodeIcons: Array[TextureRect]
 @export var daySummaryWindRotations: Array[Node]
@@ -130,11 +133,12 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	if result != HTTPRequest.RESULT_SUCCESS:
 		get_node_or_null(dateText).text = "Could not retrieve weather data, please restart app"
+		#TryWeatherRequest() #This might make a loop and crash if it's just not working...
 	else:
 		get_node_or_null(clock).requestReady = true
 	
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
-	if openMeteoJSON != null:
+	if openMeteoJSON != null and openMeteoJSON.has("timezone_abbreviation"):
 		# Get the timezone offset in a usable format... there's probably a simpler way to do this!
 		var tz = openMeteoJSON["timezone_abbreviation"]
 		tzLocal = "0"
@@ -757,8 +761,8 @@ func getLunarPhase():
 	else:
 		get_node_or_null(moonPhaseTextureNext).hide()
 
-func updateLocation(placeName: String, adminName: String, lat: float, long: float):
-	saveData.save_game(placeName + " (" + adminName + ")", lat, long, saveData.tempUnit, saveData.windUnit, saveData.windAnim, saveData.tempColours, saveData.mapConnect, saveData.hour24, saveData.setToDefaultTime, saveData.showIcons)	
+func updateLocation(placeName: String, lat: float, long: float):
+	saveData.save_game(placeName, lat, long, saveData.tempUnit, saveData.windUnit, saveData.windAnim, saveData.tempColours, saveData.mapConnect, saveData.hour24, saveData.setToDefaultTime, saveData.showIcons, saveData.favouriteLocations)	
 	get_node_or_null(locationText).text = saveData.placeName
 	TryWeatherRequest()
 
@@ -936,9 +940,17 @@ func _on_credits_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	creditsPanel.hide()
+	settingsPanel.hide()
+	locationPanel.hide()
 
 func _on_settings_button_pressed() -> void:
 	settingsPanel.show()
-
-func _on_back_settings_button_pressed() -> void:
-	settingsPanel.hide()
+	
+func _on_location_button_pressed() -> void:
+	locationPanel.show()
+	if saveData.savedLocationsContains(saveData.placeName):
+		saveLocationButton.disabled = true
+		removeLocationButton.disabled = false
+	else:
+		saveLocationButton.disabled = false
+		removeLocationButton.disabled = true
