@@ -8,6 +8,8 @@ extends HTTPRequest
 var saveData
 var id = ""
 
+# Request should run once per 5 minutes while the app is open and update the icons and data on the main page and weather warnings page
+
 func _ready() -> void:
 	saveData = get_node_or_null(saveDataPath)
 	request_completed.connect(_on_request_completed)

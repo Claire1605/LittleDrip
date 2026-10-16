@@ -49,6 +49,8 @@ extends HTTPRequest
 @export var creditsPanel: Node
 @export var settingsPanel: Node
 @export var locationPanel: Node
+@export var weatherWarningPanel: Node
+@export var weatherWarningDetailPanel : Node
 @export var saveLocationButton: Button
 @export var removeLocationButton: Button
 @export var maxFavourites : Node
@@ -943,6 +945,8 @@ func _on_back_button_pressed() -> void:
 	creditsPanel.hide()
 	settingsPanel.hide()
 	locationPanel.hide()
+	weatherWarningPanel.hide()
+	weatherWarningDetailPanel.hide()
 
 func _on_settings_button_pressed() -> void:
 	settingsPanel.show()
@@ -961,3 +965,12 @@ func _on_location_button_pressed() -> void:
 		saveLocationButton.disabled = false
 		removeLocationButton.disabled = true
 		maxFavourites.hide()
+
+
+func _on_texture_button_weather_warning_pressed() -> void:
+	weatherWarningPanel.show()
+
+
+func _on_ww_back_button_pressed() -> void:
+	weatherWarningPanel.show()
+	weatherWarningDetailPanel.hide()

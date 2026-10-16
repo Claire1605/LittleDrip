@@ -135,3 +135,7 @@ func load_game():
 		setToDefaultTime = node_data.get("setToDefaultTime", false)
 		showIcons = node_data.get("showIcons", true)
 		favouriteLocations = node_data.get("favouriteLocations", [])
+
+
+func _on_back_button_pressed() -> void:
+	pass # Replace with function body.

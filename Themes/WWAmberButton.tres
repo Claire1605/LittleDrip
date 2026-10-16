@@ -1,0 +1,15 @@
+[gd_resource type="Theme" format=3 uid="uid://drsr1jocsbpwt"]
+
+[ext_resource type="FontFile" uid="uid://d2t20gjrx285c" path="res://Fonts/Lambda_Font_0_25/OpenType (.otf)/Lambda-Regular.otf" id="1_tfnp4"]
+[ext_resource type="StyleBox" uid="uid://cary4gn38iv4m" path="res://Themes/WWAmber-pressed.tres" id="2_lf2l8"]
+[ext_resource type="StyleBox" uid="uid://r8lxnhlhqn0r" path="res://Themes/WWAmber-normal.tres" id="3_6ohxy"]
+
+[resource]
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 44
+Button/fonts/font = ExtResource("1_tfnp4")
+Button/styles/focus = ExtResource("2_lf2l8")
+Button/styles/hover = ExtResource("2_lf2l8")
+Button/styles/normal = ExtResource("3_6ohxy")
+Button/styles/pressed = ExtResource("2_lf2l8")
