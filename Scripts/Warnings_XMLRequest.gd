@@ -1,10 +1,18 @@
 extends HTTPRequest
 
+@export var weatherRequest : WeatherRequest
 @export var jsonRequest: GeoJSONRequest
+var timer = 0.0
 
 func _ready() -> void:
 	request_completed.connect(_on_request_completed)
 	weatherWarningRequest()
+
+func _process(delta: float) -> void:
+	timer += delta
+	if timer >= 300:
+		timer = 0
+		weatherWarningRequest() # We should check weather warnings every 5 minutes
 
 func weatherWarningRequest():
 	# Retrieve the Atom Feed
@@ -13,13 +21,11 @@ func weatherWarningRequest():
 
 	var error = request("https://data.hub.api.metoffice.gov.uk/nswws/v1.1/objects/feed", headers)
 	if error != OK:
-		print("atom feed request error")
+		get_node_or_null(weatherRequest.dateText).text = "XML error 1. Please contact developer"
 
 func _on_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		print("atom feed request unsuccesful")
-	#else:
-		#print("atom feedg request succesful")
+		get_node_or_null(weatherRequest.dateText).text = "XML error 2. Please contact developer"
 		
 	var xml = body.get_string_from_utf8()
 	var from = xml.find("<id>") + 13

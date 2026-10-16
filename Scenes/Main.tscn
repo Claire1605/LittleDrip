@@ -142,10 +142,6 @@
 [ext_resource type="Script" uid="uid://cxj0dyk2xgw4v" path="res://Scripts/SettingToggleDaySummaryIcons.gd" id="131_bposm"]
 [ext_resource type="Theme" uid="uid://botkq1xeovrcw" path="res://Themes/LocationButtons.tres" id="138_qxwff"]
 [ext_resource type="Texture2D" uid="uid://dytw7m1pmjrup" path="res://Art/WeatherWarningClay.png" id="142_g6gwx"]
-[ext_resource type="Theme" uid="uid://bcr50qa6uxl0x" path="res://Themes/WWRedButton.tres" id="143_ynyn3"]
-[ext_resource type="Script" uid="uid://kkaax2fplu4y" path="res://Scripts/WeatherWarningButton.gd" id="144_26vri"]
-[ext_resource type="Theme" uid="uid://drsr1jocsbpwt" path="res://Themes/WWAmberButton.tres" id="145_c3wx6"]
-[ext_resource type="Theme" uid="uid://cmmmw2nqpqups" path="res://Themes/WWYellowButton.tres" id="146_h4exs"]
 [ext_resource type="Theme" uid="uid://krwkn0m33qbi" path="res://Themes/WW-FurtherDetail.tres" id="147_2v47r"]
 [ext_resource type="Theme" uid="uid://b0w21emae513t" path="res://Themes/WW-FurtherDetail-Title.tres" id="148_ipxax"]
 
@@ -339,16 +335,28 @@ weatherRequest = NodePath("../HTTPRequest_Weather")
 saveDataPath = NodePath("../SaveData")
 favouritesExitButton = NodePath("../FavouritesExitButton")
 
-[node name="HTTPRequest_Warning-XML" type="HTTPRequest" parent="." unique_id=1966957933 node_paths=PackedStringArray("jsonRequest")]
+[node name="HTTPRequest_Warning-XML" type="HTTPRequest" parent="." unique_id=1966957933 node_paths=PackedStringArray("weatherRequest", "jsonRequest")]
 script = ExtResource("81_mjyee")
+weatherRequest = NodePath("../HTTPRequest_Weather")
 jsonRequest = NodePath("../HTTPRequest_Warning-GeoJSON")
 
-[node name="HTTPRequest_Warning-GeoJSON" type="HTTPRequest" parent="." unique_id=487685276]
+[node name="HTTPRequest_Warning-GeoJSON" type="HTTPRequest" parent="." unique_id=487685276 node_paths=PackedStringArray("weatherRequest", "weatherWarningIcon", "noWarnings", "warningVBox", "detailIssued", "detailTitle", "detailHeadline", "detailAffectedAreas", "detailWhatToExpect", "detailFurtherDetails", "detailWhatShouldIDo")]
 script = ExtResource("82_fend5")
+weatherRequest = NodePath("../HTTPRequest_Weather")
 saveDataPath = NodePath("../SaveData")
+weatherWarningIcon = NodePath("../SummaryPanelToday/TextureButton-WeatherWarning")
+noWarnings = NodePath("../WeatherWarnings/ActiveWeatherWarnings-nowarnings")
+warningVBox = NodePath("../WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer")
 wwYellow = ExtResource("116_dwns0")
 wwAmber = ExtResource("84_ogxyq")
 wwRed = ExtResource("85_g6gwx")
+detailIssued = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-issued")
+detailTitle = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-title")
+detailHeadline = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-headline")
+detailAffectedAreas = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-affectedAreas")
+detailWhatToExpect = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-whatToExpect")
+detailFurtherDetails = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-furtherDetails")
+detailWhatShouldIDo = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-whatShouldIDo")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=443430196]
 layout_mode = 1
@@ -8647,6 +8655,7 @@ mouse_filter = 2
 texture = ExtResource("74_he124")
 
 [node name="TextureButton-WeatherWarning" type="TextureButton" parent="SummaryPanelToday" unique_id=2047972305]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.08
@@ -10259,42 +10268,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="Button-WeatherWarning" type="Button" parent="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer" unique_id=342090260]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("143_ynyn3")
-text = "Red warning of thunderstorm & extreme heat
-between 14:00 Fri 5 Jan and 17:35 Fri 5 Jan"
-icon = ExtResource("85_g6gwx")
-text_overrun_behavior = 3
-expand_icon = true
-script = ExtResource("144_26vri")
-
-[node name="Button-WeatherWarning2" type="Button" parent="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer" unique_id=1052136873]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("145_c3wx6")
-text = "Amber warning of rain
-between 14:00 Fri 5 Jan and 17:35 Fri 5 Jan"
-icon = ExtResource("84_ogxyq")
-text_overrun_behavior = 3
-expand_icon = true
-script = ExtResource("144_26vri")
-
-[node name="Button-WeatherWarning3" type="Button" parent="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer" unique_id=113005492]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("146_h4exs")
-text = "Yellow warning of snow
-between 14:00 Fri 5 Jan and 17:35 Fri 5 Jan"
-icon = ExtResource("116_dwns0")
-text_overrun_behavior = 3
-expand_icon = true
-script = ExtResource("144_26vri")
-
 [node name="WeatherWarningDetail" type="TextureRect" parent="." unique_id=1929844456]
 visible = false
 layout_mode = 1
@@ -10352,7 +10325,7 @@ texture = ExtResource("52_4clwk")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="LittleDripLogo" type="TextureRect" parent="WeatherWarningDetail" unique_id=381922730]
+[node name="WeatherWarningDetailIcon" type="TextureRect" parent="WeatherWarningDetail" unique_id=381922730]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
@@ -10394,7 +10367,6 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
-text = "ISSUED"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -10404,8 +10376,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
 theme_override_font_sizes/font_size = 52
-text = "Red warning of thunderstorm & extreme heat
-between 14:00 Fri 5 Jan and 17:35 Fri 5 Jan"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -10423,7 +10393,6 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
-text = "A period of strong winds is expected on Wednesday with some transport disruption likely."
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -10440,7 +10409,6 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
-text = "Highlands & Eilean Siar"
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -10457,10 +10425,6 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
-text = "- Some delays to road, air and ferry transport are likely
-- Probably some bus and train services affected, with some journeys taking longer
-- Delays for high-sided vehicles on exposed routes and bridges likely
-- Some short-term loss of power and other services is possible"
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -10477,7 +10441,6 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
-text = "Strong south to southwesterly winds are expected during Wednesday. Gusts of 50 to 60 mph are expected widely, with some exposed coastal and hilly locations seeing gusts of around 70 mph late morning and early afternoon. Winds ease from the west through the late afternoon and early evening."
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -10494,7 +10457,6 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("147_2v47r")
-text = "Give yourself the best chance of avoiding delays by checking road conditions if driving, or bus and train timetables, amending your travel plans if necessary.\\n\\nPeople cope better with power cuts when they have prepared for them in advance. It's easy to do; consider gathering torches and batteries, a mobile phone power pack and other essential items.\\n\\nBe prepared for weather warnings to change quickly: when a weather warning is issued, the Met Office recommends staying up to date with the weather forecast in your area."
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -10543,7 +10505,4 @@ libraries/ = SubResource("AnimationLibrary_cbpwj")
 [connection signal="pressed" from="Location/Background/Button-FavouritesSave" to="HTTPRequest_Location" method="_on_button_favourites_save_pressed"]
 [connection signal="pressed" from="Location/Background/Button-FavouritesRemove" to="HTTPRequest_Location" method="_on_button_favourites_remove_pressed"]
 [connection signal="pressed" from="WeatherWarnings/WWBackButton" to="HTTPRequest_Weather" method="_on_back_button_pressed"]
-[connection signal="pressed" from="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer/Button-WeatherWarning" to="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer/Button-WeatherWarning" method="_on_pressed"]
-[connection signal="pressed" from="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer/Button-WeatherWarning2" to="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer/Button-WeatherWarning2" method="_on_pressed"]
-[connection signal="pressed" from="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer/Button-WeatherWarning3" to="WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer/Button-WeatherWarning3" method="_on_pressed"]
 [connection signal="pressed" from="WeatherWarningDetail/BackButton" to="HTTPRequest_Weather" method="_on_ww_back_button_pressed"]

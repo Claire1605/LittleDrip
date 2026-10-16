@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c2v6mqlym8k2f"]
+
+[ext_resource type="Theme" uid="uid://drsr1jocsbpwt" path="res://Themes/WWAmberButton.tres" id="1_fpqxp"]
+[ext_resource type="Texture2D" uid="uid://bcq0yvyb4qlk0" path="res://Art/WeatherWarningClay02.png" id="2_lqsix"]
+[ext_resource type="Script" uid="uid://kkaax2fplu4y" path="res://Scripts/WeatherWarningButton.gd" id="3_gl0on"]
+
+[node name="Button-WeatherWarning-Amber" type="Button" unique_id=1408620966]
+custom_minimum_size = Vector2(0, 150)
+size_flags_vertical = 0
+theme = ExtResource("1_fpqxp")
+icon = ExtResource("2_lqsix")
+text_overrun_behavior = 3
+expand_icon = true
+script = ExtResource("3_gl0on")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

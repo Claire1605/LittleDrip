@@ -128,14 +128,14 @@ func weatherRequest():
 	# HTTP request
 	var error = request("https://api.open-meteo.com/v1/forecast?latitude=" + str(saveData.latitude) + "&longitude=" + str(saveData.longitude) + "&daily=moon_phase,weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,precipitation_probability,rain,snowfall,wind_speed_10m,apparent_temperature,weather_code,cloud_cover,wind_gusts_10m,wind_direction_10m&timezone=auto&past_days=7&forecast_days=14" + wind + temp)
 	if error != OK:
-		get_node_or_null(dateText).text = ""
+		get_node_or_null(dateText).text = "HTTP request error. Check internet connection"
 
 func _on_request_completed(result, response_code, headers, body):
 	requestProcessing = false
 	get_node_or_null(locationInput).editable = true
 	
 	if result != HTTPRequest.RESULT_SUCCESS:
-		get_node_or_null(dateText).text = "Could not retrieve weather data, please restart app"
+		get_node_or_null(dateText).text = "Could not retrieve data, please restart app"
 		#TryWeatherRequest() #This might make a loop and crash if it's just not working...
 	else:
 		get_node_or_null(clock).requestReady = true

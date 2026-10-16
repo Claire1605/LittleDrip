@@ -1,17 +1,37 @@
+# this needs testing!
+
 class_name GeoJSONRequest
 extends HTTPRequest
 
+@export var weatherRequest : WeatherRequest
 @export_node_path("Node") var saveDataPath
+@export var weatherWarningIcon : Node
+@export var weatherWarningDetailIcon : TextureRect
+@export var noWarnings : Node
+@export var warningVBox : Node
 @export var wwYellow : Texture
 @export var wwAmber: Texture
 @export var wwRed : Texture
 var saveData
 var id = ""
+var redWarningButtonScene
+var amberWarningButtonScene
+var yellowWarningButtonScene
 
-# Request should run once per 5 minutes while the app is open and update the icons and data on the main page and weather warnings page
+# Warning detail
+@export var detailIssued : Label
+@export var detailTitle : Label
+@export var detailHeadline : Label
+@export var detailAffectedAreas : Label
+@export var detailWhatToExpect : Label
+@export var detailFurtherDetails : Label
+@export var detailWhatShouldIDo : Label
 
 func _ready() -> void:
 	saveData = get_node_or_null(saveDataPath)
+	redWarningButtonScene = preload("res://Scenes/button_weather_warning_red.tscn")
+	amberWarningButtonScene = preload("res://Scenes/button_weather_warning_amber.tscn")
+	yellowWarningButtonScene = preload("res://Scenes/button_weather_warning_yellow.tscn")
 	request_completed.connect(_on_request_completed)
 	
 func startRequest():
@@ -24,40 +44,109 @@ func weatherWarningRequest():
 
 	var error = request("https://data.hub.api.metoffice.gov.uk/nswws/v1.1/objects/issued/" + id, headers)
 	if error != OK:
-		print("geojson request error")
+		get_node_or_null(weatherRequest.dateText).text = "GEOJson error 1. Please contact developer"
 
 func _on_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		print("geojson request unsuccesful")
-	#else:
-	#	print("geojson request succesful")
-		
-	#print(body.get_string_from_utf8())
+		get_node_or_null(weatherRequest.dateText).text = "GEOJson error 2. Please contact developer"
 	
 	var NSWWSgeoJSON = JSON.parse_string(body.get_string_from_utf8())
 	
-	# Example
-	for i in NSWWSgeoJSON["features"].size():
-		var areas = ""
-		for x in NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"].size():
-			areas += NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"][x]["regionName"]
-			if NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"].size() > 1 and x < NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"].size():
-				areas += ", "
-		var weatherTypes = ""
-		for x in NSWWSgeoJSON["features"][i]["properties"]["weatherType"].size():
-			weatherTypes += NSWWSgeoJSON["features"][i]["properties"]["weatherType"][x]
-			if NSWWSgeoJSON["features"][i]["properties"]["weatherType"].size() > 1 and x < NSWWSgeoJSON["features"][i]["properties"]["weatherType"].size():
-				areas += ", "
-		print("There is a " + NSWWSgeoJSON["features"][i]["properties"]["warningLevel"] + " " + weatherTypes +  " warning in " + areas)
+	# Are there active weather warnings?
+	if NSWWSgeoJSON["features"].size() > 0:
+		# Do they apply to the currently selected area?
+		var thisArea = false
+		for i in NSWWSgeoJSON["features"].size():
+			if isPointInPolygon(constructPolygon(NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0])):
+				thisArea = true
+		
+		if thisArea == true:
+			weatherWarningIcon.show()
+			noWarnings.hide()
+		else:
+			weatherWarningIcon.hide()
+			noWarnings.show()
+			#return
+	else:
+		weatherWarningIcon.hide()
+		noWarnings.show()
+		#return
+		
+	#DEBUG + uncomment returns above
+	weatherWarningIcon.show()
+	noWarnings.show()
 	
+	var r = false
+	var a = false
+	var y = false
+	
+	# Remove all warnings first
+	for i in warningVBox.get_child_count():
+		warningVBox.get_child(i).queue_free()
+	
+	# Instantiate warnings
 	for i in NSWWSgeoJSON["features"].size():
-		var polygon : PackedVector2Array
-		for c in NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0].size():
-			var coord = Vector2(NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0][c][0], NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0][c][1])
+		if NSWWSgeoJSON["features"][i]["properties"]["warningLevel"] == "RED":
+			r = true
+			# Instantiate a red warning button with the correct data
+			var warningButton = redWarningButtonScene.instantiate()
+			warningButton.PopulateData(NSWWSgeoJSON["features"][i])
+			warningVBox.add_child(warningButton)
+		if NSWWSgeoJSON["features"][i]["properties"]["warningLevel"] == "AMBER":
+			a = true
+			# Instantiate an amber warning button with the correct data
+			var warningButton = amberWarningButtonScene.instantiate()
+			warningButton.PopulateData(NSWWSgeoJSON["features"][i])
+			warningVBox.add_child(warningButton)
+			pass
+		if NSWWSgeoJSON["features"][i]["properties"]["warningLevel"] == "YELLOW":
+			y = true
+			# Instantiate a yellow warning button with the correct data
+			var warningButton = yellowWarningButtonScene.instantiate()
+			warningButton.PopulateData(NSWWSgeoJSON["features"][i])
+			warningVBox.add_child(warningButton)
+			pass
+	
+	# Prioritise the most severe warning for the icon colour
+	if y == true:
+		weatherWarningIcon.texture_normal = wwYellow
+	if a == true:
+		weatherWarningIcon.texture_normal = wwAmber
+	if r == true:
+		weatherWarningIcon.texture_normal = wwRed
+	
+	# Example
+	#for i in NSWWSgeoJSON["features"].size():
+	#	var areas = ""
+	#	for x in NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"].size():
+	#		areas += NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"][x]["regionName"]
+	#		if NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"].size() > 1 and x < NSWWSgeoJSON["features"][i]["properties"]["affectedAreas"].size():
+	#			areas += ", "
+	#	var weatherTypes = ""
+	#	for x in NSWWSgeoJSON["features"][i]["properties"]["weatherType"].size():
+	#		weatherTypes += NSWWSgeoJSON["features"][i]["properties"]["weatherType"][x]
+	#		if NSWWSgeoJSON["features"][i]["properties"]["weatherType"].size() > 1 and x < NSWWSgeoJSON["features"][i]["properties"]["weatherType"].size():
+	#			areas += ", "
+	#	print("There is a " + NSWWSgeoJSON["features"][i]["properties"]["warningLevel"] + " " + weatherTypes +  " warning in " + areas)
+	
+	#for i in NSWWSgeoJSON["features"].size():
+	#	var polygon : PackedVector2Array
+	#	for c in NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0].size():
+	#		var coord = Vector2(NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0][c][0], NSWWSgeoJSON["features"][i]["geometry"]["coordinates"][0][0][c][1])
+	#		polygon.append(coord)
+	#	
+	#	print(isPointInPolygon(polygon))
+
+
+func constructPolygon(coordinates) -> PackedVector2Array:
+	var polygon : PackedVector2Array
+	for c in coordinates.size():
+			var coord = Vector2(coordinates[c][0], coordinates[c][1])
 			polygon.append(coord)
-		
-		print(isPointInPolygon(polygon))
-		
+	
+	return polygon
+
+
 func isPointInPolygon(polygon) -> bool:
 	var inside = false
 	var location = Vector2(saveData.longitude, saveData.latitude)

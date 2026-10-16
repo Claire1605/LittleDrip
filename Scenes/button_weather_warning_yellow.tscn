@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dr1phtp448h4b"]
+
+[ext_resource type="Theme" uid="uid://cmmmw2nqpqups" path="res://Themes/WWYellowButton.tres" id="1_c7owm"]
+[ext_resource type="Texture2D" uid="uid://woi4iootk6xd" path="res://Art/WeatherWarningClay01.png" id="2_7h1n4"]
+[ext_resource type="Script" uid="uid://kkaax2fplu4y" path="res://Scripts/WeatherWarningButton.gd" id="3_vlom5"]
+
+[node name="Button-WeatherWarning-Yellow" type="Button" unique_id=1900372407]
+custom_minimum_size = Vector2(0, 150)
+size_flags_vertical = 0
+theme = ExtResource("1_c7owm")
+icon = ExtResource("2_7h1n4")
+text_overrun_behavior = 3
+expand_icon = true
+script = ExtResource("3_vlom5")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
