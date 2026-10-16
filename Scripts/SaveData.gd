@@ -79,7 +79,7 @@ func save_fav_location():
 	if favouriteLocations.size() > 0 and savedLocationsContains(placeName):
 		alreadySaved = true
 	
-	if favouriteLocations.size() < 8 and !alreadySaved:
+	if favouriteLocations.size() < 10 and !alreadySaved:
 		favouriteLocations.append(locationDataDict)
 	
 	save_game(placeName, latitude, longitude, tempUnit, windUnit, windAnim, tempColours, mapConnect, hour24, setToDefaultTime, showIcons, favouriteLocations)

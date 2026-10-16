@@ -51,6 +51,7 @@ extends HTTPRequest
 @export var locationPanel: Node
 @export var saveLocationButton: Button
 @export var removeLocationButton: Button
+@export var maxFavourites : Node
 @export_node_path("AnimationPlayer") var anim
 @export var daySummaryWeatherCodeIcons: Array[TextureRect]
 @export var daySummaryWindRotations: Array[Node]
@@ -951,6 +952,12 @@ func _on_location_button_pressed() -> void:
 	if saveData.savedLocationsContains(saveData.placeName):
 		saveLocationButton.disabled = true
 		removeLocationButton.disabled = false
+		maxFavourites.hide()
+	elif saveData.favouriteLocations.size() == 10:
+		saveLocationButton.disabled = true
+		removeLocationButton.disabled = true
+		maxFavourites.show()
 	else:
 		saveLocationButton.disabled = false
 		removeLocationButton.disabled = true
+		maxFavourites.hide()

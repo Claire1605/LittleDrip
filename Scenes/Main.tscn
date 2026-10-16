@@ -261,7 +261,7 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "locationPanel", "saveLocationButton", "removeLocationButton", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "locationPanel", "saveLocationButton", "removeLocationButton", "maxFavourites", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
@@ -311,6 +311,7 @@ settingsPanel = NodePath("../Settings")
 locationPanel = NodePath("../Location")
 saveLocationButton = NodePath("../Location/Background/Button-FavouritesSave")
 removeLocationButton = NodePath("../Location/Background/Button-FavouritesRemove")
+maxFavourites = NodePath("../Location/Background/Label-Max")
 anim = NodePath("../AnimationPlayer")
 daySummaryWeatherCodeIcons = [NodePath("../SummaryPanelPrevious/WeatherCodeIcon"), NodePath("../SummaryPanelToday/WeatherCodeIcon"), NodePath("../SummaryPanelNext/WeatherCodeIcon")]
 daySummaryWindRotations = [NodePath("../SummaryPanelPrevious/WindIcon/WindRotation00"), NodePath("../SummaryPanelToday/WindIcon/WindRotation00"), NodePath("../SummaryPanelNext/WindIcon/WindRotation00")]
@@ -10120,6 +10121,19 @@ anchor_right = 0.85
 anchor_bottom = 0.85
 theme = ExtResource("138_qxwff")
 text = "Remove location from favourites"
+
+[node name="Label-Max" type="Label" parent="Location/Background" unique_id=1930213618]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.9
+anchor_right = 0.85
+anchor_bottom = 0.95
+theme = ExtResource("60_atu2d")
+text = "Favourites at maximum. Remove one first."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=662011402]
 libraries/ = SubResource("AnimationLibrary_cbpwj")
