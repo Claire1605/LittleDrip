@@ -1,3 +1,5 @@
+class_name Warnings_XML_Request
+
 extends HTTPRequest
 
 @export var weatherRequest : WeatherRequest
@@ -6,6 +8,8 @@ var timer = 0.0
 
 func _ready() -> void:
 	request_completed.connect(_on_request_completed)
+
+func StartWarningRequest():
 	weatherWarningRequest()
 
 func _process(delta: float) -> void:

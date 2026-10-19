@@ -1,0 +1,27 @@
+[gd_resource type="Theme" format=3 uid="uid://beohrqhvpya2x"]
+
+[ext_resource type="StyleBox" uid="uid://cf01y01ubibx7" path="res://Themes/ScrollContainer-Grabber.tres" id="1_8d5x7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmhac"]
+content_margin_left = 12.0
+content_margin_top = 0.0
+content_margin_right = 12.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.023529412, 0.36862746, 0.5411765, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[resource]
+ScrollContainer/constants/scrollbar_h_separation = 30
+VScrollBar/styles/grabber = ExtResource("1_8d5x7")
+VScrollBar/styles/grabber_highlight = ExtResource("1_8d5x7")
+VScrollBar/styles/grabber_pressed = ExtResource("1_8d5x7")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_tmhac")

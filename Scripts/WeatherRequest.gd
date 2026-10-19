@@ -19,6 +19,7 @@ extends HTTPRequest
 @export_node_path("TextureButton") var clockNight
 @export_node_path("Label") var clockPreviousDay
 @export_node_path("Label") var clockNextDay
+@export var weatherWarningText : Label
 @export var hour12: Array[Node] = []
 @export var hour24: Array[Node] = []
 @export var tempText: Array[RichTextLabel] = []
@@ -62,6 +63,7 @@ extends HTTPRequest
 @export var daySummaryTempColourBorders: Array[TextureRect]
 @export var daySummaryTextNodes: Array[Node]
 @export var daySummaryIconNodes: Array[Node]
+@export var xmlRequest : Warnings_XML_Request
 var saveData
 var startDay: int = 7
 var openMeteoJSON
@@ -112,6 +114,8 @@ func TryWeatherRequest():
 		waitForRequest = true
 
 func weatherRequest():
+	get_node_or_null(clock).requestReady = false
+	
 	# Perform a GET request. The URL below returns JSON as of writing.
 	get_node_or_null(locationInput).editable = false # Set location search disabled until http request finished
 	
@@ -136,11 +140,18 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	if result != HTTPRequest.RESULT_SUCCESS:
 		get_node_or_null(dateText).text = "Could not retrieve data, please restart app"
+		return
 		#TryWeatherRequest() #This might make a loop and crash if it's just not working...
-	else:
-		get_node_or_null(clock).requestReady = true
 	
 	openMeteoJSON = JSON.parse_string(body.get_string_from_utf8())
+	
+	if openMeteoJSON.has("error") and openMeteoJSON["error"] == true:
+		get_node_or_null(dateText).text = "Could not retrieve data, please try again"
+		return
+	else:
+		get_node_or_null(clock).requestReady = true
+
+	
 	if openMeteoJSON != null and openMeteoJSON.has("timezone_abbreviation"):
 		# Get the timezone offset in a usable format... there's probably a simpler way to do this!
 		var tz = openMeteoJSON["timezone_abbreviation"]
@@ -174,8 +185,8 @@ func _on_request_completed(result, response_code, headers, body):
 		populateForecastTable()
 		populateInitialWindDirection()
 		daySummarySetup()
-	
-	getLunarPhase()
+		getLunarPhase()
+		xmlRequest.StartWarningRequest()
 
 func populateForecastTable():
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
@@ -656,6 +667,41 @@ func updateDailyWMO(wmoText : Label, wmoTexture : TextureRect, day, position):
 	wmoText.text = text #getWMOCode(openMeteoJSON["daily"]["weather_code"][day])
 	wmoTexture.texture = daySummaryIcons[texture] #getWMOIcon(openMeteoJSON["daily"]["weather_code"][day])
 
+func clearForecastVisuals():
+	get_node_or_null(dateText).text = "Forecasting..."
+	weatherWarningText.text = "Checking for weather warnings..."
+	
+	for position in range(0,3):
+		dayDateText[position].text = ""
+		dayWMOText[position].text = "" 
+		dayTempText[position].text = ""
+		dayWindText[position].text = ""
+		daySunText[position].text = ""
+		daySummaryWeatherCodeIcons[position].texture = null
+		daySummaryTempTexts[position].get_parent().material = daySummaryTempTexts[position].get_parent().material.duplicate()
+		daySummaryTempTexts[position].get_parent().material.set_shader_parameter('colour', Color.WHITE)
+		daySummaryTempColourBorders[position].hide()
+		daySummaryTempTexts[position].text = ""
+		daySummaryWindRotations[position].SetInitialRotation(90,0,0)
+		daySummaryWindTexts[position].text = ""
+	
+	get_node_or_null(moonPhaseText).text = ""
+	get_node_or_null(moonPhaseTexture).texture_normal = null
+	get_node_or_null(moonPhaseTexturePrevious).texture_normal = null
+	get_node_or_null(moonPhaseTextureNext).texture_normal = null
+	
+	for h in range(0,24): # Each hour in 24 hours
+		tempText[h].text = ""
+		tempText[h].get_parent().material = tempText[h].get_parent().material.duplicate()
+		tempText[h].get_parent().material.set_shader_parameter('colour', Color.WHITE)
+		tempColourBorers[h].hide()
+		precText[h].text = ""
+		rainImage[h].texture = null
+		cloudImage[h].texture = null
+		windText[h].text = ""
+		windRotation[h].SetInitialRotation(90,0,0)
+		weatherText[h].text = ""
+
 func getWeekdayString(weekday):
 	if weekday == 0:
 		return "Sunday"
@@ -714,6 +760,9 @@ func getLunarPhase():
 	#var ageNext = fmod(daysNext, 29.53059)
 	
 	
+	if openMeteoJSON == null:
+		return
+		
 	var agePrevious = openMeteoJSON["daily"]["moon_phase"][startDay - 1]
 	var age = openMeteoJSON["daily"]["moon_phase"][startDay]
 	var ageNext = age
@@ -767,6 +816,7 @@ func getLunarPhase():
 func updateLocation(placeName: String, lat: float, long: float):
 	saveData.save_game(placeName, lat, long, saveData.tempUnit, saveData.windUnit, saveData.windAnim, saveData.tempColours, saveData.mapConnect, saveData.hour24, saveData.setToDefaultTime, saveData.showIcons, saveData.favouriteLocations)	
 	get_node_or_null(locationText).text = saveData.placeName
+	clearForecastVisuals()
 	TryWeatherRequest()
 
 func _on_today_button_pressed() -> void:
@@ -966,10 +1016,8 @@ func _on_location_button_pressed() -> void:
 		removeLocationButton.disabled = true
 		maxFavourites.hide()
 
-
 func _on_texture_button_weather_warning_pressed() -> void:
 	weatherWarningPanel.show()
-
 
 func _on_ww_back_button_pressed() -> void:
 	weatherWarningPanel.show()

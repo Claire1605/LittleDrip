@@ -12,6 +12,7 @@ extends HTTPRequest
 @export var wwYellow : Texture
 @export var wwAmber: Texture
 @export var wwRed : Texture
+@export var activeWarningsTitle: Label
 var saveData
 var id = ""
 var redWarningButtonScene
@@ -22,8 +23,8 @@ var yellowWarningButtonScene
 @export var detailIssued : Label
 @export var detailTitle : Label
 @export var detailHeadline : Label
-@export var detailAffectedAreas : Label
-@export var detailWhatToExpect : Label
+@export var detailAffectedAreas : RichTextLabel
+@export var detailWhatToExpect : RichTextLabel
 @export var detailFurtherDetails : Label
 @export var detailWhatShouldIDo : Label
 
@@ -52,6 +53,8 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	var NSWWSgeoJSON = JSON.parse_string(body.get_string_from_utf8())
 	
+	activeWarningsTitle.text = "Active Met Office Weather Warnings in\n" + saveData.placeName + "\nClick each warning for further details."
+	
 	# Are there active weather warnings?
 	if NSWWSgeoJSON["features"].size() > 0:
 		# Do they apply to the currently selected area?
@@ -63,18 +66,21 @@ func _on_request_completed(result, response_code, headers, body):
 		if thisArea == true:
 			weatherWarningIcon.show()
 			noWarnings.hide()
+			weatherRequest.weatherWarningText.text = "Weather warnings have been issued. Click below for details."
 		else:
 			weatherWarningIcon.hide()
 			noWarnings.show()
-			#return
+			weatherRequest.weatherWarningText.text = "No active weather warnings."
+			return
 	else:
 		weatherWarningIcon.hide()
 		noWarnings.show()
-		#return
+		weatherRequest.weatherWarningText.text = "No active weather warnings."
+		return
 		
 	#DEBUG + uncomment returns above
-	weatherWarningIcon.show()
-	noWarnings.show()
+	#weatherWarningIcon.show()
+	#noWarnings.show()
 	
 	var r = false
 	var a = false
@@ -90,12 +96,16 @@ func _on_request_completed(result, response_code, headers, body):
 			r = true
 			# Instantiate a red warning button with the correct data
 			var warningButton = redWarningButtonScene.instantiate()
+			warningButton.weatherRequest = weatherRequest
+			warningButton.geoJsonRequest = self
 			warningButton.PopulateData(NSWWSgeoJSON["features"][i])
 			warningVBox.add_child(warningButton)
 		if NSWWSgeoJSON["features"][i]["properties"]["warningLevel"] == "AMBER":
 			a = true
 			# Instantiate an amber warning button with the correct data
 			var warningButton = amberWarningButtonScene.instantiate()
+			warningButton.weatherRequest = weatherRequest
+			warningButton.geoJsonRequest = self
 			warningButton.PopulateData(NSWWSgeoJSON["features"][i])
 			warningVBox.add_child(warningButton)
 			pass
@@ -103,6 +113,8 @@ func _on_request_completed(result, response_code, headers, body):
 			y = true
 			# Instantiate a yellow warning button with the correct data
 			var warningButton = yellowWarningButtonScene.instantiate()
+			warningButton.weatherRequest = weatherRequest
+			warningButton.geoJsonRequest = self
 			warningButton.PopulateData(NSWWSgeoJSON["features"][i])
 			warningVBox.add_child(warningButton)
 			pass
@@ -150,7 +162,6 @@ func constructPolygon(coordinates) -> PackedVector2Array:
 func isPointInPolygon(polygon) -> bool:
 	var inside = false
 	var location = Vector2(saveData.longitude, saveData.latitude)
-	print("checking long: " + str(location.x) + ", lat: " + str(location.y))
 	
 	if Geometry2D.is_point_in_polygon(location, polygon):
 		inside = true

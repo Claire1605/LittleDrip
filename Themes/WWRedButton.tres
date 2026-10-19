@@ -7,7 +7,7 @@
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 8
-Button/font_sizes/font_size = 44
+Button/font_sizes/font_size = 52
 Button/fonts/font = ExtResource("1_c47fl")
 Button/styles/focus = ExtResource("2_4o84s")
 Button/styles/hover = ExtResource("2_4o84s")

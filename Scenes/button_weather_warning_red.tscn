@@ -5,11 +5,12 @@
 [ext_resource type="Script" uid="uid://kkaax2fplu4y" path="res://Scripts/WeatherWarningButton.gd" id="3_nwggw"]
 
 [node name="Button-WeatherWarning-Red" type="Button" unique_id=1326701788]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 200)
 size_flags_vertical = 0
+mouse_filter = 1
 theme = ExtResource("1_ucr47")
 icon = ExtResource("2_uysnt")
-text_overrun_behavior = 3
+autowrap_mode = 3
 expand_icon = true
 script = ExtResource("3_nwggw")
 

@@ -2,7 +2,7 @@ extends HTTPRequest
 @export_node_path("VBoxContainer") var locationResults
 @export_node_path("LineEdit") var locationSearch
 @export_node_path("VBoxContainer") var locationFavResults
-@export_node_path("HTTPRequest") var weatherRequest
+@export var weatherRequest : WeatherRequest
 @export_node_path("Node") var saveDataPath
 @export var favouritesExitButton : Node
 var saveData
@@ -58,7 +58,7 @@ func updateLocation(placeName: String, lat: float, long: float):
 	DisplayFavouriteLocations(false)
 	favouritesExitButton.hide()
 	get_node_or_null(locationSearch).text = ""
-	get_node_or_null(weatherRequest).updateLocation(placeName, lat, long)
+	weatherRequest.updateLocation(placeName, lat, long)
 
 func clearLocationResults(locChildren):
 	if !locChildren.is_empty():
@@ -112,9 +112,9 @@ func DisplayFavouriteLocations(show):
 
 func _on_button_favourites_save_pressed() -> void:
 	saveData.save_fav_location()
-	get_node_or_null(weatherRequest)._on_back_button_pressed()
+	weatherRequest._on_back_button_pressed()
 
 
 func _on_button_favourites_remove_pressed() -> void:
 	saveData.remove_fav_location()
-	get_node_or_null(weatherRequest)._on_back_button_pressed()
+	weatherRequest._on_back_button_pressed()

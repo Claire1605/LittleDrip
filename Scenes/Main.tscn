@@ -142,6 +142,7 @@
 [ext_resource type="Script" uid="uid://cxj0dyk2xgw4v" path="res://Scripts/SettingToggleDaySummaryIcons.gd" id="131_bposm"]
 [ext_resource type="Theme" uid="uid://botkq1xeovrcw" path="res://Themes/LocationButtons.tres" id="138_qxwff"]
 [ext_resource type="Texture2D" uid="uid://dytw7m1pmjrup" path="res://Art/WeatherWarningClay.png" id="142_g6gwx"]
+[ext_resource type="Theme" uid="uid://beohrqhvpya2x" path="res://Themes/ScrollContainer.tres" id="143_c3wx6"]
 [ext_resource type="Theme" uid="uid://krwkn0m33qbi" path="res://Themes/WW-FurtherDetail.tres" id="147_2v47r"]
 [ext_resource type="Theme" uid="uid://b0w21emae513t" path="res://Themes/WW-FurtherDetail-Title.tres" id="148_ipxax"]
 
@@ -264,7 +265,7 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "locationPanel", "weatherWarningPanel", "weatherWarningDetailPanel", "saveLocationButton", "removeLocationButton", "maxFavourites", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("weatherWarningText", "hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "locationPanel", "weatherWarningPanel", "weatherWarningDetailPanel", "saveLocationButton", "removeLocationButton", "maxFavourites", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes", "xmlRequest")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
@@ -282,6 +283,7 @@ clock = NodePath("../ClockAnchor/Clock - Daytime")
 clockNight = NodePath("../ClockAnchor/Clock - Daytime/Clock-Nighttime")
 clockPreviousDay = NodePath("../ClockAnchor/Clock - Daytime/Label-PreviousDay")
 clockNextDay = NodePath("../ClockAnchor/Clock - Daytime/Label-NextDay")
+weatherWarningText = NodePath("../WeatherWarningText")
 hour12 = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour00/Label-hour00-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour01/Label-hour01-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour02/Label-hour02-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour03/Label-hour03-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour04/Label-hour04-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour05/Label-hour05-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour06/Label-hour06-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour07/Label-hour07-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour08/Label-hour08-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour09/Label-hour09-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour10/Label-hour10-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour11/Label-hour11-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour12/Label-hour12-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour13/Label-hour13-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour14/Label-hour14-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour15/Label-hour15-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour16/Label-hour16-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour17/Label-hour17-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour18/Label-hour18-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour19/Label-hour19-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour20/Label-hour20-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour21/Label-hour21-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour22/Label-hour22-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour23/Label-hour23-12")]
 hour24 = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour00/Label-hour00-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour01/Label-hour01-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour02/Label-hour02-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour03/Label-hour03-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour04/Label-hour04-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour05/Label-hour05-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour06/Label-hour06-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour07/Label-hour07-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour08/Label-hour08-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour09/Label-hour09-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour10/Label-hour10-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour11/Label-hour11-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour12/Label-hour12-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour13/Label-hour13-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour14/Label-hour14-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour15/Label-hour15-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour16/Label-hour16-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour17/Label-hour17-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour18/Label-hour18-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour19/Label-hour19-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour20/Label-hour20-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour21/Label-hour21-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour22/Label-hour22-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour23/Label-hour23-24")]
 tempText = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp00/Label-temp00"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp01/Label-temp01"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp02/Label-temp02"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp03/Label-temp03"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp04/Label-temp04"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp05/Label-temp05"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp06/Label-temp06"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp07/Label-temp07"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp08/Label-temp08"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp09/Label-temp09"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp10/Label-temp10"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp11/Label-temp11"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp12/Label-temp12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp13/Label-temp13"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp14/Label-temp14"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp15/Label-temp15"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp16/Label-temp16"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp17/Label-temp17"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp18/Label-temp18"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp19/Label-temp19"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp20/Label-temp20"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp21/Label-temp21"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp22/Label-temp22"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Temp23/Label-temp23")]
@@ -325,8 +327,9 @@ daySummaryTempTexts = [NodePath("../SummaryPanelPrevious/AvgTempIcon/Label-temp0
 daySummaryTempColourBorders = [NodePath("../SummaryPanelPrevious/AvgTempIcon/TempBorder00"), NodePath("../SummaryPanelToday/AvgTempIcon/TempBorder00"), NodePath("../SummaryPanelNext/AvgTempIcon/TempBorder00")]
 daySummaryTextNodes = [NodePath("../SummaryPanelPrevious/DailyWeatherCode-Previous"), NodePath("../SummaryPanelPrevious/DailyTemp"), NodePath("../SummaryPanelPrevious/DailyWind"), NodePath("../SummaryPanelToday/DailyWeatherCode-Current"), NodePath("../SummaryPanelToday/DailyTemp"), NodePath("../SummaryPanelToday/DailyWind"), NodePath("../SummaryPanelNext/DailyWeatherCode-Next"), NodePath("../SummaryPanelNext/DailyTemp"), NodePath("../SummaryPanelNext/DailyWind")]
 daySummaryIconNodes = [NodePath("../SummaryPanelPrevious/WeatherCodeIcon"), NodePath("../SummaryPanelPrevious/AvgTempIcon"), NodePath("../SummaryPanelPrevious/WindIcon"), NodePath("../SummaryPanelToday/WeatherCodeIcon"), NodePath("../SummaryPanelToday/AvgTempIcon"), NodePath("../SummaryPanelToday/WindIcon"), NodePath("../SummaryPanelNext/WeatherCodeIcon"), NodePath("../SummaryPanelNext/AvgTempIcon"), NodePath("../SummaryPanelNext/WindIcon")]
+xmlRequest = NodePath("../HTTPRequest_Warning-XML")
 
-[node name="HTTPRequest_Location" type="HTTPRequest" parent="." unique_id=1768424176 node_paths=PackedStringArray("favouritesExitButton")]
+[node name="HTTPRequest_Location" type="HTTPRequest" parent="." unique_id=1768424176 node_paths=PackedStringArray("weatherRequest", "favouritesExitButton")]
 script = ExtResource("2_50glp")
 locationResults = NodePath("../LocationResults")
 locationSearch = NodePath("../LocationSearch")
@@ -340,16 +343,18 @@ script = ExtResource("81_mjyee")
 weatherRequest = NodePath("../HTTPRequest_Weather")
 jsonRequest = NodePath("../HTTPRequest_Warning-GeoJSON")
 
-[node name="HTTPRequest_Warning-GeoJSON" type="HTTPRequest" parent="." unique_id=487685276 node_paths=PackedStringArray("weatherRequest", "weatherWarningIcon", "noWarnings", "warningVBox", "detailIssued", "detailTitle", "detailHeadline", "detailAffectedAreas", "detailWhatToExpect", "detailFurtherDetails", "detailWhatShouldIDo")]
+[node name="HTTPRequest_Warning-GeoJSON" type="HTTPRequest" parent="." unique_id=487685276 node_paths=PackedStringArray("weatherRequest", "weatherWarningIcon", "weatherWarningDetailIcon", "noWarnings", "warningVBox", "activeWarningsTitle", "detailIssued", "detailTitle", "detailHeadline", "detailAffectedAreas", "detailWhatToExpect", "detailFurtherDetails", "detailWhatShouldIDo")]
 script = ExtResource("82_fend5")
 weatherRequest = NodePath("../HTTPRequest_Weather")
 saveDataPath = NodePath("../SaveData")
 weatherWarningIcon = NodePath("../SummaryPanelToday/TextureButton-WeatherWarning")
+weatherWarningDetailIcon = NodePath("../WeatherWarningDetail/WeatherWarningDetailIcon")
 noWarnings = NodePath("../WeatherWarnings/ActiveWeatherWarnings-nowarnings")
 warningVBox = NodePath("../WeatherWarnings/ScrollContainer-WeatherWarningList/VBoxContainer")
 wwYellow = ExtResource("116_dwns0")
 wwAmber = ExtResource("84_ogxyq")
 wwRed = ExtResource("85_g6gwx")
+activeWarningsTitle = NodePath("../WeatherWarnings/ActiveWeatherWarnings-title")
 detailIssued = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-issued")
 detailTitle = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-title")
 detailHeadline = NodePath("../WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer/ActiveWeatherWarnings-headline")
@@ -8130,9 +8135,9 @@ placeholder_text = "Location..."
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
-anchor_top = 0.065
+anchor_top = 0.063
 anchor_right = 0.85
-anchor_bottom = 0.085
+anchor_bottom = 0.095
 offset_bottom = 8.800018
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("73_x5wht")
@@ -8150,9 +8155,9 @@ text_overrun_behavior = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.1
+anchor_top = 0.095
 anchor_right = 0.9
-anchor_bottom = 0.12
+anchor_bottom = 0.115
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("73_x5wht")
 theme_override_font_sizes/font_size = 48
@@ -8161,13 +8166,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="WeatherWarningText" type="Label" parent="." unique_id=1844774743]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.115
+anchor_right = 0.9
+anchor_bottom = 0.14
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("73_x5wht")
+theme_override_font_sizes/font_size = 36
+text = "Checking for weather warnings..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="SummaryPanelPrevious" type="TextureButton" parent="." unique_id=1909361824]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
-anchor_top = 0.155
+anchor_top = 0.15
 anchor_right = 0.2
-anchor_bottom = 0.33
+anchor_bottom = 0.335
 offset_left = -180.0
 offset_right = 180.0
 grow_horizontal = 2
@@ -8410,9 +8430,9 @@ texture = ExtResource("74_he124")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.125
+anchor_top = 0.135
 anchor_right = 0.5
-anchor_bottom = 0.394
+anchor_bottom = 0.4
 offset_left = -190.0
 offset_right = 190.0
 grow_horizontal = 2
@@ -8658,10 +8678,10 @@ texture = ExtResource("74_he124")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.08
-anchor_top = -0.02
-anchor_right = 0.28
-anchor_bottom = 0.18
+anchor_left = -0.09
+anchor_top = -0.01
+anchor_right = 0.29
+anchor_bottom = 0.2
 texture_normal = ExtResource("116_dwns0")
 ignore_texture_size = true
 stretch_mode = 5
@@ -8670,9 +8690,9 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.8
-anchor_top = 0.155
+anchor_top = 0.15
 anchor_right = 0.8
-anchor_bottom = 0.33
+anchor_bottom = 0.335
 offset_left = -180.0
 offset_right = 180.0
 grow_horizontal = 2
@@ -8915,9 +8935,9 @@ texture = ExtResource("74_he124")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
-anchor_top = 0.39
+anchor_top = 0.4
 anchor_right = 0.7
-anchor_bottom = 0.41
+anchor_bottom = 0.42
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("73_x5wht")
 theme_override_font_sizes/font_size = 48
@@ -8928,9 +8948,9 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
-anchor_top = 0.43
+anchor_top = 0.44
 anchor_right = 0.34
-anchor_bottom = 0.49
+anchor_bottom = 0.5
 offset_top = 0.3798828
 grow_horizontal = 2
 grow_vertical = 0
@@ -8941,9 +8961,9 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.36
-anchor_top = 0.41
+anchor_top = 0.42
 anchor_right = 0.64
-anchor_bottom = 0.51
+anchor_bottom = 0.515
 offset_top = 0.3798828
 grow_horizontal = 2
 grow_vertical = 0
@@ -8956,9 +8976,9 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66
-anchor_top = 0.43
+anchor_top = 0.44
 anchor_right = 0.94
-anchor_bottom = 0.49
+anchor_bottom = 0.5
 offset_top = 0.3798828
 grow_horizontal = 2
 grow_vertical = 0
@@ -9020,16 +9040,12 @@ autowrap_mode = 3
 
 [node name="Credits" type="TextureRect" parent="." unique_id=555574753]
 visible = false
+custom_minimum_size = Vector2(1080, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1170.0
-offset_right = 540.0
-offset_bottom = 1170.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -9400,16 +9416,12 @@ autowrap_mode = 3
 
 [node name="Settings" type="TextureRect" parent="." unique_id=497117635]
 visible = false
+custom_minimum_size = Vector2(1080, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1170.0
-offset_right = 540.0
-offset_bottom = 1170.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -10130,16 +10142,12 @@ vertical_alignment = 1
 
 [node name="WeatherWarnings" type="TextureRect" parent="." unique_id=1837645751]
 visible = false
+custom_minimum_size = Vector2(1080, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1170.0
-offset_right = 540.0
-offset_bottom = 1170.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -10214,14 +10222,11 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.14
+anchor_top = 0.15
 anchor_right = 0.95
 anchor_bottom = 0.23
 theme = ExtResource("60_atu2d")
-theme_override_font_sizes/font_size = 46
-text = "Active Met Office
-Weather Warnings in [Dundee (Scotland)].
-Click each warning for further details."
+theme_override_font_sizes/font_size = 54
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -10232,8 +10237,9 @@ anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.23
 anchor_right = 0.95
-anchor_bottom = 0.28
+anchor_bottom = 0.32
 theme = ExtResource("90_s0riu")
+theme_override_font_sizes/font_size = 36
 text = "(data from the Met Office public NSWWS API 
 but please always cross-reference at https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings)"
 horizontal_alignment = 1
@@ -10245,9 +10251,9 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.35
+anchor_top = 0.3
 anchor_right = 0.95
-anchor_bottom = 0.4
+anchor_bottom = 0.35
 theme = ExtResource("60_atu2d")
 theme_override_font_sizes/font_size = 46
 text = "There are no active weather warnings."
@@ -10259,27 +10265,25 @@ autowrap_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.3
+anchor_top = 0.35
 anchor_right = 0.95
 anchor_bottom = 0.975
+theme = ExtResource("143_c3wx6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WeatherWarnings/ScrollContainer-WeatherWarningList" unique_id=121009368]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 theme_override_constants/separation = 20
 
 [node name="WeatherWarningDetail" type="TextureRect" parent="." unique_id=1929844456]
 visible = false
+custom_minimum_size = Vector2(1080, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1170.0
-offset_right = 540.0
-offset_bottom = 1170.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -10355,8 +10359,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.15
-anchor_right = 0.95
+anchor_right = 0.975
 anchor_bottom = 0.975
+theme = ExtResource("143_c3wx6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail" unique_id=861756168]
 layout_mode = 2
@@ -10366,6 +10371,7 @@ theme_override_constants/separation = 20
 [node name="ActiveWeatherWarnings-issued" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1431368132]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("147_2v47r")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -10374,8 +10380,8 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1308504458]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("147_2v47r")
-theme_override_font_sizes/font_size = 52
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -10383,6 +10389,7 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-headline-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=92753432]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("148_ipxax")
 text = "
 Headline"
@@ -10392,22 +10399,7 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-headline" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1466733164]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme = ExtResource("147_2v47r")
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ActiveWeatherWarnings-affectedAreas-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1988698764]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme = ExtResource("148_ipxax")
-text = "
-Affected areas"
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ActiveWeatherWarnings-affectedAreas" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=49624465]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("147_2v47r")
 vertical_alignment = 1
 autowrap_mode = 3
@@ -10415,22 +10407,26 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-whatToExpect-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1325503349]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("148_ipxax")
 text = "
 What to expect"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ActiveWeatherWarnings-whatToExpect" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1143009887]
+[node name="ActiveWeatherWarnings-whatToExpect" type="RichTextLabel" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=659899961]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("147_2v47r")
+bbcode_enabled = true
+fit_content = true
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="ActiveWeatherWarnings-furtherDetails-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=266869462]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("148_ipxax")
 text = "
 Further details"
@@ -10440,6 +10436,7 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-furtherDetails" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=483959864]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("147_2v47r")
 vertical_alignment = 1
 autowrap_mode = 3
@@ -10447,6 +10444,7 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-whatShouldIDo-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1926018017]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("148_ipxax")
 text = "
 What should I do?"
@@ -10456,9 +10454,29 @@ autowrap_mode = 3
 [node name="ActiveWeatherWarnings-whatShouldIDo" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=783428320]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("147_2v47r")
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="ActiveWeatherWarnings-affectedAreas-title" type="Label" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1988698764]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("148_ipxax")
+text = "
+Affected areas"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ActiveWeatherWarnings-affectedAreas" type="RichTextLabel" parent="WeatherWarningDetail/ScrollContainer-WeatherWarningDetail/VBoxContainer" unique_id=1901713599]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("147_2v47r")
+bbcode_enabled = true
+fit_content = true
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=662011402]
 libraries/ = SubResource("AnimationLibrary_cbpwj")
