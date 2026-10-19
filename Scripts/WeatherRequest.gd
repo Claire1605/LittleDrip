@@ -872,7 +872,7 @@ func nextDay(buttonPressed):
 
 func clockSet8AM():
 	if saveData.setToDefaultTime:
-		get_node_or_null(clock).set_rotation_degrees(60)
+		get_node_or_null(clock).set_rotation_degrees(90)
 
 func clockRotation():
 	# Rotates the clock dial to show the local time
