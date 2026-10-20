@@ -265,7 +265,7 @@ grow_vertical = 2
 
 [node name="SaveData" parent="." unique_id=2110060001 instance=ExtResource("1_vy5pj")]
 
-[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("weatherWarningText", "hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "locationPanel", "weatherWarningPanel", "weatherWarningDetailPanel", "saveLocationButton", "removeLocationButton", "maxFavourites", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes", "xmlRequest")]
+[node name="HTTPRequest_Weather" type="HTTPRequest" parent="." unique_id=1631804027 node_paths=PackedStringArray("weatherWarningIcon", "weatherWarningText", "hour12", "hour24", "tempText", "tempColourBorers", "windText", "windRotation", "cloudText", "cloudImage", "lightning", "rainImage", "precText", "weatherText", "dayDateText", "dayWMOText", "dayTempText", "dayAppTempText", "dayWindText", "daySunText", "creditsPanel", "settingsPanel", "locationPanel", "weatherWarningPanel", "weatherWarningDetailPanel", "saveLocationButton", "removeLocationButton", "maxFavourites", "daySummaryWeatherCodeIcons", "daySummaryWindRotations", "daySummaryWindTexts", "daySummaryTempTexts", "daySummaryTempColourBorders", "daySummaryTextNodes", "daySummaryIconNodes", "xmlRequest")]
 script = ExtResource("2_idj7w")
 control = NodePath("..")
 debug = NodePath("../DEBUG/Label")
@@ -283,6 +283,7 @@ clock = NodePath("../ClockAnchor/Clock - Daytime")
 clockNight = NodePath("../ClockAnchor/Clock - Daytime/Clock-Nighttime")
 clockPreviousDay = NodePath("../ClockAnchor/Clock - Daytime/Label-PreviousDay")
 clockNextDay = NodePath("../ClockAnchor/Clock - Daytime/Label-NextDay")
+weatherWarningIcon = NodePath("../SummaryPanelToday/TextureButton-WeatherWarning")
 weatherWarningText = NodePath("../WeatherWarningText")
 hour12 = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour00/Label-hour00-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour01/Label-hour01-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour02/Label-hour02-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour03/Label-hour03-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour04/Label-hour04-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour05/Label-hour05-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour06/Label-hour06-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour07/Label-hour07-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour08/Label-hour08-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour09/Label-hour09-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour10/Label-hour10-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour11/Label-hour11-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour12/Label-hour12-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour13/Label-hour13-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour14/Label-hour14-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour15/Label-hour15-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour16/Label-hour16-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour17/Label-hour17-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour18/Label-hour18-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour19/Label-hour19-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour20/Label-hour20-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour21/Label-hour21-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour22/Label-hour22-12"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour23/Label-hour23-12")]
 hour24 = [NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour00/Label-hour00-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour01/Label-hour01-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour02/Label-hour02-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour03/Label-hour03-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour04/Label-hour04-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour05/Label-hour05-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour06/Label-hour06-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour07/Label-hour07-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour08/Label-hour08-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour09/Label-hour09-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour10/Label-hour10-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour11/Label-hour11-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour12/Label-hour12-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour13/Label-hour13-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour14/Label-hour14-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour15/Label-hour15-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour16/Label-hour16-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour17/Label-hour17-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour18/Label-hour18-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour19/Label-hour19-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour20/Label-hour20-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour21/Label-hour21-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour22/Label-hour22-24"), NodePath("../ClockAnchor/Clock - Daytime/RotationOffset/Hour23/Label-hour23-24")]
@@ -8176,7 +8177,6 @@ anchor_bottom = 0.14
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("73_x5wht")
 theme_override_font_sizes/font_size = 36
-text = "Checking for weather warnings..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -9411,6 +9411,23 @@ text = "Little Drip provides weather warnings for the UK only. Please always cro
 Created by Claire Morwood, using Godot Engine, Open-Meteo (https://open-meteo.com/) and Met Office Weather Warnings (Met Office Weather Warning/s © Crown Copyright [2024]).
 
 If you like this project, great! You can support it by taking a break from your phone and enjoying the weather! :)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsLabel2" type="Label" parent="Credits" unique_id=2111335830]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("60_atu2d")
+theme_override_font_sizes/font_size = 38
+text = "v2"
 horizontal_alignment = 1
 autowrap_mode = 3
 

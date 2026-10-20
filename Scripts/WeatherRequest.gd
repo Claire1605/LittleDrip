@@ -19,6 +19,7 @@ extends HTTPRequest
 @export_node_path("TextureButton") var clockNight
 @export_node_path("Label") var clockPreviousDay
 @export_node_path("Label") var clockNextDay
+@export var weatherWarningIcon : Node
 @export var weatherWarningText : Label
 @export var hour12: Array[Node] = []
 @export var hour24: Array[Node] = []
@@ -79,6 +80,7 @@ var tzOffset = 0
 var previousDayHourlyWMO: Array[int]
 var currentDayHourlyWMO: Array[int]
 var nextDayHourlyWMO: Array[int]
+var ukLocation : bool = true
 
 func _ready():
 	saveData = get_node_or_null(saveDataPath)
@@ -119,6 +121,13 @@ func weatherRequest():
 	# Perform a GET request. The URL below returns JSON as of writing.
 	get_node_or_null(locationInput).editable = false # Set location search disabled until http request finished
 	
+	if saveData.placeName.contains("(England)") or saveData.placeName.contains("(Scotland)") or saveData.placeName.contains("(Wales)") or saveData.placeName.contains("(Northern Ireland)"):
+		ukLocation = true
+		weatherWarningText.text = "Checking for weather warnings..."
+	else:
+		ukLocation = false
+		weatherWarningText.text = ""
+		
 	# Get temperature and wind units from save data
 	var temp = ""
 	if saveData.tempUnit != "":
@@ -186,7 +195,8 @@ func _on_request_completed(result, response_code, headers, body):
 		populateInitialWindDirection()
 		daySummarySetup()
 		getLunarPhase()
-		xmlRequest.StartWarningRequest()
+		if ukLocation:
+			xmlRequest.StartWarningRequest()
 
 func populateForecastTable():
 	var selectedDate = Time.get_datetime_dict_from_unix_time(selectedDateUnix) # 86400 is 1 day in unix time
@@ -668,8 +678,12 @@ func updateDailyWMO(wmoText : Label, wmoTexture : TextureRect, day, position):
 	wmoTexture.texture = daySummaryIcons[texture] #getWMOIcon(openMeteoJSON["daily"]["weather_code"][day])
 
 func clearForecastVisuals():
+	weatherWarningIcon.hide()
 	get_node_or_null(dateText).text = "Forecasting..."
-	weatherWarningText.text = "Checking for weather warnings..."
+	if ukLocation:
+		weatherWarningText.text = "Checking for weather warnings..."
+	else:
+		weatherWarningText.text = ""
 	
 	for position in range(0,3):
 		dayDateText[position].text = ""
@@ -985,7 +999,12 @@ func getTemperatureColor(temp):
 func _on_location_text_pressed() -> void:
 	# Reference: https://www.cartograph.eu/v3/using-the-geo-uri-scheme-in-cartograph-maps/
 	# Reference: https://forum.godotengine.org/t/android-how-to-open-a-web-browser-at-a-specific-address/137838/8
-	if saveData.mapConnect:
+	#if saveData.mapConnect:
+	if OS.get_name() == "Web":
+		var url = "https://www.openstreetmap.org/#map=12/" + str(saveData.latitude) + "/" + str(saveData.longitude)
+		var evalString = "window.open(\"" + url + "\").focus();"
+		JavaScriptBridge.eval(evalString)
+	else:
 		OS.shell_open("geo:" + str(saveData.latitude) + "," + str(saveData.longitude) + "?z=12")
 
 func _on_credits_button_pressed() -> void:
